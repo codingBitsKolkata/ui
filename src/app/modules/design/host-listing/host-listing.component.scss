@@ -1,0 +1,207 @@
+.host-listing-section{
+    .host-listing-head{
+        position: relative;
+        .header-content{
+            position: absolute;
+            top: 75px;
+        }
+        .title{
+            font-family: abrialfatface;
+            font-size: 60px;
+            color: #ffffff;
+        }
+        .icon-calculator{
+            width: 20px;
+            margin-left: 5px;
+        }
+        .info{
+            font-family: latobolditalic;
+            color: #ffffff;
+            font-size: 16px;
+            position: relative;
+    
+            span{
+                color: #f47921;
+            }
+            .arrow{
+                position: absolute;
+                top: 5px;
+                right: 7px;
+            }
+        }
+        .listing-form{
+            background: #fff;
+            border-radius: 5px;
+            padding: 25px;
+            margin-top: 30px;
+            h4.title{
+                font-family: latobolditalic;
+                color: #231f20;
+                font-size: 24px;
+            }
+            .property-type{
+                margin-right: 30px;
+                .items{
+                    position: relative;
+                    border: 1px solid #ccc;
+                    text-align: center;
+                    padding: 19px 9px;
+                    border-radius: 100px;
+                    width: 85px;
+                    height: 85px;
+                    img{
+                        height: 43px;
+                    }
+                }
+                .name{
+                    font-size: 10px;
+                    font-family: latobold;
+                    color: #231f20;
+                    text-transform: uppercase;
+                    margin-top: 15px;
+                    margin-bottom: 0;
+                }
+            }
+            .property-type.active .items{
+                border: 1px solid #f47921;
+                .item-checked{
+                    background: url(../../../../assets/images/checked-icon.png) center center no-repeat;
+                    width: 25px;
+                    height: 25px;
+                    background-size: 100%;
+                    position: absolute;
+                    top: -7px;
+                    right: 7px;
+                    background-color: #fff;
+                    border-radius: 100px;
+                }
+            }
+            .right-arrow{
+                margin-top: 26px;
+            }
+        }
+        .scroll-icon{
+            display: inline-block;
+            position: absolute;
+            bottom: 22px;
+            left: calc(50% - 12px);
+        }
+    }
+    h3{
+        color: #231f20;
+        font-family: latobolditalic;
+        font-size: 36px;
+    }
+    .ora-orange-logo{
+        background: url(../../../../assets/images/ora-orange-logo.png) no-repeat;
+        background-size: 100%;
+        width: 78px;
+        height: 31px;
+        display: inline-block;
+        margin-left: 8px;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    li {
+        // padding-left: 1.3em;
+        color: #231f20;
+        font-family: latoitalic;
+        font-size: 16px; 
+    }
+    li:before {
+        content: " ";
+        font-family: FontAwesome;
+        display: inline-block;
+        margin-left: -1.3em;
+        width: 60px;
+        background: url(../../../../assets/images/tick-orange.png) center center no-repeat;
+        background-size: auto;
+        height: 14px;
+    }
+    .commas{
+        display: inline-block;
+        color: #c5c4c4;
+        font-family: bali;
+        font-size: 110px;
+        -moz-transform: rotate(-90.0deg);
+        -o-transform: rotate(-90.0deg);
+        -webkit-transform: rotate(180.0deg);
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);
+        margin-top: -74px;
+        margin-left: -10px;
+    }
+    .comma-text{
+        font-family: latolightitalic;
+        color: #231f20;
+        font-size: 24px;
+        margin-top: -10px;
+    }
+    .small-text{
+        font-size: 14px;
+        color: #231f20;
+        font-family: latoblackitalic;
+        span{
+            font-family: latoitalic;
+        }
+    }
+    .video-container{
+        border-radius: 10px;
+    }
+    .lh-25{
+        line-height: 25px;
+    }
+    .accordion .card-header:after {
+        font-family: 'FontAwesome';  
+        content: "\f068";
+        float: right; 
+    }
+    .accordion .card-header.collapsed:after {
+        /* symbol for "collapsed" panels */
+        content: "\f067"; 
+    }
+    .accordion{
+        // display: flex;
+        ::ng-deep .card{
+            margin-bottom: 30px;
+            box-shadow: 0px 8px 0px 0px #dbdbdb;
+            border-radius: 6px;
+            display: inline-flex;
+            width: 49%;
+        }
+        ::ng-deep .card:nth-of-type(odd) {
+            margin-right: 10px;
+        }
+        ::ng-deep .card:nth-of-type(even) {
+            margin-left: 10px;
+        }
+        ::ng-deep h5{
+            display: flex;
+        }
+        ::ng-deep h5 .btn{
+            text-decoration: none;
+            width: 100%;
+            padding: 0;
+        }
+        ::ng-deep h5 .btn span{
+            color: #231f20 !important;
+            font-family: latoitalic;
+            font-size: 16px;
+            display: flex;
+        }
+        ::ng-deep .arrow{
+            background: url(../../../../assets/images/plus-icon.png) center center no-repeat;
+            width: 28px;
+            height: 28px;
+            display: inline-block;
+            margin-right: 15px;
+            text-decoration: none;
+            background-size: 100%;
+        }
+        ::ng-deep .collapsed .arrow{
+            background: url(../../../../assets/images/minus-icon.png) center center no-repeat;
+            background-size: 100%;
+        }
+    }
+}

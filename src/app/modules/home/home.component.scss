@@ -1,0 +1,23 @@
+/* Extra small devices (All smart pjone) */
+@media only screen and (max-width: 767px) {
+    .booking-section{
+        position: initial;
+        .container{
+            padding: 0px;
+            .nav.nav-tabs{
+                background: #fff;
+                border-radius: 0;
+            }
+        }
+    }
+} 
+
+/* Medium devices (Tablets and Ipad) */
+@media only screen and (min-width: 768px) {
+
+} 
+
+/* Large devices (laptops/desktops) */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    
+} 

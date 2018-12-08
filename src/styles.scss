@@ -1,0 +1,497 @@
+/* You can add global styles to this file, and also import other style files */
+@import "variables";
+@import '~ngx-ui-switch/ui-switch.component.scss';
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~font-awesome/scss/font-awesome.scss";
+
+@font-face {
+    font-family: lato;
+    src: url(assets/fonts/Lato-Regular.ttf) format("opentype");
+}
+@font-face {
+    font-family: latobolditalic;
+    src: url(assets/fonts/Lato-BoldItalic.ttf) format("opentype");
+}
+@font-face {
+    font-family: latolightitalic;
+    src: url(assets/fonts/Lato-LightItalic.ttf) format("opentype");
+}
+@font-face {
+    font-family: latoitalic;
+    src: url(assets/fonts/Lato-Italic.ttf) format("opentype");
+}
+@font-face {
+    font-family: latoblack;
+    src: url(assets/fonts/Lato-Black.ttf) format("opentype");
+}
+@font-face {
+    font-family: latoblackitalic;
+    src: url(assets/fonts/Lato-BlackItalic.ttf) format("opentype");
+}
+@font-face {
+    font-family: latobold;
+    src: url(assets/fonts/Lato-Bold.ttf) format("opentype");
+}
+@font-face {
+    font-family: bali;
+    src: url(assets/fonts/BaliGalang-Regular.ttf) format("opentype");
+}
+@font-face {
+    font-family: abrialfatface;
+    src: url(assets/fonts/abrilfatface-regular.ttf) format("opentype");
+}
+
+body{
+    font-family: 'lato';
+}
+.fs-12{
+    font-size: 12px !important;
+}
+.fs-14{
+    font-size: 14px !important;
+}
+.mt-10{
+    margin-top: 10px !important;
+}
+.mb-10{
+    margin-bottom: 10px !important;
+}
+.mt-76{
+    margin-top: 76px;
+}
+
+.mt-50{
+    margin-top: 50px !important;
+}
+.mt-70{
+    margin-top: 70px !important;
+}
+.mb-70{
+    margin-bottom: 70px !important;
+}
+.mt-30{
+    margin-top: 30px !important;
+}
+.mb-30{
+    margin-bottom: 30px !important;
+}
+.mr-20{
+    margin-right: 20px;
+}
+.pl-50{
+    padding-left: 50px !important;
+}
+.pb-10{
+    padding-bottom: 10px !important;
+}
+.btn-primary {
+    color: #fff !important;
+    background-color: #f47921 !important;
+    border-color: #f47921 !important;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    outline: none !important;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+    background-color: #f16a0a !important;
+    border-color: #f16a0a !important;
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+.btn-dark{
+    background-color: #130504 !important;
+    border-color: #130504 !important;
+}
+.btn-dark:hover, .btn-dark:focus, .btn-dark:active{
+    background-color: #212529 !important;
+    border-color: #212529 !important;
+}
+input:focus,select:focus,button:focus,label:focus, .btn:focus, .btn.focus,
+input:active,select:active,button:active,label:active{
+        outline: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+}
+.c-pointer{
+    cursor: pointer;
+}
+
+// Home Slide
+.home-carousel{
+    .carousel-indicators {
+        bottom: 20px;
+    }
+    .carousel-indicators li {
+        width: 15px !important;
+        height: 15px !important;
+        cursor: pointer;
+        background-color: rgb(255, 255, 255) !important;
+        border-radius: 50px !important;
+    }
+    .carousel-indicators .active {
+        background-color: #f47921 !important;
+        border: 1px solid #ffffff !important;
+    }
+    .carousel-control-prev,
+    .carousel-control-next{
+        display: none;
+    }
+}
+// BOOKING SECTION TAB
+.booking-section{
+    position: absolute;
+    top: 73px;
+    width: 100%;
+    .tab-content{
+        background-color: #ffffff !important;
+        padding: 30px 30px;
+        border-radius: 0px 0px 5px 5px;
+        box-shadow: 0px 10px 0px 0px rgba(0, 0, 0, 0.25);
+    }
+    .nav.nav-tabs{
+        background: #130504;
+        border-radius: 5px 5px 0 0;
+        .nav-item {
+            font-size: 16px;
+            font-family: "Lato";
+            font-weight: bold;
+            .nav-link{
+                color: rgb(231, 231, 231);
+                  
+                &:hover{
+                    border-color: transparent !important;
+                }
+            }
+            .active{
+                color: #130504 !important;
+                background-color: #fff;
+                border-color: transparent;
+            }
+        }  
+        .nav-item.show .nav-link {
+            color: #495057;
+            background-color: #fff;
+        }
+    }
+    .booking-form{
+        font-family: latoitalic;
+        font-size: 14px;
+        color: #484848;
+        .form-control{
+            height: 43px;
+        }
+        .calendar{
+            background: #fff !important;
+            color: #6c757d !important;
+            border-color: #ccc !important;
+            &:hover,&:focus,&:active{
+                color: #f57921 !important;
+            }
+        }
+        .checkin-pick{
+            border-left: none;
+            border-right: none;
+            border-color: #ccc;
+        }
+        .checkout-pick{
+            border-left: none;
+            border-color: #ccc;
+        }
+        .search-btn{
+            display: flex;
+            line-height: 17px;
+            font-size: 16px;
+            font-family: latobold;
+            float: right;
+            .search-icon{
+                background: url(assets/images/search-icon.png) center center no-repeat;
+                width: 20px;
+                height: 20px;
+                background-size: 100%;
+                margin-right: 7px;
+            }
+        }
+    }
+}
+.features-section{
+    background: #f1f1f1;
+    padding: 40px 0px;
+    font-size: 12px;
+    color: #616161;
+    .info-text{
+        font-family: lato;
+        color: #6d6e71;
+        font-size: 14px;
+    }
+    .mt-18{
+        margin-top: 18px;
+    }
+}
+.exclamation-circle{
+    color: #343a40 !important;
+    font-size: 14px;
+    margin-left: 5px;
+}
+.property-listing-section{
+    background: url(assets/images/tab_bg.jpg) no-repeat; 
+    background-size: cover;
+    background-position: center center;
+    .container{
+        padding: 40px 0;
+    }
+    .property-tab-block{
+        background: #fff;
+        padding: 40px 0px 20px 0px;
+        border-radius: 5px;
+        box-shadow: 0px 8px 0px 0px #33333359;
+        .nav-tabs .nav-item:first-child {
+            margin-left: 30px;
+        }
+        .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+            color: #000000;
+            background-color: #fff;
+            border-color: #f47921 #f47921 #fff;
+        }
+        .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+            border-color: #f47921 #f47921 #fff;
+        }
+        .nav-tabs {
+            border-bottom: 1px solid #f47921;
+        }
+        .nav-tabs .nav-link {
+            font-weight: 500;
+            color: #000;
+            padding: 10px 25px;
+        }
+        .tab-content{
+            padding: 20px 30px;
+        }
+        .property-img{
+            .pro-icon{
+                font-size: 20px;
+                color: #ffffff;
+                position: absolute;
+                cursor: pointer;
+
+                &:hover{
+                    color: #f47921;
+                }
+                &.pro-icon.bookmark{
+                    right: 40px;
+                    top: 10px;
+                }
+                &.pro-icon.share{
+                    right: 15px;
+                    top: 10px;
+                }
+            }
+        }
+        .card-body{
+            padding-top: 30px;
+            .card-title{
+                color: #231f20;
+                font-size: 16px;
+                font-family: latoblack;
+                margin-bottom: 10px;
+            }
+            .price{
+                color: #454444;
+                font-size: 14px;
+                font-family: lato;
+                font-weight: bold;
+                margin-bottom: 10px !important;
+            }
+            .badge.bg-orange{
+                background: #f47921;
+                padding: 5px 7px;
+                margin-right: 8px;
+                border-radius: 6px;
+            }
+            .cat-type{
+                color: #130504;
+                font-size: 12px;
+                font-family: latoblack;
+            }
+            .review{
+                color: #f57921;
+                font-size: 12px;
+                font-family: latoblack;
+            }
+            .hr1{
+                margin: 10px 0;
+            }
+            .alert{
+                color: #ffffff;
+                font-family: latobold !important;
+                border: 0;
+                padding: 10px 12px;
+                margin-bottom: 10px;
+                h6.title{
+                    font-size: 16px;
+                }
+                span.info-text{
+                    font-size: 12px;
+                }
+            }
+            .alert-green{
+                background-color: #74ae51; 
+            }
+            .alert-pink{
+                background-color: #e981ab; 
+            }
+            .alert-blue{
+                background-color: #6eafc5; 
+            }
+            .alert-brown{
+                background-color: #b78769; 
+            }
+            .complimentary{
+                color: #6d6e71;
+                font-size: 14px;
+                font-family: lato;
+                display: flex;
+                margin: 0;
+
+                span{
+                    width: 22px;
+                    height: 22px;
+                    margin: 0 2px;
+                    display: flex;
+                }
+                .complimentary-tea{
+                    background: url(assets/images/complimentary_tea.png) center center no-repeat;
+                }
+                .complimentary-gym{
+                    background: url(assets/images/complimentary_gym.png) center center no-repeat;
+                }
+                .complimentary-parking{
+                    background: url(assets/images/complimentary_parking.png) center center no-repeat;
+                }
+                .complimentary-swimming{
+                    background: url(assets/images/complimentary_swimming.png) center center no-repeat;
+                }
+            }
+        }
+        .filter-section{
+            color: #231f20;
+            font-size: 16px;
+            font-family: latoitalic;
+            padding: 10px;
+            background: #f4f4f4;
+            margin-bottom: 0;
+            display: inline-block;
+        }
+    }
+}
+
+// Property Description & Earning Calculator
+.property-desc-section{
+    background: url(assets/images/listyourproperty_bg.png) no-repeat;
+    padding: 40px 30px !important;
+    font-family: lato;
+    color: #231f20;
+    background-position: center top;
+    background-size: cover;
+    border-radius: 10px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    
+    h4.title{
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    h6.desc{
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    p.text{
+        font-size: 14px;
+        width: 50%;
+        margin-bottom: 40px;
+    }
+    .icon-calculator{
+        height: 20px;
+        margin-left: 10px;
+        vertical-align: sub;
+    }
+}
+
+// Deal for You Style
+.deals-section{
+    background: url(assets/images/deals_bg.jpg) no-repeat;
+    background-size: 105% 100%;
+    background-position: center center;
+    font-family: lato;    
+    padding: 40px 0;
+    border-bottom: 1px solid #e8e7e7;
+    border-top: 1px solid #e8e7e7;
+    img{
+        width: 100%;
+    }
+    h4.title{
+        color: #130504;
+        font-size: 36px;
+        margin-bottom: 15px;
+    }
+    p.text{
+        font-size: 14px;
+        color: #231f20;
+        margin-bottom: 30px;
+    }
+}
+
+// About & Testimonial Style
+.about-testimonial-section{
+    font-family: lato;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    .card{
+        box-shadow: 0px 4px 0px 0px #dbdbdb;
+        background: #fafafa;
+        .card-body{
+            padding-top: 30px;
+            padding-bottom: 40px;
+        }
+        h4.title{
+            font-size: 24px;
+            color: #130504;
+            margin-bottom: 30px;
+        }
+        .testimonial-item{
+            display: flex;
+            margin-bottom: 30px;
+            .thumb-img{
+                margin-right: 15px;
+            }
+            .thumb-details{
+                .desc{
+                    color: #231f20;
+                    font-size: 14px;
+                    line-height: 15pt;
+                    display: inline-block;
+                }
+                .name{
+                    color: #130504;
+                    font-size: 16px;
+                    padding-right: 10px;
+                    border-right: 2px solid #ccc
+                }
+                .datetime{
+                    font-size: 12px;
+                    color: #6d6e71;
+                    padding-left: 10px;
+                    display: inline-block;
+                }
+            }
+        }
+        h5.about-text{
+            color: #130504;
+            font-size: 18px;
+        }
+        p.text{
+            color: #231f20;
+            font-size: 14px;
+        }
+    }
+}

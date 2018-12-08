@@ -1,0 +1,150 @@
+.header-logo{
+    height: 50px;
+}
+.top-navbar{
+    box-shadow: 0px 3px 2px 0px #33333317;
+
+    .heading{
+        color: #260e07;
+        font-size: 16px;
+        // font-style: italic;
+        font-family: latobolditalic;
+    }
+}
+::ng-deep .modal-backdrop {
+    background-color: #2f1515;
+    .show {
+        opacity: 0.8;
+    }
+}
+::ng-deep .login-section{
+    top: 20%;
+    @media (min-width: 576px){
+        .modal-dialog {
+            max-width: 400px;
+            margin: 1.75rem auto;
+        }
+    }
+    .modal-content{
+        background-color: transparent;
+        border: none;
+        button.close{
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            opacity: 1;
+            border-radius: 50px;
+            position: absolute;
+            right: -22px;
+            top: -26px;
+            span{
+                text-shadow: none;
+                color: #f47921;
+                line-height: 24px;
+                font-size: 24px;
+                font-family: lato;
+                font-weight: 100;
+                display: block;
+            }
+        }
+        .nav.nav-tabs{
+            border-bottom: 1px solid #dee2e6;
+            background: #000;
+            border-radius: 5px 5px 0px 0px;
+            .nav-item{
+                .nav-link{
+                    font-family: latobold;
+                    font-size: 16px;
+                    color: #fff;
+                    padding: 12px 10px;
+                    &.active{
+                        color: #130504;
+                        background-color: #fff;
+                        border-color: #dee2e6 #dee2e6 #fff;
+                    }
+                    &:hover{
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+        .tab-content{
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 0px 0px 5px 5px;
+        }
+        form{
+            .form-group{
+                input{
+                    font-family: latoitalic;
+                    font-size: 14px;
+                    color: #484848;
+                }
+            }
+            .change-tab-view{
+                color: #484848;
+                font-family: lato;
+                font-size: 14px;
+                float: left;
+                margin: 0;
+                line-height: 42px;
+                a{
+                    color: #f47921;
+                }
+            }
+            button.btn{
+                padding: 8px 30px;
+                font-family: latobold;
+            }
+            button.verifyBtn{
+                padding: 8px 15px;
+            }
+            .terms-conditions{
+                font-family: lato;
+                color: #9b9b9b;
+                font-size: 14px;
+                display: block;
+                a{
+                    color: #f47921;
+                }
+            }
+            .otp-heading{
+                text-align: center;
+                h3{
+                    font-family: latobold;
+                    font-size: 17px;
+                    color: #130504;
+                }
+                p{
+                    font-size: 12px;
+                    color: #9b9b9b;
+                    font-family: lato;
+                }
+            }
+            .resend-otp{
+                color: #130504;
+                font-family: lato;
+                font-size: 14px;
+                a{
+                    color: #f47921;
+                }
+            }
+        }
+    }
+}
+
+// Responsive 
+/* Extra small devices (All smart pjone) */
+@media only screen and (max-width: 767px) {
+    
+} 
+
+/* Medium devices (Tablets and Ipad) */
+@media only screen and (min-width: 768px) {
+
+} 
+
+/* Large devices (laptops/desktops) */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    
+} 
