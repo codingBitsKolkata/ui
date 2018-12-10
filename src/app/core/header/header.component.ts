@@ -10,6 +10,12 @@ export class HeaderComponent implements OnInit {
 
   currentJustify = 'justified';
 
+  navbarOpen = false;
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
+
   constructor(private modalService: NgbModal) {
     // customize default values of modals used by this component tree
     // config.backdrop = 'static';
@@ -17,7 +23,7 @@ export class HeaderComponent implements OnInit {
   }
   ngOnInit() {
   }
-  open(content) {
+  open(content, selectedTab) {
     // , size: 'md'
     this.modalService.open(content, { windowClass: 'login-section' });
   }

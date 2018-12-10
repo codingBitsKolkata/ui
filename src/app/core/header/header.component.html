@@ -1,6 +1,13 @@
 <nav class="navbar navbar-light bg-light fixed-top top-navbar">
   <div class="container">
-      <a class="navbar-brand border-right pr-3" href="/"><img src="assets/images/logo_orastays.png" class="header-logo" /></a>
+      <div class="nav-mobile-toggler">
+        <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="navbar-brand border-right">
+          <a class=" pr-3" href="/"><img src="assets/images/logo_orastays.png" class="header-logo" /></a>
+      </div>
       <div class="navbar-expand mr-auto">
         <div class="navbar-nav">
           <span class="heading">India's largest homestay brand</span>
@@ -8,16 +15,54 @@
       </div>
       <div class="navbar-expand ml-auto navbar-nav">
         <div class="navbar-nav">
-            <button type="button" class="btn btn-light btn-sm mr-2 fs-12">HELP</button>
-            <button type="button" class="btn btn-light btn-sm mr-2 fs-12">SINGUP</button>
-            <button type="button" class="btn btn-primary btn-sm login-btn fs-12" (click)="open(content)"><i class="fa fa-lock pr-1"></i> LOGIN</button>
+            <button type="button" class="btn btn-light btn-sm mr-2 fs-12 help-btn"><i class="help-icon" aria-hidden="true"></i> <span class="d-none d-sm-block">HELP</span></button>
+            <button type="button" class="btn btn-light btn-sm mr-2 fs-12 signup-btn d-none d-sm-block">SINGUP</button>
+            <button type="button" class="btn btn-primary btn-sm login-btn fs-12 login-btn" (click)="open(loginForm, 'login-tab')"><i class="fa fa-lock pr-1 lock-icon"></i><i class="mobile-icon" aria-hidden="true"></i> <span class="text">LOGIN</span></button>
         </div>
+      </div>
+
+      <div class="collapse navbar-collapse mobile-navbar"
+       [ngClass]="{ 'show': navbarOpen }">
+        <div class="clearfix">
+          <a class="close-btn" (click)="toggleNavbar()"></a>
+          <!-- <button class="close-btn" (click)="toggleNavbar()"><i class="fa fa-close"></i></button> -->
+        </div>
+        
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Teams/Careers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Support</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Official Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Press Kit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Privacy Policy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Guest Policy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Terms & Conditions</a>
+          </li>
+        </ul>
       </div>
   </div>
 </nav>
 
 <!-- Login, Signup, Verify OTP Popup -->
-<ng-template #content let-c="close" let-d="dismiss">
+<ng-template #loginForm let-c="close" let-d="dismiss">
   <div class="login-section">
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
