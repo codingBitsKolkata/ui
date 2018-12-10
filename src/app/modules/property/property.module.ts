@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { PropertyRoutingModule } from './property-routing.module';
+import { SharedModule } from '../../shared/shared.module';
 import { PropertyComponent } from './property.component';
 
 @NgModule({
   declarations: [PropertyComponent],
   imports: [
-    CommonModule,
-    PropertyRoutingModule
+    PropertyRoutingModule,
+    SharedModule
   ]
 })
 export class PropertyModule { }

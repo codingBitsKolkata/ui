@@ -1,11 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-
 // import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -20,8 +17,6 @@ import { HttpConfigInterceptor } from './services/interceptors/http-config-inter
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    NgbModule,
     AppRoutingModule,
     CoreModule,
        // configure the imports
