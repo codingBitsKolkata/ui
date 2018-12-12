@@ -7,6 +7,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { DragScrollModule } from 'ngx-drag-scroll';
 
 import { DesignRoutingModule } from './design-routing.module';
+import { SharedModule } from '../../shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { PropertyListComponent } from './property-list/property-list.component';
 import { HostListingComponent } from './host-listing/host-listing.component';
@@ -22,7 +23,9 @@ import { PropertyDetailsComponent } from './property-details/property-details.co
     UiSwitchModule,
     DesignRoutingModule,
     NgxGalleryModule,
-    DragScrollModule
+    DragScrollModule,
+    DesignRoutingModule,
+    SharedModule
   ]
 })
 export class DesignModule { }
