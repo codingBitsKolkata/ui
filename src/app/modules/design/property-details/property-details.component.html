@@ -1,0 +1,256 @@
+<div class="property-details-container mt-76">
+  <div class="container-fluid mb-40">
+    <div class="row row-eq-height">
+      <div class="col-md-2 top-heading pr-0 m-w-20">
+        <h1><span class="text-orange">ORA912255343</span> <span>Express Homestay<br>
+          in Slatlake, Kolkata</span> </h1>
+        <p class="top-text"><span class="bed-icon"></span><span class="text">1 bedroom </span><span class="text">1 bed </span><span class="text">1 bath</span></p>
+        <p class="desc">Its a beautiful penthouse on 10floor, with mesmerizing ambiance, AC, TV, Wi-fi,bathroom+geyser,adjoining pantry,etc providing comfort &luxury as it opens out into a well landscaped terrace+flower garden and a panoramic view.</p>
+        <div class="d-flex bottom-box">
+          <a href="" class="icon"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+          <a href="" class="icon"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a>
+          <p class="rating-text"><span class="badge badge-secondary bg-orange">8.8</span><span class="cat-type"> Excellent,</span><span class="review"> 987 reviews</span></p>
+        </div>  
+      </div>
+      <div class="col-md-10 m-w-80">
+        <div class="row">
+          <div class="col-md-8 p-l-r-5">
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-6 p-l-r-5">
+                <div><img class="w-100" src="../../../../assets/images/property-details/gallery/small-img-1.png" alt=""></div>
+                <div class="p-t-b-10"><img class="w-100" src="../../../../assets/images/property-details/gallery/small-img-2.png" alt=""></div>
+                <div><img class="w-100" src="../../../../assets/images/property-details/gallery/small-img-3.png" alt=""></div>
+              </div>
+              <div class="col-md-6 p-l-r-5 img-last-block">
+                <div class="p-b-5"><img src="../../../../assets/images/property-details/gallery/video-img-1.png" alt=""></div>
+                <div class="p-t-5"><img src="../../../../assets/images/property-details/gallery/map-image-1.png" alt=""></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="container amenities-experience-section">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="backshadow"></div>
+          <img class="w-100" src="../../../../assets/images/property-details/amenities-bg-img.png" alt="">
+        </div>
+        <div class="col-md-7 p-l-30">
+          <h3>you can love for a long time with our <span> modern amenities </span></h3>
+          <div class="d-flex">
+              <button class="slide-left-btn" [hidden]="as_leftNavDisabled" (click)="moveLeft_as()"></button>
+              <div class="ameni-slider">
+                <drag-scroll (reachesLeftBound)="leftBoundStat_as($event)" (reachesRightBound)="rightBoundStat_as($event)" #ameniSlider>
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/tv_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/ac_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/wifi_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/swimmingpool_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/carparking_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/tv_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/ac_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/wifi_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/swimmingpool_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/carparking_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/tv_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/ac_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/wifi_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/swimmingpool_black.png" />
+                    <img class="amenities-icon" drag-scroll-item src="../../../../assets/images/property-details/carparking_black.png" />
+                  </drag-scroll>
+              </div>
+              <button class="slide-right-btn" [hidden]="as_rightNavDisabled" (click)="moveRight_as()"></button>
+          </div>
+          <h4>Special experiences</h4>
+            <ul>
+              <li>Music - Rabidra Sangeet</li>
+              <li>Foodie - Bengali Food</li>
+              <li>Nature Photography</li>
+              <li>Life drawing with live music</li>
+              <li>City tour by bike</li>
+              <li>Health & Wellness</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="near-location-section">
+      <div class="row">
+        <div class="col-md-7 p-l-40">
+          <h3>Near by <span> locations </span></h3>
+          <div class="d-flex">
+              <!-- <button class="slide-left-btn" (click)="moveLeft_ls()"></button> -->
+              <div class="location-slider">
+                <drag-scroll (reachesLeftBound)="leftBoundStat_ls($event)" (reachesRightBound)="rightBoundStat_ls($event)" #locationSlider>
+                  <div class="location-block">
+                    <div class="card">
+                      <h4><span class="icon"></span> Victoria Memorial Hall</h4>
+                      <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
+                      <a href="">Read on [+]</a>
+                    </div>
+                  </div>
+                  <div class="location-block">
+                    <div class="card">
+                      <h4><span class="icon"></span> Victoria Memorial Hall</h4>
+                      <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
+                      <a href="">Read on [+]</a>
+                    </div>
+                  </div>
+                  <div class="location-block">
+                    <div class="card">
+                      <h4><span class="icon"></span> Victoria Memorial Hall</h4>
+                      <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
+                      <a href="">Read on [+]</a>
+                    </div>
+                  </div>
+                  <div class="location-block">
+                    <div class="card">
+                      <h4><span class="icon"></span> Victoria Memorial Hall</h4>
+                      <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
+                      <a href="">Read on [+]</a>
+                    </div>
+                  </div>
+                  <div class="location-block">
+                    <div class="card">
+                      <h4><span class="icon"></span> Victoria Memorial Hall</h4>
+                      <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
+                      <a href="">Read on [+]</a>
+                    </div>
+                  </div>
+                  <div class="location-block">
+                    <div class="card">
+                      <h4><span class="icon"></span> Victoria Memorial Hall</h4>
+                      <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
+                      <a href="">Read on [+]</a>
+                    </div>
+                  </div>
+                </drag-scroll>
+              </div>
+              <button class="slide-right-btn" (click)="moveRight_ls()"></button>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="backshadow"></div>
+          <img class="w-100" src="../../../../assets/images/property-details/near-location.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="policies-section">
+      <h3>Policies</h3>
+      <div class="row">
+        <div class="col-md-6 p-l-20">
+          <h4>House Rules</h4>
+          <div class="card-block">
+            <div class="icon">
+                <img src="../../../../assets/images/property-details/house-rules.png" alt="">
+            </div>
+            <div>
+              <p>No pets<br>
+                Check-in is anytime after 3PM and check out by 12PM (noon)<br>
+                Self check-in with building staff
+              </p>
+              <a href="">Read on [+]</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h4>Cancellations</h4>
+          <div class="card-block">
+            <div class="icon">
+                <img src="../../../../assets/images/property-details/cancellation.png" alt="">
+            </div>
+            <div>
+              <p>Flexible - Free cancellation for 48 hours <br>
+                  After that, cancel up to 24 hours before check-in and get a full refund, minus the service fee.
+              </p>
+              <a href="">Read more about the policy [+]</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="recomended-section">
+      <h4>Recommended homestays</h4>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card">
+            <img class="card-img-top" src="../../../../assets/images/property-details/prop-img-1.png" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">ENTIRE APARTMENT · 2 BEDS</h6>
+              <h5>2kms from airport, modern decor, quiet, free WiFi!</h5>
+              <p class="card-text">₹1,599 per night</p>
+              <p class="card-rating"><span class="badge badge-primary">7.6</span> Good , <span class="text-gray">1765 reviews</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <img class="card-img-top" src="../../../../assets/images/property-details/prop-img-2.png" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">ENTIRE APARTMENT · 2 BEDS</h6>
+              <h5>2kms from airport, modern decor, quiet, free WiFi!</h5>
+              <p class="card-text">₹1,599 per night</p>
+              <p class="card-rating"><span class="badge badge-primary">7.6</span> Good , <span class="text-gray">1765 reviews</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <img class="card-img-top" src="../../../../assets/images/property-details/prop-img-3.png" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">ENTIRE APARTMENT · 2 BEDS</h6>
+              <h5>2kms from airport, modern decor, quiet, free WiFi!</h5>
+              <p class="card-text">₹1,599 per night</p>
+              <p class="card-rating"><span class="badge badge-primary">7.6</span> Good , <span class="text-gray">1765 reviews</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <img class="card-img-top" src="../../../../assets/images/property-details/prop-img-4.png" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">ENTIRE APARTMENT · 2 BEDS</h6>
+              <h5>2kms from airport, modern decor, quiet, free WiFi!</h5>
+              <p class="card-text">₹1,599 per night</p>
+              <p class="card-rating"><span class="badge badge-primary">7.6</span> Good , <span class="text-gray">1765 reviews</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid static-floating-bar">
+    <div class="container">
+      <div>
+        <span class="price-drop">₹2,500</span> <span class="price-new"> ₹1,255 </span> <span class="per-night"> per night</span>
+
+      </div>
+      <div>
+        <button class="btn btn-light btn-sm">Guests</button>
+        <button class="btn btn-primary btn-sm">book your stay</button>
+      </div>
+      <div class="profile-info">
+        <img src="../../../../assets/images/property-details/profile-img.png" alt="">
+        <p>Hey, I’m Sarita!<br>
+            hi am a fun loving easy go lucky person who enjoys hosting ...
+           <a href=""> know your host [+]</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
