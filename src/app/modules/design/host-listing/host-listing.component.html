@@ -12,35 +12,75 @@
             </div>
             <div class="col-md-6">
               <div class="listing-form">
-                <h4 class="title">What type of property you are listing ?</h4>
-                <div class="d-flex text-center mt-30">
-                  <div class="property-type active">
-                    <div class="items">
-                      <img src="assets/images/homestay-icon.png" alt="">
-                      <span class="item-checked"></span>
+                <form-wizard>
+                  <wizard-step>
+                    <h4 class="title">What type of property you are listing ?</h4>
+                    <div class="d-flex text-center mt-30">
+                      <div class="property-type">
+                        <input type="radio" name="property-type" id="homestay" class="input-hidden" />
+                        <label class="items" for="homestay">
+                          <img src="assets/images/homestay-icon.png" alt="">
+                          <span class="item-checked"></span>
+                        </label>
+                        <p class="name">Homestay</p>
+                      </div>
+                      <div class="property-type">
+                        <input type="radio" name="property-type" id="guestHouse" class="input-hidden" />
+                        <label class="items" for="guestHouse">
+                          <img src="assets/images/guesthouse-icon.png" alt="">
+                          <span class="item-checked"></span>
+                        </label>
+                        <p class="name">Guest house</p>
+                      </div>
+                      <div class="property-type">
+                        <input type="radio" name="property-type" id="hotel" class="input-hidden" />
+                        <label class="items" for="hotel">
+                          <img src="assets/images/hotel-icon.png" alt="">
+                          <span class="item-checked"></span>
+                        </label>
+                        <p class="name">Hotel</p>
+                      </div>
+                      <div class="property-type">
+                        <input type="radio" name="property-type" id="payingGuest" class="input-hidden" />
+                        <label class="items" for="payingGuest">
+                          <img src="assets/images/payingguest-icon.png" alt="">
+                          <span class="item-checked"></span>
+                        </label>
+                        <p class="name">Paying guest</p>
+                      </div>
+                      <!-- <div class="right-arrow"><img src="assets/images/right-arrow.png" alt=""></div> -->
                     </div>
-                    <p class="name">Homestay</p>
-                  </div>
-                  <div class="property-type">
-                    <div class="items">
-                      <img src="assets/images/guesthouse-icon.png" alt="">
+                  </wizard-step>
+                  <wizard-step>
+                    <h4 class="title">Provide your property details?</h4>
+                    <div class="form-group">
+                      <!-- <label for="exampleInputEmail1">Enter Propety Name</label> -->
+                      <input type="text" class="form-control" placeholder="Property Name">
                     </div>
-                    <p class="name">Guest house</p>
-                  </div>
-                  <div class="property-type">
-                    <div class="items">
-                      <img src="assets/images/hotel-icon.png" alt="">
+                    <div class="form-group">
+                      <!-- <label for="exampleInputEmail1">Enter Propety Address</label> -->
+                      <input type="text" class="form-control" placeholder="Property Address">
                     </div>
-                    <p class="name">Hotel</p>
-                  </div>
-                  <div class="property-type">
-                    <div class="items">
-                      <img src="assets/images/payingguest-icon.png" alt="">
+                    <div class="form-group">
+                      <!-- <label for="exampleInputEmail1">Enter Propety Description</label> -->
+                      <textarea class="form-control" placeholder="Propety Description"></textarea>
                     </div>
-                    <p class="name">Paying guest</p>
-                  </div>
-                  <div class="right-arrow"><img src="assets/images/right-arrow.png" alt=""></div>
-                </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <h1>Step3</h1>
+                    <tag-input [(ngModel)]='items'></tag-input>
+                  </wizard-step>
+                  <wizard-step>
+                    <div [ngSwitch]="isCompleted">
+                      <div *ngSwitchDefault>
+                        <h1>Step4</h1>
+                      </div>
+                      <div *ngSwitchCase="true">
+                        <h4>Thank you! You have completed all the steps.</h4>
+                      </div>
+                    </div>
+                  </wizard-step>
+                </form-wizard>
               </div>
             </div>
           </div>

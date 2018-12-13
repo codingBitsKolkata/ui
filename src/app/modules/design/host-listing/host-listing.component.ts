@@ -13,6 +13,6 @@ export class HostListingComponent implements OnInit {
   }
   scroll(el) {
     el.scrollIntoView({behavior: 'smooth'});
-}
-
+  }
+  items = ['Pizza', 'Pasta', 'Parmesan'];
 }

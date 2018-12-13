@@ -1,3 +1,4 @@
+// import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -5,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { DragScrollModule } from 'ngx-drag-scroll';
+import { FormWizardModule } from 'angular2-wizard';
+import { TagInputModule } from 'ngx-chips';
 
 import { DesignRoutingModule } from './design-routing.module';
 import { SharedModule } from '../../shared/shared.module';
@@ -16,6 +19,7 @@ import { PropertyDetailsComponent } from './property-details/property-details.co
 @NgModule({
   declarations: [HomeComponent, PropertyListComponent, HostListingComponent, PropertyDetailsComponent],
   imports: [
+    // BrowserModule,
     CommonModule,
     NgbModule,
     FormsModule,
@@ -25,7 +29,10 @@ import { PropertyDetailsComponent } from './property-details/property-details.co
     NgxGalleryModule,
     DragScrollModule,
     DesignRoutingModule,
-    SharedModule
+    SharedModule,
+    FormWizardModule,
+    TagInputModule,
+    // BrowserAnimationsModule
   ]
 })
 export class DesignModule { }

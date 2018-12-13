@@ -62,8 +62,8 @@
                     margin-bottom: 0;
                 }
             }
-            .property-type.active .items{
-                border: 1px solid #f47921;
+            .property-type .items{
+                // border: 1px solid #f47921;
                 .item-checked{
                     background: url(../../../../assets/images/checked-icon.png) center center no-repeat;
                     width: 25px;
@@ -74,10 +74,31 @@
                     right: 7px;
                     background-color: #fff;
                     border-radius: 100px;
+                    display: none;
                 }
             }
             .right-arrow{
                 margin-top: 26px;
+            }
+            ::ng-deep{
+                .card{
+                    border: 0;
+                    .card-header{
+                        display: none;
+                    }
+                    .property-type{
+                        .input-hidden{
+                            position: absolute;
+                            left: -9999px;
+                        }
+                        input[type=radio]:checked + label {
+                            border: 1px solid #f47921;
+                            span{
+                                display: block !important;
+                            }
+                        }
+                    }
+                }
             }
         }
         .scroll-icon{

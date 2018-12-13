@@ -35,7 +35,7 @@
     </div>
   </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid position-relative">
     <div class="container amenities-experience-section">
       <div class="row">
         <div class="col-md-5">
@@ -76,6 +76,14 @@
               <li>City tour by bike</li>
               <li>Health & Wellness</li>
             </ul>
+        </div>
+      </div>
+      <div class="guest-space-btn-group">
+        <div class="guest-access-btn">
+          <a class=""><i class="guest-access-icon"></i><span>Guest <br> Access</span></a>
+        </div>
+        <div class="space-rules-btn">
+          <a class=""><i class="space-rules-icon"></i><span>Space <br> Rules</span></a>
         </div>
       </div>
     </div>
@@ -236,19 +244,39 @@
 
   <div class="container-fluid static-floating-bar">
     <div class="container">
-      <div>
-        <span class="price-drop">₹2,500</span> <span class="price-new"> ₹1,255 </span> <span class="per-night"> per night</span>
-
-      </div>
-      <div>
-        <button class="btn btn-light btn-sm">Guests</button>
-        <button class="btn btn-primary btn-sm">book your stay</button>
-      </div>
-      <div class="profile-info">
-        <img src="../../../../assets/images/property-details/profile-img.png" alt="">
-        <p>Hey, I’m Sarita!<br>
-            hi am a fun loving easy go lucky person who enjoys hosting ...
-           <a href=""> know your host [+]</a></p>
+      <div class="row">
+        <div class="col-md-8 form-area">
+          <div>
+            <span class="price-drop">₹2,500</span> <span class="price-new"> ₹1,255 </span> <span class="per-night"> per night</span>
+          </div>
+            
+          <div class="form-group date-picker">
+            <div class="input-group">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar checkin-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+              </div>
+              <input class="form-control checkin" placeholder="Check in"
+                      name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+              <span class="calander-forma"></span>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar checkout-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+              </div>
+              <input class="form-control checkout" placeholder="Check out"
+                      name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+            </div>
+          </div>
+          <button class="btn btn-light m-r-20"><i class="fa fa-user-o m-r-5" aria-hidden="true"></i> Guests</button>
+          <button class="btn btn-primary">book your stay</button>
+        </div>
+        <div class="col-md-4">
+          <div class="profile-info">
+            <img src="../../../../assets/images/property-details/profile-img.png" alt="">
+            <p>Hey, I’m Sarita!<br>
+                hi am a fun loving easy go lucky person who enjoys hosting ...<br>
+                <a href=""> know your host [+]</a>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
