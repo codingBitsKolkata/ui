@@ -1,4 +1,4 @@
-// import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +19,7 @@ import { PropertyDetailsComponent } from './property-details/property-details.co
 @NgModule({
   declarations: [HomeComponent, PropertyListComponent, HostListingComponent, PropertyDetailsComponent],
   imports: [
-    // BrowserModule,
+    
     CommonModule,
     NgbModule,
     FormsModule,
@@ -31,8 +31,7 @@ import { PropertyDetailsComponent } from './property-details/property-details.co
     DesignRoutingModule,
     SharedModule,
     FormWizardModule,
-    TagInputModule,
-    // BrowserAnimationsModule
+    TagInputModule
   ]
 })
 export class DesignModule { }

@@ -16,7 +16,7 @@
       <div class="navbar-expand ml-auto navbar-nav">
         <div class="navbar-nav">
             <button type="button" class="btn btn-light btn-sm mr-2 fs-12 help-btn"><i class="help-icon" aria-hidden="true"></i> <span class="d-none d-sm-block">HELP</span></button>
-            <button type="button" class="btn btn-light btn-sm mr-2 fs-12 signup-btn d-none d-sm-block">SINGUP</button>
+            <button type="button" class="btn btn-light btn-sm mr-2 fs-12 signup-btn d-none d-sm-block">SIGNUP</button>
             <button type="button" class="btn btn-primary btn-sm login-btn fs-12 login-btn" (click)="open(loginForm, 'login-tab')"><i class="fa fa-lock pr-1 lock-icon"></i><i class="mobile-icon" aria-hidden="true"></i> <span class="text">LOGIN</span></button>
         </div>
       </div>
@@ -150,4 +150,10 @@
       </ngb-tab>
     </ngb-tabset>
   </div>
+</ng-template>
+
+<!-- Coming Soon Popup -->
+<button style="display:none" #comingSoonModalBtn (click)="openComingSoon(comingSoon, 'login-tab')"></button>
+<ng-template #comingSoon let-d="dismiss">
+  <img width="100%" src="../../../assets/images/coming-soon.jpg"/>
 </ng-template>

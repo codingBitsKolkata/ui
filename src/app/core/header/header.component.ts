@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,6 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('comingSoonModalBtn') comingSoonModalBtn:ElementRef;
 
   currentJustify = 'justified';
 
@@ -22,9 +23,13 @@ export class HeaderComponent implements OnInit {
     // config.keyboard = false;
   }
   ngOnInit() {
+    this.comingSoonModalBtn.nativeElement.click();
   }
   open(content, selectedTab) {
     // , size: 'md'
     this.modalService.open(content, { windowClass: 'login-section' });
+  }
+  openComingSoon(content) {
+    this.modalService.open(content, { windowClass: 'coming-soon', size: 'sm', centered: true });
   }
 }

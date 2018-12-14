@@ -67,9 +67,127 @@
                     </div>
                   </wizard-step>
                   <wizard-step>
-                    <h1>Step3</h1>
-                    <tag-input [(ngModel)]='items'></tag-input>
+                    <div class="form-group">
+                      <label class="m-0">Enter Guest Access: </label>
+                      <tag-input [(ngModel)]='guestAccess' secondary-placeholder="+ access" placeholder="+ access"></tag-input>
+                    </div>
+                    <div class="form-group">
+                      <label class="m-0">Enter Nearby Places: </label>
+                      <tag-input [(ngModel)]='nearbyPlaces' secondary-placeholder="+ nearby place" placeholder="+ nearby place"></tag-input>
+                    </div>
                   </wizard-step>
+                  <wizard-step>
+                    <div class="form-group">
+                      <label class="d-block">Select Space Rules: </label>
+                      <label class="check-box" *ngFor="let item of spaceRules">{{item}}
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <div class="form-group">
+                      <label class="d-block">Select Special Experience: </label>
+                      <label class="check-box" *ngFor="let item of specialExperience">{{item}}
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="d-block">Check In Time: </label>
+                          <ngb-timepicker [(ngModel)]="checkInTime" [meridian]="meridian"></ngb-timepicker>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="d-block">Check Out Time: </label>
+                          <ngb-timepicker [(ngModel)]="checkOutTime" [meridian]="meridian"></ngb-timepicker>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="d-inline mr-3">Strict Check In: </label>
+                      <div class="form-group toggle-radio-btn d-inline">
+                        <input id="strict-check-on" class="toggle toggle-left" name="strict-check" value="false" type="radio" checked>
+                        <label for="strict-check-on" class="toggle-btn p-0">Yes</label>
+                        <input id="strict-check-off" class="toggle toggle-right" name="strict-check" value="true" type="radio">
+                        <label for="strict-check-off" class="toggle-btn p-0">No</label>
+                      </div>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <label class="d-block">Upload Cover Photo: </label>
+                    <div class="custom-file mb-3">
+                      <input type="file" class="custom-file-input" id="customFile" name="filename">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    <label class="d-block">Upload More Photos: </label>
+                    <div class="custom-file mb-3">
+                      <input type="file" class="custom-file-input" id="customFile" name="filename">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <h4 class="title">Do You want to list Entire Apartment? </h4>
+                    <div class="form-group toggle-radio-btn text-center mt-4">
+                      <input id="entire-apart-on" class="toggle toggle-left" name="entire-apart" value="false" type="radio" checked>
+                      <label for="entire-apart-on" class="toggle-btn">Yes</label>
+                      <input id="entire-apart-off" class="toggle toggle-right" name="entire-apart" value="true" type="radio">
+                      <label for="entire-apart-off" class="toggle-btn">No</label>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <div class="form-group">
+                      <label>Enter Apartment Name</label>
+                      <input type="text" class="form-control" placeholder="Apartment Name">
+                    </div>
+                    <div class="form-group">
+                      <label>Enter Apartment Number</label>
+                      <input type="text" class="form-control" placeholder="Apartment Number">
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <h4 class="title">Select stay type: </h4>
+                    <label class="mr-3 c-pointer">
+                      <input type="radio" class="option-input radio" name="stayType" checked />
+                      Long Term
+                    </label>
+                    <label class="mr-3 c-pointer">
+                      <input type="radio" class="option-input radio" name="stayType" />
+                      Short Term
+                    </label>
+                    <label class="mr-3 c-pointer">
+                      <input type="radio" class="option-input radio" name="stayType" />
+                      Both
+                    </label>
+                  </wizard-step>
+                  <wizard-step>
+                      <h4 class="title">Select sex category: </h4>
+                      <label class="mr-3 c-pointer">
+                        <input type="radio" class="option-input radio" name="sexCategory" checked />
+                        Male
+                      </label>
+                      <label class="mr-3 c-pointer">
+                        <input type="radio" class="option-input radio" name="sexCategory" />
+                        Female
+                      </label>
+                      <label class="mr-3 c-pointer">
+                        <input type="radio" class="option-input radio" name="sexCategory" />
+                        Both
+                      </label>
+                  </wizard-step>
+                  <wizard-step>
+                    <h4 class="title">Do you have multiple rooms? </h4>
+                    <div class="form-group toggle-radio-btn text-center mt-4">
+                      <input id="multi-room-on" class="toggle toggle-left" name="multi-room" value="false" type="radio" checked>
+                      <label for="multi-room-on" class="toggle-btn">Yes</label>
+                      <input id="multi-room-off" class="toggle toggle-right" name="multi-room" value="true" type="radio">
+                      <label for="multi-room-off" class="toggle-btn">No</label>
+                    </div>
+                  </wizard-step>
+                  <wizard-step></wizard-step>
                   <wizard-step>
                     <div [ngSwitch]="isCompleted">
                       <div *ngSwitchDefault>

@@ -529,4 +529,253 @@ input:active,select:active,button:active,label:active{
     }
 }
 
+// Check Box
+.check-box {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right: 20px;
+}
+  
+  /* Hide the browser's default checkbox */
+.check-box input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+  
+  /* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #c7c7c7;
+}
+  
+  /* On mouse-over, add a grey background color */
+.check-box:hover input ~ .checkmark {
+    background-color: #313131;
+}
+  
+  /* When the checkbox is checked, add a blue background */
+.check-box input:checked ~ .checkmark {
+    background-color: #1a1a1a;
+}
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+  /* Show the checkmark when checked */
+.check-box input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+  /* Style the checkmark/indicator */
+.check-box .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 
+// CheckBox and Radio Button
+
+@keyframes click-wave {
+    0% {
+      height: 40px;
+      width: 40px;
+      opacity: 0.35;
+      position: relative;
+    }
+    100% {
+      height: 200px;
+      width: 200px;
+      margin-left: -80px;
+      margin-top: -80px;
+      opacity: 0;
+    }
+  }
+  
+  .option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    top: 5px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    transition: all 0.15s ease-out 0s;
+    background: #cbd1d8;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 0.5rem;
+    outline: none;
+    position: relative;
+    z-index: 1000;
+  }
+  .option-input:hover {
+    background: #9faab7;
+  }
+  .option-input:checked {
+    background: #1a1a1a;
+  }
+  .option-input:checked::before {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    content: '✔';
+    display: inline-block;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+  }
+  .option-input:checked::after {
+    // -webkit-animation: click-wave 0.65s;
+    // -moz-animation: click-wave 0.65s;
+    // animation: click-wave 0.65s;
+    background: #1a1a1a;
+    content: '';
+    display: block;
+    position: relative;
+    z-index: 100;
+  }
+  .option-input.radio {
+    border-radius: 50%;
+  }
+  .option-input.radio::after {
+    border-radius: 50%;
+  }
+
+// Bootstrap Timepicker
+.ngb-tp{
+    .ngb-tp-input-container{
+        width: 50px !important;
+        button.btn{
+            padding: 0px 8px;
+            color: #1a1a1a;
+            font-size: 14px;
+        }
+        .form-control{
+            padding: 0;
+            width: 30px;
+            height: 25px;
+            font-size: 14px;
+            border: 1px solid #1a1a1a;
+            color: #1a1a1a;
+        }
+    }
+    .ngb-tp-meridian{
+        button.btn{
+            padding: 2px 5px;
+            font-size: 12px;
+            color: #1a1a1a;
+            border-color: #1a1a1a;
+            &:hover{
+                color: #ffffff;
+                background: #1a1a1a;
+            }
+        }
+    }
+}
+
+// UI Switch
+.switch.checked {
+    background: #64bd63;
+    color: #fff;
+}
+
+// Toggle Radio Button
+.toggle-radio-btn{
+    .toggle-btn{
+        border: 3px solid #1a1a1a;
+        display: inline-block;
+        padding: 10px;
+        position: relative;
+        text-align: center;
+        transition: background 600ms ease, color 600ms ease;
+    }
+
+    input[type="radio"].toggle {
+        display: none;
+        & + label{
+            cursor: pointer;
+            min-width: 60px;
+            &:hover{
+                background: none;
+                color: #1a1a1a;
+            }
+            &:after{
+                background: #1a1a1a;
+                content: "";
+                height: 100%;
+                position: absolute;
+                top: 0;
+                transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+                width: 100%;
+                z-index: -1;
+            }
+        }
+        &.toggle-left + label {
+            border-right: 0;
+            &:after{
+                left: 100%
+            }
+        }
+        &.toggle-right + label{
+            margin-left: -5px;
+            &:after{
+                left: -100%;
+            }
+        }
+        &:checked + label {
+            cursor: default;
+            color: #fff;
+            transition: color 200ms;
+            background: #1a1a1a;
+            &:after{
+                left: 0;
+            }
+        }
+    }
+}
+.modal-backdrop{
+    z-index: 11111 !important;
+}
+.modal.show{
+    z-index: 111111 !important;
+}
+
+.coming-soon{
+    .modal-content{
+        border:none;
+        img{
+            border-radius: 8px;
+        }
+    }
+}
