@@ -46,4 +46,8 @@ export class AboutComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.cdr.detectChanges();
   }
+  scrollToDiv(el) {
+    el.scrollIntoView({behavior: 'smooth'});
+    // window.scrollTo(el.yPosition)
+  }
 }

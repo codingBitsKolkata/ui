@@ -17,11 +17,11 @@
               </div>
               <div class="col-md-8">
                 <div class="nav-items">
-                  <a href="" class="dropdown-item"><i class="fa fa-chevron-right" aria-hidden="true"></i> About</a>
-                  <a href="" class="dropdown-item"><i class="fa fa-chevron-right" aria-hidden="true"></i> Sustainability</a>
-                  <a href="" class="dropdown-item"><i class="fa fa-chevron-right" aria-hidden="true"></i> Vission & Mission</a>
-                  <a href="" class="dropdown-item"><i class="fa fa-chevron-right" aria-hidden="true"></i> Awards & Recognisations</a>
-                  <a href="" class="dropdown-item"><i class="fa fa-chevron-right" aria-hidden="true"></i> Growth Story</a>
+                  <a class="c-pointer dropdown-item" (click)="scrollToDiv(aboutContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> About</a>
+                  <a class="c-pointer dropdown-item" (click)="scrollToDiv(sustainabilityContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Sustainability</a>
+                  <a class="c-pointer dropdown-item" (click)="scrollToDiv(visionContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Vission & Mission</a>
+                  <a class="c-pointer dropdown-item" (click)="scrollToDiv(awardContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Awards & Recognisations</a>
+                  <a class="c-pointer dropdown-item" (click)="scrollToDiv(storyContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Growth Story</a>
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@
   </div>
 
   <!-- About Container -->
-  <div class="container-fluid position-relative pt-60 pb-60">
+  <div class="container-fluid position-relative pt-60 pb-60" #aboutContainer>
     <div class="container about-ora-section">
       <div class="row align-items-center">
         <div class="col-md-5 about-video pr-30">
@@ -88,7 +88,7 @@
   </div>
 
   <!-- Vision & Mission Container -->
-  <div class="container-fluid position-relative pt-60 pb-60">
+  <div class="container-fluid position-relative pt-60 pb-60" #visionContainer>
     <div class="container vision-mission-section">
       <div class="row">
         <div class="col-md-7 pr-30">
@@ -114,7 +114,7 @@
   </div>
 
   <!-- Growth story -->
-  <div class="container-fluid position-relative growth-story-section pt-60 pb-60">
+  <div class="container-fluid position-relative growth-story-section pt-60 pb-60" #storyContainer>
     <div class="container">
       <div class="g-head">
         <h3 class="text-center">Growth Story</h3>
@@ -197,7 +197,7 @@
   </div>
 
   <!-- Sustainability -->
-  <div class="container-fluid position-relative pt-60 pb-60 mb-60">
+  <div class="container-fluid position-relative pt-60 pb-60 mb-60" #sustainabilityContainer>
     <div class="container sustainability-section">
       <div class="row align-items-center">
         <div class="col-md-7 pr-30">
@@ -217,7 +217,7 @@
   </div>
 
   <!-- Awards & Recognisations -->
-  <div class="container-fluid position-relative pt-60 pb-60">
+  <div class="container-fluid position-relative pt-60 pb-60" #awardContainer>
     <div class="container awards-section">
       <div class="row align-items-center">
         <div class="col-md-5 awards-img pr-30">

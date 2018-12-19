@@ -9,6 +9,7 @@ import { DragScrollModule } from 'ngx-drag-scroll';
 import { FormWizardModule } from 'angular2-wizard';
 import { TagInputModule } from 'ngx-chips';
 import { NguCarouselModule } from '@ngu/carousel';
+import {NumberPickerModule} from 'ng-number-picker';
 
 import { DesignRoutingModule } from './design-routing.module';
 import { SharedModule } from '../../shared/shared.module';
@@ -39,7 +40,10 @@ import { MediaRoomComponent } from './media-room/media-room.component';
     SharedModule,
     FormWizardModule,
     TagInputModule,
-    NguCarouselModule
+    NguCarouselModule,
+    NumberPickerModule
   ]
 })
-export class DesignModule { }
+export class DesignModule {
+
+ }

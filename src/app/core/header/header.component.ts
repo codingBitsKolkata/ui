@@ -26,7 +26,7 @@ export class HeaderComponent implements AfterViewInit, OnInit {
     
   }
   ngAfterViewInit(){
-    // this.comingSoonModalBtn.nativeElement.click();
+    this.comingSoonModalBtn.nativeElement.click();
   }
   open(content, selectedTab) {
     // , size: 'md'

@@ -3,7 +3,7 @@
         position: relative;
         .header-content{
             position: absolute;
-            top: 75px;
+            top: 50px;
         }
         .title{
             font-family: abrialfatface;
@@ -40,7 +40,7 @@
                 font-size: 24px;
             }
             .property-type{
-                margin-right: 30px;
+                padding: 0 15px;
                 .items{
                     position: relative;
                     border: 1px solid #ccc;
@@ -81,13 +81,50 @@
                 margin-top: 26px;
             }
             ::ng-deep{
+                .card-footer{
+                    padding-left: 0;
+                    padding-right: 0;
+                    padding-bottom: 0;
+                    button.btn:nth-child(1){
+                        background-image: url(../../../../assets/images/left-arrow-black.png);
+                        background-position: center center;
+                        background-color: transparent;
+                        background-repeat: no-repeat;
+                        border:none;
+                        color: transparent;
+                        width: 40px !important;
+                        padding: 0;
+                    }
+                    button.btn:nth-child(2){
+                        background-image: url(../../../../assets/images/right-arrow-black.png);
+                        background-position: center center;
+                        background-color: transparent;
+                        background-repeat: no-repeat;
+                        border:none;
+                        color: transparent;
+                        width: 40px !important;
+                        padding: 0;
+                    }
+                    button.btn:nth-child(3){
+                        background-image: url(../../../../assets/images/right-arrow-black.png);
+                        background-position: center center;
+                        background-color: transparent;
+                        background-repeat: no-repeat;
+                        border:none;
+                        color: transparent;
+                        width: 40px !important;
+                        padding: 0;
+                    }
+                }
+            }
+            ::ng-deep{
                 .card{
                     border: 0;
                     .card-header{
                         display: none;
                     }
                     .card-block{
-                        overflow: hidden;
+                        overflow: visible;
                     }
                     .property-type{
                         .input-hidden{
@@ -98,6 +135,35 @@
                             border: 1px solid #f47921;
                             span{
                                 display: block !important;
+                            }
+                        }
+                    }
+                    .meal-table {
+                        margin-bottom: 10px;
+                        thead th{
+                            vertical-align: middle;
+                            border-bottom: 2px solid #dee2e6;
+                            text-align: center;
+                            font-size: 12px;
+                            padding: 5px;
+                        }
+                        td{
+                            vertical-align: middle;
+                            border-top: 1px solid #dee2e6;
+                            text-align: center;
+                            font-size: 14px;
+                            padding: 7px;
+                            .check-box{
+                                padding-left: 0px !important;
+                                margin-bottom: 1rem;
+                                margin-right: 18px;
+                                .checkmark{
+                                    height: 18px;
+                                    width: 18px;
+                                }
+                            }
+                            .option-input.radio{
+                                margin: 0;
                             }
                         }
                     }

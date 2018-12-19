@@ -48,22 +48,31 @@
                         </label>
                         <p class="name">Paying guest</p>
                       </div>
-                      <!-- <div class="right-arrow"><img src="assets/images/right-arrow.png" alt=""></div> -->
                     </div>
                   </wizard-step>
                   <wizard-step>
-                    <h4 class="title">Provide your property details?</h4>
-                    <div class="form-group">
-                      <!-- <label for="exampleInputEmail1">Enter Propety Name</label> -->
-                      <input type="text" class="form-control" placeholder="Property Name">
-                    </div>
-                    <div class="form-group">
-                      <!-- <label for="exampleInputEmail1">Enter Propety Address</label> -->
-                      <input type="text" class="form-control" placeholder="Property Address">
-                    </div>
-                    <div class="form-group">
-                      <!-- <label for="exampleInputEmail1">Enter Propety Description</label> -->
-                      <textarea class="form-control" placeholder="Propety Description"></textarea>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Enter Propety Name</label>
+                          <input type="text" class="form-control" placeholder="Property Name">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Enter Propety Address</label>
+                          <input type="text" class="form-control" placeholder="Property Address">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Enter Propety Description</label>
+                          <textarea class="form-control" placeholder="Propety Description"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+
+                      </div>
                     </div>
                   </wizard-step>
                   <wizard-step>
@@ -164,19 +173,19 @@
                     </label>
                   </wizard-step>
                   <wizard-step>
-                      <h4 class="title">Select sex category: </h4>
-                      <label class="mr-3 c-pointer">
-                        <input type="radio" class="option-input radio" name="sexCategory" checked />
-                        Male
-                      </label>
-                      <label class="mr-3 c-pointer">
-                        <input type="radio" class="option-input radio" name="sexCategory" />
-                        Female
-                      </label>
-                      <label class="mr-3 c-pointer">
-                        <input type="radio" class="option-input radio" name="sexCategory" />
-                        Both
-                      </label>
+                    <h4 class="title">Select sex category: </h4>
+                    <label class="mr-3 c-pointer">
+                      <input type="radio" class="option-input radio" name="sexCategory" checked />
+                      Male
+                    </label>
+                    <label class="mr-3 c-pointer">
+                      <input type="radio" class="option-input radio" name="sexCategory" />
+                      Female
+                    </label>
+                    <label class="mr-3 c-pointer">
+                      <input type="radio" class="option-input radio" name="sexCategory" />
+                      Both
+                    </label>
                   </wizard-step>
                   <wizard-step>
                     <h4 class="title">Do you have multiple rooms? </h4>
@@ -187,17 +196,489 @@
                       <label for="multi-room-off" class="toggle-btn">No</label>
                     </div>
                   </wizard-step>
-                  <wizard-step></wizard-step>
-                  <!-- <wizard-step>
-                    <div [ngSwitch]="isCompleted">
-                      <div *ngSwitchDefault>
-                        <h1>Step4</h1>
+                  <wizard-step>
+                    <div class="form-group">
+                      <label class="mr-30">Select Accommodation Type:</label>
+                      <label class="mr-3 c-pointer">
+                        <input type="radio" class="option-input radio" name="accomodationType" checked />
+                        Private
+                      </label>
+                      <label class="mr-3 c-pointer">
+                        <input type="radio" class="option-input radio" name="accomodationType" />
+                        Shared
+                      </label>
+                    </div>
+                    <div class="form-group">
+                      <label>Select Room Category: </label>
+                      <select class="form-control">
+                        <option value="">Cat 1</option>
+                        <option value="">Cat 2</option>
+                        <option value="">Cat 3</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="mr-30">Total Rooms:</label>
+                      <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <div class="form-group">
+                      <label class="d-block">Specialities: </label>
+                      <label class="check-box" *ngFor="let item of specialities">{{item}}
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                    <div class="form-group">
+                      <label class="d-block">Amenities: </label>
+                      <label class="check-box" *ngFor="let item of amenities">{{item}}
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <label class="d-block">Upload Roomn Images: </label>
+                    <div class="custom-file mb-3">
+                      <input type="file" class="custom-file-input" id="roomImages" name="filename">
+                      <label class="custom-file-label" for="roomImages">Choose file</label>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="" class="mr-30 d-block">Number of Adults:</label>
+                          <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                        </div>
                       </div>
-                      <div *ngSwitchCase="true">
-                        <h4>Thank you! You have completed all the steps.</h4>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="" class="mr-30 d-block">Number of Child:</label>
+                          <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="d-inline mr-3 d-block">Do You allow Extra Cot?</label>
+                          <div class="form-group toggle-radio-btn d-inline">
+                            <input id="extraCot-on" class="toggle toggle-left" name="extraCot" value="false" type="radio" checked>
+                            <label for="extraCot-on" class="toggle-btn p-5">Yes</label>
+                            <input id="extraCot-off" class="toggle toggle-right" name="extraCot" value="true" type="radio">
+                            <label for="extraCot-off" class="toggle-btn p-5">No</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="" class="mr-30 d-block">Number Of COT Allowed:</label>
+                          <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                        </div>
                       </div>
                     </div>
-                  </wizard-step> -->
+                  </wizard-step>
+                  <wizard-step>
+                    <h4 class="title">Meal plan: </h4>
+                    <table class="table table-bordered meal-table">
+                      <thead>
+                        <tr>
+                          <th rowspan="2">Meal</th>
+                          <th colspan="2">Chargeable</th>
+                          <th colspan="3">Type</th>
+                        </tr>
+                        <tr>
+                          <th>Yes</th>
+                          <th>No</th>
+                          <th>Veg</th>
+                          <th>Non-Veg</th>
+                          <th>Both</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                              Breakfast
+                          </td>
+                          <td>
+                            <label class="c-pointer">
+                              <input type="radio" class="option-input radio" name="bfType" />
+                            </label>
+                          </td>
+                          <td>
+                            <label class="c-pointer">
+                              <input type="radio" class="option-input radio" name="bfType" />
+                            </label>
+                          </td>
+                          <td>
+                            <label class="check-box">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                          <td>
+                            <label class="check-box">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                          <td>
+                            <label class="check-box">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                              Major Meal 1
+                          </td>
+                          <td>
+                            <label class="c-pointer">
+                              <input type="radio" class="option-input radio" name="m1Type" />
+                            </label>
+                          </td>
+                          <td>
+                            <label class="c-pointer">
+                              <input type="radio" class="option-input radio" name="m1Type" />
+                            </label>
+                          </td>
+                          <td>
+                            <label class="check-box">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                          <td>
+                            <label class="check-box">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                          <td>
+                            <label class="check-box">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                              Major Meal 2
+                          </td>
+                          <td>
+                            <label class="c-pointer">
+                              <input type="radio" class="option-input radio" name="m2Type" />
+                            </label>
+                          </td>
+                          <td>
+                            <label class="c-pointer">
+                              <input type="radio" class="option-input radio" name="m2Type" />
+                            </label>
+                          </td>
+                          <td>
+                            <label class="check-box">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                          <td>
+                            <label class="check-box">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                          <td>
+                            <label class="check-box">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                              Snacks
+                          </td>
+                          <td>
+                            <label class="c-pointer">
+                              <input type="radio" class="option-input radio" name="sType" />
+                            </label>
+                          </td>
+                          <td>
+                            <label class="c-pointer">
+                              <input type="radio" class="option-input radio" name="sType" />
+                            </label>
+                          </td>
+                          <td>
+                            <label class="check-box">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                          <td>
+                            <label class="check-box">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                          <td>
+                            <label class="check-box">
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                            </label>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </wizard-step>
+                  <wizard-step>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Price Per Night: </label>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">₹</div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Amount">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Price Per Month: </label>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">₹</div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Amount">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">COT Price: </label>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">₹</div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Amount">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Commission: </label>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">%</div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Amount">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Discount Weekly: </label>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">%</div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Percentage ">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Discount Monthly: </label>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">%</div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Percentage">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="d-block">Price Drop?</label>
+                          <div class="form-group toggle-radio-btn d-inline">
+                            <input id="priceDrop-on" class="toggle toggle-left" name="priceDrop" value="false" type="radio" checked>
+                            <label for="priceDrop-on" class="toggle-btn p-5">Yes</label>
+                            <input id="priceDrop-off" class="toggle toggle-right" name="priceDrop" value="true" type="radio">
+                            <label for="priceDrop-off" class="toggle-btn p-5">No</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <h4 class="title">Cancellation Policy</h4>
+                    <div class="form-group row">
+                      <label class="col-sm-4">Before 24 Hours</label>
+                      <div class="col-sm-4">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">%</div>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Percentage">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4">Before 48 Hours</label>
+                      <div class="col-sm-4">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">%</div>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Percentage">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-4">Before 72 Hours</label>
+                      <div class="col-sm-4">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">%</div>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Percentage">
+                        </div>
+                      </div>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <h4 class="title">Bank Details</h4>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Account Number">
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Full Name">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <select class="form-control">
+                            <option value="">Account Type</option>
+                            <option value="">Saving Account</option>
+                            <option value="">Current Account</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Bank Name">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Branch Name">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="IFSC Code">
+                        </div>
+                      </div>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <h4 class="title">Upload Documents</h4>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Document Type:</label>
+                          <select class="form-control">
+                            <option value="">Select Document Type</option>
+                            <option value="">Doc Type</option>
+                            <option value="">Doc Type</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Document Number:</label>
+                          <input type="text" class="form-control" placeholder="Document ID">
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <label class="d-block">Upload Document: </label>
+                        <div class="custom-file mb-3">
+                          <input type="file" class="custom-file-input" id="documentUploadBtn" name="filename">
+                          <label class="custom-file-label" for="documentUploadBtn">Choose file</label>
+                        </div>
+                      </div>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <h4 class="title">Business Start & End Date</h4>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Start Date:</label>
+                          <div class="input-group">
+                            <input class="form-control border-right-0" placeholder="DD/MM/YYYY"
+                                    name="dp" ngbDatepicker #d="ngbDatepicker">
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary calendar checkin-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">End Date:</label>
+                          <div class="input-group">
+                            <input class="form-control border-right-0" placeholder="DD/MM/YYYY"
+                                    name="dp" ngbDatepicker #d="ngbDatepicker">
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary calendar checkout-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <h4 class="title">Provide additional information</h4>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Contact Person Name:</label>
+                          <input type="text" class="form-control" placeholder="Full Name">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Alternate Mobile No.:</label>
+                          <input type="text" class="form-control" placeholder="Mobile Number">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Landline Number:</label>
+                          <input type="text" class="form-control" placeholder="Landline Number">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="">Alternate Email:</label>
+                          <input type="email" class="form-control" placeholder="Email ID">
+                        </div>
+                      </div>
+                    </div>
+                  </wizard-step>
+                  <wizard-step>
+                    <h4 class="title">Thank you! You have successfully listed your property with us.</h4>
+                  </wizard-step>
                 </form-wizard>
               </div>
             </div>

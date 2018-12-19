@@ -103,11 +103,17 @@ body{
 .mr-20{
     margin-right: 20px;
 }
+.mr-30{
+    margin-right: 30px;
+}
 .pl-50{
     padding-left: 50px !important;
 }
 .pb-10{
     padding-bottom: 10px !important;
+}
+.p-5{
+    padding: 5px !important;
 }
 .btn-primary {
     color: #fff !important;
@@ -827,4 +833,40 @@ input:active,select:active,button:active,label:active{
         right: 0;
         bottom: 0;
     }      
+}
+
+// ng Number Picker
+.ng-number-picker{
+    display: inline-grid;
+    .input-group{
+        height: 40px !important;
+        margin: 0 !important;
+        padding: 0;
+        .input-group-text {
+            width: 40px;
+            height: 40px;
+            font-size: 30px !important;
+            line-height: 27px;
+            text-align: center;
+            border: 0;
+            background: #1a1a1a;
+            color: #fff;
+            display: inline-block;
+            border-radius: 0 !important;
+            &.decrease{
+                font-size: 40px !important;
+            }
+            &:hover, &:focus, &:active{
+                background: #1a1a1a;
+            }
+
+        }
+        .form-control{
+            height: 40px;
+            width: 50px;
+            display: inline-block;
+            border: 2px solid #1a1a1a;
+            text-align: center;
+        }
+    }   
 }
