@@ -69,6 +69,9 @@ body{
 .mb-10{
     margin-bottom: 10px !important;
 }
+.mt-60{
+    margin-top: 60px;
+}
 .mt-76{
     margin-top: 76px;
 }
@@ -78,6 +81,9 @@ body{
 }
 .mt-70{
     margin-top: 70px !important;
+}
+.mb-60{
+    margin-bottom: 60px !important;
 }
 .mb-70{
     margin-bottom: 70px !important;
@@ -778,4 +784,47 @@ input:active,select:active,button:active,label:active{
             border-radius: 8px;
         }
     }
+}
+
+
+// 
+.ngu-carousel{
+    width: 100%;
+    .item {
+        padding: 10px;
+        box-sizing: border-box;
+    }
+      
+    .tile {
+        min-height: 200px;
+        background-color: #ccc;
+        background-size: cover !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    }
+      
+    .slide-left-btn, .slide-right-btn{
+        background-color: transparent;
+        border-color: transparent;
+        width: 30px;
+        background-position: center center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        
+    }
+    .slide-left-btn{
+        background-image: url(assets/images/left-arrow.png);
+        position: absolute;
+        right: 40px;
+        bottom: 0;
+    }
+    .slide-right-btn{
+        background-image: url(assets/images/right-arrow.png);
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }      
 }

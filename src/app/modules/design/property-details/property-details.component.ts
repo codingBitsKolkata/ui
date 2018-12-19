@@ -48,58 +48,58 @@ export class PropertyDetailsComponent implements OnInit {
         this.ls_rightNavDisabled = reachesRightBound;
     }
 
-  galleryOptions: NgxGalleryOptions[];
-  galleryImages: NgxGalleryImage[];
+    galleryOptions: NgxGalleryOptions[];
+    galleryImages: NgxGalleryImage[];
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
 
-      this.galleryOptions = [
-          {
-              width: '100%',
-              height: '100%',
-              thumbnailsColumns: 4,
-              imageAnimation: NgxGalleryAnimation.Slide,
-              imageAutoPlay: true,
-              imageAutoPlayInterval: 5000,
-              imageInfinityMove: true,
-              thumbnails: false
-          },
-          // max-width 800
-          {
-              breakpoint: 800,
-              width: '100%',
-              height: '600px',
-              imagePercent: 80,
-              thumbnailsPercent: 20,
-              thumbnailsMargin: 20,
-              thumbnailMargin: 20
-          },
-          // max-width 400
-          {
-              breakpoint: 400,
-              preview: false
-          }
-      ];
+        this.galleryOptions = [
+            {
+                width: '100%',
+                height: '100%',
+                thumbnailsColumns: 4,
+                imageAnimation: NgxGalleryAnimation.Slide,
+                imageAutoPlay: true,
+                imageAutoPlayInterval: 5000,
+                imageInfinityMove: true,
+                thumbnails: false
+            },
+            // max-width 800
+            {
+                breakpoint: 800,
+                width: '100%',
+                height: '600px',
+                imagePercent: 80,
+                thumbnailsPercent: 20,
+                thumbnailsMargin: 20,
+                thumbnailMargin: 20
+            },
+            // max-width 400
+            {
+                breakpoint: 400,
+                preview: false
+            }
+        ];
 
-      this.galleryImages = [
-          {
-              small: 'assets/images/property-details/gallery/big-slide-1.png',
-              medium: 'assets/images/property-details/gallery/big-slide-1.png',
-              big: 'assets/images/property-details/gallery/big-slide-1.png'
-          },
-          {
-              small: 'assets/images/property-details/gallery/big-slide-1.png',
-              medium: 'assets/images/property-details/gallery/big-slide-1.png',
-              big: 'assets/images/property-details/gallery/big-slide-1.png'
-          },
-          {
-              small: 'assets/images/property-details/gallery/big-slide-1.png',
-              medium: 'assets/images/property-details/gallery/big-slide-1.png',
-              big: 'assets/images/property-details/gallery/big-slide-1.png'
-          }
-      ];
-  }
+        this.galleryImages = [
+            {
+                small: 'assets/images/property-details/gallery/big-slide-1.png',
+                medium: 'assets/images/property-details/gallery/big-slide-1.png',
+                big: 'assets/images/property-details/gallery/big-slide-1.png'
+            },
+            {
+                small: 'assets/images/property-details/gallery/big-slide-1.png',
+                medium: 'assets/images/property-details/gallery/big-slide-1.png',
+                big: 'assets/images/property-details/gallery/big-slide-1.png'
+            },
+            {
+                small: 'assets/images/property-details/gallery/big-slide-1.png',
+                medium: 'assets/images/property-details/gallery/big-slide-1.png',
+                big: 'assets/images/property-details/gallery/big-slide-1.png'
+            }
+        ];
+    }
 
 }
