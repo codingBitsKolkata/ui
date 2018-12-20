@@ -13,115 +13,92 @@ import {
 })
 export class AuthService {
 
-  private LOGIN_URL: string;
-  private LOGOUT_URL: string;
-  private FORGOT_PASS_URL: string;
-  private RESET_PASS_URL: string;
-  private CHANGE_PASSWORD_URL: string;
-
   constructor(
-      private httpClient: HttpClient
-    ) {
-    this.LOGIN_URL = '/auth/login';
-    this.LOGOUT_URL = '/auth/logout';
-    this.FORGOT_PASS_URL = '/auth/forgot-password';
-    this.RESET_PASS_URL = '/auth/reset-password';
-    this.CHANGE_PASSWORD_URL = '/auth/update-password';
+    private httpClient: HttpClient
+  ) {
+
+    }
+
+  /**
+	 * Method used to get all the countries list
+	 *
+	 * @returns {Observable<any>}
+	 * @memberof AuthService
+	 */
+  getCountries(): Observable<any> {
+    const request = {
+      'url': AppConst.AUTH_API_BASE_URL + '/fetch-countries'
+    };
+    return this.httpClient.get<any>(request.url);
   }
 
-  login(userDetails: LoginRequest) {
-    return new Observable(observer => {
-      const request = {
-        'url': AppConst.API_BASE_URL + this.LOGIN_URL,
-        'params': userDetails
-      };
-      this.httpClient.post<LoginResponse>(request.url, request.params).subscribe((response) => {
-        console.log(response);
-        if (response.status === AppConst.HTTP_STATUS.OK) {
-          observer.next(response);
-          observer.complete();
-        } else {
-          observer.error(response);
-          observer.complete();
-        }
-      }, error => {
-        console.log(error);
-        observer.error(error);
-        observer.complete();
-      });
-    });
+  /**
+	 * Method used to login user
+	 * @param {any} requestParam
+	 * @returns {Observable<any>}
+	 * @memberof AuthService
+	 */
+  login(requestParam: any): Observable<any> {
+    const request = {
+      'url': AppConst.AUTH_API_BASE_URL + '/login',
+      'params' : requestParam
+    };
+    return this.httpClient.post<any>(request.url, request.params);
   }
 
-  logout() {
-    return new Observable(observer => {
-      const request = {
-        'url': AppConst.API_BASE_URL + this.LOGOUT_URL
-      };
-      this.httpClient.get<LogoutResponse>(request.url).subscribe((response) => {
-        if (response.status === 200) {
-          localStorage.clear();
-          observer.next(response);
-          observer.complete();
-        } else {
-          observer.error(response);
-          observer.complete();
-        }
-      }, error => {
-        observer.error(error);
-        observer.complete();
-      });
-    });
+  /**
+	 * Method used to validate login otp
+	 * @param {any} requestParam
+	 * @returns {Observable<any>}
+	 * @memberof AuthService
+	 */
+  validateLoginOtp(requestParam: any): Observable<any> {
+    const request = {
+      'url': AppConst.AUTH_API_BASE_URL + '/validate-login-otp',
+      'params' : requestParam
+    };
+    return this.httpClient.post<any>(request.url, request.params);
   }
 
-  // forgotPassword(requestData: ForgotPasswordRequest) {
-  //   return new Observable(observer => {
-  //     const request = {
-  //       'url': AppConst.API_BASE_URL + this.FORGOT_PASS_URL,
-  //       'params': requestData
-  //     };
-  //     this.httpClient.post<ForgotPasswordResponse>(request.url, request.params).subscribe((response) => {
-  //       if (response.status === AppConst.HTTP_STATUS.OK) {
-  //         observer.next(response);
-  //         observer.complete();
-  //       } else {
-  //         observer.error(response);
-  //         observer.complete();
-  //       }
-  //     }, error => {
-  //       console.log(error);
-  //       observer.error(error);
-  //       observer.complete();
-  //     });
-  //   });
-  // }
+  /**
+	 * Method used to resend otp
+	 * @param {any} requestParam
+	 * @returns {Observable<any>}
+	 * @memberof AuthService
+	 */
+  resendOtp(requestParam: any): Observable<any> {
+    const request = {
+      'url': AppConst.AUTH_API_BASE_URL + '/resend-otp',
+      'params' : requestParam
+    };
+    return this.httpClient.post<any>(request.url, request.params);
+  }
 
-  // resetPassword(requestData: ResetPasswordRequest) {
-  //   return new Observable(observer => {
-  //     const request = {
-  //       'url': AppConst.API_BASE_URL + this.RESET_PASS_URL,
-  //       'params': requestData
-  //     };
-  //     this.httpClient.post<ResetPasswordResponse>(request.url, request.params).subscribe((response) => {
-  //       if (response.status === AppConst.HTTP_STATUS.OK) {
-  //         observer.next(response);
-  //         observer.complete();
-  //       } else {
-  //         observer.error(response);
-  //         observer.complete();
-  //       }
-  //     }, error => {
-  //       console.log(error);
-  //       observer.error(error);
-  //       observer.complete();
-  //     });
-  //   });
-  // }
-  // updatePassword(passwordinfo): Observable<ChangePassword> {
-  //   const request = {
-  //     'url': AppConst.API_BASE_URL + this.CHANGE_PASSWORD_URL
-  //   };
+   /**
+	 * Method used to register new user
+	 * @param {any} requestParam
+	 * @returns {Observable<any>}
+	 * @memberof AuthService
+	 */
+  signUp(requestParam: any): Observable<any> {
+    const request = {
+      'url': AppConst.AUTH_API_BASE_URL + '/sign-up',
+      'params' : requestParam
+    };
+    return this.httpClient.post<any>(request.url, request.params);
+  }
 
-  //   return this.httpClient.put<ChangePassword>(request.url, passwordinfo);
-
-  // }
+  /**
+	 * Method used to validate signup otp
+	 * @param {any} requestParam
+	 * @returns {Observable<any>}
+	 * @memberof AuthService
+	 */
+  validateSignUpOtp(requestParam: any): Observable<any> {
+    const request = {
+      'url': AppConst.AUTH_API_BASE_URL + '/validate-otp',
+      'params' : requestParam
+    };
+    return this.httpClient.post<any>(request.url, request.params);
+  }
 }

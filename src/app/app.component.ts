@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './services/apis/auth.service';
 import { LoginResponse } from './models/user';
@@ -9,7 +9,7 @@ import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angul
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit , AfterViewInit {
   title = 'orastays';
   loading;
 
@@ -21,23 +21,27 @@ export class AppComponent implements AfterViewInit {
     this.translateSrv.setDefaultLang('en');
     this.loading = true;
   }
-    ngAfterViewInit() {
-        this.router.events
-            .subscribe((event) => {
-                if (event instanceof NavigationStart) {
-                    this.loading = true;
-                } else if (event instanceof NavigationEnd || event instanceof NavigationCancel) {
-                    this.loading = false;
-                }
-            });
-    }
+
+  ngOnInit() {
+  // this.getCountries();
+   // this.login();
+  }
+  ngAfterViewInit() {
+      this.router.events
+          .subscribe((event) => {
+              if (event instanceof NavigationStart) {
+                  this.loading = true;
+              } else if (event instanceof NavigationEnd || event instanceof NavigationCancel) {
+                  this.loading = false;
+              }
+          });
+  }
   useLanguage(language: string) {
     this.translateSrv.use(language);
   }
-
-  logOut() {
-    this.authSrv.logout().subscribe((data) => {
-      console.log('data', data);
+  getCountries() {
+    this.authSrv.getCountries().subscribe((data) => {
+      console.log('Countries data', data);
     }, error => {
       console.log('error', error);
     });
@@ -45,8 +49,7 @@ export class AppComponent implements AfterViewInit {
 
   login() {
     const loginRequest = {
-      phone : 9748491521,
-      password: 'abc@123'
+      'emailId': 'arvindk427@gmail.com'
     };
     this.authSrv.login(loginRequest).subscribe((responseData: LoginResponse) => {
       console.log('responseData', responseData);

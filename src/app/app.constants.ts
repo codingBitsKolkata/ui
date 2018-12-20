@@ -6,7 +6,7 @@ import { environment } from '../environments/environment';
  */
 export class AppConst {
     /**  API base URL with port | Dev Env */
-    public static readonly API_BASE_URL: string = environment.api_base_url;
+    public static readonly AUTH_API_BASE_URL: string = environment.auth_api_base_url;
     /**  Data encryption secret key */
     public static readonly ENC_KEY: string = '!InT@eLioR!#';
     /**  API key */
