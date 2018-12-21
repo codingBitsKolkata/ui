@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './services/apis/auth.service';
 import { LoginResponse } from './models/user';
@@ -9,7 +9,7 @@ import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angul
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnInit {
   title = 'orastays';
   loading;
 
@@ -20,6 +20,15 @@ export class AppComponent implements AfterViewInit {
     ) {
     this.translateSrv.setDefaultLang('en');
     this.loading = true;
+  }
+
+  ngOnInit() {
+      this.router.events.subscribe((evt) => {
+          if (!(evt instanceof NavigationEnd)) {
+              return;
+          }
+          window.scrollTo(0, 0)
+      });
   }
     ngAfterViewInit() {
         this.router.events

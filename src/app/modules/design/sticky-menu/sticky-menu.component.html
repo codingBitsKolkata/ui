@@ -1,0 +1,66 @@
+<div class="container-fluid secondary-menu">
+  <div class="container ">
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <div ngbDropdown>
+        <button class="btn" id="navAbout" ngbDropdownToggle>About</button>
+        <div ngbDropdownMenu aria-labelledby="navAbout">
+          <div class="row m-0 align-items-center">
+            <div class="col-md-4 pl-30">
+              <div class="img-block">
+                <img class="h-100" src="assets/images/other/about-nav-img.png" alt="">
+              </div>
+            </div>
+            <div class="col-md-8"> 
+              <div class="nav-items">
+                <a class="c-pointer dropdown-item" (click)="scrollToDiv(aboutContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> About</a>
+                <a class="c-pointer dropdown-item" (click)="scrollToDiv(sustainabilityContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Sustainability</a>
+                <a class="c-pointer dropdown-item" (click)="scrollToDiv(visionContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Vission & Mission</a>
+                <a class="c-pointer dropdown-item" (click)="scrollToDiv(awardContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Awards & Recognisations</a>
+                <a class="c-pointer dropdown-item" (click)="scrollToDiv(storyContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Growth Story</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ngbDropdown>
+        <button class="btn" id="navTeam" ngbDropdownToggle>Team</button>
+        
+      </div>
+      <div ngbDropdown>
+        <button class="btn" id="navCarrer" ngbDropdownToggle>Carrers</button>
+        <div ngbDropdownMenu aria-labelledby="navTeam">
+            <div class="row m-0 align-items-center">
+              <div class="col-md-4">
+                <div class="img-block">
+                  <img class="h-100" src="assets/images/career/carrer_pitchmenu_image.png" alt="">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="nav-items">
+                  <a href="" class="dropdown-item"><i></i> Join With Us</a>
+                  <a href="" class="dropdown-item"><i></i> Life @ Ora</a>
+                  <a href="" class="dropdown-item"><i></i> People Stories</a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div ngbDropdown>
+        <button class="btn" id="navMedia" ngbDropdownToggle>Media Room</button>
+        <div ngbDropdownMenu aria-labelledby="navMedia">
+          <button class="dropdown-item">Action - 1</button>
+          <button class="dropdown-item">Another Action</button>
+          <button class="dropdown-item">Something else is here</button>
+        </div>
+      </div>
+      <div ngbDropdown>
+        <button class="btn" id="navBlog" ngbDropdownToggle>Blog</button>
+        <div ngbDropdownMenu aria-labelledby="navBlog">
+          <button class="dropdown-item">Action - 1</button>
+          <button class="dropdown-item">Another Action</button>
+          <button class="dropdown-item">Something else is here</button>
+        </div>
+      </div> 
+    </nav>
+  </div>
+</div>

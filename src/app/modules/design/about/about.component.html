@@ -1,83 +1,19 @@
 <div class="about-us-container mt-76">
   <div class="container-fluid header-image-slide p-0">
-    <img class="w-100" src="assets/images/other/about-header-bg.png" />
+    <img class="w-100" src="assets/images/other/about-header-bg.png" data-aos="flip-up"/>
   </div>
 
-  <div class="container-fluid secondary-menu">
-    <div class="container ">
-      <nav class="navbar navbar-expand-md navbar-dark">
-        <div ngbDropdown>
-          <button class="btn" id="navAbout" ngbDropdownToggle>About</button>
-          <div ngbDropdownMenu aria-labelledby="navAbout">
-            <div class="row m-0 align-items-center">
-              <div class="col-md-4 pl-30">
-                <div class="img-block">
-                  <img class="h-100" src="assets/images/other/about-nav-img.png" alt="">
-                </div>
-              </div>
-              <div class="col-md-8">
-                <div class="nav-items">
-                  <a class="c-pointer dropdown-item" (click)="scrollToDiv(aboutContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> About</a>
-                  <a class="c-pointer dropdown-item" (click)="scrollToDiv(sustainabilityContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Sustainability</a>
-                  <a class="c-pointer dropdown-item" (click)="scrollToDiv(visionContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Vission & Mission</a>
-                  <a class="c-pointer dropdown-item" (click)="scrollToDiv(awardContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Awards & Recognisations</a>
-                  <a class="c-pointer dropdown-item" (click)="scrollToDiv(storyContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Growth Story</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div ngbDropdown>
-          <button class="btn" id="navTeam" ngbDropdownToggle>Team</button>
-          
-        </div>
-        <div ngbDropdown>
-          <button class="btn" id="navCarrer" ngbDropdownToggle>Carrers</button>
-          <div ngbDropdownMenu aria-labelledby="navTeam">
-              <div class="row m-0 align-items-center">
-                <div class="col-md-4">
-                  <div class="img-block">
-                    <img class="h-100" src="assets/images/career/carrer_pitchmenu_image.png" alt="">
-                  </div>
-                </div>
-                <div class="col-md-8">
-                  <div class="nav-items">
-                    <a href="" class="dropdown-item"><i></i> Join With Us</a>
-                    <a href="" class="dropdown-item"><i></i> Life @ Ora</a>
-                    <a href="" class="dropdown-item"><i></i> People Stories</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-        <div ngbDropdown>
-          <button class="btn" id="navMedia" ngbDropdownToggle>Media Room</button>
-          <div ngbDropdownMenu aria-labelledby="navMedia">
-            <button class="dropdown-item">Action - 1</button>
-            <button class="dropdown-item">Another Action</button>
-            <button class="dropdown-item">Something else is here</button>
-          </div>
-        </div>
-        <div ngbDropdown>
-          <button class="btn" id="navBlog" ngbDropdownToggle>Blog</button>
-          <div ngbDropdownMenu aria-labelledby="navBlog">
-            <button class="dropdown-item">Action - 1</button>
-            <button class="dropdown-item">Another Action</button>
-            <button class="dropdown-item">Something else is here</button>
-          </div>
-        </div> 
-      </nav>
-    </div>
-  </div>
+  <!-- Sticky Menu -->
+  <app-sticky-menu></app-sticky-menu>
 
   <!-- About Container -->
   <div class="container-fluid position-relative pt-60 pb-60" #aboutContainer>
     <div class="container about-ora-section">
       <div class="row align-items-center">
-        <div class="col-md-5 about-video pr-30">
+        <div class="col-md-5 about-video pr-30" data-aos="fade-right">
           <img class="w-100" src="assets/images/other/about-video.png" alt="">
         </div>
-        <div class="col-md-7 pl-30">
+        <div class="col-md-7 pl-30" data-aos="fade-left">
           <h3>About <span class="ora-logo-black"></span></h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel erat et ligula dapibus commodo in id purus. Donec consectetur ipsum nibh, eget iaculis eros finibus quis. Donec rutrum congue tellus in convallis. Integer quis eleifend justo, id ornare arcu. Phasellus et hendrerit arcu, eu interdum ante. Sed ipsum orci, vulputate sed dolor eu, consequat accumsan nulla. In sed gravida eros, nec tincidunt justo. </p>
           <p>Vestibulum nibh est, cursus vitae mi vel, ultrices accumsan lorem. Nullam nec euismod ante. Duis at Donec eleifend lectus pellentesque lorem placerat, in vestibulum lacus pulvinar. Morbi laoreet et ipsum eu consequat. Duis commodo, lacus a efficitur convallis, turpis est pulvinar ligula, ac faucibus justo est non magna. </p>
@@ -92,21 +28,21 @@
     <div class="container vision-mission-section">
       <div class="row">
         <div class="col-md-7 pr-30">
-          <h3>Vision & Mission</h3>
+          <h3 data-aos="fade-right">Vision & Mission</h3>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6"  data-aos="fade-up">
               <h6><span></span> Duis quis iaculis quam</h6>
               <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
               <a href="" class="read-more-btn">Read on [+]</a>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6"  data-aos="fade-up">
               <h6><span></span> Quisque sit amet maximus </h6>
               <p>Nulla facilisi. Pellentesque vel lorem sit amet arcu ultricies rutrum. Praesent a ligula arcu. Sed sit amet nisi in nulla dignissim efficitur. Pellentesque ut libero felis. Quisque at scelerisque risus blandit massa eleifend vitae. Vestibulum blandit ...</p>
               <a href="" class="read-more-btn">Read on [+]</a>
             </div>
           </div>
         </div>
-        <div class="col-md-5 vision-mission-img pl-30">
+        <div class="col-md-5 vision-mission-img pl-30" data-aos="fade-left">
           <img class="w-100" src="assets/images/other/vision-mision.png" alt="">
         </div>
       </div>
@@ -115,19 +51,19 @@
 
   <!-- Growth story -->
   <div class="container-fluid position-relative growth-story-section pt-60 pb-60" #storyContainer>
-    <div class="container">
+    <div class="container" data-aos="zoom-in">
       <div class="g-head">
-        <h3 class="text-center">Growth Story</h3>
-        <p class="text-center">We believe that every traveller is unique. Hence we aim to provide unique accommodations to the users 
+        <h3 class="text-center" data-aos="zoom-in-left">Growth Story</h3>
+        <p class="text-center" data-aos="zoom-in-right">We believe that every traveller is unique. Hence we aim to provide unique accommodations to the users 
             as per their requirement, preference and choice.</p>
       </div>
       <form-wizard>
         <wizard-step [title]="'2014'">
           <div class="row">
-            <div class="col-md-4 pr-30">
+            <div class="col-md-4 pr-30" data-aos="fade-right">
               <img class="w-100" src="assets/images/other/leaf-icon.png" alt="">
             </div>
-            <div class="col-md-8 pl-30">
+            <div class="col-md-8 pl-30" data-aos="fade-left">
               <h5 class="h-heading">February 2014</h5>
               <p class="h-text">Started as proprietorship company with One homestay!</p>
               <p class="h-line">Praesent luctus quam lacus, vitae luctus ligula viverra non. Fusce ullamcorper facilisis tempus. Nam nec mauris eu magna pretium porttitor ac in tellus. Suspendisse sit amet augue eget orci dignissim eleifend facilisis sit amet ipsum. Curabitur volutpat enim eu posuere venenatis. Vivamus mollis diam eget magna lacinia eleifend. Pellentesque vehicula luctus nunc ut vestibulum. Nullam ultrices eget ante et mollis. Nullam auctor semper ornare. Donec eros arcu, suscipit posuere tristique nec, interdum ut nisi.</p>
@@ -142,7 +78,7 @@
               <img class="w-100" src="assets/images/other/leaf-icon.png" alt="">
             </div>
             <div class="col-md-8 pl-30">
-              <h5 class="h-heading">February 2014</h5>
+              <h5 class="h-heading">February 2015</h5>
               <p class="h-text">Started as proprietorship company with One homestay!</p>
               <p class="h-line">Praesent luctus quam lacus, vitae luctus ligula viverra non. Fusce ullamcorper facilisis tempus. Nam nec mauris eu magna pretium porttitor ac in tellus. Suspendisse sit amet augue eget orci dignissim eleifend facilisis sit amet ipsum. Curabitur volutpat enim eu posuere venenatis. Vivamus mollis diam eget magna lacinia eleifend. Pellentesque vehicula luctus nunc ut vestibulum. Nullam ultrices eget ante et mollis. Nullam auctor semper ornare. Donec eros arcu, suscipit posuere tristique nec, interdum ut nisi.</p>
               <p class="h-line">Etiam a dapibus sapien, quis consectetur nunc. Nam sed lacinia ipsum, vitae imperdiet eros. Morbi scelerisque 
@@ -156,7 +92,7 @@
               <img class="w-100" src="assets/images/other/leaf-icon.png" alt="">
             </div>
             <div class="col-md-8 pl-30">
-              <h5 class="h-heading">February 2014</h5>
+              <h5 class="h-heading">February 2016</h5>
               <p class="h-text">Started as proprietorship company with One homestay!</p>
               <p class="h-line">Praesent luctus quam lacus, vitae luctus ligula viverra non. Fusce ullamcorper facilisis tempus. Nam nec mauris eu magna pretium porttitor ac in tellus. Suspendisse sit amet augue eget orci dignissim eleifend facilisis sit amet ipsum. Curabitur volutpat enim eu posuere venenatis. Vivamus mollis diam eget magna lacinia eleifend. Pellentesque vehicula luctus nunc ut vestibulum. Nullam ultrices eget ante et mollis. Nullam auctor semper ornare. Donec eros arcu, suscipit posuere tristique nec, interdum ut nisi.</p>
               <p class="h-line">Etiam a dapibus sapien, quis consectetur nunc. Nam sed lacinia ipsum, vitae imperdiet eros. Morbi scelerisque 
@@ -170,7 +106,7 @@
               <img class="w-100" src="assets/images/other/leaf-icon.png" alt="">
             </div>
             <div class="col-md-8 pl-30">
-              <h5 class="h-heading">February 2014</h5>
+              <h5 class="h-heading">February 2017</h5>
               <p class="h-text">Started as proprietorship company with One homestay!</p>
               <p class="h-line">Praesent luctus quam lacus, vitae luctus ligula viverra non. Fusce ullamcorper facilisis tempus. Nam nec mauris eu magna pretium porttitor ac in tellus. Suspendisse sit amet augue eget orci dignissim eleifend facilisis sit amet ipsum. Curabitur volutpat enim eu posuere venenatis. Vivamus mollis diam eget magna lacinia eleifend. Pellentesque vehicula luctus nunc ut vestibulum. Nullam ultrices eget ante et mollis. Nullam auctor semper ornare. Donec eros arcu, suscipit posuere tristique nec, interdum ut nisi.</p>
               <p class="h-line">Etiam a dapibus sapien, quis consectetur nunc. Nam sed lacinia ipsum, vitae imperdiet eros. Morbi scelerisque 
@@ -184,7 +120,7 @@
               <img class="w-100" src="assets/images/other/leaf-icon.png" alt="">
             </div>
             <div class="col-md-8 pl-30">
-              <h5 class="h-heading">February 2014</h5>
+              <h5 class="h-heading">February 2018</h5>
               <p class="h-text">Started as proprietorship company with One homestay!</p>
               <p class="h-line">Praesent luctus quam lacus, vitae luctus ligula viverra non. Fusce ullamcorper facilisis tempus. Nam nec mauris eu magna pretium porttitor ac in tellus. Suspendisse sit amet augue eget orci dignissim eleifend facilisis sit amet ipsum. Curabitur volutpat enim eu posuere venenatis. Vivamus mollis diam eget magna lacinia eleifend. Pellentesque vehicula luctus nunc ut vestibulum. Nullam ultrices eget ante et mollis. Nullam auctor semper ornare. Donec eros arcu, suscipit posuere tristique nec, interdum ut nisi.</p>
               <p class="h-line">Etiam a dapibus sapien, quis consectetur nunc. Nam sed lacinia ipsum, vitae imperdiet eros. Morbi scelerisque 
@@ -201,15 +137,15 @@
     <div class="container sustainability-section">
       <div class="row align-items-center">
         <div class="col-md-7 pr-30">
-          <h3 class="mb-20">Sustainability</h3>
-          <div>
+          <h3 class="mb-20" data-aos="fade-down">Sustainability</h3>
+          <div data-aos="fade-right">
             <p class="s-head">Praesent luctus quam lacus</p>
             <p>Pellentesque ut libero felis. Quisque at scelerisque risus. Praesent in purus turpis. Morbi tincidunt consectetur neque a blandit. Donec ac justo eget nunc ullamcorper commodo. Nam ultricies tempus diam, luctus blandit massa eleifend vitae. Vestibulum blandit, sem a tempor sagittis.</p>
             <p>consectetur neque a blandit. Donec ac justo eget nunc ullamcorper commodo. Nam ultricies tempus diam, luctus blandit massa eleifend vitae. Vestibulum blandit, sem a tempor sagittis, lorem felis interdum risus, vel luctus purus leo ac augue. Vestibulum eu pellentesque turpis. Fusce quis lacinia sapien. </p>
             <a href="" class="read-more-btn">Read on [+]</a>
           </div>
         </div>
-        <div class="col-md-5 sustainability-img pl-30">
+        <div class="col-md-5 sustainability-img pl-30" data-aos="fade-left">
           <img class="w-100" src="assets/images/other/sustainability-img.png" alt="">
         </div>
       </div>
@@ -220,10 +156,10 @@
   <div class="container-fluid position-relative pt-60 pb-60" #awardContainer>
     <div class="container awards-section">
       <div class="row align-items-center">
-        <div class="col-md-5 awards-img pr-30">
+        <div class="col-md-5 awards-img pr-30" data-aos="fade-right">
           <img class="w-100" src="assets/images/other/award-img.png" alt="">
         </div>
-        <div class="col-md-7 pl-30">
+        <div class="col-md-7 pl-30" data-aos="fade-left">
           <h3 class="text-center mb-20">Awards & Recognisations</h3>
           <div class="d-flex">
             <div class="ngu-carousel">

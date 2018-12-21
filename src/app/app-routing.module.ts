@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ErrorComponent } from './core/error/error.component';
+import { HomeComponent } from './modules/design/home/home.component';
+import { PropertyListComponent } from './modules/design/property-list/property-list.component';
+import { AboutComponent } from './modules/design/about/about.component';
 
 const routerConfig: Routes = [
   // { path: '' , loadChildren: './modules/home/home.module#HomeModule' },
