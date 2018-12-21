@@ -9,6 +9,7 @@ import { FormWizardModule } from 'angular2-wizard';
 import { TagInputModule } from 'ngx-chips';
 import { NguCarouselModule } from '@ngu/carousel';
 import { NumberPickerModule } from 'ng-number-picker';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 import { DesignRoutingModule } from './design-routing.module';
 import { SharedModule } from '../../shared/shared.module';
@@ -23,9 +24,10 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { CancellationPolicyComponent } from './cancellation-policy/cancellation-policy.component';
 import { MediaRoomComponent } from './media-room/media-room.component';
 import { StickyMenuComponent } from './sticky-menu/sticky-menu.component';
+import { PropertyDashboardComponent } from './property-dashboard/property-dashboard.component';
 
 @NgModule({
-  declarations: [HomeComponent, PropertyListComponent, HostListingComponent, PropertyDetailsComponent, AboutComponent, CareerComponent, TeamComponent, PrivacyPolicyComponent, CancellationPolicyComponent, MediaRoomComponent, StickyMenuComponent],
+  declarations: [HomeComponent, PropertyListComponent, HostListingComponent, PropertyDetailsComponent, AboutComponent, CareerComponent, TeamComponent, PrivacyPolicyComponent, CancellationPolicyComponent, MediaRoomComponent, StickyMenuComponent, PropertyDashboardComponent],
   imports: [
     CommonModule,
     NgbModule,
@@ -40,7 +42,8 @@ import { StickyMenuComponent } from './sticky-menu/sticky-menu.component';
     FormWizardModule,
     TagInputModule,
     NguCarouselModule,
-    NumberPickerModule
+    NumberPickerModule,
+    HighchartsChartModule
   ]
 })
 export class DesignModule {

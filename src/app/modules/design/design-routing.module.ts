@@ -10,6 +10,7 @@ import { TeamComponent } from './team/team.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { CancellationPolicyComponent } from './cancellation-policy/cancellation-policy.component';
 import { MediaRoomComponent } from './media-room/media-room.component';
+import { PropertyDashboardComponent } from './property-dashboard/property-dashboard.component';
 
 
 const routerConfig: Routes = [
@@ -23,6 +24,8 @@ const routerConfig: Routes = [
   { path: 'media', component: MediaRoomComponent},
   { path: 'privacy-policy', component: PrivacyPolicyComponent},
   { path: 'cancellation-policy', component: CancellationPolicyComponent},
+  
+  { path: 'property-dashboard', component: PropertyDashboardComponent},
 ];
 
 @NgModule({

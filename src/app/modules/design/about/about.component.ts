@@ -1,12 +1,10 @@
 import { Component, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
-  providers: [NgbDropdownConfig],
 })
 export class AboutComponent implements AfterViewInit {
   
@@ -38,7 +36,7 @@ export class AboutComponent implements AfterViewInit {
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel erat et ligula'
   },];
   
-  constructor(config: NgbDropdownConfig, private cdr: ChangeDetectorRef) {
+  constructor(private cdr: ChangeDetectorRef) {
     // customize default values of dropdowns used by this component tree
     // config.placement = 'top-left';
     // config.autoClose = false;
