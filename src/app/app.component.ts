@@ -9,7 +9,7 @@ import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angul
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit, OnInit {
+export class AppComponent implements OnInit , AfterViewInit {
   title = 'orastays';
   loading;
 
@@ -40,13 +40,14 @@ export class AppComponent implements AfterViewInit, OnInit {
                 }
             });
     }
+  // this.getCountries();
+   // this.login();
   useLanguage(language: string) {
     this.translateSrv.use(language);
   }
-
-  logOut() {
-    this.authSrv.logout().subscribe((data) => {
-      console.log('data', data);
+  getCountries() {
+    this.authSrv.getCountries().subscribe((data) => {
+      console.log('Countries data', data);
     }, error => {
       console.log('error', error);
     });
@@ -54,8 +55,7 @@ export class AppComponent implements AfterViewInit, OnInit {
 
   login() {
     const loginRequest = {
-      phone : 9748491521,
-      password: 'abc@123'
+      'emailId': 'arvindk427@gmail.com'
     };
     this.authSrv.login(loginRequest).subscribe((responseData: LoginResponse) => {
       console.log('responseData', responseData);
