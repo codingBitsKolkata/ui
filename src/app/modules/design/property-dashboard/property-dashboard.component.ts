@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
 import * as Highcharts from 'highcharts';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-property-dashboard',
@@ -49,7 +50,11 @@ export class PropertyDashboardComponent implements OnInit {
     location: 'Saltlake, Kolkata'
   },];
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
+  openModal(content) {
+    // , size: 'md'
+    this.modalService.open(content, { windowClass: 'modal-popup' });
+  }
 
   ngOnInit() {
   }

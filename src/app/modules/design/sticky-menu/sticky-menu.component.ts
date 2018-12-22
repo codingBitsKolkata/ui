@@ -33,7 +33,7 @@ export class StickyMenuComponent implements OnInit, AfterViewInit {
   scrollToDiv(page, dest) {
     this.sectionScroll = dest;
     this.router.navigate([page], {fragment: dest});
-    this.doScrollToDiv();
+   // this.doScrollToDiv();
   }
 
   doScrollToDiv() {
@@ -43,10 +43,7 @@ export class StickyMenuComponent implements OnInit, AfterViewInit {
     try {
       console.log(this.sectionScroll);
       const element = document.getElementById(this.sectionScroll);
-      element.scrollIntoView({behavior: 'smooth', block: 'start'});
-      setTimeout(() => {
-        window.scrollBy(0, -100);
-        }, 500);
+      element.scrollIntoView({behavior: 'smooth'});
     }
     finally {
       this.sectionScroll = null;
