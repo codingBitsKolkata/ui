@@ -22,6 +22,35 @@
     .nav-mobile-toggler{
         display: none;
     }
+    .host-btn{
+        border-radius: 50px;
+        background-color: #fff;
+        border-color: #fff;
+        .host-icon{
+            display: none;
+        }
+    }
+    .user-dropdown{
+        .dropdown-btn{
+            background: url(../../../assets/images/account_icon.png) center center no-repeat;
+            width: 26px;
+            height: 26px;
+            &:after{
+                display: none;
+            }
+        }
+        .btn.dropdown-item{
+            font-size: 14px;
+            font-family: latoregular;
+            color: #212121;
+            i{
+                margin-right: 5px;
+            }
+            &:hover{
+                color: #f47921;
+            }
+        }
+    }
 }
 ::ng-deep .modal-backdrop {
     background-color: #2f1515;
@@ -191,6 +220,14 @@
                 background-size: 100%;
                 width: 10px;
                 height: 14px;
+                display: block;
+            }
+        }
+        .host-btn{
+            border-radius: 50px;
+            background-color: #fff;
+            border-color: #fff;
+            .host-icon{
                 display: block;
             }
         }

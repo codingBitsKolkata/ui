@@ -5,16 +5,23 @@
     background: #fff;
     border-bottom: 1px solid #ccc;
     margin-bottom: 40px;
+    overflow: visible;
     .navbar{
         .btn.dropdown-toggle{
             background: #fff;
             padding: 10px 29px;
+            font-family: latobold;
+            font-size: 16px;
+            color: #231f20;
             &::after{
                 border: none;
             }
         }
         .show.dropdown{
             position: initial;
+            .btn.dropdown-toggle{
+                color: #f47921;
+            }
         }
         .nav-items{
             .dropdown-item{
@@ -31,12 +38,21 @@
                 font-family: latobold;
                 font-size: 14px;
                 text-transform: uppercase;
+                &:hover{
+                    color: #f47921;
+                }
             }
         }
         .dropdown-menu.show {
             display: block;
             width: auto;
             margin-top: 16px;
+            .img-block{
+                img{
+                    height: 160px;
+                    padding: 10px 0;
+                }
+            }
         }
     }
 }

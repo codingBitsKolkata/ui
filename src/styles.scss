@@ -56,9 +56,10 @@
 
 body{
     font-family: 'lato';
+    overflow-x: hidden;
 }
 .container-fluid{
-    overflow: hidden;
+    // overflow: hidden;
 }
 .fs-12{
     font-size: 12px !important;
@@ -891,6 +892,43 @@ input:active,select:active,button:active,label:active{
             -ms-transform:scale(1.20); /* IE 9 */
             -o-transform:translatZ(0) scale(1.20); /* Opera */
             transform:translatZ(0) scale(1.20);
+        }
+    }
+}
+
+// Modal Popup
+.modal-popup{
+    .modal-content{
+        border: 0;
+        box-shadow: 0px 10px 0px 0px #1f1e1e8c;
+        padding: 30px 30px;
+        button.close{
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            opacity: 1 !important;
+            border-radius: 50px;
+            position: absolute;
+            right: -20px;
+            top: -20px;
+            z-index: 99999;
+            span{
+                text-shadow: none;
+                color: #f47921;
+                line-height: 24px;
+                font-size: 24px;
+                font-family: lato;
+                font-weight: 100;
+                display: block;
+            }
+        }
+        .modal-container{
+            .modal-title{
+                font-family: latoblack;
+                font-size: 16px;
+                color: #130504;
+                text-align: center;
+            }
         }
     }
 }

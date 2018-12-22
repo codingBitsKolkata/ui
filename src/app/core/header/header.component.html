@@ -15,9 +15,20 @@
       </div>
       <div class="navbar-expand ml-auto navbar-nav">
         <div class="navbar-nav">
-            <!-- <button type="button" class="btn btn-light btn-sm mr-2 fs-12 help-btn"><i class="help-icon" aria-hidden="true"></i> <span class="d-none d-sm-block">HELP</span></button> -->
-            <button type="button" class="btn btn-light btn-sm mr-2 fs-12 signup-btn d-none d-sm-block" (click)="open(loginForm, 'signupTab')">SIGNUP</button>
-            <button type="button" class="btn btn-primary btn-sm login-btn fs-12 login-btn" (click)="open(loginForm, 'loginTab')"><i class="fa fa-lock pr-1 lock-icon"></i><i class="mobile-icon" aria-hidden="true"></i> <span class="text">LOGIN</span></button>
+          <button type="button" class="btn btn-light btn-sm mr-3 fs-12 host-btn" routerLink="/host-listing"><i class="fa fa-address-book-o host-icon" aria-hidden="true"></i> <span class="d-none d-sm-block">HOST</span></button>
+          <!-- <button type="button" class="btn btn-light btn-sm mr-2 fs-12 help-btn"><i class="help-icon" aria-hidden="true"></i> <span class="d-none d-sm-block">HELP</span></button> -->
+          <div ngbDropdown placement="bottom-right" class="d-inline-block user-dropdown">
+            <button class="btn dropdown-btn" id="dropdownBasic2" ngbDropdownToggle></button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+              <button type="button" class="btn dropdown-item" (click)="open(loginForm, 'loginTab')"><i class="fa fa-lock pr-1"></i> LOGIN</button>
+              <button type="button" class="btn dropdown-item" (click)="open(loginForm, 'signupTab')"><i class="fa fa-lock pr-1"></i> SIGNUP</button>
+              <button type="button" class="btn dropdown-item" routerLink="/property-dashboard"><i class="fa fa-user pr-1"></i> PROFILE</button>
+              <button type="button" class="btn dropdown-item" routerLink="/"><i class="fa fa-power-off pr-1"></i> LOGOUT</button>
+              
+            </div>
+          </div>
+          <!-- <button type="button" class="btn btn-light btn-sm mr-2 fs-12 signup-btn d-none d-sm-block" (click)="open(loginForm, 'signupTab')">SIGNUP</button> -->
+          <!-- <button type="button" class="btn btn-primary btn-sm login-btn fs-12 login-btn" (click)="open(loginForm, 'loginTab')"><i class="fa fa-lock pr-1 lock-icon"></i><i class="mobile-icon" aria-hidden="true"></i> <span class="text">LOGIN</span></button> -->
         </div>
       </div>
 
