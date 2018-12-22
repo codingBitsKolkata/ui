@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
+import { Router, NavigationEnd, ActivatedRoute  } from '@angular/router';
 
 @Component({
   selector: 'app-sticky-menu',
@@ -9,16 +10,47 @@ import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class StickyMenuComponent implements OnInit, AfterViewInit {
 
-  constructor(config: NgbDropdownConfig,private cdr: ChangeDetectorRef) { }
+  sectionScroll: string;
+  constructor(
+    config: NgbDropdownConfig,
+    private cdr: ChangeDetectorRef,
+    private router: Router,
+    private activeRoute: ActivatedRoute
+    ) { }
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      this.doScrollToDiv();
+      this.sectionScroll = null;
+    });
   }
   ngAfterViewInit() {
     this.cdr.detectChanges();
   }
-  scrollToDiv(el) {
-    el.scrollIntoView({behavior: 'smooth'});
-    // window.scrollTo(el.yPosition)
+  scrollToDiv(page, dest) {
+    this.sectionScroll = dest;
+    this.router.navigate([page], {fragment: dest});
+    this.doScrollToDiv();
+  }
+
+  doScrollToDiv() {
+    if (!this.sectionScroll && this.sectionScroll == null) {
+      return;
+    }
+    try {
+      console.log(this.sectionScroll);
+      const element = document.getElementById(this.sectionScroll);
+      element.scrollIntoView({behavior: 'smooth', block: 'start'});
+      setTimeout(() => {
+        window.scrollBy(0, -100);
+        }, 500);
+    }
+    finally {
+      this.sectionScroll = null;
+    }
   }
 
 }

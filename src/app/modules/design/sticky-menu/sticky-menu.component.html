@@ -12,18 +12,18 @@
             </div>
             <div class="col-md-8"> 
               <div class="nav-items">
-                <a class="c-pointer dropdown-item" (click)="scrollToDiv(aboutContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> About</a>
-                <a class="c-pointer dropdown-item" (click)="scrollToDiv(sustainabilityContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Sustainability</a>
-                <a class="c-pointer dropdown-item" (click)="scrollToDiv(visionContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Vission & Mission</a>
-                <a class="c-pointer dropdown-item" (click)="scrollToDiv(awardContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Awards & Recognisations</a>
-                <a class="c-pointer dropdown-item" (click)="scrollToDiv(storyContainer)"><i class="fa fa-chevron-right" aria-hidden="true"></i> Growth Story</a>
+                <a class="c-pointer dropdown-item" (click)="scrollToDiv('about','aboutContainer')"><i class="fa fa-chevron-right" aria-hidden="true"></i> About</a>
+                <a class="c-pointer dropdown-item" (click)="scrollToDiv('about','sustainabilityContainer')"><i class="fa fa-chevron-right" aria-hidden="true"></i> Sustainability</a>
+                <a class="c-pointer dropdown-item" (click)="scrollToDiv('about','visionContainer')"><i class="fa fa-chevron-right" aria-hidden="true"></i> Vission & Mission</a>
+                <a class="c-pointer dropdown-item" (click)="scrollToDiv('about','awardContainer')"><i class="fa fa-chevron-right" aria-hidden="true"></i> Awards & Recognisations</a>
+                <a class="c-pointer dropdown-item" (click)="scrollToDiv('about','storyContainer')"><i class="fa fa-chevron-right" aria-hidden="true"></i> Growth Story</a>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div ngbDropdown>
-        <button class="btn" id="navTeam" ngbDropdownToggle>Team</button>
+        <button class="btn" routerLink="/team" id="navTeam" ngbDropdownToggle>Team</button>
         
       </div>
       <div ngbDropdown>
@@ -53,7 +53,8 @@
           <button class="dropdown-item">Something else is here</button>
         </div>
       </div>
-      <div ngbDropdown>
+      <!--
+        <div ngbDropdown>
         <button class="btn" id="navBlog" ngbDropdownToggle>Blog</button>
         <div ngbDropdownMenu aria-labelledby="navBlog">
           <button class="dropdown-item">Action - 1</button>
@@ -61,6 +62,7 @@
           <button class="dropdown-item">Something else is here</button>
         </div>
       </div> 
+      -->
     </nav>
   </div>
 </div>

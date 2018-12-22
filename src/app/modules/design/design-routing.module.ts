@@ -24,7 +24,6 @@ const routerConfig: Routes = [
   { path: 'media', component: MediaRoomComponent},
   { path: 'privacy-policy', component: PrivacyPolicyComponent},
   { path: 'cancellation-policy', component: CancellationPolicyComponent},
-  
   { path: 'property-dashboard', component: PropertyDashboardComponent},
 ];
 
