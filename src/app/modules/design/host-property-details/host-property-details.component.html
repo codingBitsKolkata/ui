@@ -1,0 +1,247 @@
+<div class="dashboard-body">
+  <div class="sidebar">
+    <nav class="sidebar-nav ps ps--active-y">
+      <div class="profile-info">
+        <div class="btn-group mr-3">
+          <img class="user-img" src="assets/images/dashboard/prop_host.png" alt="">
+          <button class="btn btn-edit" type="button" (click)="openModal(editProfileModal)"><i class="pencil-icon"></i></button>
+        </div>
+        <label class="username">Saiyed Hussain</label>
+      </div>
+      <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="colors.html">
+              <i class="nav-icon"></i> Properties
+              <span class="badge badge-info">04</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="typography.html">
+              <i class="nav-icon"></i> Revenue
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="typography.html">
+              <i class="nav-icon"></i> Calendar
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="typography.html">
+              <i class="nav-icon"></i> Inventory
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="typography.html">
+              <i class="nav-icon"></i> Analytics
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" (click)="openModal(contactOraModal)">
+              <i class="nav-icon"></i> Contact ORA
+            </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="main">
+    <div class="container-fluid">
+      <div class="header-bg-container">
+        <img src="assets/images/dashboard/host-details-bg.png" alt="">
+      </div>
+      <div class="property-details-container">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="float-left">Property details</h3>
+            <button type="button" class="btn btn-edit float-right"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <div class="clearfix"></div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                  <img src="assets/images/dashboard/prop_1.jpg" class="rounded mx-auto d-block w-100">
+              </div>
+              <div class="col-md-10">
+                <div class="row">
+                  <div class="col-md-2">
+                    <h5 class="card-title">Property type</h5>
+                    <p>Homestay</p>
+                  </div>
+                  <div class="col-md-3">
+                    <h5 class="card-title">Property name</h5>
+                    <p>Fusce facilisis maximus</p>
+                  </div>
+                  <div class="col-md-7">
+                    <h5 class="card-title">Property address</h5>
+                    <p>Fusce facilisis,16 B Saltlake city, Boishakhi Bazaar, Bidhannagar, Kolkata 700091, West bengal, India.</p>
+                  </div>
+                  <div class="col-md-12">
+                    <h5 class="card-title">Property description</h5>
+                    <p>Nulla eget nisl blandit nisl fermentum fringilla eu vel mi. Phasellus sit amet euismod purus, id consectetur dui. Mauris tristique lorem ut arcu interdum fermentum. Maecenas vulputate dignissim ligula, id placerat leo tincidunt sit amet. Nam consectetur nisi vel eleifend posuere. Suspendisse potenti. Donec non neque ut neque elementum venenatis. Donec vestibulum, lorem eget auctor scelerisque, lacus nibh aliquam arcu, et cursus neque lectus eu enim. Nulla iaculis purus quis mattis finibus. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion">
+          <ngb-accordion [closeOthers]="false" #acc="ngbAccordion">
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span><i class="arrow"></i> Specifications</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                <h5>Guest access</h5>
+                <label class="btn-tags"> Anenna </label>
+                <label class="btn-tags">Hendrerit</label>
+                <label class="btn-tags">Suspendisse</label>
+                <label class="btn-tags">Interdum</label>
+                <label class="btn-tags">Primis in faucibus</label>
+                <label class="btn-tags">Posuere</label>
+                <label class="btn-tags">Pellentesque</label>
+                <hr class="hr-b">
+
+                <h5>Nearby locations</h5>
+                <label class="btn-tags"> Suspendisse </label>
+                <label class="btn-tags"> Nunc vulputate sapien justo </label>
+                <label class="btn-tags"> Pellentesque </label>
+                <hr class="hr-b">
+
+                <h5>Space rules</h5>
+                <label class="check-box ng-star-inserted">
+                  Smooking <input type="checkbox"><span class="checkmark"></span>
+                </label>
+                <label class="check-box ng-star-inserted">
+                  Drinkng <input type="checkbox"><span class="checkmark"></span>
+                </label>
+                <label class="check-box ng-star-inserted">
+                  Pet friendly <input type="checkbox"><span class="checkmark"></span>
+                </label>
+                <label class="check-box ng-star-inserted">
+                  ID proof <input type="checkbox"><span class="checkmark"></span>
+                </label>
+                <hr class="hr-b">
+
+                <h5>Special experience</h5>
+                <label class="check-box ng-star-inserted">
+                  Musical instrument <input type="checkbox"><span class="checkmark"></span>
+                </label>
+                <label class="check-box ng-star-inserted">
+                  Yoga center <input type="checkbox"><span class="checkmark"></span>
+                </label>
+                <label class="check-box ng-star-inserted">
+                  Spa <input type="checkbox"><span class="checkmark"></span>
+                </label>
+                <label class="check-box ng-star-inserted">
+                  Auditorium <input type="checkbox"><span class="checkmark"></span>
+                </label>
+                <hr class="hr-b">
+
+                <div class="form-group d-inline-table mr-50">
+                  <h5>Check in time </h5>
+                  <ngb-timepicker [(ngModel)]="checkInTime" [meridian]="meridian"></ngb-timepicker>
+                </div>
+                <div class="form-group d-inline-table mr-50">
+                  <h5>Check out time </h5>
+                  <ngb-timepicker [(ngModel)]="checkInTime" [meridian]="meridian"></ngb-timepicker>
+                </div>
+                <div class="form-group d-inline-table">
+                  <h5>Strick check in</h5>
+                  <div class="form-group toggle-radio-btn">
+                    <input id="strict-check-on" class="toggle toggle-left" name="strict-check" value="false" type="radio" checked>
+                    <label for="strict-check-on" class="toggle-btn p-0">Yes</label>
+                    <input id="strict-check-off" class="toggle toggle-right" name="strict-check" value="true" type="radio">
+                    <label for="strict-check-off" class="toggle-btn p-0">No</label>
+                  </div>
+                </div>
+                <hr class="hr-b">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h5>Upload cover photo</h5>
+                    <div class="custom-file mb-3">
+                      <input class="custom-file-input" id="customFile" name="filename" type="file">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <h5>Upload more images</h5>
+                    <div class="custom-file mb-3">
+                      <input class="custom-file-input" id="customFile" name="filename" type="file">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span><i class="arrow"></i> Related Informations</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                labore sustainable VHS.
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span><i class="arrow"></i> Bank Details</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                labore sustainable VHS.
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span><i class="arrow"></i> Personal Details</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                labore sustainable VHS.
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span><i class="arrow"></i> Business start & end date</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                labore sustainable VHS.
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span><i class="arrow"></i> Provide addtional information</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                labore sustainable VHS.
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

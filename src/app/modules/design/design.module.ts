@@ -25,9 +25,23 @@ import { CancellationPolicyComponent } from './cancellation-policy/cancellation-
 import { MediaRoomComponent } from './media-room/media-room.component';
 import { StickyMenuComponent } from './sticky-menu/sticky-menu.component';
 import { PropertyDashboardComponent } from './property-dashboard/property-dashboard.component';
+import { HostPropertyDetailsComponent } from './host-property-details/host-property-details.component';
 
 @NgModule({
-  declarations: [HomeComponent, PropertyListComponent, HostListingComponent, PropertyDetailsComponent, AboutComponent, CareerComponent, TeamComponent, PrivacyPolicyComponent, CancellationPolicyComponent, MediaRoomComponent, StickyMenuComponent, PropertyDashboardComponent],
+  declarations: [
+    HomeComponent, 
+    PropertyListComponent, 
+    HostListingComponent, 
+    PropertyDetailsComponent, 
+    AboutComponent, 
+    CareerComponent, 
+    TeamComponent, 
+    PrivacyPolicyComponent, 
+    CancellationPolicyComponent, 
+    MediaRoomComponent, 
+    StickyMenuComponent, 
+    PropertyDashboardComponent, HostPropertyDetailsComponent
+  ],
   imports: [
     CommonModule,
     NgbModule,

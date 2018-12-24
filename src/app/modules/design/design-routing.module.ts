@@ -11,6 +11,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { CancellationPolicyComponent } from './cancellation-policy/cancellation-policy.component';
 import { MediaRoomComponent } from './media-room/media-room.component';
 import { PropertyDashboardComponent } from './property-dashboard/property-dashboard.component';
+import { HostPropertyDetailsComponent } from './host-property-details/host-property-details.component';
 
 
 const routerConfig: Routes = [
@@ -25,6 +26,7 @@ const routerConfig: Routes = [
   { path: 'privacy-policy', component: PrivacyPolicyComponent},
   { path: 'cancellation-policy', component: CancellationPolicyComponent},
   { path: 'property-dashboard', component: PropertyDashboardComponent},
+  { path: 'host-property-details', component: HostPropertyDetailsComponent},
 ];
 
 @NgModule({

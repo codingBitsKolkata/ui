@@ -141,6 +141,7 @@
         font-size: 14px;
         align-items: center;
         border-left: 4px solid #ffffff;
+        cursor: pointer;
         .badge{
             float: right;
             margin-top: 2px;
@@ -329,7 +330,7 @@
             margin: 10px 0;
         }
         .h100{
-            height: 100px;
+            height: 100px !important;
         }
         .form-control{
             height: 42px;
