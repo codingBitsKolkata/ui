@@ -7,6 +7,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
+  currentJustify = 'justified';
 
   loginFormSelectedTab: string;
   constructor(private activeModal: NgbActiveModal) { }
