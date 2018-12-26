@@ -206,7 +206,7 @@ export class AuthComponent implements OnInit {
     if (data) {
       console.log(data);
       this.userStorage.set(data);
-      this.closeModal();
+     // this.closeModal();
       location.reload(true);
     }
   }
