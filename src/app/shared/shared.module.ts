@@ -4,16 +4,18 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UiSwitchModule } from 'ngx-ui-switch';
+import { ModalComponent } from './components/modal/modal.component';
+import { TestModalComponent } from './components/test-modal/test-modal.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [ModalComponent, TestModalComponent],
   imports: [
     CommonModule,
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
     TranslateModule,
-    UiSwitchModule
+    UiSwitchModule,
   ],
   exports: [
     CommonModule,
@@ -21,7 +23,12 @@ import { UiSwitchModule } from 'ngx-ui-switch';
     ReactiveFormsModule,
     FormsModule,
     TranslateModule,
-    UiSwitchModule
+    UiSwitchModule,
+    ModalComponent,
+    TestModalComponent
+  ],
+  entryComponents: [
+    TestModalComponent
   ]
 })
 export class SharedModule { }
