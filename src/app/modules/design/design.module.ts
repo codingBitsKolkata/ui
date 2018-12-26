@@ -10,6 +10,7 @@ import { TagInputModule } from 'ngx-chips';
 import { NguCarouselModule } from '@ngu/carousel';
 import { NumberPickerModule } from 'ng-number-picker';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { DesignRoutingModule } from './design-routing.module';
 import { SharedModule } from '../../shared/shared.module';
@@ -25,9 +26,23 @@ import { CancellationPolicyComponent } from './cancellation-policy/cancellation-
 import { MediaRoomComponent } from './media-room/media-room.component';
 import { StickyMenuComponent } from './sticky-menu/sticky-menu.component';
 import { PropertyDashboardComponent } from './property-dashboard/property-dashboard.component';
+import { HostPropertyDetailsComponent } from './host-property-details/host-property-details.component';
 
 @NgModule({
-  declarations: [HomeComponent, PropertyListComponent, HostListingComponent, PropertyDetailsComponent, AboutComponent, CareerComponent, TeamComponent, PrivacyPolicyComponent, CancellationPolicyComponent, MediaRoomComponent, StickyMenuComponent, PropertyDashboardComponent],
+  declarations: [
+    HomeComponent, 
+    PropertyListComponent, 
+    HostListingComponent, 
+    PropertyDetailsComponent, 
+    AboutComponent, 
+    CareerComponent, 
+    TeamComponent, 
+    PrivacyPolicyComponent, 
+    CancellationPolicyComponent, 
+    MediaRoomComponent, 
+    StickyMenuComponent, 
+    PropertyDashboardComponent, HostPropertyDetailsComponent
+  ],
   imports: [
     CommonModule,
     NgbModule,
@@ -43,7 +58,8 @@ import { PropertyDashboardComponent } from './property-dashboard/property-dashbo
     TagInputModule,
     NguCarouselModule,
     NumberPickerModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    NgMultiSelectDropDownModule.forRoot()
   ]
 })
 export class DesignModule {

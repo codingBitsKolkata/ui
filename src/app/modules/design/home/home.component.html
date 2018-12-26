@@ -24,10 +24,156 @@
         </div>
       </ng-template>
     </ngb-carousel>
+    
+    <div class="booking-section">
+      <div class="container" data-aos="fade-right">
+        <div class="row">
+          <div class="col-md-5">
+            <ngb-tabset justify="justified">
+              <ngb-tab title="Book your stay">
+                <ng-template ngbTabContent>
+                  <form class="booking-form">
+                    <div class="form-group">
+                      <select class="form-control">
+                        <option>Pick a stay</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="City, Locality or Landmark">
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input class="form-control border-right-0" placeholder="Check in"
+                                name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary calendar checkin-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                        </div>
+                        <input class="form-control border-right-0" placeholder="Check out"
+                                name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary calendar checkout-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <select class="form-control">
+                        <option>2 Guest, 1 Room</option>
+                      </select>
+                    </div>
+                    <div class="form-group text-right mt-4 mb-0 clearfix">
+                      <button type="button" class="btn btn-primary btn-lg search-btn" routerLink="/property-list"><i class="search-icon"></i>Search</button>
+                    </div>
+                  </form>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Book your flight">
+                <ng-template ngbTabContent>
+                  <form class="booking-form">
+                    <div class="form-group flight-location">
+                      <div class="input-group">
+                        <input type="text" class="form-control fromBoxInput" placeholder="From">
+                        <div class="input-group-append fromBox">
+                          <span class="input-group-text"><i class="fa fa-map-marker"></i></span>                          
+                        </div>
+                        <input type="text" class="form-control toBoxInput" placeholder="To">
+                        <div class="input-group-append toBox">
+                          <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex text-center justify-content-between pl-2 pr-2">
+                      <div class="trip-type">
+                        <input type="radio" name="trip-type" id="roundTrip" class="input-hidden" checked/>
+                        <label class="items" for="roundTrip">
+                          <img src="assets/images/flight_roundtrip.png" alt="">
+                          <span class="item-checked"></span>
+                        </label>
+                        <p class="name">Round trip</p>
+                      </div>
+                      <div class="trip-type">
+                        <input type="radio" name="trip-type" id="oneWay" class="input-hidden" />
+                        <label class="items" for="oneWay">
+                          <img src="assets/images/flight_oneway.png" alt="">
+                          <span class="item-checked"></span>
+                        </label>
+                        <p class="name">One way</p>
+                      </div>
+                      <div class="trip-type">
+                        <input type="radio" name="trip-type" id="multiCity" class="input-hidden" />
+                        <label class="items" for="multiCity">
+                          <img src="assets/images/flight_multicity.png" alt="">
+                          <span class="item-checked"></span>
+                        </label>
+                        <p class="name">Multi city</p>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input class="form-control border-right-0" placeholder="Depart"
+                                name="dp" ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary calendar checkin-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                        </div>
+                        <input class="form-control border-right-0" placeholder="Return"
+                                name="dp" ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary calendar checkout-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <!-- <select class="form-control">
+                          <option>2 Guest, 1 Room</option>
+                        </select> -->
+                        <div ngbDropdown class="d-inline-block travellersDropdown">
+                          <button class="btn" id="dropdownBasic1" ngbDropdownToggle>Travellers</button>
+                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <div class="form-row align-items-center">
+                              <div class="col-auto">
+                                <div class="form-group m-0">
+                                  <label for="" class="d-block text">Adults <span> (+12 yrs)</span></label>
+                                  <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                                </div>
+                              </div>
+                              <div class="col-auto ml-4">
+                                <div class="form-group m-0">
+                                  <label for="" class="d-block text">Children <span> (2 to 12 yrs)</span></label>
+                                  <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                                </div>
+                              </div>
+                              <div class="col-auto ml-4">
+                                <div class="form-group m-0">
+                                  <label for="" class="d-block text">Infant <span> (Below 2 yrs)</span></label>
+                                  <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <select class="form-control">
+                          <option value="">Class</option>
+                          <option value="">Business class</option>
+                          <option value="">Premium economy class</option>
+                          <option value="">Economy class</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group text-right mt-4 mb-0 clearfix">
+                      <button type="button" class="btn btn-primary btn-lg search-btn" routerLink="/property-list"><i class="search-icon"></i>Search</button>
+                    </div>
+                  </form>
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset>  
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Booking Form -->
-  <div class="booking-section">
+  <!-- <div class="booking-section">
     <div class="container" data-aos="fade-right">
       <div class="row">
         <div class="col-md-5">
@@ -108,7 +254,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Features Section -->
   <div class="container-fluid features-section">

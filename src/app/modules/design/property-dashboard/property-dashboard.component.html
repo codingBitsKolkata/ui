@@ -4,15 +4,7 @@
       <div class="profile-info">
         <div class="btn-group mr-3">
           <img class="user-img" src="assets/images/dashboard/prop_host.png" alt="">
-          <button class="btn btn-edit" type="button" (click)="openModal(editProfile)"><i class="pencil-icon"></i></button>
-          <!-- <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
-            <button class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle></button>
-            <div class="dropdown-menu" ngbDropdownMenu>
-              <button class="dropdown-item">One</button>
-              <button class="dropdown-item">Two</button>
-              <button class="dropdown-item">Four!</button>
-            </div>
-          </div> -->
+          <button class="btn btn-edit" type="button" (click)="openModal(editProfileModal)"><i class="pencil-icon"></i></button>
         </div>
         <label class="username">Saiyed Hussain</label>
       </div>
@@ -44,7 +36,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="typography.html">
+            <a class="nav-link" (click)="openModal(contactOraModal)">
               <i class="nav-icon"></i> Contact ORA
             </a>
         </li>
@@ -77,7 +69,7 @@
                         <h5 class="card-title">{{item.name}}</h5>
                         <p class="card-text">{{item.desc}}</p>
                         <label class="location" for=""><i class="fa fa-map-marker"></i> Location: {{item.location}}</label>
-                        <a href="#" class="btn btn-dark">Details / Edit</a>
+                        <button type="button" routerlink="/host-property-details" class="btn btn-dark">Details / Edit</button>
                       </div>
                     </div>
                   </div>
@@ -93,7 +85,7 @@
               <div class="card-img-overlay text-center">
                 <h5 class="card-title">ADD another property</h5>
                 <hr>
-                <a href="#" class="btn btn-primary">Add now</a>
+                <button type="button" routerlink="/host-property-details" class="btn btn-primary">Add now</button>
               </div>
             </div>
           </div>
@@ -168,7 +160,7 @@
   </div>
   
   <!-- Edit Profile Popup -->
-  <ng-template #editProfile let-modal>
+  <ng-template #editProfileModal let-modal>
     <div class="modal-container">
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
@@ -227,7 +219,7 @@
           <div class="col-md-8">
             <div class="form-group">
               <label for="">Language</label>
-              <input type="text" class="form-control" placeholder="Select Language">
+              <ng-multiselect-dropdown class="form-control" [placeholder]="'Select Language'" [data]="languageList" [(ngModel)]="dropdownSettings" [settings]="dropdownSettings" name="language"></ng-multiselect-dropdown>
             </div>
           </div>
         </div>
@@ -236,13 +228,14 @@
           <div class="col-md-12">
             <div class="form-group">
               <label for="">Profession</label>
-              <input type="text" class="form-control" placeholder="6th Aug 1980">
+              <input type="text" class="form-control" placeholder="Enter your profession">
             </div>
           </div>
           <div class="col-md-12">
             <div class="form-group">
               <label for="">Interests</label>
-              <input type="text" class="form-control" value="Travelling, Playing guiter, Listening musics, Gurdaning" placeholder="Select Interest">
+              <ng-multiselect-dropdown class="form-control" [placeholder]="'Select Interest'" [data]="interestList" [(ngModel)]="interestSelectedItems" [settings]="dropdownSettings" name="interest"></ng-multiselect-dropdown>
+              <!-- <input type="text" class="form-control" value="Travelling, Playing guiter, Listening musics, Gurdaning" placeholder="Select Interest"> -->
             </div>
           </div>
           <div class="col-md-12">
@@ -256,4 +249,49 @@
       <button type="button" class="btn btn-primary float-right" (click)="modal.close('Save click')">Submit</button>
     </div>
   </ng-template>
+
+    <!-- Contact ORA Popup -->
+    <ng-template #contactOraModal let-modal>
+      <div class="modal-container">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title mb-25">Contact ORA</h4>
+        <form class="form-component">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter your name" value="Mr. Saiyed Husain">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" value="+91 80014578954">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="email" class="form-control" value="host@gmail.com">
+              </div>
+            </div>
+          </div>
+          <h5>Purpose</h5>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <select name="" class="form-control">
+                  <option value="">Others</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <textarea name="" class="form-control h100">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+        <button type="button" class="btn btn-primary float-right" (click)="modal.close('Save click')">Submit</button>
+      </div>
+    </ng-template>
 </div>
