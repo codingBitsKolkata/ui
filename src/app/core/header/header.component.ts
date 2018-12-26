@@ -36,7 +36,7 @@ export class HeaderComponent implements AfterViewInit, OnInit {
   }
   ngOnInit() {
   }
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     // this.comingSoonModalBtn.nativeElement.click();
   }
   open(content, selectedTab) {
@@ -48,8 +48,8 @@ export class HeaderComponent implements AfterViewInit, OnInit {
     this.modalService.open(content, { windowClass: 'coming-soon', size: 'sm', centered: true });
   }
 
-  openTestModal() {
+  openLoginSignUpModal(selectedTab) {
     const modalRef = this.modalService.open(AuthComponent, {centered: true});
-    modalRef.componentInstance.loginFormSelectedTab = 'loginTab';
+    modalRef.componentInstance.loginFormSelectedTab = selectedTab;
   }
 }

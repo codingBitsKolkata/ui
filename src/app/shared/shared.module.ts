@@ -6,9 +6,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { ModalComponent } from './components/modal/modal.component';
 import { TestModalComponent } from './components/test-modal/test-modal.component';
+import { WhiteSpaceValidator} from '../directives/validators/white-space-validation';
+import { equalvalidator} from '../directives/validators/equal-validator';
+import { FileValidator} from '../directives/validators/file-validation';
 
 @NgModule({
-  declarations: [ModalComponent, TestModalComponent],
+  declarations: [ModalComponent, TestModalComponent, WhiteSpaceValidator, FileValidator],
   imports: [
     CommonModule,
     NgbModule,
@@ -25,7 +28,9 @@ import { TestModalComponent } from './components/test-modal/test-modal.component
     TranslateModule,
     UiSwitchModule,
     ModalComponent,
-    TestModalComponent
+    TestModalComponent,
+    WhiteSpaceValidator,
+    FileValidator
   ],
   entryComponents: [
     TestModalComponent
