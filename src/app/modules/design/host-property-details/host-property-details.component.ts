@@ -15,6 +15,8 @@ export class HostPropertyDetailsComponent implements OnInit {
   specialities = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
   amenities = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
 
+  accordianIds = ['panel-1','panel-2','panel-3','panel-4','panel-5','panel-6'];
+
   constructor() { }
 
   ngOnInit() {
