@@ -5,14 +5,16 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ErrorComponent } from './error/error.component';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, ErrorComponent],
+  declarations: [HeaderComponent, FooterComponent, ErrorComponent, AuthComponent],
   imports: [
-    CommonModule,
-    NgbModule,
+    SharedModule,
     RouterModule
   ],
-  exports: [HeaderComponent, FooterComponent, ErrorComponent]
+  exports: [HeaderComponent, FooterComponent, ErrorComponent],
+  entryComponents: [AuthComponent]
 })
 export class CoreModule { }
