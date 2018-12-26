@@ -253,45 +253,72 @@
         .accordion{
             margin-top: 40px;
             // display: flex;
-            ::ng-deep .card{
-                margin-bottom: 30px;
-                box-shadow: 0px 8px 0px 0px #c9c7c7;
-                border-radius: 6px;
-                display: inline-flex;
-                width: 100%;
-            }
-            ::ng-deep h5{
-                display: flex;
-                font-size: 14px;
-                font-family: latoblack;
-                color: #130504;
-                margin-bottom: 10px;
-            }
-            ::ng-deep h5 .btn{
-                text-decoration: none;
-                width: 100%;
-                padding: 0;
-            }
-            ::ng-deep h5 .btn span{
-                display: flex;
-                font-family: latoblack;
-                font-size: 26px;
-                color: #f47921;
-                margin: 0px;
-                align-items: center;
-            }
-            ::ng-deep .arrow{
-                background: url(../../../../assets/images/plus-icon.png) center center no-repeat;
-                width: 28px;
-                height: 28px;
-                display: inline-block;
-                margin-right: 15px;
-                text-decoration: none;
-                background-size: 100%;
-            }
-            ::ng-deep .collapsed .arrow{
-                background: url(../../../../assets/images/minus-icon.png) center center no-repeat;
-                background-size: 100%;
+            ::ng-deep {
+                .card{
+                    margin-bottom: 30px;
+                    box-shadow: 0px 8px 0px 0px #c9c7c7;
+                    border-radius: 6px;
+                    display: inline-flex;
+                    width: 100%;
+                }
+                h5{
+                    display: flex;
+                    font-size: 14px;
+                    font-family: latoblack;
+                    color: #130504;
+                    margin-bottom: 10px;
+                    .btn{
+                        text-decoration: none;
+                        width: 100%;
+                        padding: 0;
+                        span{
+                            display: flex;
+                            font-family: latoblack;
+                            font-size: 24px;
+                            color: #f47921;
+                            margin: 0px;
+                            align-items: center;
+                        }
+                    }
+                }
+                .arrow{
+                    background: url(../../../../assets/images/plus-icon.png) center center no-repeat;
+                    width: 28px;
+                    height: 28px;
+                    display: inline-block;
+                    margin-right: 15px;
+                    text-decoration: none;
+                    background-size: 100%;
+                }
+                .collapsed .arrow{
+                    background: url(../../../../assets/images/minus-icon.png) center center no-repeat;
+                    background-size: 100%;
+                }
+                label.text{
+                    font-size: 12px;
+                    font-family: latoblack;
+                    color: #130504;
+                }
+                .edit-btn{
+                    background-color: #c9c7c7;
+                    border: 0;
+                    border-radius: 50px;
+                    color: #ffffff;
+                    margin-left: auto !important;
+                    width: 28px !important;
+                    height: 28px;
+                    font-size: 14px;
+                    padding: 0px;
+                    position: absolute;
+                    top: 17px;
+                    right: 20px;
+                }
+                .btn.calendar{
+                    border-left: none;
+                    background: #fff;
+                    color: #484848;
+                    border-color: #ced4da;
+                }
             }
         }
     }

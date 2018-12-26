@@ -125,6 +125,10 @@ body{
 .p-5{
     padding: 5px !important;
 }
+.p-lr-20{
+    padding-left: 20px;
+    padding-right: 20px;
+}
 .btn-primary {
     color: #fff !important;
     background-color: #f47921 !important;
@@ -221,11 +225,106 @@ input:active,select:active,button:active,label:active{
         font-size: 14px;
         color: #484848;
         .form-control{
-            height: 45px;
+            height: 40px;
             border: 1px solid #dee1e4;
             color: #909396;
             &::-webkit-input-placeholder {
                 color: #909396;
+            }
+        }
+        .flight-location{
+            .form-control{
+                border-right: 0;
+            }
+            .fromBox{
+                .input-group-text{
+                    background-color: #ffffff;
+                    border-right: 0;
+                    border-color: #dee1e4;
+                }
+            }
+            .toBox{
+                .input-group-text{
+                    background-color: #ffffff;
+                    border-color: #dee1e4;
+                }
+            }
+        }
+        .travellersDropdown{
+            width: 50%;
+            .btn.dropdown-toggle{
+                width: 100%;
+                text-align: left;
+                background-color: #fff;
+                border: 1px solid #dee1e4;
+                height: 40px;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                border-right: 0;
+                color: #909396;
+                &::after{
+                    position: absolute;
+                    right: 8px;
+                    top: 18px;
+                }
+            }
+            .dropdown-menu.show{
+                width: max-content !important;
+                padding: 20px 20px !important;
+                box-shadow: 0px 8px 0px 0px #bfbfbf;
+                label.text{
+                    color: #484848;
+                    font-size: 14px;
+                    font-family: latobold;
+                    span{
+                        color: #c9c7c7;
+                    }
+                }
+                .ng-number-picker{
+                    .input-group{
+                        height: 40px !important;
+                        margin: 0 !important;
+                        padding: 0px;
+                        border: 1px solid #c7c7c7;
+                        border-radius: 5px;
+                        .form-control{
+                            height: 100%;
+                            width: 44px;
+                            display: inline-block;
+                            border: none;
+                            text-align: center;
+                            border-left: 1px solid #dee1e4;
+                            border-right: 1px solid #dee1e4;
+                            padding-left: 0;
+                            padding-right: 0;
+                        }
+                        .input-group-prepend {
+                            margin-right: 0px;
+                        }
+                        .input-group-text{
+                            width: 35px;
+                            height: 100%;
+                            font-size: 24px !important;
+                            line-height: 22px;
+                            text-align: center;
+                            border: 0;
+                            background: #ffffff;
+                            display: inline-block;
+                            border-radius: 3px !important;
+                            padding-left: 0;
+                            padding-right: 0;
+                            &.decrease {
+                                font-size: 40px !important;
+                                background-color: transparent; 
+                                color: #484848 !important;
+                            }
+                            &.increase{
+                                color: #f47921 !important;
+                                border-left: 0px;
+                            }
+                        }
+                    }
+                }
             }
         }
         .calendar{
@@ -262,7 +361,7 @@ input:active,select:active,button:active,label:active{
     }
 }
 .features-section{
-    background: #f1f1f1;
+    background: #ffffff;
     padding: 40px 0px;
     font-size: 12px;
     color: #616161;
@@ -1033,3 +1132,83 @@ input:active,select:active,button:active,label:active{
         margin-right: 0;
     }
 } 
+.price-box{
+    max-width: 120px;
+}
+
+// Multiselect Dropdown
+.multiselect-dropdown{
+    .dropdown-btn{
+        border: 0 !important;
+        padding: 0 !important;
+        .dropdown-down{
+            border-top: 8px solid #adadad !important;
+            border-left: 8px solid transparent !important;
+            border-right: 8px solid transparent !important;
+        }
+        .selected-item{
+            border: 1px solid #e67e22 !important;
+            background: #e67e22 !important;
+        }
+    }
+    .dropdown-list{
+        .multiselect-item-checkbox{
+            input[type=checkbox]+div{
+                &::before{
+                    border: 2px solid #f47921 !important;
+                }
+            }
+            input[type=checkbox]:checked + div{
+                &::before{
+                    background: #e67e22 !important;
+                }
+            }
+        }
+    }
+}
+
+// Trip Radio Button
+.trip-type{
+    padding: 0 15px;
+    .items{
+        position: relative;
+        border: 1px solid #ccc;
+        text-align: center;
+        padding: 13px 0px;
+        border-radius: 100px;
+        width: 70px;
+        height: 70px;
+        img{
+            height: 40px;
+        }
+        .item-checked{
+            background: url(assets/images/checked-icon.png) center center no-repeat;
+            width: 20px;
+            height: 20px;
+            background-size: 100%;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background-color: #fff;
+            border-radius: 100px;
+            display: none;
+        }
+    }
+    .name{
+        font-size: 10px;
+        font-family: latobold;
+        color: #231f20;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    .input-hidden{
+        position: absolute;
+        left: -9999px;
+    }
+    input[type=radio]:checked + label {
+        border: 1px solid #f47921;
+        span{
+            display: block !important;
+        }
+    }
+}

@@ -10,6 +10,7 @@ import { TagInputModule } from 'ngx-chips';
 import { NguCarouselModule } from '@ngu/carousel';
 import { NumberPickerModule } from 'ng-number-picker';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { DesignRoutingModule } from './design-routing.module';
 import { SharedModule } from '../../shared/shared.module';
@@ -57,7 +58,8 @@ import { HostPropertyDetailsComponent } from './host-property-details/host-prope
     TagInputModule,
     NguCarouselModule,
     NumberPickerModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    NgMultiSelectDropDownModule.forRoot()
   ]
 })
 export class DesignModule {
