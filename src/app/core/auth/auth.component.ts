@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
+  currentJustify = 'justified';
 
   loginFormSelectedTab: string;
   public loginForm: FormGroup;

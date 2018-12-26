@@ -49,7 +49,7 @@ export class HeaderComponent implements AfterViewInit, OnInit {
   }
 
   openTestModal() {
-    const modalRef = this.modalService.open(AuthComponent);
+    const modalRef = this.modalService.open(AuthComponent, {centered: true});
     modalRef.componentInstance.loginFormSelectedTab = 'loginTab';
   }
 }

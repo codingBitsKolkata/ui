@@ -10,6 +10,11 @@ export class HostPropertyDetailsComponent implements OnInit {
   checkOutTime = {hour: 12, minute: 30};
   meridian = true;
 
+  spaceRules = ['Couple Friendly', 'Pet Friendly', 'Smoking', 'Alchohol'];
+  specialExperience = ['Spa', 'Musical Instrument', 'Yoga Center'];
+  specialities = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+  amenities = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+
   constructor() { }
 
   ngOnInit() {
