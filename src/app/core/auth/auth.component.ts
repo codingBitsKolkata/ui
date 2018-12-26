@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -9,8 +10,12 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class AuthComponent implements OnInit {
 
   loginFormSelectedTab: string;
-  constructor(private activeModal: NgbActiveModal) { }
+  public loginForm: FormGroup;
+  public registerForm: FormGroup;
+  public loading: boolean;
+  constructor(private activeModal: NgbActiveModal) {
 
+  }
   ngOnInit() {
     console.log(this.loginFormSelectedTab);
   }
