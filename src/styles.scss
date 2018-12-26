@@ -651,8 +651,8 @@ input:active,select:active,button:active,label:active{
     height: 20px;
     width: 20px;
     transition: all 0.15s ease-out 0s;
-    background: #cbd1d8;
-    border: none;
+    background: #ffffff;
+    border: 1px solid #c7c7c7;
     color: #fff;
     cursor: pointer;
     display: inline-block;
@@ -660,38 +660,42 @@ input:active,select:active,button:active,label:active{
     outline: none;
     position: relative;
     z-index: 1000;
-  }
-  .option-input:hover {
-    background: #9faab7;
-  }
-  .option-input:checked {
-    background: #1a1a1a;
-  }
-  .option-input:checked::before {
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    content: '✔';
-    display: inline-block;
-    font-size: 12px;
-    text-align: center;
-    line-height: 20px;
-  }
-  .option-input:checked::after {
-    // -webkit-animation: click-wave 0.65s;
-    // -moz-animation: click-wave 0.65s;
-    // animation: click-wave 0.65s;
-    background: #1a1a1a;
-    content: '';
-    display: block;
-    position: relative;
-    z-index: 100;
-  }
-  .option-input.radio {
-    border-radius: 50%;
-  }
-  .option-input.radio::after {
-    border-radius: 50%;
+    &:hover {
+        background: #9faab7;
+    }
+    &:checked {
+        background: #ffffff;
+        &::before {
+            height: 12px;
+            width: 12px;
+            position: absolute;
+            content: ' ';
+            display: inline-block;
+            font-size: 12px;
+            text-align: center;
+            line-height: 20px;
+            background: #f47921;
+            border-radius: 50px;
+            top: 3px;
+            left: 3px;
+        }
+        &::after {
+            // -webkit-animation: click-wave 0.65s;
+            // -moz-animation: click-wave 0.65s;
+            // animation: click-wave 0.65s;
+            background: #f57921;
+            content: '';
+            display: block;
+            position: relative;
+            z-index: 100;
+        }
+    }
+    &.radio {
+        border-radius: 50%;
+        &::after {
+            border-radius: 50%;
+        }
+    }
   }
 
 // Bootstrap Timepicker
@@ -752,6 +756,7 @@ input:active,select:active,button:active,label:active{
     padding: 2px;
     border: 1px solid #c7c7c7;
     border-radius: 5px;
+    width: max-content;
     .toggle-btn{
         border: 0;
         display: inline-block;
@@ -759,8 +764,8 @@ input:active,select:active,button:active,label:active{
         position: relative;
         text-align: center;
         transition: background 600ms ease, color 600ms ease;
-        height: 40px;
-        line-height: 40px;
+        // height: 40px;
+        line-height: 34px;
         margin: 0;
         border-radius: 3px;
     }
@@ -873,31 +878,37 @@ input:active,select:active,button:active,label:active{
     .input-group{
         height: 40px !important;
         margin: 0 !important;
-        padding: 0;
+        padding: 2px;
+        border: 1px solid #c7c7c7;
+        border-radius: 5px;
         .input-group-text {
             width: 40px;
-            height: 40px;
+            height: 100%;
             font-size: 30px !important;
-            line-height: 27px;
+            line-height: 20px;
             text-align: center;
             border: 0;
             background: #1a1a1a;
             color: #fff;
             display: inline-block;
-            border-radius: 0 !important;
+            border-radius: 3px !important;
             &.decrease{
                 font-size: 40px !important;
+                background: #484848;
             }
-            &:hover, &:focus, &:active{
-                background: #1a1a1a;
+            &.increase {
+                background: #f47921;
             }
+            // &:hover, &:focus, &:active{
+            //     background: #1a1a1a;
+            // }
 
         }
         .form-control{
-            height: 40px;
+            height: 100%;
             width: 50px;
             display: inline-block;
-            border: 2px solid #1a1a1a;
+            border: none;
             text-align: center;
         }
     }   
@@ -1004,3 +1015,21 @@ input:active,select:active,button:active,label:active{
         border-radius: 0 0.25rem 0.25rem 0;
     }
 }
+
+.m-table{
+    thead th {
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 2px solid #dee2e6;
+    }
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+    .check-box{
+        display: inline;
+    }
+    .check-box, .option-input.radio{
+        margin-right: 0;
+    }
+} 
