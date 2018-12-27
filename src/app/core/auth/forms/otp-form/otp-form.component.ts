@@ -14,6 +14,7 @@ export class OtpFormComponent implements OnInit {
   @Input() otpFor: string;
   @Input() userData: any;
   @Output() otpValidateSuccess  = new EventEmitter<any>();
+  @Output() loginSignUpLinkClick  = new EventEmitter<string>();
   otpForm: FormGroup;
   errorMessage: string;
   otpResentMessage: string;
@@ -95,7 +96,9 @@ export class OtpFormComponent implements OnInit {
         this.otpResentMessage = errorData.error.responseMessage;
       }
     });
-
+  }
+  showLoginSignUpForm(tabName: string) {
+    this.loginSignUpLinkClick.emit(tabName);
   }
 
 }

@@ -8,7 +8,7 @@ import * as CryptoJS from 'crypto-js';
 */
 @Injectable({
     providedIn: 'root'
-  })
+})
 export class CryptoProvider {
     /**
      * @property secretKey for
@@ -27,7 +27,7 @@ export class CryptoProvider {
      * @return {string} The encrypted data as string.
      */
     encrypt(message: string): string {
-        const cipherText  = CryptoJS.AES.encrypt(message, this.secretKey);
+        const cipherText = CryptoJS.AES.encrypt(message, this.secretKey);
         return cipherText.toString();
     }
     /**
@@ -45,7 +45,7 @@ export class CryptoProvider {
      * @return {string} The encrypted data as string.
      */
     encryptObj(message: any): string {
-        const cipherText  = CryptoJS.AES.encrypt(JSON.stringify(message), this.secretKey);
+        const cipherText = CryptoJS.AES.encrypt(JSON.stringify(message), this.secretKey);
         return cipherText.toString();
     }
     /**
@@ -54,7 +54,12 @@ export class CryptoProvider {
      * @return {string} The decrypted data as JSON object.
      */
     decryptObj(cipherMessage: string): any {
-        const bytes = CryptoJS.AES.decrypt(cipherMessage, this.secretKey);
-        return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        try {
+            const bytes = CryptoJS.AES.decrypt(cipherMessage, this.secretKey);
+            return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        } catch (e) {
+            console.log(e);
+           // return null;
+        }
     }
 }
