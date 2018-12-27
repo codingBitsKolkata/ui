@@ -236,6 +236,7 @@ input:active,select:active,button:active,label:active{
             height: 40px;
             border: 1px solid #dee1e4;
             color: #909396;
+            font-size: 14px;
             &::-webkit-input-placeholder {
                 color: #909396;
             }
@@ -270,6 +271,7 @@ input:active,select:active,button:active,label:active{
                 border-bottom-right-radius: 0;
                 border-right: 0;
                 color: #909396;
+                font-size: 14px;
                 &::after{
                     position: absolute;
                     right: 8px;
@@ -279,7 +281,86 @@ input:active,select:active,button:active,label:active{
             .dropdown-menu.show{
                 width: max-content !important;
                 padding: 20px 20px !important;
-                box-shadow: 0px 8px 0px 0px #bfbfbf;
+                box-shadow: 0px 8px 11px 2px #15151585;
+                label.text{
+                    color: #484848;
+                    font-size: 14px;
+                    font-family: latobold;
+                    span{
+                        color: #c9c7c7;
+                    }
+                }
+                .ng-number-picker{
+                    .input-group{
+                        height: 40px !important;
+                        margin: 0 !important;
+                        padding: 0px;
+                        border: 1px solid #c7c7c7;
+                        border-radius: 5px;
+                        .form-control{
+                            height: 100%;
+                            width: 44px;
+                            display: inline-block;
+                            border: none;
+                            text-align: center;
+                            border-left: 1px solid #dee1e4;
+                            border-right: 1px solid #dee1e4;
+                            padding-left: 0;
+                            padding-right: 0;
+                        }
+                        .input-group-prepend {
+                            margin-right: 0px;
+                        }
+                        .input-group-text{
+                            width: 35px;
+                            height: 100%;
+                            font-size: 24px !important;
+                            line-height: 22px;
+                            text-align: center;
+                            border: 0;
+                            background: #ffffff;
+                            display: inline-block;
+                            border-radius: 3px !important;
+                            padding-left: 0;
+                            padding-right: 0;
+                            &.decrease {
+                                font-size: 40px !important;
+                                background-color: transparent; 
+                                color: #484848 !important;
+                            }
+                            &.increase{
+                                color: #f47921 !important;
+                                border-left: 0px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .hotelBookDropdown{
+            width: 100%;
+            .btn.dropdown-toggle{
+                width: 100%;
+                text-align: left;
+                background-color: #fff;
+                border: 1px solid #dee1e4;
+                height: 40px;
+                font-size: 14px;
+                color: #909396;
+                &::after{
+                    position: absolute;
+                    right: 8px;
+                    top: 18px;
+                }
+            }
+            .dropdown-menu.show{
+                width: max-content !important;
+                padding: 20px 20px !important;
+                box-shadow: 0px 8px 11px 2px #15151585;
+                h5{
+                    font-size: 14px;
+                    font-family: latobold;
+                }
                 label.text{
                     color: #484848;
                     font-size: 14px;
@@ -360,10 +441,10 @@ input:active,select:active,button:active,label:active{
             float: right;
             .search-icon{
                 background: url(assets/images/search-icon.png) center center no-repeat;
-                width: 20px;
-                height: 20px;
+                width: 17px;
+                height: 18px;
                 background-size: 100%;
-                margin-right: 7px;
+                margin-right: 10px;
             }
         }
     }
@@ -1219,5 +1300,49 @@ input:active,select:active,button:active,label:active{
         span{
             display: block !important;
         }
+    }
+}
+
+// login-popup
+.login-popup{
+    .modal-dialog{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    @media (min-width: 576px){
+        .modal-dialog {
+            max-width: 400px;
+            margin: 1.75rem auto;
+        }
+    }
+}
+
+// Date Range Picker
+.custom-day {
+    text-align: center;
+    padding: 0.185rem 0.25rem;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+}
+.custom-day.focused {
+    background-color: #e6e6e6;
+}
+.custom-day.range, .custom-day:hover {
+    background-color: rgb(2, 117, 216);
+    color: white;
+}
+.custom-day.faded {
+    background-color: rgba(2, 117, 216, 0.5);
+}
+.dtpickerHide{
+      position: absolute !important;
+      z-index: -1;
+}
+.ngb-dp-day.disabled, .ngb-dp-day.hidden {
+    cursor: default;
+    color: #c7c7c7;
+    .custom-day:hover{
+        background-color: #e6e6e6;
     }
 }

@@ -11,6 +11,7 @@ import { NguCarouselModule } from '@ngu/carousel';
 import { NumberPickerModule } from 'ng-number-picker';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HttpClientModule } from '@angular/common/http';
 
 import { DesignRoutingModule } from './design-routing.module';
 import { SharedModule } from '../../shared/shared.module';
@@ -41,7 +42,8 @@ import { HostPropertyDetailsComponent } from './host-property-details/host-prope
     CancellationPolicyComponent, 
     MediaRoomComponent, 
     StickyMenuComponent, 
-    PropertyDashboardComponent, HostPropertyDetailsComponent
+    PropertyDashboardComponent, 
+    HostPropertyDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -59,6 +61,7 @@ import { HostPropertyDetailsComponent } from './host-property-details/host-prope
     NguCarouselModule,
     NumberPickerModule,
     HighchartsChartModule,
+    HttpClientModule,
     NgMultiSelectDropDownModule.forRoot()
   ]
 })
