@@ -164,6 +164,7 @@ input:active,select:active,button:active,label:active{
 
 // Home Slide
 .home-carousel{
+    position: relative;
     .carousel-indicators {
         bottom: 20px;
     }
@@ -185,8 +186,15 @@ input:active,select:active,button:active,label:active{
 }
 // BOOKING SECTION TAB
 .booking-section{
+    margin: auto;
     position: absolute;
-    top: 73px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    height: auto;
+    display: table;
     width: 100%;
     .tab-content{
         background-color: #ffffff !important;
@@ -1178,6 +1186,7 @@ input:active,select:active,button:active,label:active{
         border-radius: 100px;
         width: 70px;
         height: 70px;
+        cursor: pointer;
         img{
             height: 40px;
         }
