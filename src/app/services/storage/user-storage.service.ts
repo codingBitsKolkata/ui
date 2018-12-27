@@ -7,7 +7,9 @@ import { CryptoProvider } from '../crypto/crypto.service';
  * @class UserStorageProvider
  * @author Arvind Kushawaha
  */
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 
 export class UserStorageProvider {
     /** User Information storage key name */

@@ -65,7 +65,7 @@
         }
         form{
             .form-group{
-                input{
+                input , select {
                     font-family: latoitalic;
                     font-size: 14px;
                     color: #484848;
@@ -98,6 +98,9 @@
                     color: #f47921;
                 }
             }
+            & .is-invalid {
+                color: #e74c3c;
+            }
             .otp-heading{
                 text-align: center;
                 h3{
@@ -118,6 +121,12 @@
                 a{
                     color: #f47921;
                 }
+            }
+            .error-message{
+                width: 100%;
+                margin-bottom: 1rem;
+                font-size: 80%;
+                color: #e74c3c;
             }
         }
     }

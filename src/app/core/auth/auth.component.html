@@ -3,84 +3,92 @@
   <button type="button" class="close" aria-label="Close" (click)="closeModal()">
     <span aria-hidden="true">&times;</span>
   </button>
-  <ngb-tabset [justify]="currentJustify" #ngbTabset [activeId]="loginFormSelectedTab">
+  <ngb-tabset [justify]="currentJustify" (tabChange)="tabChange($event)" #ngbTabset [activeId]="loginFormSelectedTab">
     <ngb-tab id="loginTab">
       <ng-template ngbTabTitle>Log in</ng-template>
       <ng-template ngbTabContent>
         <!-- Login Form -->
-        <form action="">
+        <form *ngIf="!displayLoginOtpForm" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()" novalidate>
+            <div *ngIf="errorMessage" class="error-message"> 
+                {{errorMessage}}
+             </div>
           <div class="form-group">
-            <input type="email" class="form-control" placeholder="Email / Mobile">
+            <input type="text" class="form-control" placeholder="Email / Mobile" formControlName="emailMobile" [ngClass]="{ 'is-invalid': loginForm.controls['emailMobile'].touched && loginForm.controls['emailMobile'].errors }">
+            <div *ngIf="loginForm.controls['emailMobile'].errors && loginForm.controls['emailMobile'].touched"  class="invalid-feedback"> 
+                <div *ngIf="loginForm.controls['emailMobile'].errors.required">Please enter an email address or mobile number</div>
+                <div *ngIf="loginForm.controls['emailMobile'].errors.pattern">Please enter a valid email address or mobile number</div>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="loginType=='mobile'">
+              <select class="form-control" placeholder="Select Country code" formControlName="countryCode" [ngClass]="{ 'is-invalid': loginForm.controls['countryCode'].touched && loginForm.controls['countryCode'].errors }">
+                <option value="" selected>Select Country code</option>
+                <option *ngFor="let country of countryList" [ngValue]="country.countryId">({{ country.countryCode }}) {{country.countryName}}</option>
+              </select>
+              <div *ngIf="loginForm.controls['countryCode'].errors && loginForm.controls['countryCode'].touched"  class="invalid-feedback"> 
+                  <div>Please select country code from list</div>
+              </div>
           </div>
           <div class="text-right mt-4 clearfix">
-            <p class="change-tab-view">Not a memebr? <a href="#" (click)="ngbTabset.select('signupTab')"> Sign up</a></p>
-            <button class="btn btn-primary">Log in</button>
+            <p class="change-tab-view">Not a memebr? <a href="javascript:void(0)" (click)="ngbTabset.select('signupTab')"> Sign up</a></p>
+            <button class="btn btn-primary" type="submit">Log in</button>
           </div>
         </form>
-        <!-- Verify OTP Form -->
-        <form action="" class="d-none">
-          <div class="otp-heading mb-4">
-            <h3>Please enter the OTP to verify your acount</h3>
-            <p class="m-0">A OTP  has been sent to shibo***to@gmail.com or mobile</p>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Enter your OTP">
-          </div>
-          <div class="text-right mt-4 clearfix">
-            <p class="change-tab-view">Not a memebr? <a href="#" (click)="ngbTabset.select('signupTab')"> Sign up</a></p>
-            <button class="btn btn-primary verifyBtn">Validate OTP</button>
-          </div>
-          <div class="text-right mt-2">
-            <p class="resend-otp m-0">Resend <a href=""> OTP</a></p>
-          </div>
-        </form>
+        <app-otp-form *ngIf="displayLoginOtpForm" [otpFor]="'login'" [userData]="loginUserData" (otpValidateSuccess)="otpValidateSuccess($event)"></app-otp-form>
       </ng-template>
     </ngb-tab>
     <ngb-tab id="signupTab">
       <ng-template ngbTabTitle>Sign up</ng-template>
       <ng-template ngbTabContent>
         <!-- Signup Form -->
-        <form action="" >
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Fullname">
+        <form *ngIf="!displayRegisterOtpForm" [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()" novalidate>
+          <div *ngIf="errorMessage" class="error-message"> 
+             {{errorMessage}}
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email">
+            <input type="text" class="form-control" placeholder="Fullname" formControlName="name" [ngClass]="{ 'is-invalid': registerForm.controls['name'].touched && registerForm.controls['name'].errors }">
+            <div *ngIf="registerForm.controls['name'].errors && registerForm.controls['name'].touched"  class="invalid-feedback"> 
+                <div *ngIf="registerForm.controls['name'].errors.required">Please enter fullname</div>
+            </div>
           </div>
           <div class="form-group">
-            <input type="number" class="form-control" placeholder="Mobile">
+            <input type="text" class="form-control" placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': registerForm.controls['email'].touched && registerForm.controls['email'].errors }">
+            <div *ngIf="registerForm.controls['email'].errors && registerForm.controls['email'].touched"  class="invalid-feedback"> 
+                <div *ngIf="registerForm.controls['email'].errors.required">Please enter an email address</div>
+                <div *ngIf="registerForm.controls['email'].errors.pattern">Please enter valid email address</div>
+            </div>
+          </div>
+          <div class="form-group">
+              <div class="form-group">
+                  <select class="form-control" placeholder="Select Country code" formControlName="countryCode" [ngClass]="{ 'is-invalid': registerForm.controls['countryCode'].touched && registerForm.controls['countryCode'].errors }">
+                    <option value="" selected>Select Country code</option>
+                    <option *ngFor="let country of countryList" [ngValue]="country.countryId">({{ country.countryCode }}) {{country.countryName}}</option>
+                  </select>
+                  <div *ngIf="registerForm.controls['countryCode'].errors && registerForm.controls['countryCode'].touched"  class="invalid-feedback"> 
+                      <div>Please select country code from list</div>
+                  </div>
+              </div>
+         </div>
+          <div class="form-group">
+            <input type="number" class="form-control" placeholder="Mobile" formControlName="mobile" [ngClass]="{ 'is-invalid': registerForm.controls['mobile'].touched && registerForm.controls['mobile'].errors }">
+            <div *ngIf="registerForm.controls['mobile'].errors && registerForm.controls['mobile'].touched"  class="invalid-feedback"> 
+                <div *ngIf="registerForm.controls['mobile'].errors.required">Please enter mobile number</div>
+                <div *ngIf="registerForm.controls['mobile'].errors.pattern">Please enter valid mobile number</div>
+            </div>
           </div>
           <div class="form-group">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-              <label class="form-check-label" for="invalidCheck2" class="terms-conditions">
-                  I agree to the Orastays <a href=""> Privacy Policy</a> 
+              <input class="form-check-input" type="checkbox" id="invalidCheck2" formControlName="cb">
+              <label class="form-check-label" for="invalidCheck2" class="terms-conditions" [ngClass]="{ 'is-invalid': registerForm.controls['cb'].touched && registerForm.controls['cb'].errors }">
+                  I agree to the Orastays <a href="javascript:void(0)"> Privacy Policy</a> 
               </label>
             </div>
           </div>
           <div class="text-right mt-4 clearfix">
-            <p class="change-tab-view">Already registered? <a href="#" (click)="ngbTabset.select('loginTab')">  Log in</a></p>
-            <button class="btn btn-primary">Sign up</button>
+            <p class="change-tab-view">Already registered? <a href="javascript:void(0)" (click)="ngbTabset.select('loginTab')">  Log in</a></p>
+            <button class="btn btn-primary" type="submit">Sign up</button>
           </div>
         </form>
-
-        <!-- Verify OTP Form -->
-        <form action="" class="d-none">
-          <div class="otp-heading mb-4">
-            <h3>Please enter the OTP to verify your acount</h3>
-            <p class="m-0">A OTP  has been sent to shibo***to@gmail.com or mobile</p>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Enter your OTP">
-          </div>
-          <div class="text-right mt-4 clearfix">
-            <p class="change-tab-view">Not a memebr? <a href="#" (click)="ngbTabset.select('loginTab')"> Sign up</a></p>
-            <button class="btn btn-primary verifyBtn">Validate OTP</button>
-          </div>
-          <div class="text-right mt-2">
-            <p class="resend-otp m-0">Resend <a href=""> OTP</a></p>
-          </div>
-        </form>
+        <app-otp-form *ngIf="displayRegisterOtpForm" [otpFor]="'register'" [userData]="registerUserData" (otpValidateSuccess)="otpValidateSuccess($event)"></app-otp-form>
       </ng-template>
     </ngb-tab>
   </ngb-tabset>

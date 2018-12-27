@@ -6,7 +6,9 @@ import * as CryptoJS from 'crypto-js';
  * @fileOverview This file is responsible to manage encrypt decrypt of requested data.
  * @author Arvind Kushawaha
 */
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class CryptoProvider {
     /**
      * @property secretKey for
