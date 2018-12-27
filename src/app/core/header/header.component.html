@@ -10,7 +10,7 @@
       </div>
       <div class="navbar-expand mr-auto">
         <div class="navbar-nav">
-          <span class="heading" (click)="openTestModal()">India's largest homestay brand</span>
+          <span class="heading">India's largest homestay brand</span>
         </div>
       </div>
       <div class="navbar-expand ml-auto navbar-nav">
@@ -20,8 +20,8 @@
           <div ngbDropdown placement="bottom-right" class="d-inline-block user-dropdown">
             <button class="btn dropdown-btn" id="dropdownBasic2" ngbDropdownToggle></button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
-              <button type="button" class="btn dropdown-item" (click)="open(loginForm, 'loginTab')"><i class="fa fa-lock pr-1"></i> LOGIN</button>
-              <button type="button" class="btn dropdown-item" (click)="open(loginForm, 'signupTab')"><i class="fa fa-lock pr-1"></i> SIGNUP</button>
+              <button type="button" class="btn dropdown-item" (click)="openLoginSignUpModal('loginTab')"><i class="fa fa-lock pr-1"></i> LOGIN</button>
+              <button type="button" class="btn dropdown-item" (click)="openLoginSignUpModal('signupTab')"><i class="fa fa-lock pr-1"></i> SIGNUP</button>
               <button type="button" class="btn dropdown-item" routerLink="/property-dashboard"><i class="fa fa-user pr-1"></i> PROFILE</button>
               <button type="button" class="btn dropdown-item" routerLink="/"><i class="fa fa-power-off pr-1"></i> LOGOUT</button>
               
