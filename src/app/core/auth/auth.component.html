@@ -33,7 +33,7 @@
             <button class="btn btn-primary" type="submit">Log in</button>
           </div>
         </form>
-        <app-otp-form *ngIf="displayLoginOtpForm" [otpFor]="'login'" [userData]="loginUserData" (otpValidateSuccess)="otpValidateSuccess($event)"></app-otp-form>
+        <app-otp-form *ngIf="displayLoginOtpForm" [otpFor]="'login'" [userData]="loginUserData" (otpValidateSuccess)="otpValidateSuccess($event)" (loginSignUpLinkClick)="loginSignUpLinkClick($event)"></app-otp-form>
       </ng-template>
     </ngb-tab>
     <ngb-tab id="signupTab">
@@ -88,7 +88,7 @@
             <button class="btn btn-primary" type="submit">Sign up</button>
           </div>
         </form>
-        <app-otp-form *ngIf="displayRegisterOtpForm" [otpFor]="'register'" [userData]="registerUserData" (otpValidateSuccess)="otpValidateSuccess($event)"></app-otp-form>
+        <app-otp-form *ngIf="displayRegisterOtpForm" [otpFor]="'register'" [userData]="registerUserData" (otpValidateSuccess)="otpValidateSuccess($event)" (loginSignUpLinkClick)="loginSignUpLinkClick($event)"></app-otp-form>
       </ng-template>
     </ngb-tab>
   </ngb-tabset>

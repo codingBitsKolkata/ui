@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {NgbTabChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 import { TestModalComponent } from '../../shared/components/test-modal/test-modal.component';
 import { AuthComponent } from '../auth/auth.component';
+import { UserStorageProvider } from '../../services/storage/user-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -10,13 +11,30 @@ import { AuthComponent } from '../auth/auth.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements AfterViewInit, OnInit {
-  @ViewChild('comingSoonModalBtn') comingSoonModalBtn:ElementRef;
+  @ViewChild('comingSoonModalBtn') comingSoonModalBtn: ElementRef;
 
   currentJustify = 'justified';
   loginFormSelectedTab = 'loginTab';
   title = 'testing';
-
+  userInfo: any;
+  isLogined = false;
   navbarOpen = false;
+
+  constructor(
+    private modalService: NgbModal,
+    private userStorage: UserStorageProvider
+  ) {
+      this.userInfo = this.userStorage.get();
+      if (this.userInfo) {
+        this.isLogined = true;
+      }
+    // customize default values of modals used by this component tree
+    // config.backdrop = 'static';
+    // config.keyboard = false;
+    }
+  ngOnInit() {
+    console.log(this.userInfo);
+  }
   oncloseModal(event: string) {
     console.log(event);
 
@@ -27,14 +45,6 @@ export class HeaderComponent implements AfterViewInit, OnInit {
 
   beforeChange($event: NgbTabChangeEvent) {
     console.log('Changing tab', $event);
-  }
-
-  constructor(private modalService: NgbModal) {
-    // customize default values of modals used by this component tree
-    // config.backdrop = 'static';
-    // config.keyboard = false;
-  }
-  ngOnInit() {
   }
   ngAfterViewInit() {
     // this.comingSoonModalBtn.nativeElement.click();
@@ -51,5 +61,10 @@ export class HeaderComponent implements AfterViewInit, OnInit {
   openLoginSignUpModal(selectedTab) {
     const modalRef = this.modalService.open(AuthComponent, {windowClass: 'login-popup', centered: true});
     modalRef.componentInstance.loginFormSelectedTab = selectedTab;
+  }
+  logOut() {
+    this.userStorage.clear();
+    location.reload(true);
+
   }
 }

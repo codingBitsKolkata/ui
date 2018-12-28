@@ -126,6 +126,7 @@ export class AuthComponent implements OnInit {
       this.loginForm.reset();
       this.loginForm.patchValue({'countryCode': ''});
     }
+    this.loginFormSelectedTab = currentTabName;
     this.loginType = 'email';
     this.errorMessage = '';
   }
@@ -208,6 +209,12 @@ export class AuthComponent implements OnInit {
       this.userStorage.set(data);
      // this.closeModal();
       location.reload(true);
+    }
+  }
+  loginSignUpLinkClick(tabName: string) {
+    if (tabName) {
+     // console.log(tabName);
+      this.loginFormSelectedTab = tabName;
     }
   }
 }
