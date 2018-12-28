@@ -20,15 +20,18 @@
           <div ngbDropdown placement="bottom-right" class="d-inline-block user-dropdown">
             <button class="btn dropdown-btn" id="dropdownBasic2" ngbDropdownToggle></button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
-              <button type="button" class="btn dropdown-item" (click)="openLoginSignUpModal('loginTab')"><i class="fa fa-lock pr-1"></i> LOGIN</button>
-              <button type="button" class="btn dropdown-item" (click)="openLoginSignUpModal('signupTab')"><i class="fa fa-lock pr-1"></i> SIGNUP</button>
-              <button type="button" class="btn dropdown-item" routerLink="/property-dashboard"><i class="fa fa-user pr-1"></i> PROFILE</button>
-              <button type="button" class="btn dropdown-item" routerLink="/"><i class="fa fa-power-off pr-1"></i> LOGOUT</button>
+              <button type="button" *ngIf="!isLogined" class="btn dropdown-item" (click)="openLoginSignUpModal('loginTab')"><i class="fa fa-lock pr-1"></i> LOGIN</button>
+              <button type="button" *ngIf="!isLogined" class="btn dropdown-item" (click)="openLoginSignUpModal('signupTab')"><i class="fa fa-lock pr-1"></i> SIGNUP</button>
+              <button type="button" *ngIf="isLogined" class="btn dropdown-item" routerLink="/property-dashboard"><i class="fa fa-user pr-1"></i> PROFILE</button>
+              <button type="button" *ngIf="isLogined" class="btn dropdown-item" (click)="logOut()"><i class="fa fa-power-off pr-1"></i> LOGOUT</button>
               
             </div>
           </div>
-          <!-- <button type="button" class="btn btn-light btn-sm mr-2 fs-12 signup-btn d-none d-sm-block" (click)="open(loginForm, 'signupTab')">SIGNUP</button> -->
-          <!-- <button type="button" class="btn btn-primary btn-sm login-btn fs-12 login-btn" (click)="open(loginForm, 'loginTab')"><i class="fa fa-lock pr-1 lock-icon"></i><i class="mobile-icon" aria-hidden="true"></i> <span class="text">LOGIN</span></button> -->
+          <!--
+          <button type="button" *ngIf="!isLogined" class="btn btn-light btn-sm mr-2 fs-12 signup-btn d-none d-sm-block" (click)="openLoginSignUpModal('signupTab')">SIGNUP</button> 
+          <button type="button" *ngIf="!isLogined" class="btn btn-primary btn-sm login-btn fs-12 login-btn" (click)="openLoginSignUpModal('loginTab')"><i class="fa fa-lock pr-1 lock-icon"></i><i class="mobile-icon" aria-hidden="true"></i> <span class="text">LOGIN</span></button>
+          <button type="button" *ngIf="isLogined" class="btn btn-primary btn-sm login-btn fs-12 login-btn" (click)="logOut()"><i class="fa fa-power-off pr-1"></i><i class="mobile-icon" aria-hidden="true"></i> <span class="text">LOGOUT</span></button>
+              -->
         </div>
       </div>
 

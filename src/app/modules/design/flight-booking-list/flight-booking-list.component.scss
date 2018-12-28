@@ -1,0 +1,395 @@
+.header-image-slide{
+    margin-top: 76px;
+    img{
+        max-height: 320px;
+    }
+}
+.filter-container{
+    padding-top: 26px;
+    padding-bottom: 26px;
+    .flight-found{
+        display: flex;
+        span.icon{
+            background: url(../../../../assets/images/flight/flight-icon.png) no-repeat;
+            width: 37px;
+            height: 36px;
+            display: block;
+        }
+        p{
+            padding: 0;
+            margin: 0;
+            line-height: 36px;
+            color: #231f20;
+            font-size: 14px;
+            font-family: latobold;
+            
+            span{
+                color: #f47921;
+            }
+        }
+    }
+}
+
+.flight-list-section{
+    .pt-24{
+        padding-top: 24px;
+    }
+    .flight-found{
+        display: flex;
+        padding: 20px 0;
+        span.icon{
+            background: url(../../../../assets/images/flight/flight-icon.png) no-repeat;
+            width: 37px;
+            height: 36px;
+            display: block;
+        }
+        p{
+            padding: 0;
+            margin: 0;
+            line-height: 36px;
+            color: #231f20;
+            font-size: 14px;
+            font-family: latobold;
+            
+            span{
+                color: #f47921;
+            }
+        }
+    }
+    .flight-quick-search{
+        color: #130504;
+        .card-header{
+            background-color: #e5e5e5;
+            border-bottom: 1px solid #e5e5e5;
+            font-family: latobold;
+            font-size: 16px;
+            padding-top: 13px;
+            padding-bottom: 12px;
+            color: #130504;
+        }
+        .card-body{
+            padding-top: 0;
+            padding-bottom: 30px;
+            background-color: #e5e5e5;
+            .card-title{
+                font-size: 14px;
+            }
+        }
+        .flight-location{
+            .form-control{
+                border-right: 0;
+            }
+            .fromBox{
+                .input-group-text{
+                    background-color: #ffffff;
+                    border-right: 0;
+                    // border-color: #dee1e4;
+                }
+            }
+            .toBox{
+                .input-group-text{
+                    background-color: #ffffff;
+                    // border-color: #dee1e4;
+                }
+            }
+            .switch-location{
+                display: block;
+                background: url(../../../../assets/images/flight/flight_arrows.png) center center no-repeat;
+                background-size: 100%;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 10px;
+                left: calc(50% - 10px);
+                z-index: 999;
+                border: 1px solid #ccc;
+                border-radius: 50px;
+                background-color: #fff;
+            }
+        }
+        .calendar{
+            background: #fff !important;
+            color: #909396 !important;
+            border-color: #ced4da !important;
+            &:hover,&:focus,&:active{
+                color: #f57921 !important;
+            }
+        }
+        .checkin-pick{
+            border-left: none;
+            border-right: none;
+        }
+        .checkout-pick{
+            border-left: none;
+        }
+        .search-btn{
+            display: flex;
+            line-height: 17px;
+            font-size: 16px;
+            font-family: latobold;
+            float: right;
+            .search-icon{
+                background: url(../../../../assets/images/search-icon.png) center center no-repeat;
+                width: 17px;
+                height: 18px;
+                background-size: 100%;
+                margin-right: 10px;
+            }
+        }
+        .travellersDropdown{
+            width: 100%;
+            .btn.dropdown-toggle{
+                width: 100%;
+                text-align: left;
+                background-color: #fff;
+                border: 1px solid #dee1e4;
+                height: 40px;
+                border-right: 0;
+                color: #909396;
+                font-size: 14px;
+                &::after{
+                    position: absolute;
+                    right: 8px;
+                    top: 18px;
+                }
+            }
+            .dropdown-menu.show{
+                padding: 20px 10px !important;
+                top: 40px !important;
+                position: initial;
+                margin-top: -1px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border: 1px solid rgba(183, 181, 181, 0.15);
+                label.text{
+                    color: #484848;
+                    font-size: 14px;
+                    font-family: latobold;
+                    span{
+                        color: #c9c7c7;
+                    }
+                }
+                ::ng-deep{
+                    .ng-number-picker{
+                        .input-group{
+                            height: 40px !important;
+                            margin: 0 !important;
+                            padding: 0px;
+                            border: 1px solid #c7c7c7;
+                            border-radius: 5px;
+                            .form-control{
+                                height: 100%;
+                                width: 44px;
+                                display: inline-block;
+                                border: none;
+                                text-align: center;
+                                border-left: 1px solid #dee1e4;
+                                border-right: 1px solid #dee1e4;
+                                padding-left: 0;
+                                padding-right: 0;
+                            }
+                            .input-group-prepend {
+                                margin-right: 0px;
+                            }
+                            .input-group-text{
+                                width: 35px;
+                                height: 100%;
+                                font-size: 24px !important;
+                                line-height: 22px;
+                                text-align: center;
+                                border: 0;
+                                background: #ffffff;
+                                display: inline-block;
+                                border-radius: 3px !important;
+                                padding-left: 0;
+                                padding-right: 0;
+                                &.decrease {
+                                    font-size: 40px !important;
+                                    background-color: transparent; 
+                                    color: #484848 !important;
+                                }
+                                &.increase{
+                                    color: #f47921 !important;
+                                    border-left: 0px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .filter-more-btn{
+        color: #f47921;
+        font-size: 12px;
+        font-family: latobold;
+    }
+    .flight-listing-area{
+        .left-panel-blue{
+            background-color: #3f6db8;
+            padding-left: 50px;
+            text-align: left;
+            
+        }
+        .right-panel-blue{
+            background-color: #4878c2;
+            text-align: right;
+            padding-right: 50px;
+        }
+        .last-panel-blue{
+            background-color: #4878c2;
+            padding-right: 10px;
+            text-align: left;
+            .filter-panel{
+                padding: 40px 0px 15px 0px;
+                .btn-filter{
+                    padding: 0;
+                    background-color: transparent;
+                    color: #fff;
+                    font-size: 12px;
+                    font-family: latobold;
+                    margin-right: 25px;
+                }
+                .check-box{
+                    font-size: 12px;
+                    font-family: latoblack;
+                    color: #fff;
+                    margin-bottom: 0;
+                    padding-left: 20px;
+                    .checkmark{
+                        border: 2px solid #ffffff;
+                        height: 15px;
+                        width: 15px;
+                        top: 2px;
+                    }
+                }
+            }
+        }
+        .h-top{
+            padding: 40px 0px 15px 0px;
+            span{
+                font-size: 12px;
+                font-family: latoblack;
+                color: #5f93e4;
+                text-transform: uppercase;
+            }
+        }
+        .h-bottom{
+            padding: 15px 0px 40px 0px;
+            h5{
+                font-size: 14px;
+                font-family: latobold;
+                color: #fff;
+                margin: 0;
+            }
+            span{
+                font-family: latoregular;
+                font-size: 10px;
+                color: #fff;
+                display: block;
+            }
+        }
+    }
+
+    .list-flight{
+        .flight-card{
+            margin-right: 0px;
+            border-radius: 10px;
+            box-shadow: 0px 8px 0px -1px #ebebeb;
+            .left-panel{
+                border: 1px solid #ebebeb;
+                padding: 0;
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+                .c-header{
+                    padding: 10px 20px;
+                    border-bottom: 1px solid #ebebeb;
+                    .f-logo{
+                        img{
+                            height: 30px;
+                            border-radius: 50px;
+                        }
+                        .f-name{
+                            font-family: latoregular;
+                            color: #484848;
+                            font-size: 12px;
+                            margin-left: 10px;
+                        }
+                    }
+                    .badge-gray{
+                        font-size: 10px;
+                        font-family: latoblack;
+                        color: #fff;
+                        background-color: #a9abad;
+                        padding: 5px 7px;
+                        border-radius: 2px;
+                        margin: 0 2px;
+                    }
+                    .badge-outline{
+                        font-size: 10px;
+                        font-family: latoblack;
+                        color: #999b9e;
+                        background-color: #ffffff;
+                        padding: 5px 7px;
+                        border-radius: 2px;
+                        margin: 0 2px;
+                        border: 1px solid #a9abad;
+                    }
+                    .btn-details{
+                        background-color: transparent;
+                        border: 0;
+                        outline: 0;
+                        font-size: 12px;
+                        font-family: latoblack;
+                        color: #c1c8d0;
+                    }
+                }
+                .c-body{
+                    padding: 10px 20px;
+                }
+            }
+            .right-panel{
+                border: 1px solid #ebebeb;
+                border-left: 0;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+                .input-hidden{
+                    position: absolute;
+                    left: -9999px;
+                }
+                .class{
+                    font-family: latoitalic;
+                    color: #c1c8d0;
+                    font-size: 14px;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
+                .p-from{
+                    display: block;
+                    font-size: 12px;
+                    color: #c1c8d0;
+                    font-family: latoregular;
+                }
+                .price{
+                    font-size: 18px;
+                    font-family: latobold;
+                    color: #5db5ff;
+                    margin-bottom: 10px;
+                    display: block;
+                }
+                &:hover{
+                    background-color: #5db5ff;
+                    .class{
+                        color: #ffffff;
+                    }
+                    .p-from{
+                        color: #ffffff;
+                    }
+                    .price{
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -12,6 +12,7 @@ import { CancellationPolicyComponent } from './cancellation-policy/cancellation-
 import { MediaRoomComponent } from './media-room/media-room.component';
 import { PropertyDashboardComponent } from './property-dashboard/property-dashboard.component';
 import { HostPropertyDetailsComponent } from './host-property-details/host-property-details.component';
+import { FlightBookingListComponent } from './flight-booking-list/flight-booking-list.component';
 
 
 const routerConfig: Routes = [
@@ -27,6 +28,7 @@ const routerConfig: Routes = [
   { path: 'cancellation-policy', component: CancellationPolicyComponent},
   { path: 'property-dashboard', component: PropertyDashboardComponent},
   { path: 'host-property-details', component: HostPropertyDetailsComponent},
+  { path: 'flight-list', component: FlightBookingListComponent},
 ];
 
 @NgModule({
