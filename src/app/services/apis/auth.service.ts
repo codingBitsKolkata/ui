@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AppConst } from '../../app.constants';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 import {
   LoginRequest,
   LoginResponse,
@@ -98,6 +99,32 @@ export class AuthService {
     const request = {
       'url': AppConst.AUTH_API_BASE_URL + '/validate-otp',
       'params' : requestParam
+    };
+    return this.httpClient.post<any>(request.url, request.params);
+  }
+    /**
+	 * Method used to check email id exist
+	 * @param {any} requestParam
+	 * @returns {Observable<any>}
+	 * @memberof AuthService
+	 */
+  checkEmailExist(requestParam: any): Observable<any> {
+    const request = {
+      'url': AppConst.AUTH_API_BASE_URL + '/check-email',
+      'params' : { email: requestParam}
+    };
+    return this.httpClient.post<any>(request.url, request.params);
+  }
+    /**
+	 * Method used to check mobile number exist
+	 * @param {any} requestParam
+	 * @returns {Observable<any>}
+	 * @memberof AuthService
+	 */
+  checkMobileExist(requestParam: any): Observable<any> {
+    const request = {
+      'url': AppConst.AUTH_API_BASE_URL + '/check-mobile',
+      'params' : { mobile: requestParam}
     };
     return this.httpClient.post<any>(request.url, request.params);
   }

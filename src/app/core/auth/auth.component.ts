@@ -5,6 +5,8 @@ import { WhiteSpaceValidator } from '../../directives/validators/white-space-val
 import { SharedService} from '../../services/shared.service';
 import { AuthService } from '../../services/apis/auth.service';
 import { UserStorageProvider } from '../../services/storage/user-storage.service';
+import { ValidateEmailNotTaken } from '../../directives/validators/email-not-taken-validation.1';
+import { ValidateMobileNotTaken } from '../../directives/validators/mobile-not-taken-validation';
 
 @Component({
   selector: 'app-auth',
@@ -110,9 +112,9 @@ export class AuthComponent implements OnInit {
     /* tslint:enable */
     this.registerForm = this.fb.group({
       name: new FormControl('', [WhiteSpaceValidator.validate]),
-      email: ['', [Validators.required, Validators.pattern(this.emailRegx)]],
+      email: new FormControl('', [Validators.required, Validators.pattern(this.emailRegx)], [ValidateEmailNotTaken(this.authSrv)]),
       countryCode : ['' , [Validators.required]],
-      mobile: ['', [Validators.required, Validators.pattern(this.mobileRegx)]],
+      mobile: new FormControl('', [Validators.required, Validators.pattern(this.mobileRegx)], [ValidateMobileNotTaken(this.authSrv)]),
       cb: [false, [Validators.required, Validators.requiredTrue]]
      });
   }

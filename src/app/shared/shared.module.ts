@@ -30,7 +30,7 @@ import { FileValidator} from '../directives/validators/file-validation';
     ModalComponent,
     TestModalComponent,
     WhiteSpaceValidator,
-    FileValidator
+    FileValidator,
   ],
   entryComponents: [
     TestModalComponent
