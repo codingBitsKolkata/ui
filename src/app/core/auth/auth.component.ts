@@ -5,7 +5,7 @@ import { WhiteSpaceValidator } from '../../directives/validators/white-space-val
 import { SharedService} from '../../services/shared.service';
 import { AuthService } from '../../services/apis/auth.service';
 import { UserStorageProvider } from '../../services/storage/user-storage.service';
-import { ValidateEmailNotTaken } from '../../directives/validators/email-not-taken-validation.1';
+import { ValidateEmailNotTaken } from '../../directives/validators/email-not-taken-validation';
 import { ValidateMobileNotTaken } from '../../directives/validators/mobile-not-taken-validation';
 
 @Component({
@@ -113,8 +113,9 @@ export class AuthComponent implements OnInit {
     this.registerForm = this.fb.group({
       name: new FormControl('', [WhiteSpaceValidator.validate]),
       email: new FormControl('', [Validators.required, Validators.pattern(this.emailRegx)], [ValidateEmailNotTaken(this.authSrv)]),
-      countryCode : ['' , [Validators.required]],
-      mobile: new FormControl('', [Validators.required, Validators.pattern(this.mobileRegx)], [ValidateMobileNotTaken(this.authSrv)]),
+      countryCode : new FormControl('', [Validators.required]),
+        // tslint:disable-next-line:max-line-length
+      mobile: new FormControl('', [Validators.required, Validators.pattern(this.mobileRegx)], [ValidateMobileNotTaken(this.authSrv, 'countryCode')]),
       cb: [false, [Validators.required, Validators.requiredTrue]]
      });
   }
@@ -175,6 +176,7 @@ export class AuthComponent implements OnInit {
 	 * This method will get invoked after submit of the Register Form.
 	 */
   onSubmitRegister() {
+    console.log(this.registerForm);
     if (this.registerForm.valid) {
       console.log(this.registerForm.value);
       const registerFormData =  this.registerForm.value;

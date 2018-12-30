@@ -111,7 +111,7 @@ export class AuthService {
   checkEmailExist(requestParam: any): Observable<any> {
     const request = {
       'url': AppConst.AUTH_API_BASE_URL + '/check-email',
-      'params' : { email: requestParam}
+      'params' : { emailId: requestParam}
     };
     return this.httpClient.post<any>(request.url, request.params);
   }
@@ -124,7 +124,7 @@ export class AuthService {
   checkMobileExist(requestParam: any): Observable<any> {
     const request = {
       'url': AppConst.AUTH_API_BASE_URL + '/check-mobile',
-      'params' : { mobile: requestParam}
+      'params' : { mobileNumber: requestParam.mobile, country: {countryId : requestParam.countryId}}
     };
     return this.httpClient.post<any>(request.url, request.params);
   }
