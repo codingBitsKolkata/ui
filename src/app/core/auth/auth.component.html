@@ -60,7 +60,7 @@
           </div>
           <div class="form-group">
               <div class="form-group">
-                  <select class="form-control" placeholder="Select Country code" formControlName="countryCode" [ngClass]="{ 'is-invalid': registerForm.controls['countryCode'].touched && registerForm.controls['countryCode'].errors && !registerForm.controls['countryCode'].errors.mobileTaken }">
+                  <select class="form-control" placeholder="Select Country code" formControlName="countryCode" [ngClass]="{ 'is-invalid': registerForm.controls['countryCode'].touched && registerForm.controls['countryCode'].errors && !registerForm.controls['countryCode'].errors.mobileTaken }" (change)="onCountryChange()">
                     <option value="" selected>Select Country code</option>
                     <option *ngFor="let country of countryList" [ngValue]="country.countryId">({{ country.countryCode }}) {{country.countryName}}</option>
                   </select>

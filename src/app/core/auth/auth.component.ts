@@ -221,4 +221,7 @@ export class AuthComponent implements OnInit {
       this.loginFormSelectedTab = tabName;
     }
   }
+  onCountryChange() {
+    this.registerForm.controls['mobile'].updateValueAndValidity();
+  }
 }

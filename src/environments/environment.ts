@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   // Server
   auth_api_base_url: 'http://104.211.93.162:7185/api',
+  subscriber_api_base_url: 'http://104.211.93.162:7086/api',
   // Local
   // auth_api_base_url: 'http://192.168.100.135:7185/api',
   api_base_url: 'http://localhost:4200',
