@@ -15,9 +15,20 @@ import { TagInputModule } from 'ngx-chips';
 import { NguCarouselModule } from '@ngu/carousel';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { StaySearchFormComponent } from './components/stay-search-form/stay-search-form.component';
+import { FlightSearchFormComponent } from './components/flight-search-form/flight-search-form.component';
+import { SearchFormComponent } from './components/search-form/search-form.component';
 
 @NgModule({
-  declarations: [ModalComponent, TestModalComponent, WhiteSpaceValidator, FileValidator],
+  declarations: [
+    ModalComponent,
+    TestModalComponent,
+    WhiteSpaceValidator,
+    FileValidator,
+    StaySearchFormComponent,
+    FlightSearchFormComponent,
+    SearchFormComponent
+  ],
   imports: [
     CommonModule,
     NgbModule,
@@ -48,7 +59,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     TagInputModule,
     NguCarouselModule,
     HighchartsChartModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule,
+    SearchFormComponent
   ],
   entryComponents: [
     TestModalComponent

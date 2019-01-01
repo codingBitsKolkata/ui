@@ -8,6 +8,9 @@ export class AppConst {
     /**  API base URL with port | Dev Env */
     public static readonly AUTH_API_BASE_URL: string = environment.auth_api_base_url;
     public static readonly SUBSCRIBER_API_BASE_URL: string = environment.subscriber_api_base_url;
+    public static readonly TESTIMONIAL_API_BASE_URL: string = environment.testimonial_api_base_url;
+    public static readonly PROPERTY_ADD_API_BASE_URL: string = environment.property_add_api_base_url;
+    public static readonly PROPERTY_API_BASE_URL: string = environment.property_api_base_url;
     /**  Data encryption secret key */
     public static readonly ENC_KEY: string = '!InT@eLioR!#';
     /**  API key */

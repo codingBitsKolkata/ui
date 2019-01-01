@@ -37,7 +37,6 @@ export class FooterComponent implements OnInit {
     if (this.newsletterForm.valid) {
       console.log(this.newsletterForm.value);
       const requestData = this.newsletterForm.value;
-      requestData['userToken'] = '860d520c-f365-4fd5-b6b3-754dae053355';
       this.subscriberSrv.addSubscriber(requestData).subscribe((responseData) => {
         console.log(responseData);
         this.newsLetterMessage = responseData.responseBody;
