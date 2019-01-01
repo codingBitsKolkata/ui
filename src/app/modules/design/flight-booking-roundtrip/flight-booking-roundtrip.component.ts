@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {NgbDate, NgbCalendar, NgbDatepickerConfig, NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-flight-booking-list',
-  templateUrl: './flight-booking-list.component.html',
-  styleUrls: ['./flight-booking-list.component.scss']
+  selector: 'app-flight-booking-roundtrip',
+  templateUrl: './flight-booking-roundtrip.component.html',
+  styleUrls: ['./flight-booking-roundtrip.component.scss']
 })
-export class FlightBookingListComponent implements OnInit {
+export class FlightBookingRoundtripComponent implements OnInit {
   @ViewChild('dpFlight') dpFlight: NgbInputDatepicker;
 
   public isCollapsed = true;
@@ -50,5 +50,6 @@ export class FlightBookingListComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }
