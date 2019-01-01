@@ -28,7 +28,8 @@ import { MediaRoomComponent } from './media-room/media-room.component';
 import { StickyMenuComponent } from './sticky-menu/sticky-menu.component';
 import { PropertyDashboardComponent } from './property-dashboard/property-dashboard.component';
 import { HostPropertyDetailsComponent } from './host-property-details/host-property-details.component';
-import { FlightBookingListComponent } from './flight-booking-list/flight-booking-list.component';
+import { FlightBookingListComponent } from './flight-booking-oneway/flight-booking-list.component';
+import { FlightBookingRoundtripComponent } from './flight-booking-roundtrip/flight-booking-roundtrip.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { FlightBookingListComponent } from './flight-booking-list/flight-booking
     MediaRoomComponent, 
     StickyMenuComponent, 
     PropertyDashboardComponent, 
-    HostPropertyDetailsComponent, FlightBookingListComponent
+    HostPropertyDetailsComponent, FlightBookingListComponent, FlightBookingRoundtripComponent
   ],
   imports: [
     CommonModule,

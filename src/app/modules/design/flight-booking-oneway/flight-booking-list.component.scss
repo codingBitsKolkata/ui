@@ -668,3 +668,57 @@
         }
     }
 }
+
+::ng-deep .personal-info{
+    @media (min-width: 576px){
+        .modal-dialog {
+            max-width: 600px;
+            margin: 1.75rem auto;
+        }   
+    }
+    .modal-container{
+        padding: 30px;
+    }
+    .form-control{
+        height: 45px;
+        font-size: 14px;
+        font-family: latoitalic;
+        color: #484848;
+    }
+    .short-desc{
+        color: #acacac;
+        font-size: 14px;
+        font-family: latoregular;
+        margin-bottom: 30px;
+    }
+    .flight-footer{
+        margin: 0px -30px -30px -30px;
+        .btn-left{
+            width: 50%;
+            height: 60px;
+            border-radius: 0;
+            border-bottom-left-radius: 5px;
+            background-color: #4069b9;
+            color: #fff;
+            font-size: 14px;
+            font-family: latobold;
+            i{
+                margin-left: 50px;
+            }
+        }
+        .btn-right{
+            width: 50%;
+            height: 60px;
+            border-radius: 0;
+            border-bottom-right-radius: 5px;
+            background-color: #5db5ff;
+            color: #fff;
+            font-size: 14px;
+            font-family: latobold;
+            i{
+                margin-left: 50px;
+            }
+        }
+        
+    }
+}
