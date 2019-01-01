@@ -1,0 +1,858 @@
+<div class="host-listing-section">
+  <!-- Header Image -->
+  <div class="container-fluid host-listing-head p-0 mt-76">
+    <img class="w-100" src="assets/images/host-listing-slider-img.png" />
+    <div class="container-fluid header-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="title">List your property with us..</h2>
+            <p class="info">Register can take as little as 15 minutes to complete - <span> Get Started Now </span> !! <img class="arrow" src="assets/images/host-arrow.png" alt=""> </p>
+            <button class="btn btn-primary btn-md mt-2 pb-10">Calculate your earning <img class="icon-calculator" src="assets/images/icon-calculator.png" alt=""> </button>
+          </div>
+          <div class="col-md-6">
+            <div class="listing-form">
+              <form-wizard>
+                <wizard-step>
+                  <h4 class="title">What type of property you are listing ?</h4>
+                  <div class="d-flex text-center mt-30">
+                    <div class="property-type">
+                      <input type="radio" name="property-type" id="homestay" class="input-hidden" />
+                      <label class="items" for="homestay">
+                        <img src="assets/images/homestay-icon.png" alt="">
+                        <span class="item-checked"></span>
+                      </label>
+                      <p class="name">Homestay</p>
+                    </div>
+                    <div class="property-type">
+                      <input type="radio" name="property-type" id="guestHouse" class="input-hidden" />
+                      <label class="items" for="guestHouse">
+                        <img src="assets/images/guesthouse-icon.png" alt="">
+                        <span class="item-checked"></span>
+                      </label>
+                      <p class="name">Guest house</p>
+                    </div>
+                    <div class="property-type">
+                      <input type="radio" name="property-type" id="hotel" class="input-hidden" />
+                      <label class="items" for="hotel">
+                        <img src="assets/images/hotel-icon.png" alt="">
+                        <span class="item-checked"></span>
+                      </label>
+                      <p class="name">Hotel</p>
+                    </div>
+                    <div class="property-type">
+                      <input type="radio" name="property-type" id="payingGuest" class="input-hidden" />
+                      <label class="items" for="payingGuest">
+                        <img src="assets/images/payingguest-icon.png" alt="">
+                        <span class="item-checked"></span>
+                      </label>
+                      <p class="name">Paying guest</p>
+                    </div>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Enter Propety Name</label>
+                        <input type="text" class="form-control" placeholder="Property Name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Enter Propety Address</label>
+                        <input type="text" class="form-control" placeholder="Property Address">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Enter Propety Description</label>
+                        <textarea class="form-control" placeholder="Propety Description"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <div class="form-group">
+                    <label class="m-0">Enter Guest Access: </label>
+                    <tag-input [(ngModel)]='guestAccess' secondary-placeholder="+ access" placeholder="+ access"></tag-input>
+                  </div>
+                  <div class="form-group">
+                    <label class="m-0">Enter Nearby Places: </label>
+                    <tag-input [(ngModel)]='nearbyPlaces' secondary-placeholder="+ nearby place" placeholder="+ nearby place"></tag-input>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <div class="form-group">
+                    <label class="d-block">Select Space Rules: </label>
+                    <label class="check-box" *ngFor="let item of spaceRules">{{item}}
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label class="d-block">Select Special Experience: </label>
+                    <label class="check-box" *ngFor="let item of specialExperience">{{item}}
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="d-block">Check In Time: </label>
+                        <ngb-timepicker [(ngModel)]="checkInTime" [meridian]="meridian"></ngb-timepicker>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="d-block">Check Out Time: </label>
+                        <ngb-timepicker [(ngModel)]="checkOutTime" [meridian]="meridian"></ngb-timepicker>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="d-inline mr-3">Strict Check In: </label>
+                    <div class="form-group toggle-radio-btn d-inline">
+                      <input id="strict-check-on" class="toggle toggle-left" name="strict-check" value="false" type="radio" checked>
+                      <label for="strict-check-on" class="toggle-btn p-0">Yes</label>
+                      <input id="strict-check-off" class="toggle toggle-right" name="strict-check" value="true" type="radio">
+                      <label for="strict-check-off" class="toggle-btn p-0">No</label>
+                    </div>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <label class="d-block">Upload Cover Photo: </label>
+                  <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="customFile" name="filename">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                  </div>
+                  <label class="d-block">Upload More Photos: </label>
+                  <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="customFile" name="filename">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <h4 class="title">Do You want to list Entire Apartment? </h4>
+                  <div class="form-group toggle-radio-btn text-center mt-4">
+                    <input id="entire-apart-on" class="toggle toggle-left" name="entire-apart" value="false" type="radio" checked>
+                    <label for="entire-apart-on" class="toggle-btn">Yes</label>
+                    <input id="entire-apart-off" class="toggle toggle-right" name="entire-apart" value="true" type="radio">
+                    <label for="entire-apart-off" class="toggle-btn">No</label>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <div class="form-group">
+                    <label>Enter Apartment Name</label>
+                    <input type="text" class="form-control" placeholder="Apartment Name">
+                  </div>
+                  <div class="form-group">
+                    <label>Enter Apartment Number</label>
+                    <input type="text" class="form-control" placeholder="Apartment Number">
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <h4 class="title">Select stay type: </h4>
+                  <label class="mr-3 c-pointer">
+                    <input type="radio" class="option-input radio" name="stayType" checked />
+                    Long Term
+                  </label>
+                  <label class="mr-3 c-pointer">
+                    <input type="radio" class="option-input radio" name="stayType" />
+                    Short Term
+                  </label>
+                  <label class="mr-3 c-pointer">
+                    <input type="radio" class="option-input radio" name="stayType" />
+                    Both
+                  </label>
+                </wizard-step>
+                <wizard-step>
+                  <h4 class="title">Select sex category: </h4>
+                  <label class="mr-3 c-pointer">
+                    <input type="radio" class="option-input radio" name="sexCategory" checked />
+                    Male
+                  </label>
+                  <label class="mr-3 c-pointer">
+                    <input type="radio" class="option-input radio" name="sexCategory" />
+                    Female
+                  </label>
+                  <label class="mr-3 c-pointer">
+                    <input type="radio" class="option-input radio" name="sexCategory" />
+                    Both
+                  </label>
+                </wizard-step>
+                <wizard-step>
+                  <h4 class="title">Do you have multiple rooms? </h4>
+                  <div class="form-group toggle-radio-btn text-center mt-4">
+                    <input id="multi-room-on" class="toggle toggle-left" name="multi-room" value="false" type="radio" checked>
+                    <label for="multi-room-on" class="toggle-btn">Yes</label>
+                    <input id="multi-room-off" class="toggle toggle-right" name="multi-room" value="true" type="radio">
+                    <label for="multi-room-off" class="toggle-btn">No</label>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <div class="form-group">
+                    <label class="mr-30">Select Accommodation Type:</label>
+                    <label class="mr-3 c-pointer">
+                      <input type="radio" class="option-input radio" name="accomodationType" checked />
+                      Private
+                    </label>
+                    <label class="mr-3 c-pointer">
+                      <input type="radio" class="option-input radio" name="accomodationType" />
+                      Shared
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label>Select Room Category: </label>
+                    <select class="form-control">
+                      <option value="">Cat 1</option>
+                      <option value="">Cat 2</option>
+                      <option value="">Cat 3</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="mr-30">Total Rooms:</label>
+                    <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <div class="form-group">
+                    <label class="d-block">Specialities: </label>
+                    <label class="check-box" *ngFor="let item of specialities">{{item}}
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label class="d-block">Amenities: </label>
+                    <label class="check-box" *ngFor="let item of amenities">{{item}}
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <label class="d-block">Upload Roomn Images: </label>
+                  <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="roomImages" name="filename">
+                    <label class="custom-file-label" for="roomImages">Choose file</label>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="" class="mr-30 d-block">Number of Adults:</label>
+                        <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="" class="mr-30 d-block">Number of Child:</label>
+                        <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="d-inline mr-3 d-block">Do You allow Extra Cot?</label>
+                        <div class="form-group toggle-radio-btn d-inline">
+                          <input id="extraCot-on" class="toggle toggle-left" name="extraCot" value="false" type="radio" checked>
+                          <label for="extraCot-on" class="toggle-btn p-5">Yes</label>
+                          <input id="extraCot-off" class="toggle toggle-right" name="extraCot" value="true" type="radio">
+                          <label for="extraCot-off" class="toggle-btn p-5">No</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="" class="mr-30 d-block">Number Of COT Allowed:</label>
+                        <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                      </div>
+                    </div>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <h4 class="title">Meal plan: </h4>
+                  <table class="table table-bordered meal-table">
+                    <thead>
+                      <tr>
+                        <th rowspan="2">Meal</th>
+                        <th colspan="2">Chargeable</th>
+                        <th colspan="3">Type</th>
+                      </tr>
+                      <tr>
+                        <th>Yes</th>
+                        <th>No</th>
+                        <th>Veg</th>
+                        <th>Non-Veg</th>
+                        <th>Both</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                            Breakfast
+                        </td>
+                        <td>
+                          <label class="c-pointer">
+                            <input type="radio" class="option-input radio" name="bfType" />
+                          </label>
+                        </td>
+                        <td>
+                          <label class="c-pointer">
+                            <input type="radio" class="option-input radio" name="bfType" />
+                          </label>
+                        </td>
+                        <td>
+                          <label class="check-box">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <label class="check-box">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <label class="check-box">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            Major Meal 1
+                        </td>
+                        <td>
+                          <label class="c-pointer">
+                            <input type="radio" class="option-input radio" name="m1Type" />
+                          </label>
+                        </td>
+                        <td>
+                          <label class="c-pointer">
+                            <input type="radio" class="option-input radio" name="m1Type" />
+                          </label>
+                        </td>
+                        <td>
+                          <label class="check-box">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <label class="check-box">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <label class="check-box">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            Major Meal 2
+                        </td>
+                        <td>
+                          <label class="c-pointer">
+                            <input type="radio" class="option-input radio" name="m2Type" />
+                          </label>
+                        </td>
+                        <td>
+                          <label class="c-pointer">
+                            <input type="radio" class="option-input radio" name="m2Type" />
+                          </label>
+                        </td>
+                        <td>
+                          <label class="check-box">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <label class="check-box">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <label class="check-box">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            Snacks
+                        </td>
+                        <td>
+                          <label class="c-pointer">
+                            <input type="radio" class="option-input radio" name="sType" />
+                          </label>
+                        </td>
+                        <td>
+                          <label class="c-pointer">
+                            <input type="radio" class="option-input radio" name="sType" />
+                          </label>
+                        </td>
+                        <td>
+                          <label class="check-box">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <label class="check-box">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                        <td>
+                          <label class="check-box">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </wizard-step>
+                <wizard-step>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Price Per Night: </label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">₹</div>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Amount">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Price Per Month: </label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">₹</div>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Amount">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">COT Price: </label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">₹</div>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Amount">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Commission: </label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">%</div>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Amount">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Discount Weekly: </label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">%</div>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Percentage ">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Discount Monthly: </label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">%</div>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Percentage">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="d-block">Price Drop?</label>
+                        <div class="form-group toggle-radio-btn d-inline">
+                          <input id="priceDrop-on" class="toggle toggle-left" name="priceDrop" value="false" type="radio" checked>
+                          <label for="priceDrop-on" class="toggle-btn p-5">Yes</label>
+                          <input id="priceDrop-off" class="toggle toggle-right" name="priceDrop" value="true" type="radio">
+                          <label for="priceDrop-off" class="toggle-btn p-5">No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <h4 class="title">Cancellation Policy</h4>
+                  <div class="form-group row">
+                    <label class="col-sm-4">Before 24 Hours</label>
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">%</div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Percentage">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4">Before 48 Hours</label>
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">%</div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Percentage">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4">Before 72 Hours</label>
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">%</div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Percentage">
+                      </div>
+                    </div>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <h4 class="title">Bank Details</h4>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Account Number">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Full Name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <select class="form-control">
+                          <option value="">Account Type</option>
+                          <option value="">Saving Account</option>
+                          <option value="">Current Account</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Bank Name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Branch Name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="IFSC Code">
+                      </div>
+                    </div>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <h4 class="title">Upload Documents</h4>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Document Type:</label>
+                        <select class="form-control">
+                          <option value="">Select Document Type</option>
+                          <option value="">Doc Type</option>
+                          <option value="">Doc Type</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Document Number:</label>
+                        <input type="text" class="form-control" placeholder="Document ID">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <label class="d-block">Upload Document: </label>
+                      <div class="custom-file mb-3">
+                        <input type="file" class="custom-file-input" id="documentUploadBtn" name="filename">
+                        <label class="custom-file-label" for="documentUploadBtn">Choose file</label>
+                      </div>
+                    </div>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <h4 class="title">Business Start & End Date</h4>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Start Date:</label>
+                        <div class="input-group">
+                          <input class="form-control border-right-0" placeholder="DD/MM/YYYY"
+                                  name="dp" ngbDatepicker #d="ngbDatepicker">
+                          <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar checkin-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">End Date:</label>
+                        <div class="input-group">
+                          <input class="form-control border-right-0" placeholder="DD/MM/YYYY"
+                                  name="dp" ngbDatepicker #d="ngbDatepicker">
+                          <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar checkout-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <h4 class="title">Provide additional information</h4>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Contact Person Name:</label>
+                        <input type="text" class="form-control" placeholder="Full Name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Alternate Mobile No.:</label>
+                        <input type="text" class="form-control" placeholder="Mobile Number">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Landline Number:</label>
+                        <input type="text" class="form-control" placeholder="Landline Number">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="">Alternate Email:</label>
+                        <input type="email" class="form-control" placeholder="Email ID">
+                      </div>
+                    </div>
+                  </div>
+                </wizard-step>
+                <wizard-step>
+                  <h4 class="title">Thank you! You have successfully listed your property with us.</h4>
+                </wizard-step>
+              </form-wizard>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-icon"><a class="c-pointer" (click)="scroll(target)"><img src="assets/images/scroller.png" alt=""></a></div>
+  </div>
+
+  <!-- Content -->
+  <div class="container mt-70">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="assets/images/host-1.png" alt="">
+      </div>
+      <div class="col-md-9 pl-50">
+        <h3>Why host on <span class="ora-orange-logo"></span></h3>
+        <ul>
+          <li>The standard Lorem Ipsum passage, used since the 1500s</li>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et </li>
+          <li>nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>
+          <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat Excepteur sint </li>
+          <li>occaecat cupidatat non proident, sunt in culpa qui officia deserunt Section 1.10.32 of "de </li>
+          <li #target>Finibus Sed ut perspiciatis unde omnis iste natus error sit </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-70">
+      <div class="col-md-7">
+        <h3 class="m-0">What other hosts are saying about  <span class="ora-orange-logo"></span></h3>
+        <span class="commas">"</span>
+        <p class="comma-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"</p>
+        <p class="small-text">Owner ORA208976  | <span> Saltlake, Kolkata</span></p>
+      </div>
+      <div class="col-md-5">
+        <div class="embed-responsive embed-responsive-16by9 video-container">
+          <!-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0&modestbranding=1&autohide=1&showinfo=0&controls=0" allowfullscreen height="400"></iframe> -->
+          <iframe class="embed-responsive-item" width="100%" height="400" src="https://www.youtube.com/embed/yPKSpuso6K0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full width image -->
+    <div class="row mt-50">
+      <div class="col-md-12">
+        <img width="100%" class="rounded" src="assets/images/host-2.png" alt="">
+      </div>
+    </div>
+    
+    <!-- According Section -->
+    <div class="row mt-70 mb-70">
+      <div class="col-md-12">
+        <h3 class="m-0 mb-4 d-flex"><span class="ora-orange-logo mr-2 ml-0"></span> <span class="lh-25"> answered your questions</span>  </h3>
+        <div class="accordion">
+          <ngb-accordion [closeOthers]="true" #acc="ngbAccordion">
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span><i class="arrow"></i> Who can be an ORA host?</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                labore sustainable VHS.
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span><i class="arrow"></i> What is required of guests before booking?</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                labore sustainable VHS.
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span><i class="arrow"></i> How much does it cost to list my space?</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                labore sustainable VHS.
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span><i class="arrow"></i> What protection do I have against property damage?</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                labore sustainable VHS.
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span><i class="arrow"></i> How should I choose my listing’s price?</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                labore sustainable VHS.
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel>
+              <ng-template ngbPanelTitle>
+                <span><i class="arrow"></i> How can ORA help me with setting prices?</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                labore sustainable VHS.
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+          <!-- <div class="container">
+              <div id="accordion" class="accordion">
+                  <div class="card mb-0">
+                      <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
+                          <a class="card-title">
+                              Item 1
+                          </a>
+                      </div>
+                      <div id="collapseOne" class="card-body collapse" data-parent="#accordion" >
+                          <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                              aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                              craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                          </p>
+                      </div>
+                      <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                          <a class="card-title">
+                            Item 2
+                          </a>
+                      </div>
+                      <div id="collapseTwo" class="card-body collapse" data-parent="#accordion" >
+                          <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                              aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                              craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                          </p>
+                      </div>
+                      <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                          <a class="card-title">
+                            Item 3
+                          </a>
+                      </div>
+                      <div id="collapseThree" class="collapse" data-parent="#accordion" >
+                          <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                              aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. samus labore sustainable VHS.
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

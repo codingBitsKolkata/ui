@@ -36,13 +36,21 @@
         <div class="col-md-6" data-aos="zoom-in" data-aos-duration="500" data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false">
           <h4 class="title">Newsletter</h4>
           <p class="news-intro">Make sure that you’re always the 1st who receive our latest news and promotions.</p>
-          <form class="newsletter">
+          <p> <ngb-alert *ngIf="newsLetterMessage"  [type]="'success'" (close)="newsLetterMessage = null">{{ newsLetterMessage }}</ngb-alert> </p>
+          <form class="newsletter" [formGroup]="newsletterForm" (ngSubmit)="onSubmitNewsLetterFrom()" novalidate>
             <div class="form-row">
               <div class="col-5">
-                <input type="text" class="form-control" placeholder="Enter your name">
+                <input type="text" class="form-control" placeholder="Enter your name" formControlName="name" [ngClass]="{ 'is-invalid': newsletterForm.controls['name'].touched && newsletterForm.controls['name'].errors }">
+                <div *ngIf="newsletterForm.controls['name'].errors && newsletterForm.controls['name'].touched"  class="invalid-feedback"> 
+                  <div *ngIf="newsletterForm.controls['name'].errors.required">Please enter your name</div>
+                </div>
               </div>
               <div class="col-5">
-                <input type="email" class="form-control" placeholder="Enter your email">
+                <input type="email" class="form-control" placeholder="Enter your email" formControlName="emailId" [ngClass]="{ 'is-invalid': newsletterForm.controls['emailId'].touched && newsletterForm.controls['emailId'].errors }">
+                <div *ngIf="newsletterForm.controls['emailId'].errors && newsletterForm.controls['emailId'].touched"  class="invalid-feedback"> 
+                  <div *ngIf="newsletterForm.controls['emailId'].errors.required">Please enter an email address</div>
+                  <div *ngIf="newsletterForm.controls['emailId'].errors.pattern">Please enter valid email address</div>
+              </div>
               </div>
               <div class="col-2">
                 <button type="submit" class="btn btn-primary btn-sm">Submit</button>
