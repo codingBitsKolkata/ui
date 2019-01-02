@@ -1,7 +1,7 @@
 <div class="main">
   <div class="container-fluid">
     <div class="header-bg-container">
-      <img src="assets/images/dashboard/host-details-bg.png" alt="">
+      <img class="w-100" src="assets/images/dashboard/host-details-bg.png" alt="">
     </div>
     <div class="property-details-container">
       <div class="card">
@@ -39,14 +39,14 @@
         </div>
       </div>
       
-      <div class="accordion pb-4">
+      <div class="accordion pb-2">
         <ngb-accordion [closeOthers]="false" #acc="ngbAccordion" [activeIds]="accordianIds">
           <ngb-panel id="panel-1">
             <ng-template ngbPanelTitle>
               <span><i class="arrow"></i> Specifications </span>
             </ng-template>
             <ng-template ngbPanelContent>
-              <button type="button" class="btn edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+              <!-- <button type="button" class="btn edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button> -->
               <h5>Guest access</h5>
               <label class="btn-tags"> Anenna </label>
               <label class="btn-tags">Hendrerit</label>
@@ -127,10 +127,10 @@
                   </div>
                 </div>
               </div>
-              <hr class="hr-b">
+              <!-- <hr class="hr-b">
               <div class="clearfix">
                 <button class="btn btn-primary float-right p-lr-20">Save</button>
-              </div>
+              </div> -->
             </ng-template>
           </ngb-panel>
           <ngb-panel id="panel-2">
@@ -138,7 +138,7 @@
               <span><i class="arrow"></i> Related Informations </span>
             </ng-template>
             <ng-template ngbPanelContent>
-              <button type="button" class="btn edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+              <!-- <button type="button" class="btn edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button> -->
               <h5>Do you want to list entire Apartment?</h5>
               <div class="form-row align-items-center">
                 <div class="col-auto">
@@ -554,10 +554,10 @@
                 </div>
               </div>
               
-              <hr class="hr-b">
+              <!-- <hr class="hr-b">
               <div class="clearfix">
                 <button class="btn btn-primary float-right p-lr-20">Save</button>
-              </div>
+              </div> -->
             </ng-template>
           </ngb-panel>
           <ngb-panel id="panel-3">
@@ -565,7 +565,7 @@
               <span><i class="arrow"></i> Bank Details </span>
             </ng-template>
             <ng-template ngbPanelContent>
-              <button type="button" class="btn edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+              <!-- <button type="button" class="btn edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button> -->
               <div class="row">
                 <div class="col-md-4">
                   <h5>Account holder name</h5>
@@ -609,10 +609,10 @@
                 </div>
               </div>
 
-              <hr class="hr-b">
+              <!-- <hr class="hr-b">
               <div class="clearfix">
                 <button class="btn btn-primary float-right p-lr-20">Save</button>
-              </div>
+              </div> -->
             </ng-template>
           </ngb-panel>
           <ngb-panel id="panel-4">
@@ -620,7 +620,7 @@
               <span><i class="arrow"></i> Personal Details </span>
             </ng-template>
             <ng-template ngbPanelContent>
-              <button type="button" class="btn edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+              <!-- <button type="button" class="btn edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button> -->
               <div class="row">
                 <div class="col-md-3">
                     <h5>Document Type</h5>
@@ -647,10 +647,10 @@
                 </div>
               </div>
 
-              <hr class="hr-b">
+              <!-- <hr class="hr-b">
               <div class="clearfix">
                 <button class="btn btn-primary float-right p-lr-20">Save</button>
-              </div>
+              </div> -->
             </ng-template>
           </ngb-panel>
           <ngb-panel id="panel-5">
@@ -658,7 +658,7 @@
               <span><i class="arrow"></i> Business start & end date </span>
             </ng-template>
             <ng-template ngbPanelContent>
-              <button type="button" class="btn edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+              <!-- <button type="button" class="btn edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button> -->
               <div class="row">
                 <div class="col-md-3">
                   <h5>Start date</h5>
@@ -686,10 +686,10 @@
                 </div>
               </div>
               
-              <hr class="hr-b">
+              <!-- <hr class="hr-b">
               <div class="clearfix">
                 <button class="btn btn-primary float-right p-lr-20">Save</button>
-              </div>
+              </div> -->
             </ng-template>
           </ngb-panel>
           <ngb-panel id="panel-6">
@@ -697,7 +697,7 @@
               <span><i class="arrow"></i> Provide addtional information </span>
             </ng-template>
             <ng-template ngbPanelContent>
-              <button type="button" class="btn edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+              <!-- <button type="button" class="btn edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button> -->
               <div class="row">
                 <div class="col-md-3">
                   <h5>Contact person name</h5>
@@ -725,13 +725,16 @@
                 </div>
               </div>
               
-              <hr class="hr-b">
+              <!-- <hr class="hr-b">
               <div class="clearfix">
                 <button class="btn btn-primary float-right p-lr-20">Save</button>
-              </div>
+              </div> -->
             </ng-template>
           </ngb-panel>
         </ngb-accordion>
+      </div>
+      <div class="clearfix pb-4">
+        <button class="btn btn-primary float-right p-lr-20">Save</button>
       </div>
     </div>
   </div>
