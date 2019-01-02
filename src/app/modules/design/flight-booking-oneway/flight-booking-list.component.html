@@ -520,89 +520,113 @@
     </button>
     <div class="row">
       <div class="col-md-8">
-
+        <form action="" class="form">
+          <h3>Payment option</h3>
+          <ngb-tabset>
+            <ngb-tab title="Credit Card">
+              <ng-template ngbTabContent>
+                <div class="credit-card">
+                  <div class="row c-body">
+                    <div class="col-auto">
+                      <div class="card-img">
+                        <img src="assets/images/cards/maestro.png" alt="">
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <div class="card-img">
+                        <img src="assets/images/cards/mastercard.png" alt="">
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <div class="card-img">
+                        <img src="assets/images/cards/visa.png" alt="">
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <div class="card-img">
+                        <img src="assets/images/cards/amex.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="" class="form-l">Card number</label>
+                        <input type="text" class="form-control" placeholder="**** **** **** 9562">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="" class="form-l">Expairy date</label>
+                        <input type="text" class="form-control" placeholder="02/2020">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="" class="form-l">Card holder name</label>
+                        <input type="text" class="form-control" placeholder="Full name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="" class="form-l">CVV</label>
+                        <input type="text" class="form-control" placeholder="****">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="check-box ng-star-inserted"> I accpet the terms & conditions 
+                          <input type="checkbox">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Online Banking">
+              <ng-template ngbTabContent>
+                <p> Online Banking</p>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Payment partners">
+              <ng-template ngbTabContent>
+                <p>Payment partners</p>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
+        </form>
       </div>
-      <div class="col-md-4">
-
+      <div class="col-md-4 book-summary">
+        <h5>Booking summary</h5>
+        <table class="table">
+          <tr>
+            <td class="text-left">Base price</td>
+            <td class="text-right t-gray">₹21,500</td>
+          </tr>
+          <tr>
+            <td class="text-left">Taxes & service charges <i></i></td>
+            <td class="text-right t-gray">₹5,117</td>
+          </tr>
+          <tr class="border-tb">
+            <td class="text-left">Sub total</td>
+            <td class="text-right t-gray">₹36,310.05</td>
+          </tr>
+          <tr>
+            <td class="text-left total">Total payable</td>
+            <td class="text-right total">₹36,310.05</td>
+          </tr>
+        </table>
+        <div class="flight-footer">
+          <button class="btn btn-left">Make payment <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+          <button class="btn btn-right">Booking info <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+        </div>
       </div>
     </div>
-    <h4 class="modal-title mb-0 text-left">Payment options</h4>
-    <ngb-tabset>
-      <ngb-tab title="CREDIT CARD">
-        <ng-template ngbTabContent>
-          <form class="form-component">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="">Card number</label>
-                  <input type="text" class="form-control" placeholder="**** **** **** 9842">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="">Expairy date</label>
-                  <input type="text" class="form-control" placeholder="mm/yyyy">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="">Card holder name</label>
-                  <input type="text" class="form-control" placeholder="Card holder name">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="">CVV</label>
-                  <input type="text" class="form-control" placeholder="***">
-                </div>
-              </div>
-            </div>
-          </form>
-        </ng-template>
-      </ngb-tab>
-      <ngb-tab title="ONLINE BANKING">
-        <ng-template></ng-template>
-        <ng-template ngbTabContent>
-          Online Banking
-        </ng-template>
-      </ngb-tab>
-      <ngb-tab title="PAYMENT PARTNERS" >
-        <ng-template ngbTabContent>
-          <p>Payment Partners</p>
-        </ng-template>
-      </ngb-tab>
-    </ngb-tabset>
-    <form class="form-component">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="">Card number</label>
-            <input type="text" class="form-control" placeholder="**** **** **** 9842">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="">Expairy date</label>
-            <input type="text" class="form-control" placeholder="mm/yyyy">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="">Card holder name</label>
-            <input type="text" class="form-control" placeholder="Card holder name">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="">CVV</label>
-            <input type="text" class="form-control" placeholder="***">
-          </div>
-        </div>
-      </div>
-    </form>
   </div>
-  <div class="flight-footer">
+  <!-- <div class="flight-footer">
     <button class="btn btn-left">Continue as guest <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
     <button class="btn btn-right">Login account <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-  </div>
+  </div> -->
 </ng-template>

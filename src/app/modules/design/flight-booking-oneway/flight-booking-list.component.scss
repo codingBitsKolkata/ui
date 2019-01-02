@@ -722,3 +722,106 @@
         
     }
 }
+
+::ng-deep{
+    .modal-popup.payment{
+        .modal-content{
+            padding-bottom: 0;
+        }
+        @media (min-width: 992px){
+            .modal-dialog {
+                max-width: 950px !important;
+            }
+        }
+        h3{
+            font-size: 16px;
+            font-family: latobold;
+        }
+        .book-summary{
+            h5{
+                font-family: latobold;
+                font-size: 16px;
+            }
+            table td{
+                font-family: latoregular;
+                font-size: 14px;
+                color: #130504;
+                padding: 10px 0;
+                border: 0;
+            }
+            tr.border-tb{
+                border-top: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+            }
+            .t-gray{
+                color: #a8adb2;
+            }
+            .total{
+                font-family: latobold !important;
+                color: #130504 !important;
+                font-size: 16px !important;
+            }
+        }
+        .flight-footer{
+            position: absolute;
+            width: 100%;
+            bottom: 0px;
+            .btn{
+                width: 50%;
+                border: 0;
+                border-radius: 0;
+                height: 50px;
+                font-size: 12px;
+                &.btn-left{
+                    background: #5db5ff;
+                    color: #fff;
+                }
+                &.btn-right{
+                    border-bottom-right-radius: 5px;
+                    background: #fff;
+                    color: #5db5ff;
+                }
+            }
+        }
+    }
+    .nav-tabs {
+        border: 0;
+        .nav-link{
+            background-color: #fff;
+            border: 0;
+            font-family: latobold;
+            font-size: 12px;
+            color: #a8adb2;
+            text-transform: uppercase;
+            &.active{
+                color: #f47921;
+                border-bottom: 2px solid #f47921;
+            }
+        }
+    }
+    .tab-content{
+        padding: 20px 0;
+        .credit-card{
+            .c-body{
+                margin: 10px 0px 20px -15px;
+            }
+            .card-img{
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                width: 100px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                img{
+                    margin: 0 auto;
+                }
+            }
+            label.form-l{
+                font-size: 12px;
+                color: #130504;
+                font-family: latoblack;
+            }
+        }
+    }
+}
