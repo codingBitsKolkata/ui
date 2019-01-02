@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { WhiteSpaceValidator } from '../../../directives/validators/white-space-validation';
 import { SharedService} from '../../../services/shared.service';
 
@@ -28,8 +28,31 @@ export class StaySearchFormComponent implements OnInit {
   buildSearchForm() {
     this.staySearchForm = this.fb.group({
       propertyTypeId: new FormControl('', [Validators.required]),
+      location: new FormControl('', [Validators.required]),
       checkInDate: new FormControl('', [Validators.required]),
-      checkOutDate: new FormControl('', [Validators.required])
+      checkOutDate: new FormControl('', [Validators.required]),
+      rooms: this.fb.array([this.buildRoomForm()])
     });
+    console.log(this.staySearchForm);
+  }
+  buildRoomForm() {
+    return this.fb.group({
+      noOfGuest: new FormControl('', [Validators.required]),
+      noOfChild: new FormControl('', [Validators.required])
+      });
+  }
+
+  onSubmitSearch() {
+    console.log(this.staySearchForm);
+  }
+  onNumberChanged(event) {
+    console.log(event);
+  }
+  addRoom() {
+    (this.staySearchForm.controls['rooms'] as FormArray).push(this.buildRoomForm());
+  }
+  removeRoom(index) {
+    const arrayControl = <FormArray>this.staySearchForm.controls['rooms'];
+        arrayControl.removeAt(index);
   }
 }

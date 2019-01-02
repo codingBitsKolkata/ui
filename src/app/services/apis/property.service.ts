@@ -35,10 +35,10 @@ export class PropertyService {
     //   'params' : requestParam
     // };
     // return this.httpClient.post<any>(request.url, request.params);
-
     const request = {
-        'url':  'assets/static-data/home-page-property-list.json'
+       'url':  'assets/static-data/fetch-testimonials.json'
+       // 'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-properties'
      };
-     return this.httpClient.get<any>(request.url);
+     return this.httpClient.get<any>(request.url, {params: requestParam});
   }
 }
