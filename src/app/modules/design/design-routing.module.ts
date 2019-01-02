@@ -14,6 +14,7 @@ import { PropertyDashboardComponent } from './property-dashboard/property-dashbo
 import { HostPropertyDetailsComponent } from './host-property-details/host-property-details.component';
 import { FlightBookingListComponent } from './flight-booking-oneway/flight-booking-list.component';
 import { FlightBookingRoundtripComponent } from './flight-booking-roundtrip/flight-booking-roundtrip.component';
+import { PropertyBookingFormComponent } from './property-booking-form/property-booking-form.component';
 
 
 const routerConfig: Routes = [
@@ -21,6 +22,7 @@ const routerConfig: Routes = [
   { path: 'property-list', component: PropertyListComponent},
   { path: 'host-listing', component: HostListingComponent},
   { path: 'property-details', component: PropertyDetailsComponent},
+  { path: 'property-booking', component: PropertyBookingFormComponent},
   { path: 'about', component: AboutComponent},
   { path: 'career', component: CareerComponent},
   { path: 'team', component: TeamComponent},

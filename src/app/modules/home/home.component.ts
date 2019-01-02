@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {NgbDate, NgbCalendar, NgbDatepickerConfig, NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate, NgbCalendar, NgbDatepickerConfig, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import { TestimonialService } from '../../services/apis/testimonial.service';
+import { PropertyService } from '../../services/apis/property.service';
 
 @Component({
   selector: 'app-home',
@@ -10,22 +12,25 @@ export class HomeComponent implements OnInit {
   @ViewChild('dpHotel') dpHotel: NgbInputDatepicker;
   @ViewChild('dpFlight') dpFlight: NgbInputDatepicker;
 
-  currentJustify = 'justified';
-  // constructor() { }
-
-  ngOnInit() {
-  }
-  hNoOfAdult: number = 0;
-  hNoOfChild: number = 0;
-  noOfRooms: number = 0;
+  hNoOfAdult = 0;
+  hNoOfChild = 0;
+  noOfRooms = 0;
   hoveredDate: NgbDate;
   h_fromDate: NgbDate;
   h_toDate: NgbDate;
   f_fromDate: NgbDate;
   f_toDate: NgbDate;
   onFirstSelection = true;
+  testimonialList: Array<any>;
+  propertyTypes: Array<any>;
+  propertyList: Array<any>;
 
-  constructor(calendar: NgbCalendar, config: NgbDatepickerConfig) {
+  constructor(
+    calendar: NgbCalendar,
+    config: NgbDatepickerConfig,
+    private srvTestimonial: TestimonialService,
+    private srvProperty: PropertyService
+    ) {
     this.h_fromDate = calendar.getToday();
     this.h_toDate = calendar.getNext(calendar.getToday(), 'd', 3);
 
@@ -33,8 +38,17 @@ export class HomeComponent implements OnInit {
     this.f_toDate = calendar.getNext(calendar.getToday(), 'd', 3);
 
     const currentDate = new Date();
-    config.minDate = {year:currentDate.getFullYear(), month:currentDate.getMonth()+1, day: currentDate.getDate()};
-    config.maxDate = {year: 2020, month: 12, day: 31};
+    config.minDate = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
+    config.maxDate = { year: 2020, month: 12, day: 31 };
+
+    this.propertyList = [];
+    this.getTestimonailList();
+    this.getPropertyTypes();
+  }
+  currentJustify = 'justified';
+  // constructor() { }
+
+  ngOnInit() {
   }
 
   onDateSelectionHotel(date: NgbDate) {
@@ -88,5 +102,46 @@ export class HomeComponent implements OnInit {
   //   return `${this.f_fromDate ? parserFormatter.format(this.h_fromDate) : ''} - ${this.h_toDate ? parserFormatter.format(this.h_toDate) : ''}`;
   // }
   // isRangeFlight
+
+  getTestimonailList() {
+     this.srvTestimonial.getTestimonial().subscribe((res) => {
+      console.log('getTestimonial data', res);
+      if (res.responseCode === '200') {
+        this.testimonialList = res.responseBody;
+        if (this.testimonialList.length > 2) {
+          this.testimonialList.length = 2;
+        }
+      }
+    }, error => {
+      console.log('error', error);
+    });
+  }
+
+  getPropertyTypes() {
+    this.srvProperty.getPropertyTypes({}).subscribe((res) => {
+     console.log('getPropertyTypes data', res);
+     if (res.responseCode === '200') {
+       this.propertyTypes = res.responseBody;
+       if (this.propertyTypes.length > 0) {
+        this.getPropertyList(this.propertyTypes[0]);
+       }
+     }
+   }, error => {
+     console.log('error', error);
+   });
+ }
+
+ getPropertyList(propertyType: any) {
+  this.srvProperty.getPropertyList({propertyTypeId: propertyType.propertyTypeId}).subscribe((res) => {
+   console.log('getPropertyList data', res);
+   if (res.responseCode === '200') {
+      this.propertyList[propertyType.propertyTypeId] = res.responseBody;
+      console.log(this.propertyList);
+   }
+ }, error => {
+   console.log('error', error);
+ });
+}
+
 
 }

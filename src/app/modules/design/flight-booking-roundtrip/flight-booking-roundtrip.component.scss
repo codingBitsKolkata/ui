@@ -363,6 +363,7 @@
     }
 
     .list-flight{
+        margin-left: -15px;
         .f-item{
             width: 50%;
             float: left;
@@ -405,19 +406,21 @@
                     padding: 10px 20px;
                     border-bottom: 1px solid #ebebeb;
                     .f-logo{
+                        display: flex;
+                        padding-left: 5px;
                         img{
-                            height: 30px;
+                            height: 25px;
                             border-radius: 50px;
                         }
                         .f-name{
                             font-family: latoregular;
                             color: #484848;
-                            font-size: 12px;
+                            font-size: 11px;
                             margin-left: 10px;
                         }
                     }
                     .badge{
-                        font-size: 10px;
+                        font-size: 8px;
                         font-family: latoblack;
                         padding: 5px 7px;
                         border-radius: 2px;
@@ -438,29 +441,29 @@
                         background-color: transparent;
                         border: 0;
                         outline: 0;
-                        font-size: 12px;
+                        font-size: 10px;
                         font-family: latoblack;
                         color: #c1c8d0;
                     }
                 }
                 .c-body{
-                    padding: 10px 20px;
+                    padding: 10px 10px;
                     .f-timing{
                         padding: 10px 0;
                         margin-bottom: 0;
                         .dept-time, .arrvl-time{
                             font-family: latobold;
-                            font-size: 14px;
+                            font-size: 12px;
                             color: #231f20;
                         }
                         .flight-type {
                             display: inline-block;
-                            width: 270px;
-                            height: 20px;
-                            margin: 0px 20px;
+                            width: 130px;
+                            height: 13px;
+                            margin: 0px 10px;
                             &.direct-flight{
                                 background: url(../../../../assets/images/flight/direct-flight.png) center center no-repeat;
-                                background-size: auto;
+                                background-size: cover;
                             }
                             &.one-stop{
                                 background: url(../../../../assets/images/flight/one-stop.png) center center no-repeat;
@@ -495,8 +498,8 @@
                         font-family: latoitalic;
                         color: #c1c8d0;
                         font-size: 14px;
-                        margin-top: 20px;
-                        margin-bottom: 20px;
+                        margin-top: 35px;
+                        margin-bottom: 15px;
                     }
                     .p-from{
                         display: block;
@@ -516,8 +519,8 @@
                         width: 20px;
                         height: 20px;
                         position: absolute;
-                        top: 20px;
-                        right: 20px;
+                        top: 10px;
+                        right: 10px;
                         border-radius: 50px;
                         border: 2px solid #ccc;
                     }
@@ -603,7 +606,8 @@
         .dept-time, .arrvl-time{
             display: flex;
             align-items: center;
-            padding-right: 40px;
+            padding-right: 20px;
+            padding-left: 10px;
             p{
                 font-size: 14px;
                 font-family: latoregular;
@@ -620,9 +624,20 @@
             }
         }
         .arrvl-time{
-            padding-left: 40px;
-            padding-right: 20px;
-            border-left: 1px solid #ccc;
+            padding-left: 25px;
+            padding-right: 10px;
+            // border-left: 1px solid #ccc;
+            i.fa{
+                position: absolute;
+                left: -7px;
+            }
+            
+        }
+        .details{
+            display: flex;
+            align-items: center;
+            padding-right: 30px;
+            padding-left: 15px;
             .trip-icon{
                 background: url(../../../../assets/images/flight/one-way.png) center center no-repeat;
                 height: 25px;
@@ -631,16 +646,10 @@
                 border: 1px solid #ccc;
                 border-radius: 50px;
                 position: absolute;
-                left: -13px;
+                right: -13px;
                 background-color: #ebebeb;
                 background-position: center 7px;
             }
-        }
-        .details{
-            display: flex;
-            align-items: center;
-            padding-right: 40px;
-            padding-left: 15px;
             p{
                 line-height: 14px;
                 margin: 0;
@@ -657,11 +666,14 @@
                 font-family: latoblack;
             }
         }
+        .p-l-30{
+            padding-left: 30px;
+        }
         .total-price{
             display: flex;
             align-items: center;
             border-left: 1px solid #ccc;
-            padding-left: 40px;
+            padding-left: 25px;
             p.price{
                 font-family: latoblack;
                 font-size: 10px;
