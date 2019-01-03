@@ -33,6 +33,13 @@
         }
         .card{
             box-shadow: 0px 10px 0px 0px #e1e1e1;
+            max-width: 260px;
+            .location{
+                white-space: nowrap; 
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: block;
+            }
             .card-img-overlay{
                 margin-top: 50%;
             }
