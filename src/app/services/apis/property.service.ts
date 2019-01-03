@@ -31,13 +31,13 @@ export class PropertyService {
   getPropertyList(requestParam: any): Observable<any> {
     // console.log('here');
     // const request = {
-    //   'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-properties',
+    //   'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-properties-by-type',
     //   'params' : requestParam
     // };
     // return this.httpClient.post<any>(request.url, request.params);
     const request = {
-       'url':  'assets/static-data/fetch-testimonials.json'
-       // 'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-properties'
+       // 'url':  'assets/static-data/home-page-property-list.json'
+        'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-properties-by-type'
      };
      return this.httpClient.get<any>(request.url, {params: requestParam});
   }

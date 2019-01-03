@@ -186,7 +186,8 @@ export class AuthComponent implements OnInit {
           countryId: registerFormData.countryCode,
         },
         mobileNumber: registerFormData.mobile,
-        emailId : registerFormData.email
+        emailId : registerFormData.email,
+        privacyPolicy: 'Y'
       };
       this.authSrv.signUp(registerRequest).subscribe((responseData) => {
         console.log('responseData', responseData);

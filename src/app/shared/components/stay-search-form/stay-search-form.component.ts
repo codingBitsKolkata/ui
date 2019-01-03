@@ -12,10 +12,14 @@ export class StaySearchFormComponent implements OnInit {
 
   @Input() propertyTypes: Array<any>;
   staySearchForm: FormGroup;
+  noOfGuest: Array<number>;
+  noOfChild: Array<number>;
   constructor(
     private fb: FormBuilder,
     private sharedSrv: SharedService,
   ) {
+     // this.noOfGuest[0] = 1;
+      //this.noOfChild[0] = 0;
       this.buildSearchForm();
   }
 
@@ -50,6 +54,9 @@ export class StaySearchFormComponent implements OnInit {
   }
   addRoom() {
     (this.staySearchForm.controls['rooms'] as FormArray).push(this.buildRoomForm());
+    const arrayControl = <FormArray>this.staySearchForm.controls['rooms'];
+    // this.noOfGuest[arrayControl.length] = 1;
+    // this.noOfChild[arrayControl.length] = 0;
   }
   removeRoom(index) {
     const arrayControl = <FormArray>this.staySearchForm.controls['rooms'];
