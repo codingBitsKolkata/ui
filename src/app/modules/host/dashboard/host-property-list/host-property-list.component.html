@@ -17,21 +17,21 @@
         <div class="col-md-9 pr-0">
           <div class="ngu-carousel">
             <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="carouselItems">
-                <div *nguCarouselDef="let item;" class="item">
-                  <div class="card">
-                    <img class="card-img-top" src="assets/images/dashboard/{{item.img}}" alt="{{item.name}}">
-                    <div class="card-body">
-                      <h5 class="card-title">{{item.name}}</h5>
-                      <p class="card-text">{{item.desc}}</p>
-                      <label class="location" for=""><i class="fa fa-map-marker"></i> Location: {{item.location}}</label>
-                      <button type="button" [routerLink]="['/host/dashboard/property-details']" class="btn btn-dark">Details / Edit</button>
-                    </div>
+              <div *nguCarouselDef="let item;" class="item">
+                <div class="card">
+                  <img class="card-img-top" src="assets/images/dashboard/{{item.img}}" alt="{{item.name}}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <p class="card-text">{{item.desc}}</p>
+                    <label class="location" for=""><i class="fa fa-map-marker"></i> Location: {{item.location}}</label>
+                    <button type="button" [routerLink]="['/host/dashboard/property-details']" class="btn btn-dark">Details / Edit</button>
                   </div>
                 </div>
-                <button NguCarouselNext class="slide-right-btn"></button>
-                <button NguCarouselPrev class="slide-left-btn"></button>
-              </ngu-carousel>
-              <div class="clearfix"></div>
+              </div>
+              <button NguCarouselNext class="slide-right-btn"></button>
+              <button NguCarouselPrev class="slide-left-btn"></button>
+            </ngu-carousel>
+            <div class="clearfix"></div>
           </div>
         </div>
         <div class="col-md-3 pt-10 pb-40">

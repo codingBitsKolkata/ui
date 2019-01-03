@@ -15,6 +15,7 @@ import { HostPropertyDetailsComponent } from './host-property-details/host-prope
 import { FlightBookingListComponent } from './flight-booking-oneway/flight-booking-list.component';
 import { FlightBookingRoundtripComponent } from './flight-booking-roundtrip/flight-booking-roundtrip.component';
 import { PropertyBookingFormComponent } from './property-booking-form/property-booking-form.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 
 const routerConfig: Routes = [
@@ -29,6 +30,7 @@ const routerConfig: Routes = [
   { path: 'media', component: MediaRoomComponent},
   { path: 'privacy-policy', component: PrivacyPolicyComponent},
   { path: 'cancellation-policy', component: CancellationPolicyComponent},
+  { path: 'testimonials', component: TestimonialComponent},
   { path: 'property-dashboard', component: PropertyDashboardComponent},
   { path: 'host-property-details', component: HostPropertyDetailsComponent},
   { path: 'flight-oneway', component: FlightBookingListComponent},

@@ -1350,3 +1350,42 @@ input:active,select:active,button:active,label:active{
 .view-container{
     margin-top: 76px;
 }
+
+.pagination{
+    margin: 0;
+    .page-link {
+        border: 0;
+        font-size: 12px;
+        font-family: latoregular;
+        color: #777777;
+    }
+    .page-item.active .page-link {
+        z-index: 1;
+        color: #f47921;
+        background-color: transparent;
+        border-color: transparent;
+    }
+}
+
+.ngx-gallery-arrow-left .ngx-gallery-arrow {
+    left: -15px !important;
+}
+.ngx-gallery-icon.ngx-gallery-arrow{
+    .ngx-gallery-icon-content{
+        font-size: 30px;
+        &.fa.fa-arrow-circle-left{
+            &::before{
+                content: "\f177" !important;
+            }
+        }
+        &.fa.fa-arrow-circle-right{
+            &::before{
+                content: "\f178" !important;
+            }
+        }
+    }
+}
+.bg-w{
+    position: relative;
+    background: white;
+}

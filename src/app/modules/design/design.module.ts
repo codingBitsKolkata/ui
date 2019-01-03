@@ -31,6 +31,7 @@ import { HostPropertyDetailsComponent } from './host-property-details/host-prope
 import { FlightBookingListComponent } from './flight-booking-oneway/flight-booking-list.component';
 import { FlightBookingRoundtripComponent } from './flight-booking-roundtrip/flight-booking-roundtrip.component';
 import { PropertyBookingFormComponent } from './property-booking-form/property-booking-form.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,11 @@ import { PropertyBookingFormComponent } from './property-booking-form/property-b
     MediaRoomComponent, 
     StickyMenuComponent, 
     PropertyDashboardComponent, 
-    HostPropertyDetailsComponent, FlightBookingListComponent, FlightBookingRoundtripComponent, PropertyBookingFormComponent
+    HostPropertyDetailsComponent, 
+    FlightBookingListComponent, 
+    FlightBookingRoundtripComponent, 
+    PropertyBookingFormComponent, 
+    TestimonialComponent
   ],
   imports: [
     CommonModule,
