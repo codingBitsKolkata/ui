@@ -16,14 +16,14 @@
       <div class="row">
         <div class="col-md-9 pr-0">
           <div class="ngu-carousel">
-            <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="propertyList" *ngIf="propertyList">
+            <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="propertyList">
               <div *nguCarouselDef="let item;" class="item">
                 <div class="card">
-                  <img class="card-img-top" src="{{item.coverImageUrl}}" alt="{{item.oraname}}">
+                  <img class="card-img-top" src="{{item?.coverImageUrl}}" alt="{{item?.oraname}}">
                   <div class="card-body">
-                    <h5 class="card-title">{{item.oraname}}</h5>
-                    <p class="card-text" *ngIf="item.propertyVsDescriptions">{{item.propertyVsDescriptions[0].description}}</p>
-                    <label class="location" for=""><i class="fa fa-map-marker"></i> Location: {{item.address}}</label>
+                    <h5 class="card-title">{{item?.oraname}}</h5>
+                    <p class="card-text" *ngIf="item?.propertyVsDescriptions">{{item?.propertyVsDescriptions[0]?.description}}</p>
+                    <label class="location" for=""><i class="fa fa-map-marker"></i> Location: {{item?.address}}</label>
                     <button type="button" [routerLink]="['/host/dashboard/property-details']" class="btn btn-dark">Details / Edit</button>
                   </div>
                 </div>

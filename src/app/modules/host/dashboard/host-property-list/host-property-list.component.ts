@@ -176,14 +176,16 @@ export class HostPropertyListComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private srvProperty: PropertyService
-  ) { }
+  ) {
+    this.populatePropertyList();
+   }
+
   openModal(content) {
     // , size: 'md'
     this.modalService.open(content, { windowClass: 'modal-popup' });
   }
 
   ngOnInit() {
-    this.populatePropertyList();
     this.languageList = [
       { item_id: 1, item_text: 'English' },
       { item_id: 2, item_text: 'Hindi' },
@@ -221,14 +223,9 @@ export class HostPropertyListComponent implements OnInit {
      console.log('Property List =>', res);
      if (res.responseCode === '200') {
         this.propertyList = res.responseBody;
-        // this.formatPropertyList(tempPropertyList);
      }
    }, error => {
      console.log('error', error);
    });
-  }
-  
-  formatPropertyList(listData) {
-
   }
 }
