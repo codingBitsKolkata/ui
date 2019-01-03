@@ -6,17 +6,17 @@
         </select>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" formControlName="location" placeholder="City, Locality or Landmark">
+      <input type="text" class="form-control" formControlName="location" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"  #search  placeholder="City, Locality or Landmark">
     </div>
     <div class="form-group">
       <div class="input-group">
-        <input class="form-control border-right-0" formControlName="checkInDate" placeholder="Check in" ngbDatepicker>
+        <input type="text"  class="form-control border-right-0" formControlName="checkInDate"  placeholder="Check in" ngbDatepicker #d1="ngbDatepicker" [minDate]="checkInMinDate" (dateSelect)="onCheckInDateSelect($event)" (click)="d1.toggle()">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary calendar checkin-pick"  type="button"><i class="fa fa-calendar"></i></button>
+          <button class="btn btn-outline-secondary calendar checkin-pick"  type="button" (click)="d1.toggle()"><i class="fa fa-calendar"></i></button>
         </div>
-        <input class="form-control border-right-0" placeholder="Check out" ngbDatepicker>
+        <input type="text" class="form-control border-right-0" formControlName="checkOutDate" placeholder="Check out" ngbDatepicker #d2="ngbDatepicker" [minDate]="checkOutMinDate" (click)="d2.toggle()">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary calendar checkout-pick" type="button"><i class="fa fa-calendar"></i></button>
+          <button class="btn btn-outline-secondary calendar checkout-pick" type="button" (click)="d2.toggle()"><i class="fa fa-calendar"></i></button>
         </div>
         
         <ng-template #tHotel let-date let-focused="focused">
@@ -32,8 +32,8 @@
       </div>
     </div>
     <div class="form-group">
-      <div ngbDropdown class="d-inline-block hotelBookDropdown" [autoClose]="'outside'">
-        <button type="button" class="btn" ngbDropdownToggle>{{hNoOfAdult + hNoOfChild}} Guest, {{noOfRooms}} Room</button>
+      <div ngbDropdown class="d-inline-block hotelBookDropdown" [autoClose]="false">
+        <button type="button" class="btn" ngbDropdownToggle>{{numberOfGuest}} Guest, {{numberOfRooms}} Room</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
           <div formArrayName="rooms" *ngFor="let room of staySearchForm.controls['rooms'].controls; let i = index">
             <div>
@@ -44,18 +44,18 @@
                 <div class="form-group m-0">
                   <label for="" class="d-block text">Adults <span> (+12 yrs)</span></label>
                   <input type="hidden" formControlName="noOfGuest">
-                  <ng-number-picker class="ng-number-picker" [(value)]="noOfGuest[i]" [min] ="1"  [max]="'6'" (valueChange)="onNumberChanged($event)"></ng-number-picker>
+                  <ng-number-picker class="ng-number-picker" [(value)]="noOfGuest[i]" [min] ="1"  [max]="'6'" (valueChange)="onNumberChanged($event,i,'noOfGuest')"></ng-number-picker>
                 </div>
               </div>
               <div class="col-auto ml-4">
                 <div class="form-group m-0">
                   <label for="" class="d-block text">Children <span> (1 to 12 yrs)</span></label>
                   <input type="hidden" formControlName="noOfChild">
-                  <ng-number-picker class="ng-number-picker" [(value)]="noOfChild[i]" [min] ="0" [max]="'4'" (valueChange)="onNumberChanged($event)"></ng-number-picker>
+                  <ng-number-picker class="ng-number-picker" [(value)]="noOfChild[i]" [min] ="0" [max]="'4'" (valueChange)="onNumberChanged($event,i,'noOfChild')"></ng-number-picker>
                 </div>
               </div>
               <div class="col-auto ml-4" *ngIf="i!=0">
-                <button type="button" class="btn btn-outline-dark btn-sm" (click)="removeRoom(i)">[+] Remove ROOM</button>
+                <button type="button" class="btn btn-outline-dark btn-sm" (click)="removeRoom(i)">[-] Remove ROOM</button>
               </div>
             </div>
           </div>
