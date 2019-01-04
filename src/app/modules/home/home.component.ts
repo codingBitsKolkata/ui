@@ -122,6 +122,9 @@ export class HomeComponent implements OnInit {
      console.log('getPropertyTypes data', res);
      if (res.responseCode === '200') {
        this.propertyTypes = res.responseBody;
+       for (let i = 0; i < this.propertyTypes.length; i++) {
+        this.propertyList[this.propertyTypes[i].propertyTypeId] = [];
+       }
        if (this.propertyTypes.length > 0) {
         this.getPropertyList(this.propertyTypes[0]);
        }
@@ -132,15 +135,17 @@ export class HomeComponent implements OnInit {
  }
 
  getPropertyList(propertyType: any) {
-  this.srvProperty.getPropertyList({propertyTypeId: propertyType.propertyTypeId}).subscribe((res) => {
-   console.log('getPropertyList data', res);
-   if (res.responseCode === '200') {
-      this.propertyList[propertyType.propertyTypeId] = res.responseBody;
-      console.log(this.propertyList);
-   }
- }, error => {
-   console.log('error', error);
- });
+  if (this.propertyList[propertyType.propertyTypeId].length === 0) {
+    this.srvProperty.getPropertyList({propertyTypeId: propertyType.propertyTypeId}).subscribe((res) => {
+      console.log('getPropertyList data', res);
+      if (res.responseCode === '200') {
+         this.propertyList[propertyType.propertyTypeId] = res.responseBody;
+         console.log(this.propertyList);
+      }
+    }, error => {
+      console.log('error', error);
+    });
+  }
 }
 
 

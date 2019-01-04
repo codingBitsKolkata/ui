@@ -647,7 +647,7 @@
             <h4 class="title">What our customer says</h4>
             <div *ngFor="let testimonial of testimonialList" class="testimonial-item">
               <div class="thumb-img">
-                <img src="assets/images/thumbs/user2.png" />
+                <img width="70px" height="70px" [src]="testimonial?.user?.userVsInfo?.imageUrl" alt="{{testimonial?.user?.userVsInfo?.name}}">
               </div>
               <div class="thumb-details">
                   <span class="desc">{{testimonial?.description}}</span>

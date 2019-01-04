@@ -14,7 +14,6 @@ const routerConfig: Routes = [
   { path: '**' , redirectTo: 'page-not-found' }
 ];
 
-
 @NgModule({
   imports: [
     RouterModule.forRoot(routerConfig, {})

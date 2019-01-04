@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
 import * as Highcharts from 'highcharts';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PropertyService } from '../../../../services/apis/property.service';
 
 @Component({
   selector: 'app-host-property-list',
@@ -15,6 +16,7 @@ export class HostPropertyListComponent implements OnInit {
   interestList = [];
   interestSelectedItems = [];
   dropdownSettings = {};
+  propertyList = [];
   // Chart Config
   Highcharts = Highcharts;
   revenueLineChart = {
@@ -171,7 +173,13 @@ export class HostPropertyListComponent implements OnInit {
     location: 'Saltlake, Kolkata'
   }];
 
-  constructor(private modalService: NgbModal) { }
+  constructor(
+    private modalService: NgbModal,
+    private srvProperty: PropertyService
+  ) {
+    this.populatePropertyList();
+   }
+
   openModal(content) {
     // , size: 'md'
     this.modalService.open(content, { windowClass: 'modal-popup' });
@@ -210,4 +218,14 @@ export class HostPropertyListComponent implements OnInit {
     };
   }
 
+  populatePropertyList() {
+    this.srvProperty.getHostPropertyList().subscribe((res) => {
+     console.log('Property List =>', res);
+     if (res.responseCode === '200') {
+        this.propertyList = res.responseBody;
+     }
+   }, error => {
+     console.log('error', error);
+   });
+  }
 }

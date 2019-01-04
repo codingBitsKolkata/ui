@@ -18,6 +18,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { StaySearchFormComponent } from './components/stay-search-form/stay-search-form.component';
 import { FlightSearchFormComponent } from './components/flight-search-form/flight-search-form.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +43,11 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
     TagInputModule,
     NguCarouselModule,
     HighchartsChartModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD7uswagxuoKAPbQLDrJMru5wseAr56taA',
+      libraries: ['places']
+    })
   ],
   exports: [
     CommonModule,
