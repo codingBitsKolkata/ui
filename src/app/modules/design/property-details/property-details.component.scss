@@ -206,7 +206,10 @@
             position: fixed;
             top: calc(50% - 176px / 2);
             right: 0;
-            z-index: -1;
+            // z-index: -1;
+            // &:hover{
+            //     z-index: 0;
+            // }
             .guest-access-btn,.space-rules-btn{
                 padding: 10px 0px;
                 display: inline-block;
@@ -218,12 +221,39 @@
                 -moz-transition:all 0.25s ease-in-out;
                 -o-transition:all 0.25s ease-in-out;
                 transition:all 0.25s ease-in-out;
-                &:hover{
-                    margin-left: -10px;
+                position: relative;
+            }
+            .guest-access-list, .space-rules-list{
+                position: absolute;
+                top: -1px;
+                right: 98px;
+                background: #fff;
+                border-radius: 5px;
+                padding: 20px;
+                z-index: -1;
+                display: none;
+                width: 400px;
+                border-top-right-radius: 0;
+                -webkit-transition:all 0.25s ease-in-out;
+                -moz-transition:all 0.25s ease-in-out;
+                -o-transition:all 0.25s ease-in-out;
+                transition:all 0.25s ease-in-out;
+                ul{
+                    margin: 0;
+                    margin-left: 10px;
+                    li{
+                        color: #231f20;
+                        font-family: latoitalic;
+                        font-size: 14px;
+                        display: inline-block;
+                        width: 50%;
+                        margin-bottom: 10px;
+                    }
                 }
             }
             .guest-access-btn{
                 background: #f47921;
+                border: 1px solid #f47921;
                 a{
                     color: #fff;
                     font-family: latoblack;
@@ -232,24 +262,40 @@
                     padding: 0 20px;
                     display: inherit;
                     .guest-access-icon{
-                        background: url(../../../../assets/images/guest-access-icon.png) center center no-repeat;
+                        background-image: url(../../../../assets/images/guest-access-icon.png);
+                        background-position: center center;
+                        background-repeat: no-repeat;
                         width: 20px;
                         height: 20px;
                         display: inline-block;
-                        background-size: 100%;
+                        background-size: 100% 100%;
                     }
                     span{
                         display: block;
                     }
-                    
-                    &:hover{
-                        // width: 100px;
-                        
+                }
+                &:hover{
+                    margin-left: -10px;
+                    border-radius: 0;
+                    background: #fff;
+                    color: #333;
+                    border: 1px solid #f47921;
+                    border-left: 0;
+                    a{
+                        color: #2c2c2c;
+                        .guest-access-icon{
+                            background-image: url(../../../../assets/images/guest-access-icon-hover.png);
+                        }
+                    }
+                    .guest-access-list{
+                        display: block;
+                        border: 1px solid #f47921;
                     }
                 }
             }
             .space-rules-btn{
                 background: #2c2c2c;
+                border: 1px solid #2c2c2c;
                 a{
                     color: #fff;
                     font-family: latoblack;
@@ -258,16 +304,37 @@
                     padding: 0 20px;
                     display: inherit;
                     .space-rules-icon{
-                        background: url(../../../../assets/images/space-rules-icon.png) center center no-repeat;
+                        background-image: url(../../../../assets/images/space-rules-icon.png);
+                        background-position: center center;
+                        background-repeat: no-repeat;
                         width: 20px;
                         height: 20px;
                         display: inline-block;
-                        background-size: 100%;
+                        background-size: contain;
                     }
                     span{
                         display: block;
                     }
                 }
+                &:hover{
+                    margin-left: -10px;
+                    border-radius: 0;
+                    background: #fff;
+                    color: #2c2c2c;
+                    border: 1px solid #2c2c2c;
+                    border-left: 0;
+                    a{
+                        color: #2c2c2c;
+                        .space-rules-icon{
+                            background-image: url(../../../../assets/images/space-rules-icon-hover.png);
+                        }
+                    }
+                    .space-rules-list{
+                        display: block;
+                        border: 1px solid #2c2c2c;
+                    }
+                }
+                
             }
         }
     }
