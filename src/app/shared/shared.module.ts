@@ -19,6 +19,8 @@ import { StaySearchFormComponent } from './components/stay-search-form/stay-sear
 import { FlightSearchFormComponent } from './components/flight-search-form/flight-search-form.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { AgmCoreModule } from '@agm/core';
+import { NgxGalleryModule } from 'ngx-gallery';
+import { DragScrollModule } from 'ngx-drag-scroll';
 
 
 @NgModule({
@@ -45,9 +47,11 @@ import { AgmCoreModule } from '@agm/core';
     HighchartsChartModule,
     NgMultiSelectDropDownModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD7uswagxuoKAPbQLDrJMru5wseAr56taA',
+      apiKey: 'AIzaSyCe6MGWAXjP0KZo4jH6qPCPwsXirwMEV0Q',
       libraries: ['places']
-    })
+    }),
+    NgxGalleryModule,
+    DragScrollModule
   ],
   exports: [
     CommonModule,
@@ -66,6 +70,8 @@ import { AgmCoreModule } from '@agm/core';
     NguCarouselModule,
     HighchartsChartModule,
     NgMultiSelectDropDownModule,
+    NgxGalleryModule,
+    DragScrollModule,
     SearchFormComponent
   ],
   entryComponents: [

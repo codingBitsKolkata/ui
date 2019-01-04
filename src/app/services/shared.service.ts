@@ -6,6 +6,7 @@ import {FormGroup, FormControl } from '@angular/forms';
 })
 export class SharedService {
 
+  public sharedHomeSearchData = {};
   constructor() { }
 
   validateAllFormFields(formGroup: FormGroup) {

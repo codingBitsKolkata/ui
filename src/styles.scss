@@ -241,6 +241,9 @@ input:active,select:active,button:active,label:active{
                 color: #909396;
             }
         }
+        & .is-invalid {
+            border-color: #e74c3c;
+        }
         .flight-location{
             .form-control{
                 border-right: 0;
@@ -1388,4 +1391,11 @@ input:active,select:active,button:active,label:active{
 .bg-w{
     position: relative;
     background: white;
+}
+
+// validation error css
+.form-control {
+    .is-invalid {
+        color: #e74c3c !important;
+    }
 }

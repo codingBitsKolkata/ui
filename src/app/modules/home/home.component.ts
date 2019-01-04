@@ -136,7 +136,7 @@ export class HomeComponent implements OnInit {
 
  getPropertyList(propertyType: any) {
   if (this.propertyList[propertyType.propertyTypeId].length === 0) {
-    this.srvProperty.getPropertyList({propertyTypeId: propertyType.propertyTypeId}).subscribe((res) => {
+    this.srvProperty.getPropertyByType({propertyTypeId: propertyType.propertyTypeId}).subscribe((res) => {
       console.log('getPropertyList data', res);
       if (res.responseCode === '200') {
          this.propertyList[propertyType.propertyTypeId] = res.responseBody;
