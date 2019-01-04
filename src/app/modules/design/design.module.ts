@@ -32,6 +32,10 @@ import { FlightBookingListComponent } from './flight-booking-oneway/flight-booki
 import { FlightBookingRoundtripComponent } from './flight-booking-roundtrip/flight-booking-roundtrip.component';
 import { PropertyBookingFormComponent } from './property-booking-form/property-booking-form.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { UserMyBookingsComponent } from './user-my-bookings/user-my-bookings.component';
+import { UserBookingDetailsComponent } from './user-booking-details/user-booking-details.component';
+import { UserMySupportComponent } from './user-my-support/user-my-support.component';
+import { UserMyCancellationsComponent } from './user-my-cancellations/user-my-cancellations.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +55,7 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     FlightBookingListComponent, 
     FlightBookingRoundtripComponent, 
     PropertyBookingFormComponent, 
-    TestimonialComponent
+    TestimonialComponent, UserMyBookingsComponent, UserBookingDetailsComponent, UserMySupportComponent, UserMyCancellationsComponent
   ],
   imports: [
     CommonModule,

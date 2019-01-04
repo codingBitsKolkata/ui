@@ -16,6 +16,10 @@ import { FlightBookingListComponent } from './flight-booking-oneway/flight-booki
 import { FlightBookingRoundtripComponent } from './flight-booking-roundtrip/flight-booking-roundtrip.component';
 import { PropertyBookingFormComponent } from './property-booking-form/property-booking-form.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { UserMyBookingsComponent } from './user-my-bookings/user-my-bookings.component';
+import { UserBookingDetailsComponent } from './user-booking-details/user-booking-details.component';
+import { UserMyCancellationsComponent } from './user-my-cancellations/user-my-cancellations.component';
+import { UserMySupportComponent } from './user-my-support/user-my-support.component';
 
 
 const routerConfig: Routes = [
@@ -35,6 +39,12 @@ const routerConfig: Routes = [
   { path: 'host-property-details', component: HostPropertyDetailsComponent},
   { path: 'flight-oneway', component: FlightBookingListComponent},
   { path: 'flight-roundtrip', component: FlightBookingRoundtripComponent},
+
+  { path: 'user-dashboard', component: UserMyBookingsComponent},
+  { path: 'booking-details', component: UserBookingDetailsComponent},
+  { path: 'user-cancellations', component: UserMyCancellationsComponent},
+  { path: 'user-support', component: UserMySupportComponent},
+  
 ];
 
 @NgModule({
