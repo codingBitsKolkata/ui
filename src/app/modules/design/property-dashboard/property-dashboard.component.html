@@ -268,48 +268,48 @@
     </div>
   </ng-template>
 
-    <!-- Contact ORA Popup -->
-    <ng-template #contactOraModal let-modal>
-      <div class="modal-container">
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title mb-25">Contact ORA</h4>
-        <form class="form-component">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter your name" value="Mr. Saiyed Husain">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" class="form-control" value="+91 80014578954">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="email" class="form-control" value="host@gmail.com">
-              </div>
+  <!-- Contact ORA Popup -->
+  <ng-template #contactOraModal let-modal>
+    <div class="modal-container">
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title mb-25">Contact ORA</h4>
+      <form class="form-component">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Enter your name" value="Mr. Saiyed Husain">
             </div>
           </div>
-          <h5>Purpose</h5>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <select name="" class="form-control">
-                  <option value="">Others</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <textarea name="" class="form-control h100">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </textarea>
-              </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" class="form-control" value="+91 80014578954">
             </div>
           </div>
-        </form>
-        <button type="button" class="btn btn-primary float-right" (click)="modal.close('Save click')">Submit</button>
-      </div>
-    </ng-template>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="email" class="form-control" value="host@gmail.com">
+            </div>
+          </div>
+        </div>
+        <h5>Purpose</h5>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <select name="" class="form-control">
+                <option value="">Others</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <textarea name="" class="form-control h100">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+      <button type="button" class="btn btn-primary float-right" (click)="modal.close('Save click')">Submit</button>
+    </div>
+  </ng-template>
 </div>

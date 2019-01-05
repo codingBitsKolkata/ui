@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-host-listing',
@@ -18,7 +19,7 @@ export class HostListingComponent implements OnInit {
 
   dropdownSettings = {};
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
     this.specialExperienceList = [
@@ -75,4 +76,9 @@ export class HostListingComponent implements OnInit {
   checkInTime = {hour: 10, minute: 30};
   checkOutTime = {hour: 12, minute: 30};
   meridian = true;
+
+  openModal(content) {
+    // , size: 'md'
+      this.modalService.open(content, { windowClass: 'modal-popup host-details' });
+  }
 }

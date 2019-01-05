@@ -185,6 +185,11 @@ input:active,select:active,button:active,label:active{
     }
 }
 // BOOKING SECTION TAB
+@-moz-document url-prefix() {
+    .booking-section{
+        top: calc(50% - 400px / 2) !important;
+    }
+}
 .booking-section{
     margin: auto;
     position: absolute;
@@ -253,12 +258,14 @@ input:active,select:active,button:active,label:active{
                     background-color: #ffffff;
                     border-right: 0;
                     border-color: #dee1e4;
+                    padding: 0px 10px 0px 0px;
                 }
             }
             .toBox{
                 .input-group-text{
                     background-color: #ffffff;
                     border-color: #dee1e4;
+                    padding: 0px 10px 0px 0px;
                 }
             }
         }
@@ -423,6 +430,7 @@ input:active,select:active,button:active,label:active{
             background: #fff !important;
             color: #909396 !important;
             border-color: #dee1e4 !important;
+            padding: 0px 10px 0px 0px;
             &:hover,&:focus,&:active{
                 color: #f57921 !important;
             }
@@ -1389,8 +1397,8 @@ input:active,select:active,button:active,label:active{
     }
 }
 .bg-w{
-    position: relative;
-    background: white;
+    // position: relative;
+    // background: white;
 }
 
 // validation error css
