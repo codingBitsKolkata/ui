@@ -21,6 +21,7 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
 import { AgmCoreModule } from '@agm/core';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { DragScrollModule } from 'ngx-drag-scroll';
+import { EarningCalculatorComponent } from './components/earning-calculator/earning-calculator.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { DragScrollModule } from 'ngx-drag-scroll';
     FileValidator,
     StaySearchFormComponent,
     FlightSearchFormComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    EarningCalculatorComponent
   ],
   imports: [
     CommonModule,
@@ -72,7 +74,8 @@ import { DragScrollModule } from 'ngx-drag-scroll';
     NgMultiSelectDropDownModule,
     NgxGalleryModule,
     DragScrollModule,
-    SearchFormComponent
+    SearchFormComponent,
+    EarningCalculatorComponent
   ],
   entryComponents: [
     TestModalComponent

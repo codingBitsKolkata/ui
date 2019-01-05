@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { DragScrollComponent } from 'ngx-drag-scroll';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-property-details',
@@ -51,7 +52,7 @@ export class PropertyDetailsComponent implements OnInit {
     galleryOptions: NgxGalleryOptions[];
     galleryImages: NgxGalleryImage[];
 
-    constructor() { }
+    constructor(private modalService: NgbModal) { }
 
     ngOnInit(): void {
 
@@ -100,6 +101,11 @@ export class PropertyDetailsComponent implements OnInit {
                 big: 'assets/images/property-details/gallery/big-slide-1.png'
             }
         ];
+    }
+
+    openModal(content) {
+        // , size: 'md'
+        this.modalService.open(content, { windowClass: 'modal-popup host-details' });
     }
 
 }
