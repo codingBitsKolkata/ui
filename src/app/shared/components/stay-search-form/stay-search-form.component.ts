@@ -1,28 +1,33 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, NgZone,  Output , EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { WhiteSpaceValidator } from '../../../directives/validators/white-space-validation';
 import { SharedService} from '../../../services/shared.service';
-import { NgbDate, NgbCalendar, NgbDatepickerConfig, NgbInputDatepicker, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+// tslint:disable-next-line:max-line-length
+import { NgbDate, NgbCalendar, NgbDateStruct, NgbDatepickerConfig, NgbInputDatepicker, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 // import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 import {Router} from '@angular/router';
 declare const google: any;
+
 
 @Component({
   selector: 'app-stay-search-form',
   templateUrl: './stay-search-form.component.html',
   styleUrls: ['./stay-search-form.component.scss']
 })
-export class StaySearchFormComponent implements OnInit {
+export class StaySearchFormComponent implements OnInit, OnChanges  {
 
   @Input() propertyTypes: Array<any>;
+  @Input() searchObj: object;
+  @Input() pageName: object;
+  @Output() searchFormSubmitted  = new EventEmitter<string>();
   staySearchForm: FormGroup;
   noOfGuest: Array<number>;
   noOfChild: Array<number>;
   numberOfRooms: number;
   numberOfGuest: number;
-  checkInDate: NgbDate;
-  checkOutDate: NgbDate;
+  checkInDate: any;
+  checkOutDate: any;
   checkOutMinDate: any;
   checkInMinDate: any;
   latitude: any;
@@ -42,6 +47,7 @@ export class StaySearchFormComponent implements OnInit {
     private router: Router
   ) {
     this.checkInDate = calendar.getToday();
+    console.log(this.checkInDate);
     this.checkOutDate = calendar.getNext(calendar.getToday(), 'd', 3);
     const currentDate = new Date();
     // config.minDate = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
@@ -53,12 +59,45 @@ export class StaySearchFormComponent implements OnInit {
     this.numberOfGuest = 1;
     this.buildSearchForm();
   }
+  fromModel(date: Date): NgbDateStruct {
+    return date ? {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate()
+    } : null;
+  }
 
   ngOnInit() {
-   // this.staySearchForm.get('rooms').setValue({noOfGuest: 1, noOfChild: 0 });
-    this.staySearchForm.patchValue({
-      rooms : [{noOfGuest: 1, noOfChild: 0 }]
-    });
+    console.log(this.searchObj);
+    if (this.searchObj) {
+      this.latitude = this.searchObj['latitude'];
+      this.longitude = this.searchObj['longitude'];
+      const selectedCheckInDate = new Date(this.searchObj['checkInDate']);
+      const selectedCheckOutDate = new Date(this.searchObj['checkOutDate']);
+      // tslint:disable-next-line:max-line-length
+      this.checkInDate = { year: selectedCheckInDate.getFullYear(), month: selectedCheckInDate.getMonth() + 1, day: selectedCheckInDate.getDate() };
+      // tslint:disable-next-line:max-line-length
+      this.checkOutDate = { year: selectedCheckOutDate.getFullYear(), month: selectedCheckOutDate.getMonth() + 1, day: selectedCheckOutDate.getDate() };
+      this.checkOutMinDate = this.checkInDate;
+      const rooms = this.searchObj['rooms'];
+      if (rooms.length > 0) {
+        this.removeRoom(0);
+        for (let i = 0; i < rooms.length; i++) {
+          this.addRoom(rooms[i].noOfGuest, rooms[i].noOfChild);
+        }
+      }
+      console.log(this.checkInDate);
+      this.staySearchForm.patchValue(this.searchObj);
+      this.staySearchForm.patchValue({
+        checkInDate : this.checkInDate,
+        checkOutDate: this.checkOutDate
+      });
+
+    } else {
+      this.staySearchForm.patchValue({
+        rooms : [{noOfGuest: 1, noOfChild: 0 }]
+      });
+    }
 
       // load Places Autocomplete
       this.mapsAPILoader.load().then(() => {
@@ -95,21 +134,22 @@ export class StaySearchFormComponent implements OnInit {
       location: new FormControl('', [Validators.required]),
       checkInDate: new FormControl(this.checkInDate, [Validators.required]),
       checkOutDate: new FormControl(this.checkOutDate, [Validators.required]),
-      rooms: this.fb.array([this.buildRoomForm()])
+      rooms: this.fb.array([this.buildRoomForm(1, 0)])
     });
     console.log(this.staySearchForm);
   }
-  buildRoomForm() {
+  buildRoomForm(noOfGuest, noOfChild ) {
     return this.fb.group({
-      noOfGuest: new FormControl(1, [Validators.required]),
-      noOfChild: new FormControl(0, [Validators.required])
+      noOfGuest: new FormControl(noOfGuest, [Validators.required]),
+      noOfChild: new FormControl(noOfChild, [Validators.required])
       });
   }
 
   onSubmitSearch() {
     console.log(this.staySearchForm);
     if (this.staySearchForm.valid) {
-       const searchParam  = this.staySearchForm.value;
+       const searchParam  = Object.assign({}, this.staySearchForm.value);
+       console.log(searchParam);
        const checkInDate = this.parserFormatter.format(searchParam.checkInDate);
        const checkOutDate = this.parserFormatter.format(searchParam.checkOutDate);
        searchParam.checkInDate = checkInDate;
@@ -119,7 +159,9 @@ export class StaySearchFormComponent implements OnInit {
        console.log(searchParam);
        localStorage.setItem('searchObj', JSON.stringify(searchParam));
        this.sharedSrv.sharedHomeSearchData = searchParam;
-       this.router.navigate(['/properties']);
+       this.searchFormSubmitted.emit(searchParam);
+       this.router.navigate(['/properties'], { queryParams: searchParam });
+       console.log('here');
     } else {
       this.sharedSrv.validateAllFormFields(this.staySearchForm);
     }
@@ -134,11 +176,11 @@ export class StaySearchFormComponent implements OnInit {
   get roomsArray(): FormArray {
     return this.staySearchForm.get('rooms') as FormArray;
   }
-  addRoom() {
+  addRoom(noOfGuest = 1, noOfChild= 0 ) {
     // (this.staySearchForm.controls['rooms'] as FormArray).push(this.buildRoomForm());
-    this.roomsArray.push(this.buildRoomForm());
-    this.noOfGuest.push(1);
-    this.noOfChild.push(0);
+    this.roomsArray.push(this.buildRoomForm(noOfGuest , noOfChild));
+    this.noOfGuest.push(noOfGuest);
+    this.noOfChild.push(noOfChild);
     this.numberOfRooms++;
     this.setNumberOfGuest();
   }
@@ -161,4 +203,7 @@ export class StaySearchFormComponent implements OnInit {
     this.staySearchForm.patchValue({checkOutDate: ''});
     this.checkOutMinDate = event;
   }
+  ngOnChanges(changes: SimpleChanges) {
+      console.log(changes);
+    }
 }

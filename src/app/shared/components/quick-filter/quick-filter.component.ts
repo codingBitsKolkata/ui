@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedService} from '../../../services/shared.service';
 import { PropertyService } from '../../../services/apis/property.service';
@@ -10,6 +10,7 @@ import { PropertyService } from '../../../services/apis/property.service';
 })
 export class QuickFilterComponent implements OnInit {
 
+  @Input() selectedPropertyTypeName: string;
   public checkboxGroupForm: FormGroup;
   ratingsFliterList: Array<any>;
   amenitiesFliterList: Array<any>;
@@ -51,7 +52,7 @@ export class QuickFilterComponent implements OnInit {
       couples_frindly: false,
       pet_friendly: false
     });
-    
+
   }
 
   getMasterRatingsList() {

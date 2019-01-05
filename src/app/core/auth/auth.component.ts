@@ -7,6 +7,7 @@ import { AuthService } from '../../services/apis/auth.service';
 import { UserStorageProvider } from '../../services/storage/user-storage.service';
 import { ValidateEmailNotTaken } from '../../directives/validators/email-not-taken-validation';
 import { ValidateMobileNotTaken } from '../../directives/validators/mobile-not-taken-validation';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-auth',
@@ -29,13 +30,15 @@ export class AuthComponent implements OnInit {
   displayRegisterOtpForm: boolean;
   loginUserData: object;
   registerUserData: object;
+  privacyPolicyData: object;
 
   constructor(
     private activeModal: NgbActiveModal,
     private fb: FormBuilder,
     private sharedSrv: SharedService,
     private authSrv: AuthService,
-    private userStorage: UserStorageProvider
+    private userStorage: UserStorageProvider,
+    private modalService: NgbModal
   ) {
     /** set default value of properties */
     this.loading = false;
@@ -224,5 +227,13 @@ export class AuthComponent implements OnInit {
   }
   onCountryChange() {
     this.registerForm.controls['mobile'].updateValueAndValidity();
+  }
+  openPrivacyPolicyModal(content) {
+    this.authSrv.getPrivacyPolicy().subscribe((res) => {
+      this.privacyPolicyData = res.responseBody;
+      this.modalService.open(content, { windowClass: 'modal-popup', centered: true });
+    }, errorData => {
+      console.log('error', errorData);
+    });
   }
 }

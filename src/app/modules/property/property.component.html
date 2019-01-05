@@ -8,7 +8,7 @@
     <div class="col-md-3">
       <div class="property-found">
           <span class="icon"></span>
-          <p class="pl-1"><span>{{propertyList.length}} Homestays </span> properties found</p>
+          <p class="pl-1"><span>{{propertyList.length}} {{selectedPropertyTypeName}} </span> properties found</p>
         </div>
     </div>
     <div class="col-md-6">
@@ -63,7 +63,7 @@
                 Book your stay
             </div>
             <div class="card-body">
-                <app-stay-search-form [propertyTypes] = "propertyTypes"></app-stay-search-form>
+                <app-stay-search-form [propertyTypes] = "propertyTypes" [searchObj]="searchObj" [pageName]="'PROPERTY'" (searchFormSubmitted)="searchFormSubmitted($event)"></app-stay-search-form>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
       <!-- Quick Filter -->
       <div class="card quick-filter-section mb-3">
         <div class="card-header">Quick filter</div>
-        <app-quick-filter></app-quick-filter>
+        <app-quick-filter [selectedPropertyTypeName]="selectedPropertyTypeName"></app-quick-filter>
       </div>
     </div>
     
