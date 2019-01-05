@@ -149,7 +149,10 @@ export class HomeComponent implements OnInit {
     });
   }
 }
-
+  openModal(content) {
+    // , size: 'md'
+      this.modalService.open(content, { windowClass: 'modal-popup', centered: true });
+  }
   openFilterModal(content) {
     // , size: 'md'
     this.modalService.open(content, { windowClass: 'modal-popup quick-filter-modal', centered: true });

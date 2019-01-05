@@ -129,7 +129,7 @@
       <h6 class="desc">Fusce tempor a risus id euismod. Phaselus ullamc...</h6>
       <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget pharetra nisi, auctor congue ex.
       </p>
-      <button class="btn btn-dark mr-2">Earning Calculator <img class="icon-calculator" src="assets/images/icon-calculator.png"></button>
+      <button class="btn btn-dark mr-2" (click)="openModal(earningCalculator)">Earning Calculator <img class="icon-calculator" src="assets/images/icon-calculator.png"></button>
       <button class="btn btn-primary" routerLink="/host-listing">View More [+]</button>
     </div>
   </div>
@@ -193,6 +193,13 @@
 
 </div>
 
+<!-- Earning Calculator -->
+<ng-template #earningCalculator let-modal>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <app-earning-calculator></app-earning-calculator>
+</ng-template>
 
 <!-- Quick Filter -->
 <!-- <ng-template #quickFilterModal let-modal>
