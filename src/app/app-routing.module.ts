@@ -6,10 +6,11 @@ import { PropertyListComponent } from './modules/design/property-list/property-l
 import { AboutComponent } from './modules/design/about/about.component';
 
 const routerConfig: Routes = [
-  { path: 'home' , loadChildren: './modules/home/home.module#HomeModule' },
+  { path: '' , loadChildren: './modules/home/home.module#HomeModule' },
   { path: 'properties' , loadChildren: './modules/property/property.module#PropertyModule' },
   { path: 'host' , loadChildren: './modules/host/host.module#HostModule' },
-  { path: '' , loadChildren: './modules/design/design.module#DesignModule' },
+  { path: 'dashboard' , loadChildren: './modules/dashboard/dashboard.module#DashboardModule' },
+  { path: 'design' , loadChildren: './modules/design/design.module#DesignModule' },
   { path: 'page-not-found', component: ErrorComponent },
   { path: '**' , redirectTo: 'page-not-found' }
 ];
