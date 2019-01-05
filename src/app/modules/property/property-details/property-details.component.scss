@@ -149,6 +149,7 @@
                 .item{
                     background-color: #ecedef;
                     width: 80px;
+                    height: 80px;;
                     border-radius: 50px;
                     margin: 0px 15px;
                     &:hover{
@@ -203,10 +204,10 @@
         .guest-space-btn-group{
             display: inline-block;
             width: 70px;
-            position: fixed;
+            position: absolute;
             top: calc(50% - 176px / 2);
             right: 0;
-            // z-index: -1;
+            z-index: 1;
             // &:hover{
             //     z-index: 0;
             // }
@@ -610,6 +611,9 @@
                     font-size: 11px;
                     margin: 0;
                     margin-left: 10px;
+                    a{
+                        color: #f47921;
+                    }
                 }
             }
             .form-area{
@@ -735,6 +739,135 @@
                 &.increase{
                     color: #f47921 !important;
                     border-left: 0px;
+                }
+            }
+        }
+    }
+}
+
+
+// Modal css
+::ng-deep{
+    .host-details{
+        @media (min-width: 768px){
+            .modal-dialog {
+                max-width: 700px;
+                margin: 1.75rem auto;
+            }
+        }
+        .modal-container{
+            .host-info{
+                .host-img{
+                    img{
+                        width: 100%;
+                        border-radius: 5px;
+                    }
+                }   
+                .title{
+                    font-family: latobolditalic;
+                    color: #2c2c2c;
+                    font-size: 36px;
+                    margin: 0;
+                }
+                .small-desc{
+                    font-family: latobolditalic;
+                    color: #2c2c2c;
+                    font-size: 14px;
+                    margin: 0;
+                }
+                .list-info{
+                    background: #f3f3f3;
+                    border-radius: 5px;
+                    margin: 10px 0;
+                    ul{
+                        list-style: none;
+                        padding: 0;
+                        margin-left: 10px;
+                        margin-top: 20px;
+                        li{
+                            color: #231f20;
+                            font-family: latoitalic;
+                            font-size: 14px;
+                            display: inline-block;
+                            &::before{
+                                content: " ";
+                                font-family: FontAwesome;
+                                display: inline-block;
+                                margin-left: -1.3em;
+                                width: 40px;
+                                background: url(../../../../assets/images/tick-orange.png) center center no-repeat;
+                                background-size: 16px 11px;
+                                height: 13px;
+                            }
+                        }
+                    }
+                }
+                .icon-set{
+                    span{
+                        font-family: latoitalic;
+                        font-size: 14px;
+                        color: #2c2c2c;
+                        margin-left: 10px;
+                    }
+                    .superhost{
+                        margin-right: 30px;
+                        margin-left: 10px;
+                        i.icon-supperhost{
+                            display: block;
+                            background: url(../../../../assets/images/super-host.png) center center no-repeat;
+                            background-size: 100% 100%;
+                            width: 40px;
+                            height: 50px;
+                        }
+                    }
+                    .reviews{
+                        i.icon-review{
+                            display: block;
+                            background: url(../../../../assets/images/reviews-hand.png) center center no-repeat;
+                            background-size: 100% 100%;
+                            width: 40px;
+                            height: 40px;
+                        }
+                    }
+                }
+            }
+            .review-sec{
+                margin-top: 30px;
+                .review-header{
+                    h5{
+                        font-size: 30px;
+                        font-family: latoitalic;
+                        color: #2c2c2c;   
+                        margin: 0px;                 
+                    }
+                    p{
+                        font-family: latobolditalic;
+                        font-size: 14px;
+                        color: #2c2c2c;
+                    }
+                }
+                .review-body{
+                    .review-item{
+                        .c-img{
+                            margin-right: 20px;
+                            img{
+                                height: 80px;
+                                border-radius: 50px;
+                            }
+                        }
+                        .comment{
+                            font-size: 14px;
+                            font-family: latoitalic;
+                            color: #2c2c2c;
+                            a{
+                                color: #f47921;
+                            }
+                        }
+                        .date-rating{
+                            font-family: latoitalic;
+                            color: #2c2c2c;
+                        }
+                    }
                 }
             }
         }

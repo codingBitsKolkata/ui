@@ -43,6 +43,9 @@ export class FooterComponent implements OnInit {
         this.newsletterForm.reset();
       }, errorData => {
         console.log('error', errorData);
+        if (errorData && errorData.status === 400) {
+          this.newsLetterMessage = errorData.error.responseMessage;
+        }
         this.newsletterForm.reset();
       });
 

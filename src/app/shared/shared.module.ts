@@ -77,7 +77,9 @@ import { QuickFilterComponent } from './components/quick-filter/quick-filter.com
     NgxGalleryModule,
     DragScrollModule,
     SearchFormComponent,
-    EarningCalculatorComponent
+    AgmCoreModule,
+    EarningCalculatorComponent,
+    StaySearchFormComponent
   ],
   entryComponents: [
     TestModalComponent

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedService} from '../../services/shared.service';
 import { PropertyService } from '../../services/apis/property.service';
 
+
 @Component({
   selector: 'app-property',
   templateUrl: './property.component.html',
@@ -19,6 +20,8 @@ export class PropertyComponent implements OnInit {
   propertyTypes: Array<any>;
   searchPropertyType: string;
   Object = Object;
+  sharedHomeSearchData: any;
+
   constructor(
     private formBuilder: FormBuilder,
     private sharedSrv: SharedService,
@@ -62,10 +65,12 @@ export class PropertyComponent implements OnInit {
     const isSearchObjEmpty = !Object.keys(sharedHomeSearchData).length;
     console.log(isSearchObjEmpty);
     if (!isSearchObjEmpty) {
+      this.sharedHomeSearchData = sharedHomeSearchData;
       this.getPropertyList(sharedHomeSearchData);
     } else {
       const searchObj = JSON.parse(localStorage.getItem('searchObj'));
       this.getPropertyList(searchObj);
+      this.sharedHomeSearchData = searchObj;
     }
 
   }

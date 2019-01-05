@@ -162,6 +162,7 @@
                 <div class="col-md-3" *ngFor="let property of propertyList[propertyType.propertyTypeId]">
                   <div class="card mb-0 border-0">
                     <div class="property-img">
+                        <div *ngIf="property.roomStandard!='NORMAL'">{{property.roomStandard}}</div>
                         <img class="card-img-top rounded" [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" alt="Card image cap">
                         <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
                         <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
@@ -169,13 +170,22 @@
                     <div class="card-body pl-0 pr-0 pb-0">
                       <h5 class="card-title">{{property.oraName}}, {{property.address}}</h5>
                       <p class="card-text price mb-1">₹ {{property.totalPrice | number:'.2'}} Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
+                      <p class="card-text"><span class="badge badge-secondary bg-orange">{{property.rating}}</span><span class="cat-type"> Good,</span><span class="review"> {{property.reviewCount}} reviews</span></p>
                       <hr class="hr1">
                       <div class="alert alert-secondary alert-green" role="alert">
                         <h6 class="title mb-0">In high demand!</h6>
                         <span class="info-text">Booked 21 times in the last 24 hours</span>
                       </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
+                      <p class="complimentary">Complimentary &nbsp;&nbsp;
+                        <span *ngIf="property.mealFlag" class="complimentary-tea"></span>
+
+                        <span *ngFor="let amenitie of property.amenities">
+                            <img class="card-img-top rounded" [src]="amenitie.imgUrl1" [alt]="amenitie.aminitiesName">
+                        </span>
+                       
+                       <!-- <span class="complimentary-swimming"></span>
+                        <span class="complimentary-parking"></span> -->
+                      </p>
                     </div>
                   </div>
                 </div>

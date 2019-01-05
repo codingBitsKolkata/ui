@@ -44,7 +44,7 @@ const routerConfig: Routes = [
   { path: 'booking-details', component: UserBookingDetailsComponent},
   { path: 'user-cancellations', component: UserMyCancellationsComponent},
   { path: 'user-support', component: UserMySupportComponent},
-  
+
 ];
 
 @NgModule({

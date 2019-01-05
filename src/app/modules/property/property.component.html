@@ -58,81 +58,15 @@
     <div class="col-md-3 pt-24">
       <!-- Property Booking Form -->
       <div class="booking-section mb-4">
-        <ngb-tabset justify="justified">
-          <ngb-tab title="Book your stay">
-            <ng-template ngbTabContent>
-              <form class="booking-form">
-                <div class="form-group">
-                  <select class="form-control">
-                    <option>Pick a stay</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="City, Locality or Landmark">
-                </div>
-                <div class="form-group">
-                  <div class="input-group">
-                    <input class="form-control" placeholder="Check in"
-                            name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary calendar checkin-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                    </div>
-                    <input class="form-control" placeholder="Check out"
-                            name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary calendar checkout-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <select class="form-control">
-                    <option>2 Guest, 1 Room</option>
-                  </select>
-                </div>
-                <div class="form-group text-right mt-10 mb-10">
-                  <button type="button" class="btn btn-primary"><i class="fa fa-search pr-1"></i>Modify your search</button>
-                </div>
-              </form>
-            </ng-template>
-          </ngb-tab>
-          <ngb-tab title="Book your flight">
-            <ng-template ngbTabContent>
-              <form class="booking-form">
-                <div class="form-group">
-                  <select class="form-control">
-                    <option>Pick a stay</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="City, Locality or Landmark">
-                </div>
-                <div class="form-group">
-                  <div class="input-group">
-                    <input class="form-control" placeholder="Check in"
-                            name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary calendar checkin-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                    </div>
-                    <input class="form-control" placeholder="Check out"
-                            name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary calendar checkout-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <select class="form-control">
-                    <option>2 Guest, 1 Room</option>
-                  </select>
-                </div>
-                <div class="form-group text-right">
-                  <button type="button" class="btn btn-primary"><i class="fa fa-search pr-1"></i>Search</button>
-                </div>
-              </form>
-            </ng-template>
-          </ngb-tab>
-        </ngb-tabset> 
-      </div>
+          <div class="card">
+            <div class="card-header">
+                Book your stay
+            </div>
+            <div class="card-body">
+                <app-stay-search-form [propertyTypes] = "propertyTypes"></app-stay-search-form>
+            </div>
+          </div>
+        </div>
 
       <!-- Quick Filter -->
       <div class="card quick-filter-section mb-3">
@@ -287,9 +221,13 @@
     </div>
 
     <!-- Map Section -->
-    <div [hidden]="!mapShowHide" class="col-md-3">
+    <div *ngIf="propertyList.length > 0" [hidden]="!mapShowHide" class="col-md-3">
       <div class="map-container">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40494.989483729216!2d88.342810979799!3d22.572884744446924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f882db4908f667%3A0x43e330e68f6c2cbc!2sKolkata%2C+West+Bengal!5e0!3m2!1sen!2sin!4v1544016144997" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <agm-map [latitude]="+sharedHomeSearchData?.latitude" [longitude]="+sharedHomeSearchData?.longitude"  [zoom]='10'>
+              <agm-marker *ngFor="let property of propertyList" [latitude]="+property.latitude" [longitude]="+property.longitude">
+                <agm-info-window>{{property.oraName}}</agm-info-window>
+              </agm-marker>
+          </agm-map>
       </div>
     </div>
   </div>
