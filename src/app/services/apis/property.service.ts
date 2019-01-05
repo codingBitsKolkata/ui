@@ -35,15 +35,15 @@ export class PropertyService {
 	 */
   searchProperties(requestParam: any): Observable<any> {
     // console.log('here');
-    // const request = {
-    //   'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-properties',
-    //   'params' : requestParam
-    // };
-    // return this.httpClient.post<any>(request.url, request.params);
     const request = {
-       'url':  'assets/static-data/property-list.json'
+      'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-properties',
+      'params' : requestParam
     };
-    return this.httpClient.get<any>(request.url, {params: requestParam});
+    return this.httpClient.post<any>(request.url, request.params);
+    // const request = {
+    //    'url':  'assets/static-data/property-list.json'
+    // };
+    // return this.httpClient.get<any>(request.url, {params: requestParam});
   }
 
   getMasterRatingsList(requestParam: any): Observable<any> {

@@ -72,7 +72,8 @@ import { DragScrollModule } from 'ngx-drag-scroll';
     NgMultiSelectDropDownModule,
     NgxGalleryModule,
     DragScrollModule,
-    SearchFormComponent
+    SearchFormComponent,
+    AgmCoreModule
   ],
   entryComponents: [
     TestModalComponent
