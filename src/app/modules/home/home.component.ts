@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbDate, NgbCalendar, NgbDatepickerConfig, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { TestimonialService } from '../../services/apis/testimonial.service';
 import { PropertyService } from '../../services/apis/property.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,8 @@ export class HomeComponent implements OnInit {
     calendar: NgbCalendar,
     config: NgbDatepickerConfig,
     private srvTestimonial: TestimonialService,
-    private srvProperty: PropertyService
+    private srvProperty: PropertyService,
+    private modalService: NgbModal
     ) {
     this.h_fromDate = calendar.getToday();
     this.h_toDate = calendar.getNext(calendar.getToday(), 'd', 3);
@@ -148,5 +150,8 @@ export class HomeComponent implements OnInit {
   }
 }
 
-
+  openFilterModal(content) {
+    // , size: 'md'
+    this.modalService.open(content, { windowClass: 'modal-popup quick-filter-modal', centered: true });
+  }
 }

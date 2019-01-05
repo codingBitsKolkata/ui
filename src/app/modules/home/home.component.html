@@ -36,90 +36,6 @@
     </div>
   </div>
 
-  <!-- Booking Form -->
-  <!-- <div class="booking-section">
-    <div class="container" data-aos="fade-right">
-      <div class="row">
-        <div class="col-md-5">
-          <ngb-tabset justify="justified">
-            <ngb-tab title="Book your stay">
-              <ng-template ngbTabContent>
-                <form class="booking-form">
-                  <div class="form-group">
-                    <select class="form-control">
-                      <option>Pick a stay</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="City, Locality or Landmark">
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <input class="form-control border-right-0" placeholder="Check in"
-                              name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar checkin-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                      </div>
-                      <input class="form-control border-right-0" placeholder="Check out"
-                              name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar checkout-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <select class="form-control">
-                      <option>2 Guest, 1 Room</option>
-                    </select>
-                  </div>
-                  <div class="form-group text-right mt-4 mb-0 clearfix">
-                    <button type="button" class="btn btn-primary btn-lg search-btn" routerLink="/property-list"><i class="search-icon"></i>Search</button>
-                  </div>
-                </form>
-              </ng-template>
-            </ngb-tab>
-            <ngb-tab title="Book your flight">
-              <ng-template ngbTabContent>
-                <form class="booking-form">
-                  <div class="form-group">
-                    <select class="form-control">
-                      <option>Pick a stay</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="City, Locality or Landmark">
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <input class="form-control border-right-0" placeholder="Check in"
-                              name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar checkin-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                      </div>
-                      <input class="form-control border-right-0" placeholder="Check out"
-                              name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar checkout-pick" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <select class="form-control">
-                      <option>2 Guest, 1 Room</option>
-                    </select>
-                  </div>
-                  <div class="form-group text-right mt-4 mb-0 clearfix">
-                    <button type="button" class="btn btn-primary btn-lg search-btn" routerLink="/property-list"><i class="search-icon"></i>Search</button>
-                  </div>
-                </form>
-              </ng-template>
-            </ngb-tab>
-          </ngb-tabset>  
-        </div>
-      </div>
-    </div>
-  </div> -->
-
   <!-- Features Section -->
   <div class="container-fluid features-section">
     <div class="container">
@@ -162,13 +78,13 @@
                 <div class="col-md-3" *ngFor="let property of propertyList[propertyType.propertyTypeId]">
                   <div class="card mb-0 border-0">
                     <div class="property-img">
-                        <div *ngIf="property.roomStandard!='NORMAL'">{{property.roomStandard}}</div>
+                        <div class="room-tag {{property.roomStandard == 'PREMIUM' ? 'green' : 'orange'}}" *ngIf="property.roomStandard!='NORMAL'">{{property.roomStandard}}</div>
                         <img class="card-img-top rounded" [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" alt="Card image cap">
                         <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
                         <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
                     </div>
                     <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">{{property.oraName}}, {{property.address}}</h5>
+                      <h5 class="card-title" placement="top" ngbTooltip="{{property.address}}">{{property.oraName}}, {{property.address}}</h5>
                       <p class="card-text price mb-1">₹ {{property.totalPrice | number:'.2'}} Per night</p>
                       <p class="card-text"><span class="badge badge-secondary bg-orange">{{property.rating}}</span><span class="cat-type"> Good,</span><span class="review"> {{property.reviewCount}} reviews</span></p>
                       <hr class="hr1">
@@ -182,421 +98,13 @@
                         <span *ngFor="let amenitie of property.amenities">
                             <img class="card-img-top rounded" [src]="amenitie.imgUrl1" [alt]="amenitie.aminitiesName">
                         </span>
-                       
-                       <!-- <span class="complimentary-swimming"></span>
-                        <span class="complimentary-parking"></span> -->
                       </p>
                     </div>
                   </div>
                 </div>
-                <!-- <div class="col-md-3">
-                  <div class="card mb-0 border-0 ">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0 ">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div> -->
               </div>
             </ng-template>
           </ngb-tab>
-          <!-- <ngb-tab title="Guest House">
-            <ng-template ngbTabTitle></ng-template>
-            <ng-template ngbTabContent>
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0 ">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0 ">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
-          <ngb-tab title="Hotels">
-            <ng-template ngbTabContent>
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0 ">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0 ">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
-          <ngb-tab title="Paying Guest">
-            <ng-template ngbTabContent>
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0 ">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0 ">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
-          <ngb-tab title="Boatstays">
-            <ng-template ngbTabContent>
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0 ">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0 ">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="card mb-0 border-0">
-                    <div class="property-img">
-                        <img class="card-img-top rounded" src="assets/images/property/property-1.png" alt="Card image cap">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
-                    </div>
-                    <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title">ORA9122522, Amadpur</h5>
-                      <p class="card-text price mb-1">₹2,900 Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">7.6</span><span class="cat-type"> Good,</span><span class="review"> 1765 reviews</span></p>
-                      <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
-                        <h6 class="title mb-0">In high demand!</h6>
-                        <span class="info-text">Booked 21 times in the last 24 hours</span>
-                      </div>
-                      <p class="complimentary">Complimentary &nbsp;&nbsp;<span class="complimentary-tea"></span><span class="complimentary-gym"></span><span class="complimentary-swimming"></span><span class="complimentary-parking"></span></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </ngb-tab> -->
         </ngb-tabset>
         <hr class="hr-1 mt-30 mb-30 no-mobile-d">
         <div class="row p-10-30">
@@ -606,7 +114,7 @@
             </div>
           </div>
           <div class="col-md-4 text-right">
-              <button class="btn btn-dark mr-2 quick-filter-btn"><label>Quick Filter </label> <i class="fa fa-filter" aria-hidden="true"></i></button>
+              <!-- <button class="btn btn-dark mr-2 quick-filter-btn" (click)="openFilterModal(quickFilterModal)"><label>Quick Filter </label> <i class="fa fa-filter" aria-hidden="true"></i></button> -->
               <button class="btn btn-primary view-more-btn" routerLink="/property-list">View More [+]</button>
             </div>
         </div>
@@ -684,3 +192,13 @@
   </div>
 
 </div>
+
+
+<!-- Quick Filter -->
+<!-- <ng-template #quickFilterModal let-modal>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="card-header">Quick filter</div>
+  <app-quick-filter></app-quick-filter>
+</ng-template> -->

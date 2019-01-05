@@ -79,7 +79,8 @@ import { QuickFilterComponent } from './components/quick-filter/quick-filter.com
     SearchFormComponent,
     AgmCoreModule,
     EarningCalculatorComponent,
-    StaySearchFormComponent
+    StaySearchFormComponent,
+    QuickFilterComponent
   ],
   entryComponents: [
     TestModalComponent

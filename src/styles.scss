@@ -514,6 +514,19 @@ input:active,select:active,button:active,label:active{
             padding: 20px 30px;
         }
         .property-img{
+            .room-tag{
+                position: absolute;
+                font-size: 12px;
+                padding: 5px 5px;
+                color: #fff;
+                font-family: latobold;
+                &.green{
+                    background: #2ecc71;
+                }
+                &.orange{
+                    background: #f47921;
+                }
+            }
             .pro-icon{
                 font-size: 20px;
                 color: #ffffff;
@@ -540,6 +553,9 @@ input:active,select:active,button:active,label:active{
                 font-size: 16px;
                 font-family: latoblack;
                 margin-bottom: 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             .price{
                 color: #454444;
@@ -717,13 +733,26 @@ input:active,select:active,button:active,label:active{
             margin-bottom: 30px;
             .thumb-img{
                 margin-right: 15px;
+                img{
+                    width: 70px;
+                    border-radius: 10px;
+                }
             }
             .thumb-details{
                 .desc{
                     color: #231f20;
                     font-size: 14px;
-                    line-height: 15pt;
-                    display: inline-block;
+                    line-height: 18pt;
+                    display: block;
+                    display: -webkit-box;
+                    max-height: 44px;
+                    margin: 0 auto;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    -o-text-overflow: ellipsis;
+                    -ms-text-overflow: ellipsis;
                 }
                 .name{
                     color: #130504;
@@ -1405,5 +1434,89 @@ input:active,select:active,button:active,label:active{
 .form-control {
     .is-invalid {
         color: #e74c3c !important;
+    }
+}
+
+// Quick Filter
+
+.quick-filter-section{
+    color: #130504;
+    .card-header{
+        background-color: rgb(229, 229, 229);
+        border-bottom: 1px solid rgb(229, 229, 229);
+        font-family: latoblack;
+        font-size: 16px;
+        padding-top: 13px;
+        padding-bottom: 12px;
+    }
+    .card-body{
+        padding-top: 30px;
+        padding-bottom: 30px;
+        .card-title{
+            font-size: 14px;
+        }
+    }
+    .btn-group-toggle{
+        display: inline-block;
+        .btn-checkbox-filter {
+            font-family: lato;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 50px;
+            color: #130504;
+            background-color: #ffffff;
+            border-color: #939698;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .btn-checkbox-filter:not(:disabled):not(.disabled):active, .btn-checkbox-filter:not(:disabled):not(.disabled).active, .show > .btn-checkbox-filter.dropdown-toggle {
+            font-family: latobold;
+            color: #ffffff;
+            background-color: #f47921;
+            border-color: #f47921;
+        }
+    }
+}
+.filter-more-btn{
+    color: #f47921;
+    font-size: 12px;
+    font-family: latobold;
+}
+.quick-filter-modal{
+    color: #130504;
+    .card-header{
+        background-color: rgb(229, 229, 229);
+        border-bottom: 1px solid rgb(229, 229, 229);
+        font-family: latoblack;
+        font-size: 16px;
+        padding-top: 13px;
+        padding-bottom: 12px;
+    }
+    .card-body{
+        padding-top: 30px;
+        padding-bottom: 30px;
+        .card-title{
+            font-size: 14px;
+        }
+    }
+    .btn-group-toggle{
+        display: inline-block;
+        .btn-checkbox-filter {
+            font-family: lato;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 50px;
+            color: #130504;
+            background-color: #ffffff;
+            border-color: #939698;
+            margin-right: 10px;
+            margin-bottom: 8px;
+        }
+        .btn-checkbox-filter:not(:disabled):not(.disabled):active, .btn-checkbox-filter:not(:disabled):not(.disabled).active, .show > .btn-checkbox-filter.dropdown-toggle {
+            font-family: latobold;
+            color: #ffffff;
+            background-color: #f47921;
+            border-color: #f47921;
+        }
     }
 }
