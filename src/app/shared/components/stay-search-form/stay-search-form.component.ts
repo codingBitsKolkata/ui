@@ -2,9 +2,10 @@ import { Component, OnInit, Input, ViewChild, ElementRef, NgZone } from '@angula
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { WhiteSpaceValidator } from '../../../directives/validators/white-space-validation';
 import { SharedService} from '../../../services/shared.service';
-import { NgbDate, NgbCalendar, NgbDatepickerConfig, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate, NgbCalendar, NgbDatepickerConfig, NgbInputDatepicker, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 // import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
+import {Router} from '@angular/router';
 declare const google: any;
 
 @Component({
@@ -24,6 +25,8 @@ export class StaySearchFormComponent implements OnInit {
   checkOutDate: NgbDate;
   checkOutMinDate: any;
   checkInMinDate: any;
+  latitude: any;
+  longitude: any;
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
@@ -34,7 +37,9 @@ export class StaySearchFormComponent implements OnInit {
     calendar: NgbCalendar,
     config: NgbDatepickerConfig,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private parserFormatter: NgbDateParserFormatter,
+    private router: Router
   ) {
     this.checkInDate = calendar.getToday();
     this.checkOutDate = calendar.getNext(calendar.getToday(), 'd', 3);
@@ -43,10 +48,10 @@ export class StaySearchFormComponent implements OnInit {
     this.checkOutMinDate = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
     this.checkInMinDate = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
     this.noOfGuest = [1];
-     this.noOfChild = [0];
-     this.numberOfRooms = 1;
-     this.numberOfGuest = 1;
-      this.buildSearchForm();
+    this.noOfChild = [0];
+    this.numberOfRooms = 1;
+    this.numberOfGuest = 1;
+    this.buildSearchForm();
   }
 
   ngOnInit() {
@@ -58,7 +63,7 @@ export class StaySearchFormComponent implements OnInit {
       // load Places Autocomplete
       this.mapsAPILoader.load().then(() => {
         const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-          types: ['address']
+          types: ['geocode']
         });
         autocomplete.addListener('place_changed', () => {
           this.ngZone.run(() => {
@@ -70,6 +75,12 @@ export class StaySearchFormComponent implements OnInit {
               return;
             }
             console.log(place);
+            // console.log(place.geometry.location.lat());
+            // console.log(place.geometry.location.lng());
+            // console.log(place.formatted_address);
+            this.latitude = place.geometry.location.lat().toFixed(6);
+            this.longitude = place.geometry.location.lng().toFixed(6);
+            this.staySearchForm.patchValue({location: place.formatted_address});
           });
         });
       });
@@ -97,6 +108,21 @@ export class StaySearchFormComponent implements OnInit {
 
   onSubmitSearch() {
     console.log(this.staySearchForm);
+    if (this.staySearchForm.valid) {
+       const searchParam  = this.staySearchForm.value;
+       const checkInDate = this.parserFormatter.format(searchParam.checkInDate);
+       const checkOutDate = this.parserFormatter.format(searchParam.checkOutDate);
+       searchParam.checkInDate = checkInDate;
+       searchParam.checkOutDate = checkOutDate;
+       searchParam['latitude'] = this.latitude;
+       searchParam['longitude'] = this.longitude;
+       console.log(searchParam);
+       localStorage.setItem('searchObj', JSON.stringify(searchParam));
+       this.sharedSrv.sharedHomeSearchData = searchParam;
+       this.router.navigate(['/properties']);
+    } else {
+      this.sharedSrv.validateAllFormFields(this.staySearchForm);
+    }
   }
   onNumberChanged(val: number, index: number , filedName: string) {
     console.log(event);

@@ -12,7 +12,7 @@ export class AppConst {
     public static readonly PROPERTY_ADD_API_BASE_URL: string = environment.property_add_api_base_url;
     public static readonly PROPERTY_API_BASE_URL: string = environment.property_api_base_url;
     /**  Data encryption secret key */
-    public static readonly ENC_KEY: string = '!InT@eLioR!#';
+    public static readonly ENC_KEY: string = '!oraStay@ora!#';
     /**  API key */
     public static readonly API_KEY: string = '';
     /** Enviromental variable */

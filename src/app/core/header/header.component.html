@@ -10,19 +10,19 @@
       </div>
       <div class="navbar-expand mr-auto">
         <div class="navbar-nav">
-          <span class="heading">India's largest homestay brand</span>
+          <span class="heading">India’s first standardized homestay experience</span>
         </div>
       </div>
       <div class="navbar-expand ml-auto navbar-nav">
         <div class="navbar-nav">
-          <button type="button" class="btn btn-light btn-sm mr-3 fs-12 host-btn" routerLink="/host-listing"><i class="fa fa-address-book-o host-icon" aria-hidden="true"></i> <span class="d-none d-sm-block">HOST</span></button>
+          <button type="button" class="btn btn-light btn-sm mr-3 fs-12 host-btn" routerLink="/host"><i class="fa fa-address-book-o host-icon" aria-hidden="true"></i> <span class="d-none d-sm-block">HOST</span></button>
           <!-- <button type="button" class="btn btn-light btn-sm mr-2 fs-12 help-btn"><i class="help-icon" aria-hidden="true"></i> <span class="d-none d-sm-block">HELP</span></button> -->
           <div ngbDropdown placement="bottom-right" class="d-inline-block user-dropdown">
             <button class="btn dropdown-btn" id="dropdownBasic2" ngbDropdownToggle></button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
               <button type="button" *ngIf="!isLogined" class="btn dropdown-item" (click)="openLoginSignUpModal('loginTab')"><i class="fa fa-lock pr-1"></i> LOGIN</button>
               <button type="button" *ngIf="!isLogined" class="btn dropdown-item" (click)="openLoginSignUpModal('signupTab')"><i class="fa fa-lock pr-1"></i> SIGNUP</button>
-              <button type="button" *ngIf="isLogined" class="btn dropdown-item" routerLink="/property-dashboard"><i class="fa fa-user pr-1"></i> PROFILE</button>
+              <button type="button" *ngIf="isLogined" class="btn dropdown-item" routerLink="/dashboard"><i class="fa fa-user pr-1"></i> PROFILE</button>
               <button type="button" *ngIf="isLogined" class="btn dropdown-item" (click)="logOut()"><i class="fa fa-power-off pr-1"></i> LOGOUT</button>
               
             </div>
@@ -50,7 +50,7 @@
             <a class="nav-link" routerLink="/team">Teams</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/career">Careers</a>
+            <a class="nav-link" routerLink="/career">Career</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/media">Media</a>
@@ -74,98 +74,6 @@
       </div>
   </div>
 </nav>
-
-<!-- Login, Signup, Verify OTP Popup -->
-<ng-template #loginForm let-c="close" let-d="dismiss">
-  <div class="login-section">
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <ngb-tabset [justify]="currentJustify" #ngbTabset [activeId]="loginFormSelectedTab">
-      <ngb-tab id="loginTab">
-        <ng-template ngbTabTitle>Log in</ng-template>
-        <ng-template ngbTabContent>
-          <!-- Login Form -->
-          <form action="">
-            <div class="form-group">
-              <input type="email" class="form-control" placeholder="Email / Mobile">
-            </div>
-            <div class="text-right mt-4 clearfix">
-              <p class="change-tab-view">Not a memebr? <a href="#" (click)="ngbTabset.select('signupTab')"> Sign up</a></p>
-              <button class="btn btn-primary">Log in</button>
-            </div>
-          </form>
-
-          <!-- Verify OTP Form -->
-          <form action="" class="d-none">
-            <div class="otp-heading mb-4">
-              <h3>Please enter the OTP to verify your acount</h3>
-              <p class="m-0">A OTP  has been sent to shibo***to@gmail.com or mobile</p>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Enter your OTP">
-            </div>
-            <div class="text-right mt-4 clearfix">
-              <p class="change-tab-view">Not a memebr? <a href="#" (click)="ngbTabset.select('signupTab')"> Sign up</a></p>
-              <button class="btn btn-primary verifyBtn">Validate OTP</button>
-            </div>
-            <div class="text-right mt-2">
-              <p class="resend-otp m-0">Resend <a href=""> OTP</a></p>
-            </div>
-          </form>
-        </ng-template>
-      </ngb-tab>
-      <ngb-tab id="signupTab">
-        <ng-template ngbTabTitle>Sign up</ng-template>
-        <ng-template ngbTabContent>
-          <!-- Signup Form -->
-          <form action="" >
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Full name">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <input type="number" class="form-control" placeholder="Mobile">
-            </div>
-            <div class="form-group">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                <label class="form-check-label" for="invalidCheck2" class="terms-conditions">
-                    I agree to the Orastays <a href=""> Privacy Policy</a> 
-                </label>
-              </div>
-            </div>
-            <div class="text-right mt-4 clearfix">
-              <p class="change-tab-view">Already registered? <a href="#" (click)="ngbTabset.select('loginTab')">  Log in</a></p>
-              <button class="btn btn-primary">Sign up</button>
-            </div>
-          </form>
-
-          <!-- Verify OTP Form -->
-          <form action="" class="d-none">
-            <div class="otp-heading mb-4">
-              <h3>Please enter the OTP to verify your acount</h3>
-              <p class="m-0">A OTP  has been sent to shibo***to@gmail.com or mobile</p>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Enter your OTP">
-            </div>
-            <div class="text-right mt-4 clearfix">
-              <p class="change-tab-view">Not a memebr? <a href="#" (click)="ngbTabset.select('loginTab')"> Sign up</a></p>
-              <button class="btn btn-primary verifyBtn">Validate OTP</button>
-            </div>
-            <div class="text-right mt-2">
-              <p class="resend-otp m-0">Resend <a href=""> OTP</a></p>
-            </div>
-          </form>
-        </ng-template>
-      </ngb-tab>
-    </ngb-tabset>
-  </div>
-</ng-template>
-
 <!-- Coming Soon Popup -->
 <button style="display:none" #comingSoonModalBtn (click)="openComingSoon(comingSoon)"></button>
 <ng-template #comingSoon let-d="dismiss">

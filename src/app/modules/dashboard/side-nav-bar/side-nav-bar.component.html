@@ -1,0 +1,60 @@
+<div class="sidebar">
+    <nav class="sidebar-nav ps ps--active-y">
+      <div class="profile-info">
+        <div class="btn-group mr-3">
+          <img class="user-img" src="assets/images/dashboard/prop_host.png" alt="">
+          <button class="btn btn-edit" type="button" (click)="openModal(editProfileModal)"><i class="pencil-icon"></i></button>
+        </div>
+        <label class="username">Saiyed Hussain</label>
+      </div>
+      <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="colors.html">
+              <i class="nav-icon"></i> Properties
+              <span class="badge badge-info">04</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="typography.html">
+              <i class="nav-icon"></i> Revenue
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="typography.html">
+              <i class="nav-icon"></i> Calendar
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="typography.html">
+              <i class="nav-icon"></i> Inventory
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="typography.html">
+              <i class="nav-icon"></i> Analytics
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" (click)="openModal(contactOraModal)">
+              <i class="nav-icon"></i> Contact ORA
+            </a>
+        </li>
+           <!-- User Dashboard -->
+           <li class="nav-item">
+              <a class="nav-link" routerLink="/user-dashboard">
+                <i class="nav-icon"></i> My bookings
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/user-cancellations">
+                <i class="nav-icon"></i> View cancellations
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/user-my-support">
+                <i class="nav-icon"></i> My support
+              </a>
+            </li>
+      </ul>
+    </nav>
+  </div>
