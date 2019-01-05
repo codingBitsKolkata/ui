@@ -76,7 +76,8 @@ import { EarningCalculatorComponent } from './components/earning-calculator/earn
     DragScrollModule,
     SearchFormComponent,
     AgmCoreModule,
-    EarningCalculatorComponent
+    EarningCalculatorComponent,
+    StaySearchFormComponent
   ],
   entryComponents: [
     TestModalComponent

@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { DragScrollComponent } from 'ngx-drag-scroll';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-property-details',
@@ -20,7 +21,7 @@ export class PropertyDetailsComponent implements OnInit {
   @ViewChild('locationSlider', {read: DragScrollComponent}) ls: DragScrollComponent;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
 
   ngOnInit(): void {
@@ -98,6 +99,10 @@ leftBoundStat_ls(reachesLeftBound: boolean) {
 
 rightBoundStat_ls(reachesRightBound: boolean) {
     this.ls_rightNavDisabled = reachesRightBound;
+}
+openModal(content) {
+    // , size: 'md'
+    this.modalService.open(content, { windowClass: 'modal-popup host-details' });
 }
 
 

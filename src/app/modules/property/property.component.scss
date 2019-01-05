@@ -125,12 +125,25 @@ agm-map{
         padding-top: 24px;
     }
     .booking-section{
-        position: relative;
+        position: initial;
         top: 0;
+        .card{
+            background-color: #e5e5e5 !important;
+            box-shadow: 0px 6px 0px 0px #00000038;
+        }
+        .card-header{
+            background-color: #e5e5e5;
+            border-bottom: 1px solid #e5e5e5;
+            font-family: latobold;
+            font-size: 16px;
+            padding-top: 13px;
+            padding-bottom: 0px;
+            color: #130504;
+        }
         
         ::ng-deep .tab-content {
             background-color: #e5e5e5 !important;
-            padding: 30px 20px;
+            padding: 0px 20px 30px 20px;
             box-shadow: 0px 6px 0px 0px #00000038;
         }
         ::ng-deep .nav.nav-tabs .nav-item{
@@ -145,6 +158,10 @@ agm-map{
                 color: #130504 !important;
                 background-color: #e5e5e5;
                 border-color: transparent;
+                font-family: latoblack;
+                font-size: 16px;
+                text-align: left;
+                padding: 15px 20px;
             }
         } 
         .booking-form{
@@ -156,6 +173,8 @@ agm-map{
             background: #fff;
             color: #939393;
             font-size: 14px;
+            padding-left: 0;
+            padding-right: 10px;
         }
     }
     .quick-filter-section{
