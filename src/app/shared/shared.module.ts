@@ -22,6 +22,7 @@ import { AgmCoreModule } from '@agm/core';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { DragScrollModule } from 'ngx-drag-scroll';
 import { EarningCalculatorComponent } from './components/earning-calculator/earning-calculator.component';
+import { QuickFilterComponent } from './components/quick-filter/quick-filter.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { EarningCalculatorComponent } from './components/earning-calculator/earn
     StaySearchFormComponent,
     FlightSearchFormComponent,
     SearchFormComponent,
-    EarningCalculatorComponent
+    EarningCalculatorComponent,
+    QuickFilterComponent
   ],
   imports: [
     CommonModule,

@@ -79,6 +79,6 @@ export class HostListingComponent implements OnInit {
 
   openModal(content) {
     // , size: 'md'
-      this.modalService.open(content, { windowClass: 'modal-popup host-details' });
+      this.modalService.open(content, { windowClass: 'modal-popup', centered: true });
   }
 }
