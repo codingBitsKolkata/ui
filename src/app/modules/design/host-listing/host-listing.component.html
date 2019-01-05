@@ -13,6 +13,7 @@
             <div class="col-md-6">
               <div class="listing-form">
                 <form-wizard>
+                  <!-- Step 1 -->
                   <wizard-step>
                     <h4 class="title">What type of property you are listing ?</h4>
                     <div class="d-flex text-center mt-30">
@@ -50,6 +51,8 @@
                       </div>
                     </div>
                   </wizard-step>
+                  <!-- / Step 1 -->   
+                  <!-- Step 2 -->                                 
                   <wizard-step>
                     <div class="row">
                       <div class="col-md-4 plr-5">
@@ -74,6 +77,8 @@
                       </div> -->
                     </div>
                   </wizard-step>
+                  <!-- / Step 2 --> 
+                  <!-- / Step 3 --> 
                   <wizard-step>
                     <div class="form-group bg-input d-flex align-items-center mb-3">
                       <span class="icon i-guest-access"></span>
@@ -86,6 +91,8 @@
                       <!-- <tag-input class="tag-input" [(ngModel)]='nearbyPlaces' secondary-placeholder="+ nearby place" placeholder="+ nearby place"></tag-input> -->
                     </div>
                   </wizard-step>
+                  <!-- / Step 3 -->   
+                  <!-- Step 4 -->                 
                   <wizard-step>
                     <h4 class="title">Select Space Rules:</h4>
                     <div class="d-flex text-center mt-15">
@@ -127,6 +134,8 @@
                       <ng-multiselect-dropdown class="form-control multiSelect" [placeholder]="'Special experience'" [data]="specialExperienceList" [(ngModel)]="specialExperience" [settings]="dropdownSettings" name="specialExperience"></ng-multiselect-dropdown>
                     </div>
                   </wizard-step>
+                  <!-- / Step 4 -->    
+                  <!-- Step 5 -->       
                   <wizard-step>
                     <div class="row">
                       <div class="col-md-6">
@@ -152,6 +161,8 @@
                       </div>
                     </div>
                   </wizard-step>
+                  <!-- / Step 5 -->       
+                  <!-- Step 6 -->    
                   <wizard-step>
                     <h4 class="title">Upload cover photo:</h4>
                     <div class="form-group bg-input d-flex align-items-center mb-3">
@@ -170,7 +181,9 @@
                       </div>
                     </div>
                   </wizard-step>
-                  <wizard-step>
+                  <!-- / Step 6 -->    
+                  <!-- Step 7 -->    
+                   <wizard-step>
                     <h4 class="title">Do you want to list entire apartment? </h4>
                     <div class="form-group toggle-radio-btn text-center mt-2">
                       <input id="entire-apart-on" class="toggle toggle-left" name="entire-apart" value="false" type="radio" checked>
@@ -179,6 +192,8 @@
                       <label for="entire-apart-off" class="toggle-btn">No</label>
                     </div>
                   </wizard-step>
+                  <!-- / Step 7 -->   
+                  <!-- Step 8 -->   
                   <wizard-step>
                     <div class="row justify-content-center">
                       <div class="col-md-5 plr-5">
@@ -195,6 +210,8 @@
                       </div>
                     </div>
                   </wizard-step>
+                  <!-- / Step 8 -->   
+                  <!-- Step 9 -->   
                   <wizard-step>
                     <h4 class="title">Select stay type: </h4>
                     <div class="d-flex text-center mt-15">
@@ -224,6 +241,8 @@
                       </div>
                     </div>
                   </wizard-step>
+                  <!-- / Step 9 -->   
+                  <!-- Step 10 -->   
                   <wizard-step>
                     <h4 class="title">Select sex category: </h4>
                     <div class="d-flex text-center mt-15">
@@ -253,6 +272,8 @@
                       </div>
                     </div>
                   </wizard-step>
+                  <!-- / Step 10 --> 
+                  <!-- Step 11 --> 
                   <wizard-step>
                     <h4 class="title">Do you have multiple rooms? </h4>
                     <div class="form-group toggle-radio-btn text-center mt-2">
@@ -262,6 +283,8 @@
                       <label for="multi-room-off" class="toggle-btn">No</label>
                     </div>
                   </wizard-step>
+                  <!-- / Step 11 -->                   
+                  <!-- Step 12 -->                   
                   <wizard-step>
                     <div class="row">
                       <div class="col-md-8">
@@ -316,6 +339,8 @@
                       <ng-number-picker class="ng-number-picker"></ng-number-picker>
                     </div> -->
                   </wizard-step>
+                  <!-- / Step 12 -->                   
+                  <!-- Step 13 -->                   
                   <wizard-step>
                     <h4 class="title">Select specialities:</h4>
                     <div class="form-group bg-input">
@@ -327,6 +352,9 @@
                       <ng-multiselect-dropdown class="form-control multiSelect" [placeholder]="'Select amenities'" [data]="amenitiesList" [(ngModel)]="amenities" [settings]="dropdownSettings" name="amenities"></ng-multiselect-dropdown>
                     </div>
                   </wizard-step>
+                  <!-- Step 13 --> 
+
+                  <!-- Step 14 -->  
                   <wizard-step>
                     <h4 class="title">Upload room images:</h4>
                     <div class="form-group bg-input d-flex align-items-center mb-3">
@@ -337,6 +365,9 @@
                       </div>
                     </div>
                   </wizard-step>
+                 <!-- / Step 14 -->  
+
+                 <!-- Step 15 -->  
                   <wizard-step>
                     <div class="row">
                       <div class="col-md-6">
@@ -370,6 +401,9 @@
                       </div>
                     </div>
                   </wizard-step>
+                 <!-- / Step 15 -->  
+
+                  <!-- Step 16 -->  
                   <wizard-step>
                     <h4 class="title">Select your meal plan: </h4>
                     <div class="d-flex text-center mt-15">
@@ -391,7 +425,9 @@
                       </div>
                     </div>
                   </wizard-step>
+                  <!-- / Step 16 -->  
 
+                   <!-- Step 17 -->  
                   <wizard-step>
                     <h4 class="title">Meal plan: </h4>
                     <!-- <table class="table table-bordered meal-table">
@@ -1627,7 +1663,10 @@
                       </ngb-accordion>
                     </div>
                   </wizard-step>
-                  <wizard-step>
+                   <!-- / Step 17 -->  
+
+                   <!-- Step 18 -->  
+                   <wizard-step>
                     <div class="row">
                       <div class="col-md-6">
                         <h4 class="title">Price per night: </h4>
@@ -1675,6 +1714,9 @@
                       </div>
                     </div>
                   </wizard-step>
+                   <!-- / Step 18 -->  
+                  
+                   <!-- Step 19 -->  
                   <wizard-step>
                     <div class="row">
                       <div class="col-md-6">
@@ -1712,6 +1754,9 @@
                       </div>
                     </div>
                   </wizard-step>
+                   <!-- / Step 19 -->  
+
+                  <!-- Step 20 -->  
                   <wizard-step>
                     <h4 class="title">Cancellation policy:</h4>
                     <div class="form-group bg-input h-auto mb-15 d-flex align-items-center">
@@ -1775,6 +1820,9 @@
                       </div>
                     </div> -->
                   </wizard-step>
+                  <!-- / Step 20 -->  
+                  
+                  <!-- Step 21 -->  
                   <wizard-step>
                     <h4 class="title">Bank details</h4>
                     <div class="row">
@@ -1814,6 +1862,9 @@
                       </div>
                     </div>
                   </wizard-step>
+                  <!-- / Step 21 -->  
+
+                  <!-- Step 22 -->  
                   <wizard-step>
                     <h4 class="title">Upload Documents</h4>
                     <div class="row">
@@ -1844,6 +1895,9 @@
                       </div>
                     </div>
                   </wizard-step>
+                  <!-- / Step 22 -->  
+                  
+                  <!-- Step 23 -->  
                   <wizard-step>
                     <h4 class="title">Business start & end date</h4>
                     <div class="row">
@@ -1873,6 +1927,9 @@
                       </div>
                     </div>
                   </wizard-step>
+                  <!-- / Step 23 -->  
+                  
+                  <!-- Step 24 -->  
                   <wizard-step>
                     <h4 class="title">Provide additional information</h4>
                     <div class="row">
@@ -1900,6 +1957,9 @@
                       </div>
                     </div>
                   </wizard-step>
+                   <!-- / Step 24 -->  
+
+                   <!-- Step 25 --> 
                   <wizard-step>
                     <div class="text-center">
                       <img src="assets/images/elements/thumbsup.png" alt="">
@@ -1907,6 +1967,8 @@
                       <h5 class="fs-18">You have successfully listed your property with us.</h5>
                     </div>
                   </wizard-step>
+                  <!-- Step 25 --> 
+
                 </form-wizard>
               </div>
             </div>
