@@ -130,7 +130,7 @@
       <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget pharetra nisi, auctor congue ex.
       </p>
       <button class="btn btn-dark mr-2" (click)="openModal(earningCalculator)">Earning Calculator <img class="icon-calculator" src="assets/images/icon-calculator.png"></button>
-      <button class="btn btn-primary" routerLink="/host-listing">View More [+]</button>
+      <button class="btn btn-primary" routerLink="/host">View More [+]</button>
     </div>
   </div>
 
@@ -172,7 +172,7 @@
                   <span class="name"><b>{{testimonial?.user?.userVsInfo?.name}}</b></span> <span class="datetime">  {{testimonial?.createdDate | date:'mediumDate'}}</span>
               </div>
             </div>
-            <button class="btn btn-primary view-more-btn">View More [+]</button>
+            <button class="btn btn-primary view-more-btn" routerLink="/testimonial">View More [+]</button>
           </div>
         </div>
       </div>
@@ -184,7 +184,7 @@
                 unique accommodations to the users as per the requirements, preference and choice.</h5>
             <p class="text">We are building the largest online marketplace of accommodation to help users find standardised accommodations through one touch technology, as per their requirements including short and long stays.</p>
             <p class="text mb-30">Nam ornare lorem feugiat ligula aliquet lobortis ...</p>
-            <button class="btn btn-primary view-more-btn">View More [+]</button>
+            <button class="btn btn-primary view-more-btn"  routerLink="/about">View More [+]</button>
           </div>
         </div>
       </div>
