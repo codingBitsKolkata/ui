@@ -260,6 +260,12 @@ agm-map{
                 padding-left: 27px;
                 display: flex;
                 align-items: center;
+                span{
+                    width: 22px;
+                    height: 22px;
+                    margin: 0 2px;
+                    display: flex;
+                }
                 .parking-icon{
                     background: url(../../../assets/images/property/parking-icon.png) no-repeat;
                     background-size: 100%;
@@ -278,6 +284,14 @@ agm-map{
                 }
                 .wify-icon{
                     background: url(../../../assets/images/property/wify-icon.png) no-repeat;
+                    background-size: 100%;
+                    width: 20px;
+                    height: 20px;
+                    display: inline-block;
+                    margin-left: 5px;
+                }
+                .complimentary-tea{
+                    background: url(../../../assets/images/complimentary_tea.png) center center no-repeat;
                     background-size: 100%;
                     width: 20px;
                     height: 20px;

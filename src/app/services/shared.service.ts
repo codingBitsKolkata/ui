@@ -19,4 +19,17 @@ export class SharedService {
       }
     });
   }
+
+  getRatingText(ratingPoint) {
+    if (ratingPoint <= 4) {
+      return 'Good';
+    } else if (ratingPoint < 4 &&  ratingPoint <= 6) {
+      return 'Very Good';
+    } else if (ratingPoint > 8) {
+      return 'Excellent';
+    } else {
+      return '';
+    }
+
+  }
 }

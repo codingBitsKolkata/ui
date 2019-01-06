@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/co
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { DragScrollComponent } from 'ngx-drag-scroll';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SharedService} from '../../../services/shared.service';
+import { PropertyService } from '../../../services/apis/property.service';
 
 @Component({
   selector: 'app-property-details',
@@ -10,6 +12,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class PropertyDetailsComponent implements OnInit {
 
+  propertyDetails: object;
+  searchObj: object;
   as_leftNavDisabled = false;
   as_rightNavDisabled = false;
   ls_leftNavDisabled = false;
@@ -21,10 +25,26 @@ export class PropertyDetailsComponent implements OnInit {
   @ViewChild('locationSlider', {read: DragScrollComponent}) ls: DragScrollComponent;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
-  constructor(private modalService: NgbModal) { }
+  constructor(
+      private modalService: NgbModal,
+      private sharedSrv: SharedService,
+      private srvProperty: PropertyService
+      ) {
+
+      }
 
 
   ngOnInit(): void {
+    const sharedHomeSearchData = this.sharedSrv.sharedHomeSearchData;
+    const isSearchObjEmpty = !Object.keys(sharedHomeSearchData).length;
+    if (!isSearchObjEmpty) {
+      this.getPropertyDetails(sharedHomeSearchData);
+      this.searchObj = sharedHomeSearchData;
+    } else {
+      const searchObj = JSON.parse(localStorage.getItem('searchObj'));
+      this.getPropertyDetails(searchObj);
+      this.searchObj = searchObj;
+    }
 
       this.galleryOptions = [
           {
@@ -104,6 +124,21 @@ openModal(content) {
     // , size: 'md'
     this.modalService.open(content, { windowClass: 'modal-popup host-details' });
 }
+
+getPropertyDetails(params: any) {
+    this.srvProperty.getPropertyDetails(params).subscribe((res) => {
+      console.log('getPropertyDetails data', res);
+      if (res.responseCode === '200') {
+         this.propertyDetails = res.responseBody;
+         console.log(this.propertyDetails);
+      }
+    }, error => {
+      console.log('error', error);
+    });
+  }
+  searchFormSubmitted(evn) {
+    console.log(evn);
+  }
 
 
 }

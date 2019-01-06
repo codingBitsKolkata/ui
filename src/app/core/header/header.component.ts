@@ -67,11 +67,12 @@ export class HeaderComponent implements AfterViewInit, OnInit {
   logOut() {
     this.authSrv.logOut(this.userInfo.userToken).subscribe((res) => {
     if (res.responseCode === '200') {
-      this.userStorage.clear();
-      location.reload(true);
+
     }
   }, error => {
     console.log('error', error);
   });
+  this.userStorage.clear();
+  location.reload(true);
   }
 }

@@ -6,7 +6,7 @@ import { PropertyDetailsComponent } from './property-details/property-details.co
 const routerConfig: Routes = [
  // { path: '', redirectTo: 'properties', pathMatch: 'full'},
   { path: '', component: PropertyComponent},
-  { path: ':id', component: PropertyDetailsComponent},
+  { path: 'property-details', component: PropertyDetailsComponent},
 ];
 
 @NgModule({
