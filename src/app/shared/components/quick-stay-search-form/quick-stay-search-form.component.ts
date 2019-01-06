@@ -25,5 +25,8 @@ export class QuickStaySearchFormComponent implements OnInit {
     // , size: 'md'
     this.modalService.open(content, { windowClass: 'modal-popup host-details' });
 }
+bookYourStay() {
+this.searchFormSubmitted.emit(this.searchObj);
+}
 
 }

@@ -4,6 +4,7 @@ import { DragScrollComponent } from 'ngx-drag-scroll';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SharedService} from '../../../services/shared.service';
 import { PropertyService } from '../../../services/apis/property.service';
+import { ActivatedRoute, Router  } from '@angular/router';
 
 @Component({
   selector: 'app-property-details',
@@ -28,7 +29,8 @@ export class PropertyDetailsComponent implements OnInit {
   constructor(
       private modalService: NgbModal,
       private sharedSrv: SharedService,
-      private srvProperty: PropertyService
+      private srvProperty: PropertyService,
+      private router: Router
       ) {
 
       }
@@ -138,6 +140,7 @@ getPropertyDetails(params: any) {
   }
   searchFormSubmitted(evn) {
     console.log(evn);
+    this.router.navigate(['/properties/booking'], { queryParams: this.searchObj });
   }
 
 
