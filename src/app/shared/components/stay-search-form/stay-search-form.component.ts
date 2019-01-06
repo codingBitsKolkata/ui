@@ -70,8 +70,8 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
   ngOnInit() {
     console.log(this.searchObj);
     if (this.searchObj) {
-      this.latitude = this.searchObj['latitude'];
-      this.longitude = this.searchObj['longitude'];
+      this.latitude = + this.searchObj['latitude'];
+      this.longitude = + this.searchObj['longitude'];
       const selectedCheckInDate = new Date(this.searchObj['checkInDate']);
       const selectedCheckOutDate = new Date(this.searchObj['checkOutDate']);
       // tslint:disable-next-line:max-line-length
@@ -154,8 +154,8 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
        const checkOutDate = this.parserFormatter.format(searchParam.checkOutDate);
        searchParam.checkInDate = checkInDate;
        searchParam.checkOutDate = checkOutDate;
-       searchParam['latitude'] = this.latitude;
-       searchParam['longitude'] = this.longitude;
+       searchParam['latitude'] = + this.latitude;
+       searchParam['longitude'] = + this.longitude;
        console.log(searchParam);
        localStorage.setItem('searchObj', JSON.stringify(searchParam));
        this.sharedSrv.sharedHomeSearchData = searchParam;

@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedService} from '../../services/shared.service';
 import { PropertyService } from '../../services/apis/property.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router  } from '@angular/router';
+
 
 
 @Component({
@@ -29,7 +30,8 @@ export class PropertyComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private sharedSrv: SharedService,
     private srvProperty: PropertyService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     ) {
       this.propertyList = [];
       this.ratingsFliterList = [];
@@ -144,6 +146,13 @@ export class PropertyComponent implements OnInit, OnDestroy {
    }
    searchFormSubmitted(searchData) {
     this.getPropertyList(searchData);
+   }
+   navigateToBookingPage(propertyId) {
+    const searchObj = JSON.parse(localStorage.getItem('searchObj'));
+    searchObj['propertyId'] = propertyId;
+    localStorage.setItem('searchObj', JSON.stringify(searchObj));
+    this.sharedSrv.sharedHomeSearchData = searchObj;
+    this.router.navigate(['/properties/property-details'], { queryParams: searchObj });
    }
    ngOnDestroy() {
     this.sub.unsubscribe();

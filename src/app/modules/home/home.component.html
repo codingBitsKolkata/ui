@@ -76,7 +76,7 @@
             <ng-template ngbTabContent>
               <div class="row" *ngIf="propertyList[propertyType.propertyTypeId] && propertyList[propertyType.propertyTypeId].length > 0">
                 <div class="col-md-3" *ngFor="let property of propertyList[propertyType.propertyTypeId]">
-                  <div class="card mb-0 border-0">
+                  <div class="card mb-0 border-0" (click)="showMoreProperty(property,propertyType.propertyTypeId)">
                     <div class="property-img">
                         <div class="room-tag {{property.roomStandard == 'PREMIUM' ? 'green' : 'orange'}}" *ngIf="property.roomStandard!='NORMAL'">{{property.roomStandard}}</div>
                         <img class="card-img-top rounded" [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" alt="Card image cap">
@@ -86,7 +86,7 @@
                     <div class="card-body pl-0 pr-0 pb-0">
                       <h5 class="card-title" placement="top" ngbTooltip="{{property.address}}">{{property.oraName}}, {{property.address}}</h5>
                       <p class="card-text price mb-1">₹ {{property.totalPrice | number:'.2'}} Per night</p>
-                      <p class="card-text"><span class="badge badge-secondary bg-orange">{{property.rating}}</span><span class="cat-type"> Good,</span><span class="review"> {{property.reviewCount}} reviews</span></p>
+                      <p class="card-text"><span class="badge badge-secondary bg-orange">{{property.rating}}</span><span class="cat-type"> {{sharedSrv.getRatingText(property.rating)}},</span><span class="review"> {{property.reviewCount}} reviews</span></p>
                       <hr class="hr1">
                       <div class="alert alert-secondary alert-green" role="alert">
                         <h6 class="title mb-0">In high demand!</h6>
@@ -103,21 +103,26 @@
                   </div>
                 </div>
               </div>
+              <div *ngIf="propertyList[propertyType.propertyTypeId] && propertyList[propertyType.propertyTypeId].length > 0">
+                  <hr class="hr-1 mt-30 mb-30 no-mobile-d">
+                  <div class="row p-10-30">
+                    <div class="col-md-8 filter-section">
+                      <div class="alert alert-secondary" role="alert">
+                          Unique local homes offering accommodations with a feeling called “family”. 
+                      </div>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <!-- <button class="btn btn-dark mr-2 quick-filter-btn" (click)="openFilterModal(quickFilterModal)"><label>Quick Filter </label> <i class="fa fa-filter" aria-hidden="true"></i></button> -->
+                        <button class="btn btn-primary view-more-btn" (click)="showMoreProperty(propertyList[propertyType.propertyTypeId][0],propertyType.propertyTypeId)">View More [+]</button>
+                      </div>
+                  </div>
+              </div>
+         
+            
             </ng-template>
           </ngb-tab>
         </ngb-tabset>
-        <hr class="hr-1 mt-30 mb-30 no-mobile-d">
-        <div class="row p-10-30">
-          <div class="col-md-8 filter-section">
-            <div class="alert alert-secondary" role="alert">
-                Unique local homes offering accommodations with a feeling called “family”. 
-            </div>
-          </div>
-          <div class="col-md-4 text-right">
-              <!-- <button class="btn btn-dark mr-2 quick-filter-btn" (click)="openFilterModal(quickFilterModal)"><label>Quick Filter </label> <i class="fa fa-filter" aria-hidden="true"></i></button> -->
-              <button class="btn btn-primary view-more-btn" routerLink="/property-list">View More [+]</button>
-            </div>
-        </div>
+      
       </div>
     </div>
   </div>

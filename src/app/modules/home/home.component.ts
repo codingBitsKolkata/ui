@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgbDate, NgbCalendar, NgbDatepickerConfig, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate, NgbCalendar, NgbDatepickerConfig, NgbDateParserFormatter, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { TestimonialService } from '../../services/apis/testimonial.service';
 import { PropertyService } from '../../services/apis/property.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SharedService} from '../../services/shared.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -27,17 +29,20 @@ export class HomeComponent implements OnInit {
   propertyList: Array<any>;
 
   constructor(
-    calendar: NgbCalendar,
+    private calendar: NgbCalendar,
     config: NgbDatepickerConfig,
     private srvTestimonial: TestimonialService,
     private srvProperty: PropertyService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private sharedSrv: SharedService,
+    private router: Router,
+    private parserFormatter: NgbDateParserFormatter,
     ) {
-    this.h_fromDate = calendar.getToday();
-    this.h_toDate = calendar.getNext(calendar.getToday(), 'd', 3);
+    this.h_fromDate = this.calendar.getToday();
+    this.h_toDate = this.calendar.getNext(this.calendar.getToday(), 'd', 3);
 
-    this.f_fromDate = calendar.getToday();
-    this.f_toDate = calendar.getNext(calendar.getToday(), 'd', 3);
+    this.f_fromDate = this.calendar.getToday();
+    this.f_toDate = this.calendar.getNext(this.calendar.getToday(), 'd', 3);
 
     const currentDate = new Date();
     config.minDate = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
@@ -151,5 +156,22 @@ export class HomeComponent implements OnInit {
   openFilterModal(content) {
     // , size: 'md'
     this.modalService.open(content, { windowClass: 'modal-popup quick-filter-modal', centered: true });
+  }
+  showMoreProperty(propertyObj, propertyTypeId) {
+    const searchParam = {};
+    const checkInDate = this.calendar.getToday();
+    const checkOutDate = this.calendar.getNext(this.calendar.getToday(), 'd', 3);
+    searchParam['checkInDate'] = this.parserFormatter.format(checkInDate);
+    searchParam['checkOutDate'] =  this.parserFormatter.format(checkOutDate);
+    searchParam['latitude'] = + propertyObj.latitude;
+    searchParam['longitude'] = + propertyObj.longitude;
+    searchParam['location'] = propertyObj.address;
+    searchParam['location'] = propertyObj.address;
+    searchParam['propertyTypeId'] = propertyTypeId;
+    searchParam['rooms'] =  [{noOfGuest: 1, noOfChild: 0}];
+    console.log(searchParam);
+    localStorage.setItem('searchObj', JSON.stringify(searchParam));
+    this.sharedSrv.sharedHomeSearchData = searchParam;
+    this.router.navigate(['/properties'], { queryParams: searchParam });
   }
 }

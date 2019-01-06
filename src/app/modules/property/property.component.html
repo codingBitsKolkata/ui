@@ -97,18 +97,24 @@
               <p class="float-right pet-friendly"><span class="pet-icon"></span> Pet friendly </p>
             </div>
             <div class="clearfix">
-              <p class="float-left rating"><span class="badge badge-primary">{{property.rating}}</span> Excellent <span class="text-gray">{{property.reviewCount}} reviews</span></p>
+              <p class="float-left rating"><span class="badge badge-primary">{{property.rating}}</span> {{sharedSrv.getRatingText(property.rating)}} <span class="text-gray">{{property.reviewCount}} reviews</span></p>
               <p class="float-right couples-frindly"><span class="couples-icon"></span> Couple friendly </p>
             </div>
             <div class="clearfix">
-              <p class="float-left complementary">Complimentary <span class="wify-icon"></span><span class="food-icon"></span><span class="parking-icon"></span></p>
+              <p class="float-left complementary">Complimentary 
+                  <span *ngIf="property.mealFlag" class="complimentary-tea"></span>
+
+                        <span *ngFor="let amenitie of property.amenities">
+                            <img class="card-img-top rounded" [src]="amenitie.imgUrl1" [alt]="amenitie.aminitiesName">
+                        </span>
+              </p>
             </div>
             <div class="alert alert-secondary clearfix" role="alert">
               <div class="float-left">
                 <h6 class="price"><span>₹ {{property.totalPrice | number:'.2'}}</span> Per night</h6>
                 <p class="total-times-book">Booked 21 times in the last 24 hours</p>
               </div>
-              <button class="btn btn-dark btn-sm float-right" routerLink="/property-details">Book now</button>
+              <button class="btn btn-dark btn-sm float-right" (click)="navigateToBookingPage(property.propertyId)">Book now</button>
             </div>
           </div>
         </div>
@@ -120,7 +126,7 @@
     <!-- Map Section -->
     <div *ngIf="propertyList.length > 0" [hidden]="!mapShowHide" class="col-md-3">
       <div class="map-container">
-          <agm-map [latitude]="+sharedHomeSearchData?.latitude" [longitude]="+sharedHomeSearchData?.longitude"  [zoom]='10'>
+          <agm-map [latitude]="+searchObj?.latitude" [longitude]="+searchObj?.longitude"  [zoom]='10'>
               <agm-marker *ngFor="let property of propertyList" [latitude]="+property.latitude" [longitude]="+property.longitude">
                 <agm-info-window>{{property.oraName}}</agm-info-window>
               </agm-marker>
