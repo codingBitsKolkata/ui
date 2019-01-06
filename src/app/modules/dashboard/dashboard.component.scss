@@ -184,6 +184,16 @@
             }
         }
     }    
+    .main{
+        margin-left: 200px;
+        flex: 1;
+        min-width: 0;
+        transition: margin-left .25s,margin-right .25s,width .25s,flex .25s;
+        transition: margin-left .25s,margin-right .25s,width .25s,flex .25s,-ms-flex .25s;
+        display: block;
+        background-color: #f5f6fa;
+        border-left: 1px solid #c1c1c1;
+    }
 }
 
 ::ng-deep{

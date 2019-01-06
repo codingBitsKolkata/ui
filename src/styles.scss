@@ -248,6 +248,7 @@ input:active,select:active,button:active,label:active{
         }
         & .is-invalid {
             border-color: #e74c3c;
+            color: #e74c3c
         }
         .flight-location{
             .form-control{
@@ -512,6 +513,9 @@ input:active,select:active,button:active,label:active{
         }
         .tab-content{
             padding: 20px 30px;
+            .card{
+                overflow: hidden;
+            }
         }
         .property-img{
             .room-tag{
@@ -520,6 +524,11 @@ input:active,select:active,button:active,label:active{
                 padding: 5px 5px;
                 color: #fff;
                 font-family: latobold;
+                transform: /* Magic Numbers */ translate(-20px, 20px) /* 45 is really 360 - 48 */ rotate(314deg);
+                width: 92px;
+                font-size: 10px;
+                padding: 0px;
+                text-align: center;
                 &.green{
                     background: #2ecc71;
                 }
@@ -1433,6 +1442,7 @@ input:active,select:active,button:active,label:active{
 // validation error css
 .form-control {
     .is-invalid {
+        border-color: #e74c3c !important;
         color: #e74c3c !important;
     }
 }

@@ -32,10 +32,10 @@
       </div>
     </div>
     <div class="form-group">
-      <div ngbDropdown class="d-inline-block hotelBookDropdown" [autoClose]="false">
+      <div ngbDropdown class="d-inline-block hotelBookDropdown" [autoClose]="'outside'">
         <button type="button" class="btn" ngbDropdownToggle>{{numberOfGuest}} Guest, {{numberOfRooms}} Room</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
-          <div formArrayName="rooms" *ngFor="let room of staySearchForm.controls['rooms'].controls; let i = index">
+          <div formArrayName="rooms" class="mb-3" *ngFor="let room of staySearchForm.controls['rooms'].controls; let i = index">
             <div>
               <h5>Room {{i + 1}}</h5>
             </div>
@@ -57,12 +57,11 @@
               <div class="col-auto ml-4" *ngIf="i!=0">
                 <button type="button" class="btn btn-outline-dark btn-sm" (click)="removeRoom(i)">[-] Remove ROOM</button>
               </div>
+              <div class="col-auto ml-4" *ngIf="i == 0">
+                <a class="btn btn-outline-dark btn-sm" (click)="addRoom()">[+] ADD ROOM</a>
+              </div>
             </div>
-          </div>
-          <div class="col-auto ml-4">
-            <button type="button" class="btn btn-outline-dark btn-sm" (click)="addRoom()">[+] ADD ROOM</button>
-          </div>
- 
+          </div> 
         </div>
       </div>
     </div>
