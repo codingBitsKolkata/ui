@@ -23,6 +23,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { DragScrollModule } from 'ngx-drag-scroll';
 import { EarningCalculatorComponent } from './components/earning-calculator/earning-calculator.component';
 import { QuickFilterComponent } from './components/quick-filter/quick-filter.component';
+import { PropertyAddFormComponent } from './components/property-add-form/property-add-form.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { QuickFilterComponent } from './components/quick-filter/quick-filter.com
     FileValidator,
     StaySearchFormComponent,
     FlightSearchFormComponent,
+    PropertyAddFormComponent,
     SearchFormComponent,
     EarningCalculatorComponent,
     QuickFilterComponent
@@ -80,7 +82,8 @@ import { QuickFilterComponent } from './components/quick-filter/quick-filter.com
     AgmCoreModule,
     EarningCalculatorComponent,
     StaySearchFormComponent,
-    QuickFilterComponent
+    QuickFilterComponent,
+    PropertyAddFormComponent
   ],
   entryComponents: [
     TestModalComponent
