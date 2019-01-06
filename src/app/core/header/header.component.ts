@@ -4,6 +4,7 @@ import {NgbTabChangeEvent} from '@ng-bootstrap/ng-bootstrap';
 import { TestModalComponent } from '../../shared/components/test-modal/test-modal.component';
 import { AuthComponent } from '../auth/auth.component';
 import { UserStorageProvider } from '../../services/storage/user-storage.service';
+import { AuthService } from '../../services/apis/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,8 @@ export class HeaderComponent implements AfterViewInit, OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private userStorage: UserStorageProvider
+    private userStorage: UserStorageProvider,
+    private authSrv: AuthService,
   ) {
       this.userInfo = this.userStorage.get();
       if (this.userInfo) {
@@ -63,8 +65,13 @@ export class HeaderComponent implements AfterViewInit, OnInit {
     modalRef.componentInstance.loginFormSelectedTab = selectedTab;
   }
   logOut() {
-    this.userStorage.clear();
-    location.reload(true);
-
+    this.authSrv.logOut(this.userInfo.userToken).subscribe((res) => {
+    if (res.responseCode === '200') {
+      this.userStorage.clear();
+      location.reload(true);
+    }
+  }, error => {
+    console.log('error', error);
+  });
   }
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedService} from '../../services/shared.service';
 import { PropertyService } from '../../services/apis/property.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { PropertyService } from '../../services/apis/property.service';
   templateUrl: './property.component.html',
   styleUrls: ['./property.component.scss']
 })
-export class PropertyComponent implements OnInit {
+export class PropertyComponent implements OnInit, OnDestroy {
 
   public checkboxGroupForm: FormGroup;
   propertyList: Array<any>;
@@ -20,12 +21,15 @@ export class PropertyComponent implements OnInit {
   propertyTypes: Array<any>;
   searchPropertyType: string;
   Object = Object;
-  sharedHomeSearchData: any;
+  sub: any;
+  searchObj: object;
+  selectedPropertyTypeName: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private sharedSrv: SharedService,
-    private srvProperty: PropertyService
+    private srvProperty: PropertyService,
+    private route: ActivatedRoute
     ) {
       this.propertyList = [];
       this.ratingsFliterList = [];
@@ -61,21 +65,27 @@ export class PropertyComponent implements OnInit {
       pet_friendly: false
     });
     const sharedHomeSearchData = this.sharedSrv.sharedHomeSearchData;
-    console.log(sharedHomeSearchData);
     const isSearchObjEmpty = !Object.keys(sharedHomeSearchData).length;
-    console.log(isSearchObjEmpty);
     if (!isSearchObjEmpty) {
-      this.sharedHomeSearchData = sharedHomeSearchData;
       this.getPropertyList(sharedHomeSearchData);
+      this.searchObj = sharedHomeSearchData;
     } else {
       const searchObj = JSON.parse(localStorage.getItem('searchObj'));
       this.getPropertyList(searchObj);
-      this.sharedHomeSearchData = searchObj;
+      this.searchObj = searchObj;
     }
-
+    this.sub =  this.route.queryParams.subscribe(params => { console.log(params); });
   }
-
+  setPropertyTypeName(propertyTypeId) {
+    const propertyTypes = this.propertyTypes;
+    const filteredArray = propertyTypes.filter(function(itm) {
+      return itm.propertyTypeId === propertyTypeId;
+    });
+    console.log(filteredArray);
+     this.selectedPropertyTypeName = filteredArray.length ? filteredArray[0].name : '';
+  }
   getPropertyList(params: any) {
+      this.setPropertyTypeName(params.propertyTypeId);
       this.srvProperty.searchProperties(params).subscribe((res) => {
         console.log('searchProperties data', res);
         if (res.responseCode === '200') {
@@ -121,6 +131,7 @@ export class PropertyComponent implements OnInit {
        console.log('getPropertyTypes data', res);
        if (res.responseCode === '200') {
           this.propertyTypes =  res.responseBody;
+          this.setPropertyTypeName(this.searchObj['propertyTypeId']);
        }
      }, error => {
        console.log('error', error);
@@ -131,4 +142,10 @@ export class PropertyComponent implements OnInit {
     const propertyType =  propertyTypes.filter(x => x.propertyTypeId === propertyTypeId)[0];
     this.searchPropertyType = propertyType.name;
    }
+   searchFormSubmitted(searchData) {
+    this.getPropertyList(searchData);
+   }
+   ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
   }

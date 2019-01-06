@@ -47,6 +47,18 @@ export class AuthService {
     return this.httpClient.post<any>(request.url, request.params);
   }
 
+   /**
+	 * Method used to logout
+	 *
+	 * @returns {Observable<any>}
+	 * @memberof AuthService
+	 */
+  logOut(userToken: any): Observable<any> {
+    const request = {
+      'url': AppConst.AUTH_API_BASE_URL + '/logout?userToken=' + userToken
+    };
+    return this.httpClient.get<any>(request.url);
+  }
   /**
 	 * Method used to validate login otp
 	 * @param {any} requestParam
@@ -89,6 +101,18 @@ export class AuthService {
     return this.httpClient.post<any>(request.url, request.params);
   }
 
+   /**
+	 * Method used to get get privacy policy
+	 *
+	 * @returns {Observable<any>}
+	 * @memberof AuthService
+	 */
+  getPrivacyPolicy(): Observable<any> {
+    const request = {
+      'url': AppConst.AUTH_API_BASE_URL + '/fetch-privacy-policy'
+    };
+    return this.httpClient.get<any>(request.url);
+  }
   /**
 	 * Method used to validate signup otp
 	 * @param {any} requestParam

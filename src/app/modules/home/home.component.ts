@@ -100,11 +100,6 @@ export class HomeComponent implements OnInit {
     return date.equals(this.f_fromDate) || date.equals(this.f_toDate) || this.isInsideFlight(date) || this.isHoveredFlight(date);
   }
 
-  // formatInputText(currentSelection: NgbDate, parserFormatter: NgbDateParserFormatter) {
-  //   return `${this.f_fromDate ? parserFormatter.format(this.h_fromDate) : ''} - ${this.h_toDate ? parserFormatter.format(this.h_toDate) : ''}`;
-  // }
-  // isRangeFlight
-
   getTestimonailList() {
      this.srvTestimonial.getTestimonial().subscribe((res) => {
       console.log('getTestimonial data', res);
