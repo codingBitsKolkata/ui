@@ -25,6 +25,8 @@ export class PropertyComponent implements OnInit, OnDestroy {
   sub: any;
   searchObj: object;
   selectedPropertyTypeName: string;
+  filterBy: string;
+  selectedFilter: object;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,6 +40,7 @@ export class PropertyComponent implements OnInit, OnDestroy {
       this.amenitiesFliterList = [];
       this.budgetsFliterList = [];
       this.propertyTypes = [];
+      this.filterBy = 'rating';
       this.getPropertyTypes();
       this.getMasterAmenitiesList();
       this.getMasterBudgetsList();
@@ -145,7 +148,10 @@ export class PropertyComponent implements OnInit, OnDestroy {
     this.searchPropertyType = propertyType.name;
    }
    searchFormSubmitted(searchData) {
-    this.getPropertyList(searchData);
+    const filterSelectedData = this.selectedFilter;
+    const searchObj = this.searchObj;
+    const merged = {...searchObj, ...filterSelectedData};
+    this.getPropertyList(merged);
    }
    navigateToBookingPage(propertyId) {
     const searchObj = JSON.parse(localStorage.getItem('searchObj'));
@@ -153,6 +159,12 @@ export class PropertyComponent implements OnInit, OnDestroy {
     localStorage.setItem('searchObj', JSON.stringify(searchObj));
     this.sharedSrv.sharedHomeSearchData = searchObj;
     this.router.navigate(['/properties/property-details'], { queryParams: searchObj });
+   }
+   filterSelected(filterSelectedData) {
+    this.selectedFilter = filterSelectedData;
+    const searchObj = this.searchObj;
+    const merged = {...searchObj, ...filterSelectedData};
+    this.getPropertyList(merged);
    }
    ngOnDestroy() {
     this.sub.unsubscribe();

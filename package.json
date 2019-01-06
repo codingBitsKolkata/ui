@@ -42,6 +42,7 @@
     "ngx-chips": "^2.0.0-beta.0",
     "ngx-drag-scroll": "^2.0.4",
     "ngx-gallery": "^5.9.0",
+    "ngx-order-pipe": "^2.0.2",
     "ngx-slick": "^0.2.1",
     "ngx-ui-switch": "^8.0.0-beta.0",
     "rxjs": "^6.3.3",
