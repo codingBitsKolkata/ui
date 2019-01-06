@@ -9,8 +9,8 @@ import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
 export class AboutComponent implements AfterViewInit {
   
   carouselConfig: NguCarouselConfig = {
-    grid: { xs: 3, sm: 3, md: 3, lg: 3, all: 0 },
-    load: 3,
+    grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
+    load: 1,
     interval: {timing: 4000, initialDelay: 1000},
     loop: true,
     touch: true,
@@ -18,23 +18,8 @@ export class AboutComponent implements AfterViewInit {
   }
   carouselItems = [{
     img: 'award-1.png',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel erat et ligula'
-  },{
-    img: 'award-2.png',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel erat et ligula'
-  },{
-    img: 'award-3.png',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel erat et ligula'
-  },{
-    img: 'award-1.png',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel erat et ligula'
-  },{
-    img: 'award-2.png',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel erat et ligula'
-  },{
-    img: 'award-3.png',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel erat et ligula'
-  },];
+    text: ''
+  }];
   
   constructor(private cdr: ChangeDetectorRef) {
     // customize default values of dropdowns used by this component tree

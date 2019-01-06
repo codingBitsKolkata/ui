@@ -1,3 +1,115 @@
-<p>
-  property works!
-</p>
+<!-- <div class="main"> -->
+  <div class="container-fluid">
+    <div class="property-list">
+      <div class="header">
+        <h3 class="float-left m-0">Properties</h3>
+        <form action="">
+          <div class="form-group float-right m-0">
+            <select class="form-control">
+              <option value="">Active Properties</option>
+              <option value="">Inactive Properties</option>
+            </select>
+          </div>
+        </form>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-9 pr-0">
+          <div class="ngu-carousel">
+            <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="propertyList">
+              <div *nguCarouselDef="let item;" class="item">
+                <div class="card">
+                  <img class="card-img-top" src="{{item?.coverImageUrl}}" alt="{{item?.oraname}}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{item?.oraname}}</h5>
+                    <p class="card-text" *ngIf="item?.propertyVsDescriptions">{{item?.propertyVsDescriptions[0]?.description}}</p>
+                    <label class="location" for=""><i class="fa fa-map-marker"></i> Location: {{item?.address}}</label>
+                    <button type="button" [routerLink]="['/host/dashboard/property-details']" class="btn btn-dark">Details / Edit</button>
+                  </div>
+                </div>
+              </div>
+              <button NguCarouselNext class="slide-right-btn"></button>
+              <button NguCarouselPrev class="slide-left-btn"></button>
+            </ngu-carousel>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="col-md-3 pt-10 pb-40">
+          <div class="card bg-dark text-white h-100">
+            <img class="card-img h-100" src="assets/images/dashboard/prop_4.jpg" alt="Card image">
+            <div class="card-img-overlay text-center">
+              <h5 class="card-title">ADD another property</h5>
+              <hr>
+              <button type="button" [routerLink]="['/host/dashboard/property-details']" class="btn btn-primary">Add now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- Dashboard Chart -->
+    <div class="property-chart">
+      <div class="row">
+        <div class="col-md-7">
+            <h3 class="float-left p-10">Revenue</h3>
+            <form action="">
+              <div class="form-group float-right p-10">
+                <select class="form-control">
+                  <option value="">December, 2018</option>
+                </select>
+              </div>
+            </form>
+            <div class="clearfix"></div>
+            <highcharts-chart [Highcharts]="Highcharts" [options]="revenueLineChart" style="width: 100%; height: 400px; display: block;"></highcharts-chart>
+        </div>
+        <div class="col-md-5">
+            <form action="">
+              <div class="form-group float-right p-10">
+                <select class="form-control">
+                  <option value="">December, 2018</option>
+                </select>
+              </div>
+            </form>
+            <highcharts-chart [Highcharts]="Highcharts" [options]="revenueBarChart" style="width: 100%; height: 400px; display: block;"></highcharts-chart>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inventory -->
+    <div class="inventory-table">
+      <div class="header">
+        <h3 class="float-left m-0">Inventory</h3>
+        <form action="">
+          <div class="form-group float-right m-0">
+            <select class="form-control">
+              <option value="">December, 2018</option>
+            </select>
+          </div>
+        </form>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row p-10">
+        <div class="col-md-12">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>Total</th>
+                <th>Used</th>
+                <th>Pending</th>
+              </tr>
+              <tr>
+                <td>200 pcs.</td>
+                <td>160 pcs. <span class="badge badge-secondary">UPDATE</span></td>
+                <td>40 pcs.</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-primary float-right">Request for more</button>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- </div> -->

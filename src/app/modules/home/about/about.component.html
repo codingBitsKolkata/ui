@@ -17,9 +17,11 @@
           <h3>About <span class="ora-logo-black"></span></h3>
           <h4>Discover Orastays</h4>
           <p>In 2013 two young and energetic founders of Orastays recognised how intimidating a big city can be for a traveller. High end, mid-size or economy hotels, many online vacation rentals, are helpful but can't always meet the satisfaction a traveller expects. Homestay by Orastays is a unique blend of comfort and individualized touch at an affordable price compared to the impersonal luxury offered by commercial properties at a pocket pinching fee. </p>
-          <h4>Tracing Orastays’ Journey</h4>
-          <p>Founded under the proprietorship of ‘Sinhas Home’, a specific property in Salt Lake, Kolkata, Orastays began with a paltry capital of 1,275 USD making rooms available for both single men and women who travelled to the city to meet short-term professional or educational goals. They enjoyed the distinctive touch that the Orastays location provided. By 2015 the company had made 29% profit with 3 homestay properties having 18 rooms under its banner. Now Orastays has aggregated more than 190 rooms in 22 homestay buildings and its market size is heading towards a steady growth. </p>
-          <a href="" class="read-more-btn">Read on [+]</a>
+          <div #orasJourney hidden>
+            <h4>Tracing Orastays’ Journey</h4>
+            <p>Founded under the proprietorship of ‘Sinhas Home’, a specific property in Salt Lake, Kolkata, Orastays began with a paltry capital of 1,275 USD making rooms available for both single men and women who travelled to the city to meet short-term professional or educational goals. They enjoyed the distinctive touch that the Orastays location provided. By 2015 the company had made 29% profit with 3 homestay properties having 18 rooms under its banner. Now Orastays has aggregated more than 190 rooms in 22 homestay buildings and its market size is heading towards a steady growth. </p>
+          </div>
+          <a class="read-more-btn c-pointer" (click)="orasJourney.hidden = !orasJourney.hidden"> {{orasJourney.hidden ? 'read more [+]' : 'read less [-]'}} </a>
         </div>
       </div>
     </div>
@@ -34,15 +36,29 @@
           <div class="row">
             <div class="col-md-6"  data-aos="fade-up">
               <h6><span></span> Our Journey</h6>
-              <p>Orastays recognised that international travel is crucial to many urban economies around the world. People just do not travel for holidays, and a large section that includes students and professionals’ alike travel on tight budget. Many companies are curtailing expenses for their sales and IT teams travelling to other cities. Instead of spending on high budget hotels they are choosing premium properties from Orastays with comfortable travel experience for overnight or a short-term stay. Medical tourists also widely seek homestays listed on Orastays.</p>
-              <p>Conversely house owners looking for extra revenue are happy to share their spaces, while supplying   the comforts of home by meeting the standards set by Orastays. This two-fold model marketplace of sharing economy is building a society based on trust, relationship, respect, and a greater global culture. </p>
-              <a href="" class="read-more-btn">Read on [+]</a>
+              <p>
+                Orastays recognised that international travel is crucial to 
+                many urban economies around the world. People just do not travel 
+                for holidays, and a large section that includes students and professionals’
+                 alike travel on tight budget. </p>
+              <p #ourJourney hidden>Many companies are curtailing expenses for
+                  their sales and IT teams travelling to other cities. 
+                  Instead of spending on high budget hotels they are choosing
+                   premium properties from Orastays with comfortable travel experience 
+                   for overnight or a short-term stay. Medical tourists also widely seek 
+                   homestays listed on Orastays.
+                Conversely house owners looking for extra revenue are happy to share their
+                 spaces, while supplying   the comforts of home by meeting the standards
+                  set by Orastays. This two-fold model marketplace of sharing economy
+                   is building a society based on trust, relationship, respect, and 
+                   a greater global culture. </p>
+              <a class="read-more-btn c-pointer" (click)="ourJourney.hidden = !ourJourney.hidden"> {{ourJourney.hidden ? 'read more [+]' : 'read less [-]'}} </a>
             </div>
             <div class="col-md-6"  data-aos="fade-up">
               <h6><span></span> Our Goals </h6>
               <p>Ensuring travellers have an inclusive experience of travel and stay, Orastays extends flight booking facilities for its guests, making their entire journey seamless.</p>
-              <p>Catering to both premium and express customers Orastays has diversified its location specifications to match the needs of each customer individually. It also has long term paying guest facilities for students and working professionals and is the largest Paying Guest chain In Salt Lake, Kolkata. The security standards further bridge relationships between the guest and the host enhancing the experience of a memorable homestay. Touching on traditions and local flavours Orastays is building a global community network which is just not reaching out to local homes but building lifelong relationships.</p>
-              <a href="" class="read-more-btn">Read on [+]</a>
+              <p #ourGoals hidden>Catering to both premium and express customers Orastays has diversified its location specifications to match the needs of each customer individually. It also has long term paying guest facilities for students and working professionals and is the largest Paying Guest chain In Salt Lake, Kolkata. The security standards further bridge relationships between the guest and the host enhancing the experience of a memorable homestay. Touching on traditions and local flavours Orastays is building a global community network which is just not reaching out to local homes but building lifelong relationships.</p>
+              <a class="read-more-btn c-pointer" (click)="ourGoals.hidden = !ourGoals.hidden"> {{ourGoals.hidden ? 'read more [+]' : 'read less [-]'}} </a>
             </div>
           </div>
         </div>
@@ -159,10 +175,12 @@
             <!-- <p class="s-head">Praesent luctus quam lacus</p> -->
             <p>When we are in the midst of a sustainable awakening, Orastays standardised homestays, based on the principle of shared economy agree with the goals of sustainable development with an efficient use of existing resources.</p>
             <p>Orastays is creating social values, enhancing the society culturally, and environmentally making a valuable contribution to the community. They are cutting cost across all levels by saving on water, energy, food, and recycling but keeping up good and reasonable standards of hospitality.</p>
-            <p>Homestays are playing a key role in the discovery of new tourism destinations and promoting the local shops and businesses. The nature of consumer participation and collaborative consumption is the driving force of sustainability. </p>
-            <p>On the demand side, the access to sharing economy creates new markets every day. It involves ‘high impact' capital which is its people, it places this capital to higher degrees of full deployment. Ora, based on the network of social exchanges, blurs the line between personal and purely professional. The coming home feeling from the airport is much more appealing than driving to a hotel.</p>
-            <p>Job roles are also more flexible as the guests can become hosts and hosts, guests by exchanging their properties. Technology helps to create a better and a larger community of like-minded people who not only communicate to book a homestay but also reach out to build a lasting friendship.</p>
-            <a href="" class="read-more-btn">Read on [+]</a>
+            <div #sustainabilityMore hidden>
+              <p>Homestays are playing a key role in the discovery of new tourism destinations and promoting the local shops and businesses. The nature of consumer participation and collaborative consumption is the driving force of sustainability. </p>
+              <p>On the demand side, the access to sharing economy creates new markets every day. It involves ‘high impact' capital which is its people, it places this capital to higher degrees of full deployment. Ora, based on the network of social exchanges, blurs the line between personal and purely professional. The coming home feeling from the airport is much more appealing than driving to a hotel.</p>
+              <p>Job roles are also more flexible as the guests can become hosts and hosts, guests by exchanging their properties. Technology helps to create a better and a larger community of like-minded people who not only communicate to book a homestay but also reach out to build a lasting friendship.</p>    
+            </div>
+            <a class="read-more-btn c-pointer" (click)="sustainabilityMore.hidden = !sustainabilityMore.hidden"> {{sustainabilityMore.hidden ? 'read more [+]' : 'read less [-]'}} </a>
           </div>
         </div>
         <div class="col-md-5 sustainability-img pl-30" data-aos="fade-left">
@@ -183,14 +201,14 @@
           <h3 class="text-center mb-20">Award & Recognition</h3>
           <div class="d-flex">
             <div class="ngu-carousel">
-              <ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="carouselItems">
+              <ngu-carousel #awardCarousel [inputs]="carouselConfig" [dataSource]="carouselItems">
                   <div *nguCarouselDef="let item;" class="item text-center">
                       <img src="assets/images/other/{{item.img}}" alt="">
                       <!-- <p>{{item.text}}</p> -->
                       <p>Awarded the most promising Startup in 2018 for Excellence in Innovation and AI Enabled Application and Website. Assocham Seed Investors, East India’s Premier Real Estate Company presented the award in the Cybercon 2018 Technology Excellence Award Ceremony. </p>
                   </div>
-                  <button NguCarouselNext class="slide-right-btn"></button>
-                  <button NguCarouselPrev class="slide-left-btn"></button>
+                  <button NguCarouselNext class="slide-right-btn" [style.opacity]="awardCarousel.isFirst ? 0:1"></button>
+                  <button NguCarouselPrev class="slide-left-btn" [style.opacity]="awardCarousel.isFirst ? 0:1"></button>
                 </ngu-carousel>
                 <div class="clearfix"></div>
             </div>

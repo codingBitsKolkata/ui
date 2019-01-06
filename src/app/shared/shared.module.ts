@@ -24,6 +24,7 @@ import { DragScrollModule } from 'ngx-drag-scroll';
 import { EarningCalculatorComponent } from './components/earning-calculator/earning-calculator.component';
 import { QuickFilterComponent } from './components/quick-filter/quick-filter.component';
 import { QuickStaySearchFormComponent } from './components/quick-stay-search-form/quick-stay-search-form.component';
+import { PropertyAddFormComponent } from './components/property-add-form/property-add-form.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { QuickStaySearchFormComponent } from './components/quick-stay-search-for
     FileValidator,
     StaySearchFormComponent,
     FlightSearchFormComponent,
+    PropertyAddFormComponent,
     SearchFormComponent,
     EarningCalculatorComponent,
     QuickFilterComponent,
@@ -83,7 +85,8 @@ import { QuickStaySearchFormComponent } from './components/quick-stay-search-for
     EarningCalculatorComponent,
     StaySearchFormComponent,
     QuickFilterComponent,
-    QuickStaySearchFormComponent
+    QuickStaySearchFormComponent,
+    PropertyAddFormComponent
   ],
   entryComponents: [
     TestModalComponent
