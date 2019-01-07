@@ -180,6 +180,9 @@ agm-map{
     
     .property-listing-area{
         .property-item{
+            .property-img{
+                border-radius: 8px;
+            }
             p{
                 margin-bottom: 5px;
             }
@@ -196,15 +199,18 @@ agm-map{
                 color: #231f20;
                 font-size: 12px;
                 font-family: lato;
-                display: flex;
-                align-items: center;
+                width: 220px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 .address-icon{
-                    background: url(../../../assets/images/property/address-icon.png) no-repeat;
-                    background-size: 100%;
-                    width: 10px;
-                    height: 14px;
-                    display: inline-block;
+                    // background: url(../../../assets/images/property/address-icon.png) no-repeat;
+                    // background-size: 100%;
+                    // width: 10px;
+                    // height: 14px;
+                    // display: inline-block;
                     margin-right: 5px; 
+                    color: #f47921;
                 }
             }
             .pet-friendly{
@@ -257,7 +263,7 @@ agm-map{
                 color: #231f20;
                 font-family: lato;
                 font-size: 12px;
-                padding-left: 27px;
+                padding-left: 20px;
                 display: flex;
                 align-items: center;
                 span{

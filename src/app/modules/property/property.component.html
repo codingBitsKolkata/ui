@@ -1,6 +1,12 @@
 <!-- Header Image -->
-<div class="container-fluid header-image-slide p-0">
-  <img class="w-100" src="assets/images/property-banner.png" />
+<div class="container-fluid header-image-slide p-0 head-img-container">
+  <img class="w-100" src="assets/images/banner/property-list.jpg" />
+  <!-- <div class="container"> -->
+    <div class="text-container">
+      <h4>Ametyst. I feel comfortable here ..</h4>
+      <p>Come In As Guests. Leave As Family</p>
+    </div>
+  <!-- </div> -->
 </div>
 
 <div class="container-fluid pt-4 pb-2 filter-container">
@@ -82,7 +88,7 @@
           <ng-template ngFor let-i="index" let-c="count" let-property [ngForOf]="propertyList | orderBy: filterBy">
         <div class="property-item d-flex">
           <div class="mr-20">
-            <img width="260px" height="150px"  [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" />
+            <img width="260px" height="150px" class="property-img"  [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" />
           </div>
           <div class="w-100">
             <div class="clearfix">
@@ -93,7 +99,7 @@
               </p>
             </div>
             <div class="clearfix">
-              <p class="float-left address"><span class="address-icon"></span> {{property.address}}</p>
+              <p class="float-left address"><span class="address-icon fa fa-map-marker"></span> {{property.address}}</p>
               <p class="float-right pet-friendly"><span class="pet-icon"></span> Pet friendly </p>
             </div>
             <div class="clearfix">
@@ -102,11 +108,10 @@
             </div>
             <div class="clearfix">
               <p class="float-left complementary">Complimentary 
-                  <span *ngIf="property.mealFlag" class="complimentary-tea"></span>
-
-                        <span *ngFor="let amenitie of property.amenities">
-                            <img class="card-img-top rounded" [src]="amenitie.imgUrl1" [alt]="amenitie.aminitiesName">
-                        </span>
+                <span *ngIf="property.mealFlag" class="complimentary-tea"></span>
+                <span *ngFor="let amenitie of property.amenities">
+                  <img class="card-img-top rounded" [src]="amenitie.imgUrl1" [alt]="amenitie.aminitiesName">
+                </span>
               </p>
             </div>
             <div class="alert alert-secondary clearfix" role="alert">

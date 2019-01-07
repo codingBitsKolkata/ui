@@ -432,6 +432,7 @@ input:active,select:active,button:active,label:active{
             color: #909396 !important;
             border-color: #dee1e4 !important;
             padding: 0px 10px 0px 0px;
+            font-size: 12px;
             &:hover,&:focus,&:active{
                 color: #f57921 !important;
             }
@@ -1529,4 +1530,33 @@ input:active,select:active,button:active,label:active{
             border-color: #f47921;
         }
     }
+}
+
+// Head Image Container
+.head-img-container{
+    position: relative;
+    .text-container{
+        color: #ffffff;
+        position: absolute;
+        width: 500px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 170px;
+        h4{
+            font-family: abrialfatface;
+            font-size: 50px;
+            margin: 0;
+        }
+        p{
+            font-family: latobolditalic;
+            font-size: 18px;
+            margin-bottom: 0;
+            margin-top: 10px;
+        }
+    }
+}
+
+.d-inherit{
+    display: inherit !important;
 }

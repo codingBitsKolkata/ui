@@ -1,5 +1,7 @@
 .container{
     // display: flex;
+    max-width: 100%;
+    padding: 0 30px;
     .price-drop{
         font-family: latoregular;
         color: #2c2c2c;
@@ -27,6 +29,9 @@
             font-size: 11px;
             margin: 0;
             margin-left: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             a{
                 color: #f47921;
             }

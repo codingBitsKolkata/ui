@@ -15,6 +15,9 @@ export class HostComponent implements OnInit {
   ngOnInit() {
 
   }
+  scroll(el) {
+    el.scrollIntoView({behavior: 'smooth'});
+  }
   openModal(content) {
     // , size: 'md'
       this.modalService.open(content, { windowClass: 'modal-popup', centered: true });

@@ -1,10 +1,11 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-8 form-area">
+    <div class="row form-area d-flex align-items-center justify-content-center">
+      <div class="col-auto">
         <div>
           <span class="price-drop">₹ {{propertyDetails.totalPrice | number:'.2'}}</span> <span class="price-new"> ₹ {{propertyDetails.totalPrice | number:'.2'}}</span> <span class="per-night"> per night</span>
         </div>
-          
+      </div>
+      <div class="col-auto d-inherit">
         <div class="form-group date-picker">
           <div class="input-group">
             <div class="input-group-append">
@@ -20,6 +21,8 @@
                     name="checkOutdp" ngbDatepicker [placement]="'top-left'" #checkOutd="ngbDatepicker" (click)="checkOutd.toggle()">
           </div>
         </div>
+      <!-- </div>
+      <div class="col-auto"> -->
         <div ngbDropdown class="d-inline-block hotelBookDropdown" [placement]="'top-left'">
           <button type="button" class="btn btn-light m-r-20" ngbDropdownToggle><i class="fa fa-user-o m-r-5" aria-hidden="true"></i> Guests</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
@@ -52,10 +55,12 @@
             </div> -->
           </div>
         </div>
+      <!-- </div>
+      <div class="col-auto"> -->
         <!-- <button class="btn btn-light m-r-20"><i class="fa fa-user-o m-r-5" aria-hidden="true"></i> Guests</button> -->
         <button class="btn btn-primary" (click)="bookYourStay()">book your stay</button>
       </div>
-      <div class="col-md-4">
+      <div class="col-auto">
         <div class="profile-info">
           <img src="../../../../assets/images/property-details/profile-img.png" alt="">
           <p>Hey, I’m Sarita!<br>

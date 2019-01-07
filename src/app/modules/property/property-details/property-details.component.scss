@@ -26,11 +26,19 @@ agm-map{
             font-size: 48px;
             position: relative;
             z-index: 1111;
-            width: 480px;
-            margin-top: 35px;
+            width: 450px;
+            margin-top: 30px;
+            display: block;
             .text-orange{
                 color: #f47921;
                 display: block;
+            }
+            .address{
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                height: 170px;
             }
         }
         p.top-text{
@@ -56,7 +64,9 @@ agm-map{
             font-size: 15px;
         }
         .bottom-box{
-            margin-top: 30px;
+            // margin-top: 30px;
+            position: absolute;
+            bottom: 5px;
             .icon{
                 color: #2c2c2c;
                 font-size: 20px;                
@@ -242,6 +252,7 @@ agm-map{
                 -moz-transition:all 0.25s ease-in-out;
                 -o-transition:all 0.25s ease-in-out;
                 transition:all 0.25s ease-in-out;
+                min-height: 100px;
                 ul{
                     margin: 0;
                     margin-left: 10px;
@@ -581,11 +592,10 @@ agm-map{
     }
     .static-floating-bar{
         background-color: #ebebeb;
-        padding: 15px;
         position: sticky;
         bottom: 0;
         z-index: 2001;
-        
+        padding: 10px 15px;
     }
 }
 
