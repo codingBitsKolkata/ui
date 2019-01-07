@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-host',
@@ -7,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HostComponent implements OnInit {
   
-  constructor() {
+  constructor(private modalService: NgbModal) {
     
    }
 
   ngOnInit() {
 
+  }
+  openModal(content) {
+    // , size: 'md'
+      this.modalService.open(content, { windowClass: 'modal-popup', centered: true });
   }
 }

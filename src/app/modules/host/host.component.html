@@ -8,7 +8,7 @@
           <div class="col-md-6">
             <h2 class="title">List your property with us..</h2>
             <p class="info">Register can take as little as 15 minutes to complete - <span> Get Started Now </span> !! <img class="arrow" src="assets/images/host-arrow.png" alt=""> </p>
-            <button class="btn btn-primary btn-md mt-2 pb-10">Calculate your earning <img class="icon-calculator" src="assets/images/icon-calculator.png" alt=""> </button>
+            <button class="btn btn-primary btn-md mt-2 pb-10" (click)="openModal(earningCalculator)">Calculate your earning <img class="icon-calculator" src="assets/images/icon-calculator.png" alt=""> </button>
           </div>
           <div class="col-md-6">
             <app-property-add-form></app-property-add-form>
@@ -149,3 +149,11 @@
     </div>
   </div>
 </div>
+
+<!-- Earning Calculator -->
+<ng-template #earningCalculator let-modal>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <app-earning-calculator></app-earning-calculator>
+</ng-template>
