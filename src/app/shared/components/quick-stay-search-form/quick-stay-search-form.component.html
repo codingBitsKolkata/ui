@@ -9,23 +9,23 @@
         <div class="form-group date-picker">
           <div class="input-group">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar checkin-pick" (click)="checkInd.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+              <button class="btn btn-outline-secondary calendar checkin-pick"  type="button"><i class="fa fa-calendar"></i></button>
             </div>
             <input class="form-control checkin" placeholder="Check in"
-                    name="checkIndp" ngbDatepicker [placement]="'top-left'" #checkInd="ngbDatepicker" (click)="checkInd.toggle()">
+                    name="checkIndp" autocomplete="off" [ngModel]="checkInDate">
             <span class="calander-forma"></span>
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar checkout-pick" (click)="checkOutd.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+              <button class="btn btn-outline-secondary calendar checkout-pick" type="button"><i class="fa fa-calendar"></i></button>
             </div>
             <input class="form-control checkout" placeholder="Check out"
-                    name="checkOutdp" ngbDatepicker [placement]="'top-left'" #checkOutd="ngbDatepicker" (click)="checkOutd.toggle()">
+                    name="checkOutdp" autocomplete="off" [ngModel]="checkOutDate">
           </div>
         </div>
       <!-- </div>
       <div class="col-auto"> -->
-        <div ngbDropdown class="d-inline-block hotelBookDropdown" [placement]="'top-left'">
-          <button type="button" class="btn btn-light m-r-20" ngbDropdownToggle><i class="fa fa-user-o m-r-5" aria-hidden="true"></i> Guests</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+        <div  class="d-inline-block hotelBookDropdown">
+          <button type="button" class="btn btn-light m-r-20"><i class="fa fa-user-o m-r-5" aria-hidden="true"></i> {{totalNoOfGuest}} Guests</button>
+          <!-- <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
             <div >
               <div>
                 <h5>Room 1</h5>
@@ -50,10 +50,10 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="col-auto ml-4">
+            <div class="col-auto ml-4">
               <button type="button" class="btn btn-outline-dark btn-sm" (click)="addRoom()">[+] ADD ROOM</button>
-            </div> -->
-          </div>
+            </div>
+          </div> -->
         </div>
       <!-- </div>
       <div class="col-auto"> -->

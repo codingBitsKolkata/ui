@@ -96,4 +96,20 @@ export class PropertyService {
     };
     return this.httpClient.post<any>(request.url, request.params);
   }
+
+  calculatePrice(params: any): Observable<any> {
+    const request = {
+      'url': AppConst.PROPERTY_API_BASE_URL + '/price-calculatory',
+    };
+    return this.httpClient.post<any>(request.url, params);
+  }
+
+  getOfferList(params: any): Observable<any> {
+    const request = {
+      'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-offer',
+    };
+    return this.httpClient.get<any>(request.url, params);
+  }
+
+
 }

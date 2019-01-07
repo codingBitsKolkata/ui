@@ -1570,3 +1570,7 @@ input:active,select:active,button:active,label:active{
 .d-inherit{
     display: inherit !important;
 }
+// google autocomplete
+.pac-container, .pac-item{
+    z-index: 2147483647 !important;
+ }
