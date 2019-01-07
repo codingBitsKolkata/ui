@@ -25,6 +25,7 @@ import { EarningCalculatorComponent } from './components/earning-calculator/earn
 import { QuickFilterComponent } from './components/quick-filter/quick-filter.component';
 import { QuickStaySearchFormComponent } from './components/quick-stay-search-form/quick-stay-search-form.component';
 import { PropertyAddFormComponent } from './components/property-add-form/property-add-form.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { PropertyAddFormComponent } from './components/property-add-form/propert
       libraries: ['places']
     }),
     NgxGalleryModule,
-    DragScrollModule
+    DragScrollModule,
+    OrderModule
   ],
   exports: [
     CommonModule,
@@ -86,7 +88,8 @@ import { PropertyAddFormComponent } from './components/property-add-form/propert
     StaySearchFormComponent,
     QuickFilterComponent,
     QuickStaySearchFormComponent,
-    PropertyAddFormComponent
+    PropertyAddFormComponent,
+    OrderModule
   ],
   entryComponents: [
     TestModalComponent

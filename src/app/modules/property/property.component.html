@@ -16,29 +16,29 @@
       <div class="sorting-result">
         <span class="icon"></span>
         <p class="pl-1 pr-3"><span>Sorting  </span> results by</p>
-        <form [formGroup]="checkboxGroupForm">
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="filterBy" [(ngModel)]="filterBy">
           <div class="btn-group-toggle">
             <label class="btn-checkbox-filter" ngbButtonLabel>
-              <input type="checkbox" formControlName="popularity" ngbButton> Popularity
+              <input type="radio" ngbButton [value]="'rating'"> Popularity
             </label>
           </div>
           <div class="btn-group-toggle">
             <label class="btn-checkbox-filter" ngbButtonLabel>
-              <input type="checkbox" formControlName="price_lowest_first" ngbButton> Price lowest first
+              <input type="radio" ngbButton [value]="'totalPrice'"> Price lowest first
               <i class="fa fa-long-arrow-down ml-2" aria-hidden="true"></i>
             </label>
           </div>
           <div class="btn-group-toggle">
             <label class="btn-checkbox-filter" ngbButtonLabel>
-              <input type="checkbox" formControlName="couples_frindly" ngbButton> Couples Frindly
+              <input type="radio"  ngbButton [value]="'reviewCount'"> Couples Friendly 
             </label>
           </div>
           <div class="btn-group-toggle">
             <label class="btn-checkbox-filter" ngbButtonLabel>
-              <input type="checkbox" formControlName="pet_friendly" ngbButton> Pet friendly 
+              <input type="radio"  ngbButton [value]="'propertyId'"> Pet Friendly  
             </label>
           </div>
-        </form>
+        </div>
       </div>
     </div>
     <div class="col-md-3">
@@ -71,7 +71,7 @@
       <!-- Quick Filter -->
       <div class="card quick-filter-section mb-3">
         <div class="card-header">Quick filter</div>
-        <app-quick-filter [selectedPropertyTypeName]="selectedPropertyTypeName"></app-quick-filter>
+        <app-quick-filter [selectedPropertyTypeName]="selectedPropertyTypeName" (filterSelected)="filterSelected($event)"></app-quick-filter>
       </div>
     </div>
     
@@ -79,7 +79,7 @@
     <div class="pt-24"  [ngClass]="mapShowHide ? 'col-md-6':'col-md-9'">
       <!-- Property List -->
       <div class="property-listing-area mb-4">
-          <ng-template ngFor let-i="index" let-c="count" let-property [ngForOf]="propertyList">
+          <ng-template ngFor let-i="index" let-c="count" let-property [ngForOf]="propertyList | orderBy: filterBy">
         <div class="property-item d-flex">
           <div class="mr-20">
             <img width="260px" height="150px"  [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" />
