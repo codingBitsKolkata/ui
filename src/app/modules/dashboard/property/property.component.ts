@@ -19,6 +19,10 @@ export class PropertyComponent implements OnInit {
   propertyList = [];
   // Chart Config
   Highcharts = Highcharts;
+
+// total days
+  totaldays;
+
   revenueLineChart = {
     chart: {
       type: 'line',
@@ -139,7 +143,11 @@ export class PropertyComponent implements OnInit {
     interval: { timing: 4000, initialDelay: 1000 },
     loop: true,
     touch: true,
-    velocity: 0.2
+    velocity: 0.2,
+    point: {
+      visible: true,
+      hideOnSingleSlide: true
+    }
   };
   carouselItems = [{
     img: 'prop_1.jpg',
@@ -185,7 +193,13 @@ export class PropertyComponent implements OnInit {
     this.modalService.open(content, { windowClass: 'modal-popup' });
   }
 
+  openBookingModal(content) {
+    // , size: 'md'
+    this.modalService.open(content, { windowClass: 'modal-popup booking-modal' });
+  }
+
   ngOnInit() {
+    this.totaldays = 31;
     this.languageList = [
       { item_id: 1, item_text: 'English' },
       { item_id: 2, item_text: 'Hindi' },
@@ -227,6 +241,15 @@ export class PropertyComponent implements OnInit {
    }, error => {
      console.log('error', error);
    });
+  }
+
+  // 
+  daysArray(number){
+    var items: number[] = [];
+    for(var i = 1; i <= number; i++){
+       items.push(i);
+    }
+    return items;
   }
 
 }

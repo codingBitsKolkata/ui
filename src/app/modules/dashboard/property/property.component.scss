@@ -92,3 +92,184 @@ h3{
         }
     }
 }
+.p-relative{
+    position: relative;
+}
+.calender-view{
+    padding-bottom: 40px;
+    padding-top: 40px;
+    .calender-table{
+        overflow-x: auto;
+        margin-left: 134px;
+        .headcol {
+            position:absolute;
+            width: 135px;
+            left:0;
+        }
+        .table {
+            th {
+                vertical-align: middle;
+                border-bottom: 2px solid #dee2e6;
+                text-align: center;
+                padding: 5px 0px;
+                border: 1px solid #dee2e6;
+                font-size: 10px;
+            }
+            td{
+                vertical-align: middle;
+                border-top: 1px solid #dee2e6;
+                text-align: center;
+                padding: 10px 0px;
+                border: 1px solid #dee2e6;
+                font-size: 10px;
+                .btn{
+                    width: 100%;
+                    border-radius: 0;
+                }
+                .btn-not-available{
+                    background: #9b9b9b;
+                }
+                .btn-booked{
+                    background: #2687c4;
+                }
+                .btn-available{
+                    background: #08a500;
+                }
+            }
+        }
+        
+    }
+    
+    // 
+    .label-info{
+        label{
+            font-family: latoblack;
+            font-size: 10px;
+            color: #484848;
+            margin: 0 15px 0px 5px;
+        }
+        span{
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+            &.bg-gray{
+                background: #9b9b9b;
+            }
+            &.bg-blue{
+                background: #2687c4;
+            }
+            &.bg-green{
+                background: #08a500;
+            }
+        }
+    }
+}
+
+// Booking Details Modal
+::ng-deep{
+    .booking-modal{
+        @media (min-width: 768px){
+            .modal-dialog {
+                max-width: 650px;
+                margin: 1.75rem auto;
+            }
+        }
+        .label{
+            font-size: 12px;
+            font-family: latoblack;
+            color: #130504;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        .label-box{
+            width: 100%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+            border-radius: 5px;
+            font-family: latoitalic;
+            font-size: 14px;
+            color: #484848;
+        }
+        .payment-sec{
+            .p-img{
+                img{
+                    height: 60px;
+                }
+            }
+            .p-desc{
+                margin-left: 20px;
+                span{
+                    font-family: latoregular;
+                    font-size: 14px;
+                }
+                ul{
+                    list-style-type: disc;
+                    display: inline-flex;
+                    margin: 0;
+                    li{
+                        font-size: 14px;
+                        font-family: latoregular;
+                        color: #484848;
+                    }
+                }
+                p{
+                    color: #484848;
+                    font-size: 14px;
+                    font-family: latoregular;
+                    margin: 0;
+                    span{
+                        margin-left: 5px;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .payment-table{
+            margin-top: 40px;
+            td{
+                font-family: latoregular;
+                color: #484848;
+                font-size: 14px;
+                padding: 6px 0px;
+                strong{
+                    color: #000000;
+                    font-family: latoblack;
+                    font-size: 14px;
+                }
+            }
+            .last-col{
+                border-top: 1px solid #ccc;
+                td{
+                    font-family: latoblack;
+                    color: #000000;
+                    font-size: 18px;
+                    span{
+                        font-family: latoregular;
+                        color: #484848;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .p-status{
+            font-family: latobold;
+            font-size: 14px;
+            color: #130504;
+        }
+        .p-check-in{
+            font-family: latoregular;
+            font-size: 14px;
+            color: #484848;
+        }
+        .icon-set{
+
+        }
+        hr{
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+    }
+}
+.mr-40{
+    margin-right: 40px;
+}

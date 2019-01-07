@@ -129,6 +129,9 @@ body{
     padding-left: 20px;
     padding-right: 20px;
 }
+.pt-30{
+    padding-top: 30px !important;
+}
 .btn-primary {
     color: #fff !important;
     background-color: #f47921 !important;
@@ -1543,6 +1546,13 @@ input:active,select:active,button:active,label:active{
         -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
         left: 170px;
+        &.right-bottom{
+            right: 180px !important;
+            bottom: 50px !important;
+            top: auto;
+            transform: inherit;
+            left: auto;
+        }
         h4{
             font-family: abrialfatface;
             font-size: 50px;

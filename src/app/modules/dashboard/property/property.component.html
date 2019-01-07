@@ -77,6 +77,58 @@
       </div>
     </div>
 
+    <!-- Calender -->
+    <div class="calender-view">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="float-left p-10">Booking calender</h3>
+          <form action="">
+            <div class="form-group float-right p-10">
+              <select class="form-control">
+                <option value="">December, 2018</option>
+              </select>
+            </div>
+          </form>
+          <div class="clearfix"></div>
+          <div class="p-relative">
+            <div class="calender-table">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="headcol">Bookings</th>
+                    <th *ngFor="let day of daysArray(totaldays)">
+                      {{day}}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of daysArray(4)">
+                    <td class="headcol"> ORA9122522/B{{item}}</td>
+                    <td *ngFor="let day of daysArray(totaldays)">
+                      <button class="btn btn-not-available" *ngIf="day <=10"></button>
+                      <button class="btn btn-booked" (click)="openBookingModal(bookingDetailsModal)" *ngIf="day > 10 && day <= 20"></button>
+                      <button class="btn btn-available" *ngIf="day > 20"></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="label-info d-flex justify-content-start">
+            <div class="d-flex align-items-center">
+              <span class="bg-gray"></span> <label for="">Not avaiable</label>
+            </div>
+            <div class="d-flex align-items-center">
+              <span class="bg-blue"></span> <label for="">Booked</label>
+            </div>
+            <div class="d-flex align-items-center">
+              <span class="bg-green"></span> <label for="">Avaiable</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Inventory -->
     <div class="inventory-table">
       <div class="header">
@@ -113,3 +165,120 @@
     </div>
   </div>
 <!-- </div> -->
+
+<ng-template #bookingDetailsModal let-modal>
+  <div class="modal-container">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title mb-25">Booking details</h4>
+    <!-- <form class="form-component"> -->
+    <div class="row m-0">
+      <div class="col-md-3 p-0">
+        <div class="form-group">
+          <span class="label">Booking ID</span>
+          <label class="label-box">ORA9122522</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <span class="label">Property name</span>
+          <label class="label-box">Fusce facilisis maximus</label>
+        </div>
+      </div>
+      <div class="col-md-3 p-0">
+        <div class="form-group">
+          <span class="label">Number of rooms</span>
+          <label class="label-box">Two rooms</label>
+        </div>
+      </div>
+      <div class="col-md-12 p-0">
+        <div class="form-group">
+          <span class="label">Property Address</span>
+          <label class="label-box">Fusce facilisis maximus <br>
+              16 B Saltlake city, Boishakhi Bazaar, Bidhannagar, Kolkata 700091, West bengal, 
+              India.</label>
+        </div>
+      </div>
+    </div>
+    <h5>Guest details</h5>
+    <div class="row m-0">
+      <div class="col-md-8 p-0">
+        <span class="label">Number of guests</span>
+        <div class="row m-0">
+          <div class="col-md-4 pl-0">
+            <div class="form-group">
+              <label class="label-box">Total 04</label>
+            </div>
+          </div>
+          <div class="col-md-4 p-0">
+            <div class="form-group">
+              <label class="label-box">Adults 02</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="label-box">Childrens 02</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 p-0">
+        <div class="form-group">
+          <span class="label">Check in /  Check out</span>
+          <label class="label-box">30 Dec 2018 to 02 Jan 2019</label>
+        </div>
+      </div>
+      <div class="col-md-12 p-0">
+        <div class="form-group">
+          <span class="label">Guest Address</span>
+          <label class="label-box">Anand Verma <br>
+              Jain Mandir Market South, Ex Part-2, Ayur Vigyan Nagar, New Delhi, Delhi 110049,
+             India.</label>
+        </div>
+      </div>
+    </div>
+    <h5 class="mb-4">Payment details</h5>
+    <div class="payment-sec d-flex justify-content-start">
+      <div class="p-img">
+        <img src="assets/images/property-book.png" alt="" class="rounded mx-auto d-block">
+      </div>
+      <div class="p-desc">
+        <span>ORA9122522</span>
+        <ul>
+          <li class="mr-40">Fusce facilisis maximus</li>
+          <li>Two rooms</li>
+        </ul>
+        <p><i class="fa fa-arrow-circle-o-left mr-2"></i> 30th December 2018 <span>Check in Time: 12:00 PM</span></p>
+        <p class="mb-2"><i class="fa fa-arrow-circle-o-right mr-2"></i> 02nd January 2019 <span>Check out Time: 11:00 AM</span></p>
+        <p><i class="fa fa-users"></i> 2 rooms, 04 guests, 3 nights</p>
+      </div>
+    </div>
+    <table class="w-100 payment-table">
+      <tr>
+        <td class="text-left">Booking amount</td>
+        <td class="text-right">₹2,900 Per night x 2 rooms</td>
+        <td class="text-right"><strong>₹ 8,700</strong></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-left">Price Dropped (26% off)</td>
+        <td class="text-right"><strong>₹ 6,438</strong></td>
+      </tr>
+      <tr class="last-col">
+        <td colspan="2" class="text-left">Payable amount</td>
+        <td class="text-right">₹ 6,438 <br/><span>Including all taxes</span></td>
+      </tr>
+    </table>
+
+    <p class="p-status m-0 mt-3">Payment Status</p>
+    <span class="p-check-in">On check in payment</span>
+    <hr>
+    <div class="icon-set float-right">
+      <i class="fa fa-download mr-4"></i>
+      <i class="fa fa-print mr-4"></i>
+      <i class="fa fa-share"></i>
+    </div>
+    <div class="clearfix"></div>
+
+  </div>
+</ng-template>

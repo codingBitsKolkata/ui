@@ -14,7 +14,11 @@ export class AboutComponent implements AfterViewInit {
     interval: {timing: 4000, initialDelay: 1000},
     loop: true,
     touch: true,
-    velocity: 0.2
+    velocity: 0.2,
+    point: {
+      visible: true,
+      hideOnSingleSlide: true
+    }
   }
   carouselItems = [{
     img: 'award-1.png',
