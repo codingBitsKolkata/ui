@@ -1602,6 +1602,42 @@ input:active,select:active,button:active,label:active{
 .pac-container, .pac-item{
     z-index: 2147483647 !important;
  }
+ .loader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: #15141459;
+    z-index: 11111;
+    overflow: hidden;
+    .loading{
+      border: 10px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 10px solid #f47921;
+      width: 100px;
+      height: 100px;
+      -webkit-animation: spin 0.5s linear infinite;
+      animation: spin 0.5s linear infinite;
+      background-repeat: no-repeat;
+      background-position: center;
+      left: calc(50% - 50px);
+      top: calc(50% - 50px);
+      position: absolute;
+      z-index: 9;
+    }
+  }
+    
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

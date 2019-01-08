@@ -27,6 +27,7 @@ export class PropertyComponent implements OnInit, OnDestroy {
   selectedPropertyTypeName: string;
   filterBy: string;
   selectedFilter: object;
+  loading: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,6 +36,7 @@ export class PropertyComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router
     ) {
+      this.loading = false;
       this.propertyList = [];
       this.ratingsFliterList = [];
       this.amenitiesFliterList = [];
@@ -90,14 +92,17 @@ export class PropertyComponent implements OnInit, OnDestroy {
      this.selectedPropertyTypeName = filteredArray.length ? filteredArray[0].name : '';
   }
   getPropertyList(params: any) {
+      this.loading = true;
       this.setPropertyTypeName(params.propertyTypeId);
       this.srvProperty.searchProperties(params).subscribe((res) => {
+        this.loading = false;
         console.log('searchProperties data', res);
         if (res.responseCode === '200') {
            this.propertyList = res.responseBody;
            console.log(this.propertyList);
         }
       }, error => {
+        this.loading = false;
         console.log('error', error);
       });
     }
