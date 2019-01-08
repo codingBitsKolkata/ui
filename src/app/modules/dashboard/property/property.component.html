@@ -24,7 +24,7 @@
                     <h5 class="card-title">{{item?.oraname}}</h5>
                     <p class="card-text" *ngIf="item?.propertyVsDescriptions">{{item?.propertyVsDescriptions[0]?.description}}</p>
                     <label class="location" for=""><i class="fa fa-map-marker"></i> Location: {{item?.address}}</label>
-                    <button type="button" [routerLink]="['/host/dashboard/property-details']" class="btn btn-dark">Details / Edit</button>
+                    <button type="button" [routerLink]="['/dashboard/property-details/',item.propertyId]" class="btn btn-dark">Details / Edit</button>
                   </div>
                 </div>
               </div>
@@ -40,7 +40,7 @@
             <div class="card-img-overlay text-center">
               <h5 class="card-title">ADD another property</h5>
               <hr>
-              <button type="button" [routerLink]="['/host/dashboard/property-details']" class="btn btn-primary">Add now</button>
+              <button type="button" [routerLink]="['/dashboard/property-details']" class="btn btn-primary">Add now</button>
             </div>
           </div>
         </div>
@@ -50,7 +50,7 @@
     </div>
 
     <!-- Dashboard Chart -->
-    <div class="property-chart">
+    <div class="property-chart" id="dashboardRevenueSection">
       <div class="row">
         <div class="col-md-7">
             <h3 class="float-left p-10">Revenue</h3>
