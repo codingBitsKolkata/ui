@@ -1,0 +1,104 @@
+<div class="flight-found">
+  <span class="icon"></span>
+  <p class="pl-1"><span>66 Flights  </span> are found</p>
+</div>
+<!-- Quick Filter -->
+<div class="card flight-quick-search mb-3">
+  <div class="card-header">Book your flight</div>
+  <div class="card-body">
+    <form class="booking-form">
+      <div class="form-group">
+        <select name="" class="form-control">
+          <option value="">One way</option>
+          <option value="">Round trip</option>
+          <option value="">Multi city</option>
+        </select>
+      </div>
+      <div class="form-group flight-location">
+        <div class="input-group">
+          <input type="text" class="form-control fromBoxInput" placeholder="From">
+          <div class="input-group-append fromBox">
+            <span class="input-group-text"><i class="fa fa-map-marker"></i></span>                          
+          </div>
+          <i class="switch-location"></i>
+          <input type="text" class="form-control toBoxInput" placeholder="To">
+          <div class="input-group-append toBox">
+            <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control border-right-0" placeholder="Depart"
+            name="dpDepart" [(ngModel)]="f_fromDate" ngbDatepicker (click)="dpFlight.toggle()">
+          <input class="form-control dtpickerHide" placeholder="Depart"
+              name="dp" ngbDatepicker #dpFlight="ngbDatepicker" 
+              ngModel (ngModelChange)="onDateSelectionFlight($event)" 
+              [displayMonths]="1" [dayTemplate]="tFlight" outsideDays="hidden" 
+              [navigation]="'false'" [autoClose]="'outside'" [placement]="'bottom-left'" type="text">
+
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar checkin-pick" (click)="dpFlight.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+          </div>
+          <input class="form-control border-right-0" placeholder="Return"
+                  name="dpReturn" [(ngModel)]="f_toDate" ngbDatepicker (click)="dpFlight.toggle()">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar checkout-pick" (click)="dpFlight.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+          </div>
+          <ng-template #tFlight let-date let-focused="focused">
+            <span class="custom-day"
+                  [class.focused]="focused"
+                  [class.range]="isRangeFlight(date)"
+                  [class.faded]="isHoveredFlight(date) || isInsideFlight(date)"
+                  (mouseenter)="hoveredDate = date"
+                  (mouseleave)="hoveredDate = null">
+              {{ date.day }}
+            </span>
+          </ng-template>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div ngbDropdown class="d-inline-block travellersDropdown">
+            <button class="btn" id="dropdownBasic1" ngbDropdownToggle>Travellers</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <div class="form-row align-items-center">
+                <div class="col-12">
+                  <div class="form-group d-flex justify-content-between">
+                    <label for="" class="text">Adults <span> (+12 yrs)</span></label>
+                    <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group d-flex justify-content-between">
+                    <label for="" class="text">Children <span> (2 to 12 yrs)</span></label>
+                    <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group d-flex justify-content-between">
+                    <label for="" class="text">Infant <span> (Below 2 yrs)</span></label>
+                    <ng-number-picker class="ng-number-picker"></ng-number-picker>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-0">
+              <label class="c-pointer radio-btn">
+                <input checked="" class="option-input radio" name="stayType" type="radio"> Business class 
+              </label>
+              <label class="c-pointer radio-btn">
+                <input class="option-input radio" name="stayType" type="radio"> Premium economy class
+              </label>
+              <label class="c-pointer radio-btn">
+                <input class="option-input radio" name="stayType" type="radio"> Economy class
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group text-right mt-4 mb-0 clearfix">
+        <button type="button" class="btn btn-primary btn-lg search-btn" routerLink="/flight-list"><i class="search-icon"></i>Search</button>
+      </div>
+    </form>
+  </div>
+</div>

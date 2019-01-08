@@ -7,7 +7,12 @@ import { PropertyBookingComponent } from './property-booking/property-booking.co
 import { PropertyBookingConfirmationComponent } from './property-booking-confirmation/property-booking-confirmation.component';
 
 @NgModule({
-  declarations: [PropertyComponent, PropertyDetailsComponent, PropertyBookingComponent, PropertyBookingConfirmationComponent],
+  declarations: [
+    PropertyComponent, 
+    PropertyDetailsComponent, 
+    PropertyBookingComponent, 
+    PropertyBookingConfirmationComponent
+  ],
   imports: [
     PropertyRoutingModule,
     SharedModule

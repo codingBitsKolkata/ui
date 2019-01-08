@@ -14,7 +14,7 @@ import { HttpConfigInterceptor } from './services/interceptors/http-config-inter
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

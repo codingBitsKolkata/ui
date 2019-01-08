@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UiSwitchModule } from 'ngx-ui-switch';
+import { Ng5SliderModule } from 'ng5-slider';
 import { ModalComponent } from './components/modal/modal.component';
 import { TestModalComponent } from './components/test-modal/test-modal.component';
 import { WhiteSpaceValidator} from '../directives/validators/white-space-validation';
@@ -26,6 +27,8 @@ import { QuickFilterComponent } from './components/quick-filter/quick-filter.com
 import { QuickStaySearchFormComponent } from './components/quick-stay-search-form/quick-stay-search-form.component';
 import { PropertyAddFormComponent } from './components/property-add-form/property-add-form.component';
 import { OrderModule } from 'ngx-order-pipe';
+import { FlightQuickSearchComponent } from './components/flight-quick-search/flight-quick-search.component';
+import { FlightFilterComponent } from './components/flight-filter/flight-filter.component';
 
 
 @NgModule({
@@ -40,7 +43,9 @@ import { OrderModule } from 'ngx-order-pipe';
     SearchFormComponent,
     EarningCalculatorComponent,
     QuickFilterComponent,
-    QuickStaySearchFormComponent
+    QuickStaySearchFormComponent,
+    FlightQuickSearchComponent,
+    FlightFilterComponent
   ],
   imports: [
     CommonModule,
@@ -55,6 +60,7 @@ import { OrderModule } from 'ngx-order-pipe';
     NguCarouselModule,
     HighchartsChartModule,
     NgMultiSelectDropDownModule,
+    Ng5SliderModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCe6MGWAXjP0KZo4jH6qPCPwsXirwMEV0Q',
       libraries: ['places']
@@ -89,7 +95,9 @@ import { OrderModule } from 'ngx-order-pipe';
     QuickFilterComponent,
     QuickStaySearchFormComponent,
     PropertyAddFormComponent,
-    OrderModule
+    OrderModule,
+    FlightQuickSearchComponent,
+    FlightFilterComponent
   ],
   entryComponents: [
     TestModalComponent
