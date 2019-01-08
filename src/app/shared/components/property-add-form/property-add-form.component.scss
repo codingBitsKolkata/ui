@@ -4,6 +4,10 @@
     border-radius: 5px;
     padding: 25px;
     // margin-top: 30px;
+    .alert{
+        padding: 0.3rem 0.7rem;
+        margin-bottom: .75rem;
+    }
     h4.title{
         font-family: latobolditalic;
         color: #231f20;
@@ -183,6 +187,10 @@
         &.multiSelect{
             padding: 7px 10px;
             height: 40px;
+        }
+        &.is-invalid{
+            border-width: 2px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
     }
     .f-label{

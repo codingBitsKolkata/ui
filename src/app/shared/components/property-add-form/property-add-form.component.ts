@@ -82,16 +82,16 @@ export class PropertyAddFormComponent implements OnInit {
         propertyType: new FormControl('homestay', [Validators.required])
       }),
       step2: this.fb.group({
-        propertyName: new FormControl('', [Validators.required]),
-        propertyAddress: new FormControl('', [Validators.required]),
-        propertyDesc: new FormControl('', [Validators.required])
+        name: new FormControl('', [Validators.required]),
+        address: new FormControl('', [Validators.required]),
+        description: new FormControl('', [Validators.required])
       }),
       step3: this.fb.group({
         guestAccess: new FormControl('', [Validators.required]),
-        nearbyPlaces: new FormControl('', [Validators.required])
+        places: new FormControl('', [Validators.required])
       }),
       step4: this.fb.group({
-        propertySpaceType: new FormControl('couple', [Validators.required]),
+        ruleName: new FormControl('couple', [Validators.required]),
         specialExperience: new FormControl('', [Validators.required])
       }),
       step5: this.fb.group({
@@ -144,20 +144,20 @@ export class PropertyAddFormComponent implements OnInit {
         test: new FormControl('')
       }),
       step18: this.fb.group({
-        roomPricePerNight: new FormControl('', [Validators.required]),
-        roomPricePerMonth: new FormControl('', [Validators.required]),
-        cotPrice: new FormControl('', [Validators.required]),
-        commission: new FormControl('', [Validators.required])
+        roomPricePerNight: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+        roomPricePerMonth: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+        cotPrice: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+        commission: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.max(100), Validators.min(0)])
       }),
       step19: this.fb.group({
-        hostDiscountWeekly: new FormControl('', [Validators.required]),
-        hostDiscountMonthly: new FormControl('', [Validators.required]),
+        hostDiscountWeekly: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.max(100), Validators.min(0)]),
+        hostDiscountMonthly: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.max(100), Validators.min(0)]),
         priceDrop: new FormControl('Y', [Validators.required])
       }),
       step20: this.fb.group({
-        cancellationSlab1: new FormControl('', [Validators.required]),
-        cancellationSlab2: new FormControl('', [Validators.required]),
-        cancellationSlab3: new FormControl('', [Validators.required])
+        cancellationSlab1: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.max(100), Validators.min(0)]),
+        cancellationSlab2: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.max(100), Validators.min(0)]),
+        cancellationSlab3: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.max(100), Validators.min(0)])
       }),
       step21: this.fb.group({
         accountNumber: new FormControl('', [Validators.required]),
@@ -178,9 +178,9 @@ export class PropertyAddFormComponent implements OnInit {
       }),
       step24: this.fb.group({
         contactName: new FormControl('', [Validators.required]),
-        altMobile: new FormControl('', [Validators.required]),
-        landline: new FormControl('', [Validators.required]),
-        altEmail: new FormControl('', [Validators.required])
+        altMobile: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.maxLength(10)]),
+        landline: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+        altEmail: new FormControl('', [Validators.required, Validators.email])
       })
     });
     console.log('Property Form =>', this.addPropertyForm);
@@ -244,6 +244,10 @@ export class PropertyAddFormComponent implements OnInit {
     this.addPropertyForm.patchValue({
       step15: {noOfCot: evt}
     });
+  }
+
+  printForm() {
+    console.log('Form =>', this.addPropertyForm);    
   }
 
   checkInTime = {hour: 10, minute: 30};

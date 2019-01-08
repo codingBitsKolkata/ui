@@ -39,22 +39,25 @@
     </wizard-step>
     <!-- Step 2 -->                                 
     <wizard-step formGroupName="step2" [title]="'Step2'" [isValid]="addPropertyForm.get('step2').valid">
-        <div class="row">
+      <div *ngIf="addPropertyForm.get('step2').valid === false && addPropertyForm.get('step2').touched" class="alert alert-danger"> 
+          <div>All fields are required</div>
+      </div>
+      <div class="row">
           <div class="col-md-4 plr-5">
             <div class="form-group bg-input">
               <span class="icon i-property-name"></span>
-              <input type="text" class="form-control" placeholder="Property name" formControlName="propertyName">
+              <input type="text" class="form-control" placeholder="Property name" formControlName="name" [ngClass]="{'is-invalid': addPropertyForm.get('step2')['controls'].name.errors && addPropertyForm.get('step2')['controls'].name.touched}">
             </div>
           </div>
           <div class="col-md-4 plr-5">
             <div class="form-group bg-input">
               <span class="icon i-property-address"></span>
-              <input type="text" class="form-control" placeholder="Property address" formControlName="propertyAddress">
+              <input type="text" class="form-control" placeholder="Property address" formControlName="address" [ngClass]="{'is-invalid': addPropertyForm.get('step2')['controls'].address.errors && addPropertyForm.get('step2')['controls'].address.touched}">
             </div>
           </div>
           <div class="col-md-4 plr-5">
             <div class="form-group bg-input">
-              <textarea class="form-control textarea" placeholder="Write propety description" formControlName="propertyDesc"></textarea>
+              <textarea class="form-control textarea" placeholder="Write propety description" formControlName="description" [ngClass]="{'is-invalid': addPropertyForm.get('step2')['controls'].description.errors && addPropertyForm.get('step2')['controls'].description.touched}"></textarea>
             </div>
           </div>
           <!-- <div class="col-md-6">
@@ -65,24 +68,30 @@
     <!-- / Step 2 --> 
     <!-- / Step 3 --> 
     <wizard-step formGroupName="step3" [title]="'Step3'" [isValid]="addPropertyForm.get('step3').valid">
+        <div *ngIf="addPropertyForm.get('step3').valid === false && addPropertyForm.get('step3').touched" class="alert alert-danger"> 
+            <div>All fields are required</div>
+        </div>
         <div class="form-group bg-input d-flex align-items-center mb-3">
           <span class="icon i-guest-access"></span>
-          <input type="text" class="form-control ml-20" placeholder="Mention guest access areas " formControlName="guestAccess">
+          <input type="text" class="form-control ml-20" placeholder="Mention guest access areas " formControlName="guestAccess" [ngClass]="{'is-invalid': addPropertyForm.get('step3')['controls'].guestAccess.errors && addPropertyForm.get('step3')['controls'].guestAccess.touched}">
           <!-- <tag-input class="tag-input" [(ngModel)]='guestAccess' secondary-placeholder="+ access" placeholder="+ access"></tag-input> -->
         </div>
         <div class="form-group bg-input d-flex align-items-center mb-3">
           <span class="icon i-nearby"></span>
-          <input type="text" class="form-control ml-20" placeholder="Enter Nearby Places" formControlName="nearbyPlaces">
+          <input type="text" class="form-control ml-20" placeholder="Enter Nearby Places" formControlName="places" [ngClass]="{'is-invalid': addPropertyForm.get('step3')['controls'].places.errors && addPropertyForm.get('step3')['controls'].places.touched}">
           <!-- <tag-input class="tag-input" [(ngModel)]='nearbyPlaces' secondary-placeholder="+ nearby place" placeholder="+ nearby place"></tag-input> -->
         </div>
     </wizard-step>
     <!-- / Step 3 --> 
     <!-- Step 4 -->                 
     <wizard-step formGroupName="step4" [title]="'Step4'" [isValid]="addPropertyForm.get('step4').valid">
-        <h4 class="title">Select Space Rules:</h4>
+        <div *ngIf="addPropertyForm.get('step4').valid === false && addPropertyForm.get('step4').touched" class="alert alert-danger"> 
+            <div>All fields are required</div>
+        </div>
+      <h4 class="title">Select Space Rules:</h4>
         <div class="d-flex text-center mt-15">
           <div class="property-type">
-            <input type="radio" name="propertySpaceType" id="couple" value="couple" class="input-hidden" formControlName="propertySpaceType" />
+            <input type="radio" name="ruleName" id="couple" value="couple" class="input-hidden" formControlName="ruleName" />
             <label class="items" for="couple">
               <img src="assets/images/elements/couplefriendly.png" alt="">
               <span class="item-checked"></span>
@@ -90,7 +99,7 @@
             <p class="name mt-0">Couple Friendly</p>
           </div>
           <div class="property-type">
-              <input type="radio" name="propertySpaceType" id="pet" value="pet" class="input-hidden" formControlName="propertySpaceType" />
+              <input type="radio" name="ruleName" id="pet" value="pet" class="input-hidden" formControlName="ruleName" />
             <label class="items" for="pet">
               <img src="assets/images/elements/pet.png" alt="">
               <span class="item-checked"></span>
@@ -98,7 +107,7 @@
             <p class="name mt-0">Pet friendly</p>
           </div>
           <div class="property-type">
-              <input type="radio" name="propertySpaceType" id="smoking" value="smoking" class="input-hidden" formControlName="propertySpaceType" />
+              <input type="radio" name="ruleName" id="smoking" value="smoking" class="input-hidden" formControlName="ruleName" />
             <label class="items" for="smoking">
               <img src="assets/images/elements/smoking.png" alt="">
               <span class="item-checked"></span>
@@ -106,7 +115,7 @@
             <p class="name mt-0">Smoking</p>
           </div>
           <div class="property-type">
-              <input type="radio" name="propertySpaceType" id="alcohol" value="alcohol" class="input-hidden" formControlName="propertySpaceType" />
+              <input type="radio" name="ruleName" id="alcohol" value="alcohol" class="input-hidden" formControlName="ruleName" />
             <label class="items" for="alcohol">
               <img src="assets/images/elements/alcohol.png" alt="">
               <span class="item-checked"></span>
@@ -196,17 +205,20 @@
     <!-- / Step 7 --> 
     <!-- Step 8 -->   
     <wizard-step formGroupName="step8" [title]="'Step8'" [isValid]="addPropertyForm.get('step8').valid">
+        <div *ngIf="addPropertyForm.get('step8').valid === false && addPropertyForm.get('step8').touched" class="alert alert-danger"> 
+            <div>All fields are required</div>
+        </div>
       <div class="row justify-content-center">
         <div class="col-md-5 plr-5">
           <div class="form-group bg-input">
             <span class="icon i-appartment-name"></span>
-            <input type="text" class="form-control" placeholder="Enter apartment name" formControlName="apartmentName">
+            <input type="text" class="form-control" placeholder="Enter apartment name" formControlName="apartmentName" [ngClass]="{'is-invalid': addPropertyForm.get('step8')['controls'].apartmentName.errors && addPropertyForm.get('step8')['controls'].apartmentName.touched}">
           </div>
         </div>
         <div class="col-md-5 plr-5">
           <div class="form-group bg-input">
             <span class="icon i-appartment-number"></span>
-            <input type="text" class="form-control" placeholder="Enter apartment number" formControlName="apartmentNumber">
+            <input type="text" class="form-control" placeholder="Enter apartment number" formControlName="apartmentNumber" [ngClass]="{'is-invalid': addPropertyForm.get('step8')['controls'].apartmentNumber.errors && addPropertyForm.get('step8')['controls'].apartmentNumber.touched}">
           </div>
         </div>
       </div>
@@ -1533,8 +1545,12 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">₹</div>
                 </div>
-                <input type="text" class="form-control" placeholder="Amount" formControlName="roomPricePerNight">
+                <input type="text" class="form-control" placeholder="Amount" formControlName="roomPricePerNight" [ngClass]="{'is-invalid': addPropertyForm.get('step18')['controls'].roomPricePerNight.errors && addPropertyForm.get('step18')['controls'].roomPricePerNight.touched}">
               </div>
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step18')['controls'].roomPricePerNight.errors && addPropertyForm.get('step18')['controls'].roomPricePerNight.touched"> 
+                <div *ngIf="addPropertyForm.get('step18')['controls'].roomPricePerNight.errors.required">Enter Room Price per Night</div>
+                <div *ngIf="addPropertyForm.get('step18')['controls'].roomPricePerNight.errors.pattern">Enter number</div>
             </div>
           </div>
           <div class="col-md-6">
@@ -1544,8 +1560,12 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">₹</div>
                 </div>
-                <input type="text" class="form-control" placeholder="Amount" formControlName="roomPricePerMonth">
+                <input (blur)="submitPropertyForm()" type="text" class="form-control" placeholder="Amount" formControlName="roomPricePerMonth" [ngClass]="{'is-invalid': addPropertyForm.get('step18')['controls'].roomPricePerMonth.errors && addPropertyForm.get('step18')['controls'].roomPricePerMonth.touched}">
               </div>
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step18')['controls'].roomPricePerMonth.errors && addPropertyForm.get('step18')['controls'].roomPricePerMonth.touched"> 
+                <div *ngIf="addPropertyForm.get('step18')['controls'].roomPricePerMonth.errors.required">Enter Room Price per Month</div>
+                <div *ngIf="addPropertyForm.get('step18')['controls'].roomPricePerMonth.errors.pattern">Enter number</div>
             </div>
           </div>
           <div class="col-md-6">
@@ -1555,8 +1575,12 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">₹</div>
                 </div>
-                <input type="text" class="form-control" placeholder="Amount" formControlName="cotPrice">
+                <input type="text" class="form-control" placeholder="Amount" formControlName="cotPrice" [ngClass]="{'is-invalid': addPropertyForm.get('step18')['controls'].cotPrice.errors && addPropertyForm.get('step18')['controls'].cotPrice.touched}">
               </div>
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step18')['controls'].cotPrice.errors && addPropertyForm.get('step18')['controls'].cotPrice.touched"> 
+                <div *ngIf="addPropertyForm.get('step18')['controls'].cotPrice.errors.required">Enter Cot Price</div>
+                <div *ngIf="addPropertyForm.get('step18')['controls'].cotPrice.errors.pattern">Enter number</div>
             </div>
           </div>
           <div class="col-md-6">
@@ -1566,8 +1590,13 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">%</div>
                 </div>
-                <input type="text" class="form-control" placeholder="Amount" formControlName="commission">
+                <input type="text" class="form-control" placeholder="Amount" formControlName="commission" [ngClass]="{'is-invalid': addPropertyForm.get('step18')['controls'].commission.errors && addPropertyForm.get('step18')['controls'].commission.touched}">
               </div>
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step18')['controls'].commission.errors && addPropertyForm.get('step18')['controls'].commission.touched"> 
+                <div *ngIf="addPropertyForm.get('step18')['controls'].commission.errors.required">Enter Commision</div>
+                <div *ngIf="addPropertyForm.get('step18')['controls'].commission.errors.pattern">Enter number</div>
+                <div *ngIf="addPropertyForm.get('step18')['controls'].commission.errors.max">Percentage should not be greater than 100</div>
             </div>
           </div>
         </div>
@@ -1584,8 +1613,13 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">%</div>
                 </div>
-                <input type="text" class="form-control" placeholder="Percentage" formControlName="hostDiscountWeekly">
+                <input type="text" class="form-control" placeholder="Percentage" formControlName="hostDiscountWeekly" [ngClass]="{'is-invalid': addPropertyForm.get('step19')['controls'].hostDiscountWeekly.errors && addPropertyForm.get('step19')['controls'].hostDiscountWeekly.touched}">
               </div>
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step19')['controls'].hostDiscountWeekly.errors && addPropertyForm.get('step19')['controls'].hostDiscountWeekly.touched"> 
+                <div *ngIf="addPropertyForm.get('step19')['controls'].hostDiscountWeekly.errors.required">Enter Weekly Discount</div>
+                <div *ngIf="addPropertyForm.get('step19')['controls'].hostDiscountWeekly.errors.pattern">Enter number</div>
+                <div *ngIf="addPropertyForm.get('step19')['controls'].hostDiscountWeekly.errors.max">Percentage should not be greater than 100</div>
             </div>
           </div>
           <div class="col-md-6">
@@ -1595,8 +1629,13 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">%</div>
                 </div>
-                <input type="text" class="form-control" placeholder="Percentage" formControlName="hostDiscountMonthly">
+                <input type="text" class="form-control" placeholder="Percentage" formControlName="hostDiscountMonthly" [ngClass]="{'is-invalid': addPropertyForm.get('step19')['controls'].hostDiscountMonthly.errors && addPropertyForm.get('step19')['controls'].hostDiscountMonthly.touched}">
               </div>
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step19')['controls'].hostDiscountMonthly.errors && addPropertyForm.get('step19')['controls'].hostDiscountMonthly.touched"> 
+                <div *ngIf="addPropertyForm.get('step19')['controls'].hostDiscountMonthly.errors.required">Enter Monthly Commision</div>
+                <div *ngIf="addPropertyForm.get('step19')['controls'].hostDiscountMonthly.errors.pattern">Enter number</div>
+                <div *ngIf="addPropertyForm.get('step19')['controls'].hostDiscountMonthly.errors.max">Percentage should not be greater than 100</div>
             </div>
           </div>
           <div class="col-md-6">
@@ -1623,8 +1662,13 @@
             <div class="input-group-prepend">
               <div class="input-group-text">%</div>
             </div>
-            <input type="text" class="form-control" placeholder="Percentage" formControlName="cancellationSlab1">
+            <input type="text" class="form-control" placeholder="Percentage" formControlName="cancellationSlab1" [ngClass]="{'is-invalid': addPropertyForm.get('step20')['controls'].cancellationSlab1.errors && addPropertyForm.get('step20')['controls'].cancellationSlab1.touched}">
           </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="addPropertyForm.get('step20')['controls'].cancellationSlab1.errors && addPropertyForm.get('step20')['controls'].cancellationSlab1.touched"> 
+            <div *ngIf="addPropertyForm.get('step20')['controls'].cancellationSlab1.errors.required">Enter Percentage</div>
+            <div *ngIf="addPropertyForm.get('step20')['controls'].cancellationSlab1.errors.pattern">Enter number</div>
+            <div *ngIf="addPropertyForm.get('step20')['controls'].cancellationSlab1.errors.max">Percentage should not be greater than 100</div>
         </div>
         <div class="form-group bg-input h-auto mb-15 d-flex align-items-center">
           <label class="f-label">Before 48 hours</label>
@@ -1632,8 +1676,13 @@
             <div class="input-group-prepend">
               <div class="input-group-text">%</div>
             </div>
-            <input type="text" class="form-control" placeholder="Percentage" formControlName="cancellationSlab2">
+            <input type="text" class="form-control" placeholder="Percentage" formControlName="cancellationSlab2" [ngClass]="{'is-invalid': addPropertyForm.get('step20')['controls'].cancellationSlab2.errors && addPropertyForm.get('step20')['controls'].cancellationSlab2.touched}">
           </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="addPropertyForm.get('step20')['controls'].cancellationSlab1.errors && addPropertyForm.get('step20')['controls'].cancellationSlab1.touched"> 
+            <div *ngIf="addPropertyForm.get('step20')['controls'].cancellationSlab1.errors.required">Enter Percentage</div>
+            <div *ngIf="addPropertyForm.get('step20')['controls'].cancellationSlab1.errors.pattern">Enter number</div>
+            <div *ngIf="addPropertyForm.get('step20')['controls'].cancellationSlab1.errors.max">Percentage should not be greater than 100</div>
         </div>
         <div class="form-group bg-input h-auto mb-15 d-flex align-items-center">
           <label class="f-label">Before 72 hours</label>
@@ -1641,8 +1690,13 @@
             <div class="input-group-prepend">
               <div class="input-group-text">%</div>
             </div>
-            <input type="text" class="form-control" placeholder="Percentage" formControlName="cancellationSlab3">
+            <input type="text" class="form-control" placeholder="Percentage" formControlName="cancellationSlab3" [ngClass]="{'is-invalid': addPropertyForm.get('step20')['controls'].cancellationSlab3.errors && addPropertyForm.get('step20')['controls'].cancellationSlab3.touched}">
           </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="addPropertyForm.get('step20')['controls'].cancellationSlab3.errors && addPropertyForm.get('step20')['controls'].cancellationSlab3.touched"> 
+            <div *ngIf="addPropertyForm.get('step20')['controls'].cancellationSlab3.errors.required">Enter Percentage</div>
+            <div *ngIf="addPropertyForm.get('step20')['controls'].cancellationSlab3.errors.pattern">Enter number</div>
+            <div *ngIf="addPropertyForm.get('step20')['controls'].cancellationSlab3.errors.max">Percentage should not be greater than 100</div>
         </div>
       </wizard-step>
       <!-- / Step 20 -->  
@@ -1653,12 +1707,18 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group bg-input h-auto mb-15">
-              <input type="text" class="form-control" placeholder="Account number" formControlName="accountNumber">
+              <input type="text" class="form-control" placeholder="Account number" formControlName="accountNumber" [ngClass]="{'is-invalid': addPropertyForm.get('step21')['controls'].accountNumber.errors && addPropertyForm.get('step21')['controls'].accountNumber.touched}">
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step21')['controls'].accountNumber.errors && addPropertyForm.get('step21')['controls'].accountNumber.touched"> 
+                <div>Enter Account number</div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group bg-input h-auto mb-15">
-              <input type="text" class="form-control" placeholder="Full name" formControlName="accountHolderName">
+              <input type="text" class="form-control" placeholder="Full name" formControlName="accountHolderName" [ngClass]="{'is-invalid': addPropertyForm.get('step21')['controls'].accountHolderName.errors && addPropertyForm.get('step21')['controls'].accountHolderName.touched}">
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step21')['controls'].accountHolderName.errors && addPropertyForm.get('step21')['controls'].accountHolderName.touched"> 
+                <div>Enter Full name</div>
             </div>
           </div>
           <div class="col-md-6">
@@ -1671,17 +1731,26 @@
           </div>
           <div class="col-md-6">
             <div class="form-group bg-input h-auto mb-15">
-              <input type="text" class="form-control" placeholder="Bank name" formControlName="bankName">
+              <input type="text" class="form-control" placeholder="Bank name" formControlName="bankName" [ngClass]="{'is-invalid': addPropertyForm.get('step21')['controls'].bankName.errors && addPropertyForm.get('step21')['controls'].bankName.touched}">
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step21')['controls'].bankName.errors && addPropertyForm.get('step21')['controls'].bankName.touched"> 
+                <div>Enter Bank Name</div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group bg-input h-auto mb-15">
-              <input type="text" class="form-control" placeholder="Branch name" formControlName="branchName">
+              <input type="text" class="form-control" placeholder="Branch name" formControlName="branchName" [ngClass]="{'is-invalid': addPropertyForm.get('step21')['controls'].branchName.errors && addPropertyForm.get('step21')['controls'].branchName.touched}">
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step21')['controls'].branchName.errors && addPropertyForm.get('step21')['controls'].branchName.touched"> 
+                <div>Enter Branch Name</div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group bg-input h-auto mb-15">
-              <input type="text" class="form-control" placeholder="IFSC code" formControlName="ifscCode">
+              <input type="text" class="form-control" placeholder="IFSC code" formControlName="ifscCode" [ngClass]="{'is-invalid': addPropertyForm.get('step21')['controls'].ifscCode.errors && addPropertyForm.get('step21')['controls'].ifscCode.touched}">
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step21')['controls'].ifscCode.errors && addPropertyForm.get('step21')['controls'].ifscCode.touched"> 
+                <div>Enter IFSC code</div>
             </div>
           </div>
         </div>
@@ -1701,11 +1770,17 @@
                 <option value="AADHAR">Aadhar Card</option>
               </select>
             </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step22')['controls'].documentName.errors && addPropertyForm.get('step22')['controls'].documentName.touched"> 
+                <div>Select Document Type</div>
+            </div>
           </div>
           <div class="col-md-12">
             <div class="form-group bg-input h-auto mb-15 d-flex align-items-center">
               <label class="f-label">Document number</label>
-              <input type="text" class="form-control" placeholder="Document ID" formControlName="documentNumber">
+              <input type="text" class="form-control" placeholder="Document ID" formControlName="documentNumber" [ngClass]="{'is-invalid': addPropertyForm.get('step22')['controls'].documentNumber.errors && addPropertyForm.get('step22')['controls'].documentNumber.touched}">
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step22')['controls'].documentNumber.errors && addPropertyForm.get('step22')['controls'].documentNumber.touched"> 
+                <div>Enter Document Number</div>
             </div>
           </div>
           <div class="col-md-12">
@@ -1738,11 +1813,14 @@
               <label for="" class="f-label">Start date:</label>
               <div class="input-group">
                 <input class="form-control border-right-0" placeholder="DD/MM/YYYY"
-                        name="bstartDate" ngbDatepicker #bstartDate="ngbDatepicker" (click)="bstartDate.toggle()" formControlName="startDate">
+                        name="bstartDate" ngbDatepicker #bstartDate="ngbDatepicker" (click)="bstartDate.toggle()" formControlName="startDate" [ngClass]="{'is-invalid': addPropertyForm.get('step23')['controls'].startDate.errors && addPropertyForm.get('step23')['controls'].startDate.touched}">
                 <div class="input-group-append">
                   <button class="btn calendar checkin-pick" (click)="bstartDate.toggle()" type="button"><i class="fa fa-calendar"></i></button>
                 </div>
               </div>
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step23')['controls'].startDate.errors && addPropertyForm.get('step23')['controls'].startDate.touched"> 
+                <div>Select Start Date</div>
             </div>
           </div>
           <div class="col-md-12">
@@ -1750,11 +1828,14 @@
               <label for="" class="f-label">End date:</label>
               <div class="input-group">
                 <input class="form-control border-right-0" placeholder="DD/MM/YYYY"
-                        name="bendDate" ngbDatepicker #bendDate="ngbDatepicker" (click)="bendDate.toggle()" formControlName="endDate">
+                        name="bendDate" ngbDatepicker #bendDate="ngbDatepicker" (click)="bendDate.toggle()" formControlName="endDate" [ngClass]="{'is-invalid': addPropertyForm.get('step23')['controls'].endDate.errors && addPropertyForm.get('step23')['controls'].endDate.touched}">
                 <div class="input-group-append">
                   <button class="btn calendar checkout-pick" (click)="bendDate.toggle()" type="button"><i class="fa fa-calendar"></i></button>
                 </div>
               </div>
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step23')['controls'].endDate.errors && addPropertyForm.get('step23')['controls'].endDate.touched"> 
+                <div>Select End Date</div>
             </div>
           </div>
         </div>
@@ -1767,24 +1848,39 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group bg-input d-flex align-items-center mb-3">
-              <input type="text" class="form-control" placeholder="Contact person name" formControlName="contactName">
+              <input type="text" class="form-control" placeholder="Contact person name" formControlName="contactName" [ngClass]="{'is-invalid': addPropertyForm.get('step24')['controls'].contactName.errors && addPropertyForm.get('step24')['controls'].contactName.touched}">
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step24')['controls'].contactName.errors && addPropertyForm.get('step24')['controls'].contactName.touched"> 
+                <div>Enter Contact Name</div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group bg-input d-flex align-items-center mb-3">
-              <input type="text" class="form-control" placeholder="Alternative mobile number" formControlName="altMobile">
+              <input type="text" class="form-control" placeholder="Alternative mobile number" formControlName="altMobile" [ngClass]="{'is-invalid': addPropertyForm.get('step24')['controls'].altMobile.errors && addPropertyForm.get('step24')['controls'].altMobile.touched}">
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step24')['controls'].altMobile.errors && addPropertyForm.get('step24')['controls'].altMobile.touched"> 
+                <div *ngIf="addPropertyForm.get('step24')['controls'].altMobile.errors.required">Enter Alternate Mobile Number</div>
+                <div *ngIf="addPropertyForm.get('step24')['controls'].altMobile.errors.pattern || addPropertyForm.get('step24')['controls'].altMobile.errors.maxLength">Enter a valid Mobile Number</div>
             </div>
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-6">
             <div class="form-group bg-input d-flex align-items-center mb-3">
-              <input type="text" class="form-control" placeholder="Landline number" formControlName="landline">
+              <input type="text" class="form-control" placeholder="Landline number" formControlName="landline" [ngClass]="{'is-invalid': addPropertyForm.get('step24')['controls'].landline.errors && addPropertyForm.get('step24')['controls'].landline.touched}">
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step24')['controls'].landline.errors && addPropertyForm.get('step24')['controls'].landline.touched"> 
+                <div *ngIf="addPropertyForm.get('step24')['controls'].landline.errors.required">Enter Landline Number</div>
+                <div *ngIf="addPropertyForm.get('step24')['controls'].landline.errors.pattern">Enter a valid Landline Number</div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group bg-input d-flex align-items-center mb-3">
-              <input type="email" class="form-control" placeholder="Alternative email ID" formControlName="altEmail">
+              <input type="email" class="form-control" placeholder="Alternative email ID" formControlName="altEmail" [ngClass]="{'is-invalid': addPropertyForm.get('step24')['controls'].altEmail.errors && addPropertyForm.get('step24')['controls'].altEmail.touched}">
+            </div>
+            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step24')['controls'].altEmail.errors && addPropertyForm.get('step24')['controls'].altEmail.touched"> 
+                <div *ngIf="addPropertyForm.get('step24')['controls'].altEmail.errors.required">Enter Alternate Email</div>
+                <div *ngIf="addPropertyForm.get('step24')['controls'].altEmail.errors.email">Enter a valid Email Address</div>
             </div>
           </div>
         </div>
