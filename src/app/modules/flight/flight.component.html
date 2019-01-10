@@ -1,5 +1,5 @@
 
-<div class="container-fluid flight-list-section mt-76">
+<div class="container-fluid flight-list-section mt-76" *ngIf="tripType !== 'flight-booking'">
   <div class="row">
     <!-- Filter Section -->
     <div class="col-md-3">
@@ -43,6 +43,10 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="container-fluid flight-list-section mt-76" *ngIf="tripType == 'flight-booking'">
+  <router-outlet></router-outlet>
 </div>
 
 <!-- Personal Information Popup -->

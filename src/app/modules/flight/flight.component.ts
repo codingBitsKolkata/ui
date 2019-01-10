@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./flight.component.scss']
 })
 export class FlightComponent implements OnInit {
-
+  tripType;
   constructor(private modalService: NgbModal, private router: Router) {
   }
   
@@ -25,7 +25,10 @@ export class FlightComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.router.url);
+    this.tripType = this.router.url;
+    let x = this.tripType.split("/");
+    this.tripType = x[x.length-1];
+    console.log(this.tripType);
   }
 
 }

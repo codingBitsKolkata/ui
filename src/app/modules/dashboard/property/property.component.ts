@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
 import * as Highcharts from 'highcharts';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -9,7 +9,7 @@ import { PropertyService } from '../../../services/apis/property.service';
   templateUrl: './property.component.html',
   styleUrls: ['./property.component.scss']
 })
-export class PropertyComponent implements OnInit {
+export class PropertyComponent implements OnInit, AfterViewInit {
 
   languageList = [];
   LanguageSelectedItems = [];
@@ -183,7 +183,8 @@ export class PropertyComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private srvProperty: PropertyService
+    private srvProperty: PropertyService,
+    private cdr: ChangeDetectorRef
   ) {
     this.populatePropertyList();
    }
@@ -231,7 +232,9 @@ export class PropertyComponent implements OnInit {
       allowSearchFilter: true
     };
   }
-
+  ngAfterViewInit() {
+    this.cdr.detectChanges();
+  }
   populatePropertyList() {
     this.srvProperty.getHostPropertyList().subscribe((res) => {
      console.log('Property List =>', res);

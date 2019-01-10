@@ -95,6 +95,9 @@ body{
 .fs-14{
     font-size: 14px !important;
 }
+.fs-16{
+    font-size: 16px !important;
+}
 .mt-10{
     margin-top: 10px !important;
 }
@@ -1376,7 +1379,7 @@ input:active,select:active,button:active,label:active{
         position: absolute;
         left: -9999px;
     }
-    input[type=radio]:checked + label {
+    input[type=radio]:checked + label, input[type=checkbox]:checked + label {
         border: 1px solid #f47921;
         span{
             display: block !important;
@@ -1641,3 +1644,11 @@ input:active,select:active,button:active,label:active{
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+a{
+    color: #f16a0a;
+    font-family: latoregular;
+    font-size: 14px;
+    &:hover{
+        color: #f16a0a;
+    }
+}
