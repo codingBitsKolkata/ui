@@ -14,7 +14,7 @@
     flex-direction: row;
     -ms-flex-positive: 1;
     flex-grow: 1;
-    overflow-x: hidden;
+    // overflow-x: hidden;
     .sidebar{
         margin-left: 0;
         position: absolute;
@@ -185,7 +185,7 @@
         }
     }    
     .main{
-        margin-left: 200px;
+        // margin-left: 200px;
         flex: 1;
         min-width: 0;
         transition: margin-left .25s,margin-right .25s,width .25s,flex .25s;

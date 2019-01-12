@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HostPropertyListComponent } from './host-property-list.component';
+import { OfferComponent } from './offer.component';
 
-describe('HostPropertyListComponent', () => {
-  let component: HostPropertyListComponent;
-  let fixture: ComponentFixture<HostPropertyListComponent>;
+describe('OfferComponent', () => {
+  let component: OfferComponent;
+  let fixture: ComponentFixture<OfferComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HostPropertyListComponent ]
+      declarations: [ OfferComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HostPropertyListComponent);
+    fixture = TestBed.createComponent(OfferComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

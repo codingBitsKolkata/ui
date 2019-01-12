@@ -9,31 +9,31 @@
     </div>
     <ul class="nav">
       <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <i class="nav-icon"></i> Properties
             <span class="badge badge-info">04</span>
           </a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="typography.html" routerLinkActive="active">
+          <a class="nav-link" (click)="scrollToDiv('dashboard','revenueBlock')">
             <i class="nav-icon"></i> Revenue
           </a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="typography.html" routerLinkActive="active">
+          <a class="nav-link" (click)="scrollToDiv('dashboard','calenderBlock')">
             <i class="nav-icon"></i> Calendar
           </a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="typography.html" routerLinkActive="active">
+          <a class="nav-link" (click)="scrollToDiv('dashboard','inventoryBlock')">
             <i class="nav-icon"></i> Inventory
           </a>
       </li>
-      <li class="nav-item">
-          <a class="nav-link" href="typography.html" routerLinkActive="active">
+      <!-- <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)" routerLinkActive="active">
             <i class="nav-icon"></i> Analytics
           </a>
-      </li>
+      </li> -->
       <li class="nav-item">
           <a class="nav-link" (click)="openModal(contactOraModal)" routerLinkActive="active">
             <i class="nav-icon"></i> Contact ORA

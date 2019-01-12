@@ -13,7 +13,7 @@ const routerConfig: Routes = [
    children: [
     { path: '', component: PropertyComponent},
     { path: 'property', component: PropertyComponent},
-    { path: 'property-details', component: PropertyDetailsComponent},
+    { path: 'property-details/:id', component: PropertyDetailsComponent, pathMatch: 'full'},
     { path: 'bookings', component: BookingListComponent},
     { path: 'booking-details', component: BookingDetailsComponent},
     { path: 'booking-cancellation', component: BookingCancellationComponent},

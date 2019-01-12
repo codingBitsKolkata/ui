@@ -3,8 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HostComponent } from './host.component';
 
 const routerConfig: Routes = [
-  { path: '', component: HostComponent},
-  { path: 'dashboard' , loadChildren: './dashboard/dashboard.module#DashboardModule' },
+  { path: '', component: HostComponent}
 ];
 
 

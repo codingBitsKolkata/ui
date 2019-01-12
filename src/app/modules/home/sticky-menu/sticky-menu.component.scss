@@ -16,6 +16,11 @@
             &::after{
                 border: none;
             }
+            &.active{
+                border-bottom: 2px solid #f47921;
+                border-radius: 0;
+                color: #f47921;
+            }
         }
         .show.dropdown{
             position: initial;

@@ -81,6 +81,9 @@
       </div>
     </div>
     
+    <div class="loader" *ngIf="loading">
+        <div class="loading"></div>
+    </div>
     <!-- Property List Section -->
     <div class="pt-24"  [ngClass]="mapShowHide ? 'col-md-6':'col-md-9'">
       <!-- Property List -->
@@ -142,23 +145,4 @@
 </div>
 <!-- <hr> -->
 <!-- Deals for you -->
-<div class="container-fluid deals-section mb-40">
-  <div class="container">
-    <h4 class="title">Deals for you</h4>
-    <p class="text">Unique destinations to help travellers plan trips</p>
-    <div class="row">
-      <div class="col-md-3">
-        <img src="assets/images/deals/30LastMinutDeals.png" />
-      </div>
-      <div class="col-md-3">
-        <img src="assets/images/deals/BestOraRoom779.png" />
-      </div>
-      <div class="col-md-3">
-        <img src="assets/images/deals/EarnExtraAsHost.png" />
-      </div>
-      <div class="col-md-3">
-        <img src="assets/images/deals/30LastMinutDeals.png" />
-      </div>
-    </div>
-  </div>
-</div>
+<app-offer></app-offer>

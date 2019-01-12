@@ -92,7 +92,7 @@ export class PropertyService {
     // console.log('here');
     const request = {
       'url': AppConst.PROPERTY_ADD_API_BASE_URL + '/list-property',
-      'params' : { 'userToken': '844c6cb6-ff8f-45dc-9cc5-d6e9ce36c7b7'}
+      'params' : {}
     };
     return this.httpClient.post<any>(request.url, request.params);
   }
