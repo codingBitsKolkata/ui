@@ -110,4 +110,13 @@ export class PropertyService {
     };
     return this.httpClient.post<any>(request.url, params);
   }
+
+  addProperty(params: any): Observable<any> {
+    const request = {
+      'url': AppConst.PROPERTY_ADD_API_BASE_URL + '/add-property'
+    };
+    return this.httpClient.post<any>(request.url, params);
+  }
+
+
 }
