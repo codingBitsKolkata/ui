@@ -12,6 +12,7 @@ import { AuthService } from '../../../../services/apis/auth.service';
 export class OtpFormComponent implements OnInit {
 
   @Input() otpFor: string;
+  @Input() formData: object;
   @Input() userData: any;
   @Output() otpValidateSuccess  = new EventEmitter<any>();
   @Output() loginSignUpLinkClick  = new EventEmitter<string>();

@@ -1,7 +1,35 @@
-<form class="booking-form">
+<form class="booking-form"  [formGroup]="flightSearchForm" (ngSubmit)="onSubmitSearch()" novalidate>
+    <div class="d-flex text-center justify-content-between pl-2 pr-2">
+      <div class="trip-type">
+        <input type="radio" formControlName="tripType" value="R"  id="roundTrip" class="input-hidden"/>
+        <label class="items" for="roundTrip">
+          <img src="assets/images/flight_roundtrip.png" alt="">
+          <span class="item-checked"></span>
+        </label>
+        <p class="name">Round trip</p>
+      </div>
+      <div class="trip-type">
+        <input type="radio" formControlName="tripType" value="O"  id="oneWay" class="input-hidden" />
+        <label class="items" for="oneWay">
+          <img src="assets/images/flight_oneway.png" alt="">
+          <span class="item-checked"></span>
+        </label>
+        <p class="name">One way</p>
+      </div>
+      <div class="trip-type">
+        <input type="radio" formControlName="tripType" value="M" id="multiCity" class="input-hidden" />
+        <label class="items" for="multiCity">
+          <img src="assets/images/flight_multicity.png" alt="">
+          <span class="item-checked"></span>
+        </label>
+        <p class="name">Multi city</p>
+      </div>
+    </div>
     <div class="form-group flight-location">
       <div class="input-group">
-        <input type="text" class="form-control fromBoxInput" placeholder="From">
+        <input type="text" [ngbTypeahead]="search" [resultFormatter]="formatMatches" [inputFormatter]="formatMatches" formControlName="origin" typeahead-editable ="false" class="form-control fromBoxInput" placeholder="From">
+        <span *ngIf="searching1">searching...</span>
+        <div class="form-control-feedback" *ngIf="searchFailed1">Sorry, suggestions could not be loaded.</div>
         <div class="input-group-append fromBox">
           <span class="input-group-text"><i class="fa fa-map-marker"></i></span>                          
         </div>
@@ -11,33 +39,7 @@
         </div>
       </div>
     </div>
-    <div class="d-flex text-center justify-content-between pl-2 pr-2">
-      <div class="trip-type">
-        <input type="radio" name="trip-type" id="roundTrip" class="input-hidden" checked/>
-        <label class="items" for="roundTrip">
-          <img src="assets/images/flight_roundtrip.png" alt="">
-          <span class="item-checked"></span>
-        </label>
-        <p class="name">Round trip</p>
-      </div>
-      <div class="trip-type">
-        <input type="radio" name="trip-type" id="oneWay" class="input-hidden" />
-        <label class="items" for="oneWay">
-          <img src="assets/images/flight_oneway.png" alt="">
-          <span class="item-checked"></span>
-        </label>
-        <p class="name">One way</p>
-      </div>
-      <div class="trip-type">
-        <input type="radio" name="trip-type" id="multiCity" class="input-hidden" />
-        <label class="items" for="multiCity">
-          <img src="assets/images/flight_multicity.png" alt="">
-          <span class="item-checked"></span>
-        </label>
-        <p class="name">Multi city</p>
-      </div>
-    </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <div class="input-group">
         <input class="form-control border-right-0" placeholder="Depart"
           name="dpDepart" [(ngModel)]="f_fromDate" ngbDatepicker (click)="dpFlight.toggle()">
@@ -66,8 +68,8 @@
           </span>
         </ng-template>
       </div>
-    </div>
-    <div class="form-group">
+    </div> -->
+    <!-- <div class="form-group">
       <div class="input-group">
         <div ngbDropdown class="d-inline-block travellersDropdown">
           <button class="btn" id="dropdownBasic1" ngbDropdownToggle>Travellers</button>
@@ -101,8 +103,8 @@
           <option value="">Economy class</option>
         </select>
       </div>
-    </div>
+    </div> -->
     <div class="form-group text-right mt-4 mb-0 clearfix">
-      <button type="button" class="btn btn-primary btn-lg search-btn" routerLink="/flight-list"><i class="search-icon"></i>Search</button>
+      <button type="submit" class="btn btn-primary btn-lg search-btn"><i class="search-icon"></i>Search</button>
     </div>
   </form>

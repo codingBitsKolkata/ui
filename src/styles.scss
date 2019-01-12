@@ -98,6 +98,9 @@ body{
 .fs-16{
     font-size: 16px !important;
 }
+.fs-42{
+    font-size: 42px !important;
+}
 .mt-10{
     margin-top: 10px !important;
 }
@@ -779,7 +782,7 @@ input:active,select:active,button:active,label:active{
                 margin-right: 15px;
                 img{
                     width: 70px;
-                    border-radius: 10px;
+                    border-radius: 50%;
                 }
             }
             .thumb-details{
@@ -1583,9 +1586,10 @@ input:active,select:active,button:active,label:active{
         transform: translateY(-50%);
         left: 170px;
         &.right-bottom{
-            right: 180px !important;
-            bottom: 50px !important;
+            right: 0px !important;
+            bottom: 70px !important;
             top: auto;
+            -webkit-transform: inherit;
             transform: inherit;
             left: auto;
         }
@@ -2473,4 +2477,15 @@ a{
         -webkit-transform:rotate(-90deg);
         transform:rotate(-90deg)
     }
+}
+
+// 
+.text-blue{
+    color: #4d60d2;
+}
+.w-450{
+    width: 450px !important;
+}
+.overflow-hidden{
+    overflow: hidden;
 }

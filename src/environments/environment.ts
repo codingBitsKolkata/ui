@@ -10,6 +10,8 @@ export const environment = {
   testimonial_api_base_url: 'http://104.211.93.162:7188/api',
   property_add_api_base_url: 'http://104.211.93.162:7189/api',
   property_api_base_url: 'http://104.211.93.162:7190/api',
+  filght_api_base_url: 'http://104.211.93.162:7193/api',
+  banner_api_base_url: 'http://104.211.93.162:7186/api',
   // Local
   // auth_api_base_url: 'http://192.168.100.135:7185/api',
   api_base_url: 'http://localhost:4200',

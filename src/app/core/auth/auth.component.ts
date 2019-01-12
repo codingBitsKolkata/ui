@@ -31,6 +31,7 @@ export class AuthComponent implements OnInit {
   loginUserData: object;
   registerUserData: object;
   privacyPolicyData: object;
+  formData: object;
 
   constructor(
     private activeModal: NgbActiveModal,
@@ -152,11 +153,13 @@ export class AuthComponent implements OnInit {
             countryId : loginFormData.countryCode,
           }
         };
+        this.formData = { otpSendTo : loginFormData.emailMobile };
       } else {
         loginRequest = {
           emailId : loginFormData.emailMobile
         };
       }
+      this.formData = {emailMobile: loginFormData.emailMobile };
       this.authSrv.login(loginRequest).subscribe((responseData) => {
         console.log('responseData', responseData);
         this.displayLoginOtpForm = true;
@@ -192,6 +195,7 @@ export class AuthComponent implements OnInit {
         emailId : registerFormData.email,
         privacyPolicy: 'Y'
       };
+      this.formData = registerRequest;
       this.authSrv.signUp(registerRequest).subscribe((responseData) => {
         console.log('responseData', responseData);
         this.displayRegisterOtpForm = true;

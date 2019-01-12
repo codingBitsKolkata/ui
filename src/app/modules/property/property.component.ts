@@ -154,7 +154,8 @@ export class PropertyComponent implements OnInit, OnDestroy {
    }
    searchFormSubmitted(searchData) {
     const filterSelectedData = this.selectedFilter;
-    const searchObj = this.searchObj;
+    const searchObj = searchData;
+    this.searchObj = searchData;
     const merged = {...searchObj, ...filterSelectedData};
     this.getPropertyList(merged);
    }

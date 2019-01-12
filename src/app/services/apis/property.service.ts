@@ -108,7 +108,7 @@ export class PropertyService {
     const request = {
       'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-offer',
     };
-    return this.httpClient.get<any>(request.url, params);
+    return this.httpClient.post<any>(request.url, params);
   }
 
   addProperty(params: any): Observable<any> {

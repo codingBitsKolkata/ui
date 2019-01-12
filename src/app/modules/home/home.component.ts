@@ -5,6 +5,7 @@ import { PropertyService } from '../../services/apis/property.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SharedService} from '../../services/shared.service';
 import {Router} from '@angular/router';
+import { BannerService } from '../../services/apis/banner.service';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
   f_toDate: NgbDate;
   onFirstSelection = true;
   testimonialList: Array<any>;
+  bannerList: Array<any>;
   propertyTypes: Array<any>;
   propertyList: Array<any>;
 
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit {
     private calendar: NgbCalendar,
     config: NgbDatepickerConfig,
     private srvTestimonial: TestimonialService,
+    private srvBanner: BannerService,
     private srvProperty: PropertyService,
     private modalService: NgbModal,
     private sharedSrv: SharedService,
@@ -49,8 +52,10 @@ export class HomeComponent implements OnInit {
     config.maxDate = { year: 2020, month: 12, day: 31 };
 
     this.propertyList = [];
+    this.bannerList = [];
     this.getTestimonailList();
     this.getPropertyTypes();
+    this.getBannerList();
   }
   currentJustify = 'justified';
   // constructor() { }
@@ -105,6 +110,19 @@ export class HomeComponent implements OnInit {
     return date.equals(this.f_fromDate) || date.equals(this.f_toDate) || this.isInsideFlight(date) || this.isHoveredFlight(date);
   }
 
+  // BANNER LIST
+  getBannerList() {
+    this.srvBanner.getBanner().subscribe((res) => {
+     console.log('getBanner data', res);
+     if (res.responseCode === '200') {
+       this.bannerList = res.responseBody;
+     }
+    }, error => {
+      console.log('error', error);
+    });
+  }
+
+  // TESTIMONIAL LIST
   getTestimonailList() {
      this.srvTestimonial.getTestimonial().subscribe((res) => {
       console.log('getTestimonial data', res);
