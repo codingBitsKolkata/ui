@@ -1,19 +1,10 @@
 <div class="container-fluid deals-section mb-40">
     <div class="container">
-      <h4 class="title">Deals for you</h4>
-      <p class="text">Unique destinations to help travellers plan trips</p>
+      <h4 class="title">Deals on stays</h4>
+      <p class="text">Winning Deals make your vacation irresistible</p>
       <div class="row">
-        <div class="col-md-3">
-          <img src="assets/images/deals/30LastMinutDeals.png" />
-        </div>
-        <div class="col-md-3">
-          <img src="assets/images/deals/BestOraRoom779.png" />
-        </div>
-        <div class="col-md-3">
-          <img src="assets/images/deals/EarnExtraAsHost.png" />
-        </div>
-        <div class="col-md-3">
-          <img src="assets/images/deals/30LastMinutDeals.png" />
+        <div class="col-md-3" *ngFor="let offer of offerList">
+          <img src="{{offer.imgUrl}}" />
         </div>
       </div>
     </div>

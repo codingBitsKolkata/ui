@@ -12,7 +12,7 @@ import { TeamComponent } from './team/team.component';
 
 const routerConfig: Routes = [
   { path: '', component: HomeComponent},
-  { path: 'testimonial', component: AboutComponent},
+  { path: 'testimonial', component: TestimonialComponent},
   { path: 'about', component: AboutComponent},
   { path: 'career', component: CareerComponent},
   { path: 'team', component: TeamComponent},

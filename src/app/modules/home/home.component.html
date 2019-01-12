@@ -1,26 +1,13 @@
 <div class="position-relative" style="margin-top:76px">
   <!-- Home Top Carousel -->
   <div class="home-carousel" data-aos="zoom-in-down">
-    <ngb-carousel showNavigationArrows="false">
-      <ng-template ngbSlide>
-        <img src="assets/images/home-slider/banner.jpg" class="mh-100" style="width: 100%; max-height: 400px">
+    <ngb-carousel showNavigationArrows="false" *ngIf="bannerList.length > 0">
+
+      <ng-template ngbSlide  *ngFor="let banner of bannerList">
+        <img src="{{banner.bannerImgUrl}}" class="mh-100" style="width: 100%; max-height: 400px">
         <div class="carousel-caption">
-          <h3>Ametyst. I feel <br> comfortable here ..</h3>
-          <p>Come In As Guests. Leave As Family</p>
-        </div>
-      </ng-template>
-      <ng-template ngbSlide>
-        <img src="assets/images/home-slider/banner.jpg" class="mh-100" style="width: 100%; max-height: 400px">
-        <div class="carousel-caption">
-          <h3>Ametyst. I feel <br> comfortable here ..</h3>
-          <p>Come In As Guests. Leave As Family</p>
-        </div>
-      </ng-template>
-      <ng-template ngbSlide>
-        <img src="assets/images/home-slider/banner.jpg" class="mh-100" style="width: 100%; max-height: 400px">
-        <div class="carousel-caption">
-          <h3>Ametyst. I feel <br> comfortable here ..</h3>
-          <p>Come In As Guests. Leave As Family</p>
+          <h3>{{banner.title}}</h3>
+          <p>{{banner.subTitle}}</p>
         </div>
       </ng-template>
     </ngb-carousel>
@@ -108,7 +95,7 @@
                   <div class="row p-10-30">
                     <div class="col-md-8 filter-section">
                       <div class="alert alert-secondary" role="alert">
-                          Unique local homes offering accommodations with a feeling called “family”. 
+                          Feel the Joy of Sharing Your Home with Orastays. 
                       </div>
                     </div>
                     <div class="col-md-4 text-right">
@@ -130,10 +117,9 @@
   <!-- List Your Property Section -->
   <div class="container property-desc-section">
     <div class="" data-aos="fade-right">
-      <h4 class="title">List your property with us.</h4>
-      <h6 class="desc">Fusce tempor a risus id euismod. Phaselus ullamc...</h6>
-      <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget pharetra nisi, auctor congue ex.
-      </p>
+      <h4 class="title">List your property with us</h4>
+      <h6 class="desc">A guest for today, friend for a lifetime</h6>
+      <p class="text">Make memories in <strong>Every Stay</strong></p>
       <button class="btn btn-dark mr-2" (click)="openModal(earningCalculator)">Earning Calculator <img class="icon-calculator" src="assets/images/icon-calculator.png"></button>
       <button class="btn btn-primary" routerLink="/host">View More [+]</button>
     </div>

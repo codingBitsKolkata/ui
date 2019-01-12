@@ -13,6 +13,9 @@ export class AppConst {
     public static readonly PROPERTY_API_BASE_URL: string = environment.property_api_base_url;
     public static readonly FLIGHT_API_BASE_URL: string = environment.filght_api_base_url;
 
+    public static readonly BANNER_API_BASE_URL: string = environment.banner_api_base_url;
+
+
     /**  Data encryption secret key */
     public static readonly ENC_KEY: string = '!oraStay@ora!#';
     /**  API key */
