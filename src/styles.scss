@@ -1270,6 +1270,10 @@ input:active,select:active,button:active,label:active{
     background-color: #fff;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
+    font-size: 14px;
+    font-family: latoitalic;
+    height: 40px;
+    color: #484848 !important;
     &::after {
         position: absolute;
         top: -1px;
@@ -1285,6 +1289,7 @@ input:active,select:active,button:active,label:active{
         background-color: #f47921;
         border-left: 1px solid #f47921;
         border-radius: 0 0.25rem 0.25rem 0;
+        line-height: 26px
     }
 }
 
@@ -1652,7 +1657,13 @@ a{
         color: #f16a0a;
     }
 }
-
+.form-control{
+    font-size: 14px;
+    font-family: latoitalic;
+    height: 40px;
+    color: #484848;
+    border: 1px solid #dee1e4;
+}
 
 
 
