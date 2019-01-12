@@ -2,8 +2,9 @@
 <form  [formGroup]="otpForm" (ngSubmit)="onSubmit()" novalidate>
    <p> <ngb-alert *ngIf="otpResentMessage" [type]="'success'" (close)="otpResentMessage = null">{{ otpResentMessage }}</ngb-alert> </p>
   <div class="otp-heading mb-4">
-    <h3>Please enter the OTP to verify your acount</h3>
-    <p class="m-0">A OTP has been sent to {{userData?.emailId}} or mobile {{userData?.mobileNumber}}</p>
+    <h3>Please enter the OTP to verify your acount </h3>
+    <p *ngIf="otpFor=='register'" class="m-0">A OTP has been sent to {{formData?.emailId}} or mobile {{formData?.mobileNumber}}</p>
+    <p *ngIf="otpFor == 'login'" class="m-0">A OTP has been sent to {{formData?.emailMobile}}</p>
   </div>
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Enter your OTP" formControlName="otp" [ngClass]="{ 'is-invalid': otpForm.controls['otp'].touched && otpForm.controls['otp'].errors }">

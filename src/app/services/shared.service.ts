@@ -20,12 +20,14 @@ export class SharedService {
     });
   }
 
-  getRatingText(ratingPoint) {
+  getRatingText(rating) {
+    const ratingPoint = parseFloat(parseFloat(rating).toFixed(2));
+    // console.log(typeof ratingPoint);
     if (ratingPoint <= 4) {
       return 'Good';
-    } else if (ratingPoint < 4 &&  ratingPoint <= 6) {
+    } else if (ratingPoint > 4 &&  ratingPoint <= 6) {
       return 'Very Good';
-    } else if (ratingPoint > 8) {
+    } else if (ratingPoint >= 6) {
       return 'Excellent';
     } else {
       return '';

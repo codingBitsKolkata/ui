@@ -134,7 +134,7 @@
     <!-- Map Section -->
     <div *ngIf="propertyList.length > 0" [hidden]="!mapShowHide" class="col-md-3">
       <div class="map-container">
-          <agm-map [latitude]="+searchObj?.latitude" [longitude]="+searchObj?.longitude"  [zoom]='10'>
+          <agm-map [latitude]="+searchObj?.latitude" [longitude]="+searchObj?.longitude"  [zoom]='12'>
               <agm-marker *ngFor="let property of propertyList" [latitude]="+property.latitude" [longitude]="+property.longitude">
                 <agm-info-window>{{property.oraName}}</agm-info-window>
               </agm-marker>

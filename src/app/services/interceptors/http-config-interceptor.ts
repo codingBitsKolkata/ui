@@ -30,6 +30,12 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                 }, (err: any) => {
                     if (err instanceof HttpErrorResponse) {
                       console.log('err', err);
+                      if (err.status === 400) {
+                        if (err.error &&  err.error.responseCode === '320') {
+                          this.userStorage.clear();
+                          location.reload(true);
+                        }
+                      }
                     }
                 })
             );
