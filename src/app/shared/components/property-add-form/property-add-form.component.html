@@ -1,5 +1,4 @@
 <div class="listing-form" [formGroup]="addPropertyForm">
-  <button (click)="submitPropertyForm()">Submit</button>
   <form-wizard>
     <wizard-step formGroupName="step1" [title]="'Step1'" [isValid]="addPropertyForm.get('step1').valid">
       <h4 class="title">What type of property you are listing ?</h4>
@@ -179,7 +178,7 @@
         <div class="form-group bg-input d-flex align-items-center mb-3">
           <span class="icon i-upload-multi"></span>
           <div class="custom-file">
-            <input type="file" class="custom-file-input ml-20" id="morePhotoFile" (change)="onMorePhotoChange($event)">
+            <input type="file" multiple class="custom-file-input ml-20" id="morePhotoFile" (change)="onMorePhotoChange($event)">
             <input type="hidden" formControlName="morePhotoImgs"/>
             <label class="custom-file-label" for="morePhotoFile">
                 <ng-template [ngIf]="addPropertyForm.get('step6')['controls'].morePhotoImgs.value !== ''">
@@ -373,7 +372,7 @@
         <div class="form-group bg-input d-flex align-items-center mb-3">
           <span class="icon i-upload-one"></span>
           <div class="custom-file">
-            <input type="file" class="custom-file-input ml-20" id="roomImages" name="filename" (change)="onMoreUploadRoomImages($event)">
+            <input type="file" multiple class="custom-file-input ml-20" id="roomImages" name="filename" (change)="onMoreUploadRoomImages($event)">
             <input type="hidden" formControlName="roomVsImages"/>
             <label class="custom-file-label" for="roomImages">
                 <ng-template [ngIf]="addPropertyForm.get('step14')['controls'].roomVsImages.value !== ''">
@@ -1845,58 +1844,64 @@
       
       <!-- Step 24 -->  
       <wizard-step formGroupName="step24" [title]="'Step24'" [isValid]="addPropertyForm.get('step24').valid" (onComplete)="submitPropertyForm()">
-        <h4 class="title">Provide additional information</h4>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group bg-input d-flex align-items-center mb-3">
-              <input type="text" class="form-control" placeholder="Contact person name" formControlName="contactName" [ngClass]="{'is-invalid': addPropertyForm.get('step24')['controls'].contactName.errors && addPropertyForm.get('step24')['controls'].contactName.touched}">
+        <div [ngSwitch]="isCompleted">
+          <div *ngSwitchDefault>
+            <h4 class="title">Provide additional information</h4>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group bg-input d-flex align-items-center mb-3">
+                  <input type="text" class="form-control" placeholder="Contact person name" formControlName="contactName" [ngClass]="{'is-invalid': addPropertyForm.get('step24')['controls'].contactName.errors && addPropertyForm.get('step24')['controls'].contactName.touched}">
+                </div>
+                <div class="alert alert-danger" *ngIf="addPropertyForm.get('step24')['controls'].contactName.errors && addPropertyForm.get('step24')['controls'].contactName.touched"> 
+                    <div>Enter Contact Name</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bg-input d-flex align-items-center mb-3">
+                  <input type="text" class="form-control" placeholder="Alternative mobile number" formControlName="altMobile" [ngClass]="{'is-invalid': addPropertyForm.get('step24')['controls'].altMobile.errors && addPropertyForm.get('step24')['controls'].altMobile.touched}">
+                </div>
+                <div class="alert alert-danger" *ngIf="addPropertyForm.get('step24')['controls'].altMobile.errors && addPropertyForm.get('step24')['controls'].altMobile.touched"> 
+                    <div *ngIf="addPropertyForm.get('step24')['controls'].altMobile.errors.required">Enter Alternate Mobile Number</div>
+                    <div *ngIf="addPropertyForm.get('step24')['controls'].altMobile.errors.pattern || addPropertyForm.get('step24')['controls'].altMobile.errors.maxLength">Enter a valid Mobile Number</div>
+                </div>
+              </div>
             </div>
-            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step24')['controls'].contactName.errors && addPropertyForm.get('step24')['controls'].contactName.touched"> 
-                <div>Enter Contact Name</div>
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <div class="form-group bg-input d-flex align-items-center mb-3">
+                  <input type="text" class="form-control" placeholder="Landline number" formControlName="landline" [ngClass]="{'is-invalid': addPropertyForm.get('step24')['controls'].landline.errors && addPropertyForm.get('step24')['controls'].landline.touched}">
+                </div>
+                <div class="alert alert-danger" *ngIf="addPropertyForm.get('step24')['controls'].landline.errors && addPropertyForm.get('step24')['controls'].landline.touched"> 
+                    <div *ngIf="addPropertyForm.get('step24')['controls'].landline.errors.required">Enter Landline Number</div>
+                    <div *ngIf="addPropertyForm.get('step24')['controls'].landline.errors.pattern">Enter a valid Landline Number</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bg-input d-flex align-items-center mb-3">
+                  <input type="email" class="form-control" placeholder="Alternative email ID" formControlName="altEmail" [ngClass]="{'is-invalid': addPropertyForm.get('step24')['controls'].altEmail.errors && addPropertyForm.get('step24')['controls'].altEmail.touched}">
+                </div>
+                <div class="alert alert-danger" *ngIf="addPropertyForm.get('step24')['controls'].altEmail.errors && addPropertyForm.get('step24')['controls'].altEmail.touched"> 
+                    <div *ngIf="addPropertyForm.get('step24')['controls'].altEmail.errors.required">Enter Alternate Email</div>
+                    <div *ngIf="addPropertyForm.get('step24')['controls'].altEmail.errors.email">Enter a valid Email Address</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group bg-input d-flex align-items-center mb-3">
-              <input type="text" class="form-control" placeholder="Alternative mobile number" formControlName="altMobile" [ngClass]="{'is-invalid': addPropertyForm.get('step24')['controls'].altMobile.errors && addPropertyForm.get('step24')['controls'].altMobile.touched}">
-            </div>
-            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step24')['controls'].altMobile.errors && addPropertyForm.get('step24')['controls'].altMobile.touched"> 
-                <div *ngIf="addPropertyForm.get('step24')['controls'].altMobile.errors.required">Enter Alternate Mobile Number</div>
-                <div *ngIf="addPropertyForm.get('step24')['controls'].altMobile.errors.pattern || addPropertyForm.get('step24')['controls'].altMobile.errors.maxLength">Enter a valid Mobile Number</div>
-            </div>
+          <div *ngSwitchCase="true">
+            <div class="text-center">
+                <img src="assets/images/elements/thumbsup.png" alt="">
+                <h4 class="title">Thank you!</h4>
+                <h5 class="fs-18">You have successfully listed your property with us.</h5>
+              </div>
           </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-6">
-            <div class="form-group bg-input d-flex align-items-center mb-3">
-              <input type="text" class="form-control" placeholder="Landline number" formControlName="landline" [ngClass]="{'is-invalid': addPropertyForm.get('step24')['controls'].landline.errors && addPropertyForm.get('step24')['controls'].landline.touched}">
-            </div>
-            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step24')['controls'].landline.errors && addPropertyForm.get('step24')['controls'].landline.touched"> 
-                <div *ngIf="addPropertyForm.get('step24')['controls'].landline.errors.required">Enter Landline Number</div>
-                <div *ngIf="addPropertyForm.get('step24')['controls'].landline.errors.pattern">Enter a valid Landline Number</div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group bg-input d-flex align-items-center mb-3">
-              <input type="email" class="form-control" placeholder="Alternative email ID" formControlName="altEmail" [ngClass]="{'is-invalid': addPropertyForm.get('step24')['controls'].altEmail.errors && addPropertyForm.get('step24')['controls'].altEmail.touched}">
-            </div>
-            <div class="alert alert-danger" *ngIf="addPropertyForm.get('step24')['controls'].altEmail.errors && addPropertyForm.get('step24')['controls'].altEmail.touched"> 
-                <div *ngIf="addPropertyForm.get('step24')['controls'].altEmail.errors.required">Enter Alternate Email</div>
-                <div *ngIf="addPropertyForm.get('step24')['controls'].altEmail.errors.email">Enter a valid Email Address</div>
-            </div>
-          </div>
+          <!-- <div *ngSwitchCase="false">
+              <div class="text-center">
+                  <h4 class="title">Error Submitting Form!</h4>
+                </div>
+            </div> -->
         </div>
       </wizard-step>
        <!-- / Step 24 -->  
-
-       <!-- Step 25 --> 
-      <wizard-step>
-        <div class="text-center">
-          <img src="assets/images/elements/thumbsup.png" alt="">
-          <h4 class="title">Thank you!</h4>
-          <h5 class="fs-18">You have successfully listed your property with us.</h5>
-        </div>
-      </wizard-step>
-      <!-- Step 25 -->   
   </form-wizard>
   <!-- form value : {{addPropertyForm.value | json }} -->
 </div>

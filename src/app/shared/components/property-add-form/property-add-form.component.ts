@@ -21,6 +21,7 @@ export class PropertyAddFormComponent implements OnInit {
   dropdownSettings = {};
   addPropertyForm: FormGroup;
   totalRoomsVal: any;
+  isCompleted: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -201,11 +202,128 @@ export class PropertyAddFormComponent implements OnInit {
     return arr;
   }
 
+  specialtiesArr () {
+    let arr = [];
+    this.addPropertyForm.get('step13')['controls'].specialities.value.forEach(exp => {
+       arr.push({
+        "specialties": { 
+          "specialtiesId": exp.item_id,
+          "specialitiesName": exp.item_text
+        }
+      })
+    })
+    return arr;
+  }
+
+  amenitiesArr () {
+    let arr = [];
+    this.addPropertyForm.get('step13')['controls'].amenities.value.forEach(exp => {
+       arr.push({
+        "aminities": { 
+          "aminitiesId": exp.item_id,
+          "aminitiesName": exp.item_text
+        }
+      })
+    })
+    return arr;
+  }
+
+  roomArr () {
+    let arr = [];
+    // const len = this.addPropertyForm.get('step12')['controls'].roomCount.value;
+    // for (let i = 0; i < len; i++) {
+      arr.push({ 
+        "cotAvailable": this.addPropertyForm.get('step15')['controls'].cotAvailable.value,
+        "noOfChild": this.addPropertyForm.get('step15')['controls'].noOfChild.value,
+        "noOfGuest": this.addPropertyForm.get('step15')['controls'].noOfGuest.value,
+        "numOfCot": this.addPropertyForm.get('step15')['controls'].numOfCot.value,
+        "sharedSpace": "N",
+        "accommodationName": this.addPropertyForm.get('step12')['controls'].accommodationName.value,
+        "noOfBeds": "",
+        "roomPricePerNight": this.addPropertyForm.get('step18')['controls'].roomPricePerNight.value,
+        "roomPricePerMonth": this.addPropertyForm.get('step18')['controls'].roomPricePerMonth.value,
+        "sharedBedPricePerNight": this.addPropertyForm.get('step18')['controls'].roomPricePerNight.value,
+        "sharedBedPricePerMonth": this.addPropertyForm.get('step18')['controls'].roomPricePerMonth.value,
+        "cotPrice": this.addPropertyForm.get('step18')['controls'].cotPrice.value,
+        "sharedBedPrice": "",
+        "commission": this.addPropertyForm.get('step18')['controls'].commission.value,
+        "hostDiscountWeekly": this.addPropertyForm.get('step19')['controls'].hostDiscountWeekly.value,
+        "hostDiscountMonthly": this.addPropertyForm.get('step19')['controls'].hostDiscountMonthly.value, 
+        "roomCategory": {
+          "roomCatId": "1",
+          "name": this.addPropertyForm.get('step12')['controls'].roomCategory.value
+        },
+            
+        "roomVsCancellations": [
+          {
+            "percentage": this.addPropertyForm.get('step20')['controls'].cancellationSlab1.value,
+            "cancellationSlab": {
+              "cancellationSlabId": "1"
+            }
+          },
+          {
+            "percentage": this.addPropertyForm.get('step20')['controls'].cancellationSlab2.value,
+            "cancellationSlab": {
+              "cancellationSlabId": "2"
+            }
+          },
+          {
+            "percentage": this.addPropertyForm.get('step20')['controls'].cancellationSlab3.value,
+            "cancellationSlab": {
+              "cancellationSlabId": "3"
+            }
+          }
+        ],
+        "roomVsAmenities": this.amenitiesArr(),
+        "roomVsImages": [
+          {
+            "imageURL": "https://s-ec.bstatic.com/images/hotel/max1024x768/141/141830278.jpg"
+          },
+          {
+            "imageURL": "https://s-ec.bstatic.com/images/hotel/max1024x768/141/141830278.jpg"
+          },
+          {
+            "imageURL": "https://s-ec.bstatic.com/images/hotel/max1024x768/141/141830278.jpg"
+          }
+        ],
+        "roomVsMeals": [
+          {
+            "mealPlan": {
+              "mealPlanId": "1",
+              "mealPlanName": "Break Fast"
+            },
+            "mealDaysSunday": "Y",
+            "mealDaysMonday": "Y",
+            "mealDaysTuesday": "Y",
+            "mealDaysWednesday": "Y",
+            "mealDaysThursday": "Y",
+            "mealDaysFriday": "Y",
+            "mealDaysSaturday": "Y",
+            "mealTypeSunday": "BOTH",
+            "mealTypeMonday": "BOTH",
+            "mealTypeTuesday": "BOTH",
+            "mealTypeWednesday": "BOTH",
+            "mealTypeThursday": "BOTH",
+            "mealTypeFriday": "BOTH",
+            "mealTypeSaturday": "BOTH",
+            "mealPriceCategorySunday": "COMPLIMENTARY",
+            "mealPriceCategoryMonday": "COMPLIMENTARY",
+            "mealPriceCategoryTuesday": "COMPLIMENTARY",
+            "mealPriceCategoryWednesday": "COMPLIMENTARY",
+            "mealPriceCategoryThursday": "COMPLIMENTARY",
+            "mealPriceCategoryFriday": "COMPLIMENTARY",
+            "mealPriceCategorySaturday": "COMPLIMENTARY"
+            
+          }
+        ],
+        "roomVsSpecialities": this.specialtiesArr()
+      })
+    // }
+    return arr;
+  }
+
   submitPropertyForm() {
     console.log('Form =>', this.addPropertyForm);
-    // const arr: Array<object> = this.specialExperienceArr();
-    console.log('Arr =>',  this.specialExperienceArr());
-    
     const addPropertyRequest = {
       "name": this.addPropertyForm.get('step2')['controls'].name.value,
       "address": this.addPropertyForm.get('step2')['controls'].address.value,
@@ -216,10 +334,10 @@ export class PropertyAddFormComponent implements OnInit {
       "apartmentNumber": this.addPropertyForm.get('step8')['controls'].apartmentNumber.value,
       "startDate": this.addPropertyForm.get('step23')['controls'].startDate.value,
       "endDate": this.addPropertyForm.get('step23')['controls'].endDate.value,
-      "checkinTime": this.addPropertyForm.get('step5')['controls'].checkinTime.value,
-      "checkoutTime": this.addPropertyForm.get('step5')['controls'].checkoutTime.value,
+      "checkinTime": this.addPropertyForm.get('step5')['controls'].checkInTime.value,
+      "checkoutTime": this.addPropertyForm.get('step5')['controls'].checkOutTime.value,
       "userToken": "89ef239b-973f-4655-b691-4064e61910f9",
-      "strictCheckin": this.addPropertyForm.get('step5')['controls'].strictCheckin.value,
+      "strictCheckin": this.addPropertyForm.get('step5')['controls'].strictCheckIn.value,
       "coverImageUrl": this.addPropertyForm.get('step6')['controls'].coverPhotoImg.value,
       "priceDrop": this.addPropertyForm.get('step19')['controls'].priceDrop.value,
       "immediateBooking": "Y",
@@ -236,7 +354,7 @@ export class PropertyAddFormComponent implements OnInit {
       },
       "propertyVsDescriptions": [
         {
-          "description": this.addPropertyForm.get('step1')['controls'].description.value,
+          "description": this.addPropertyForm.get('step2')['controls'].description.value,
           "languageId": "1"
         }
       ],   "propertyVsPriceDrops": [
@@ -291,31 +409,19 @@ export class PropertyAddFormComponent implements OnInit {
         ],
       "propertyVsDocuments": [
         {
-          "documentNumber": "AKBHP6784S",
-          "fileUrl": "https://s-ec.bstatic.com/images/hotel/max1024x768/141/141830278.jpg",
+          "documentNumber":this.addPropertyForm.get('step22')['controls'].documentNumber.value,
+          "fileUrl": this.addPropertyForm.get('step22')['controls'].documentFile.value,
           "document": {
             "documentId": "1",
-            "documentName": "PAN CARD"
-          }
-        },
-        {
-          "documentNumber": "",
-          "fileUrl": "https://s-ec.bstatic.com/images/hotel/max1024x768/141/141830278.jpg",
-          "document": {
-            "documentId": "2",
-            "documentName": "CANCELLED CHEQUE"
+            "documentName": this.addPropertyForm.get('step22')['controls'].documentName.value,
           }
         }
       ],
       "propertyVsGuestAccess": [
         {
-          "guestAccess": "Guest Can Access Terrace",
+          "guestAccess": this.addPropertyForm.get('step3')['controls'].guestAccess.value,
           "languageId": "1"
-        },
-        {
-          "guestAccess": "Access To Lawn",
-          "languageId": "1"
-        }
+        } 
       ],
       "propertyVsImages": [
         {
@@ -330,13 +436,7 @@ export class PropertyAddFormComponent implements OnInit {
       ],
       "propertyVsNearbys": [
         {
-          "places": "RS Software"
-        },
-        {
-          "places": "SDF"
-        },
-        {
-          "places": "Nicco Park"
+          "places": this.addPropertyForm.get('step3')['controls'].places.value,
         }
       ],
       "propertyVsSpaceRules": [
@@ -356,133 +456,18 @@ export class PropertyAddFormComponent implements OnInit {
         }
       ],
       "propertyVsSpecialExperiences": this.specialExperienceArr(),
-      "rooms": [
-        { 
-          "cotAvailable": "Y",
-          "noOfChild": "1",
-          "noOfGuest": "2",
-          "numOfCot": "1",
-          "sharedSpace": "N",
-          "accommodationName": "PRIVATE",
-          "noOfBeds": "",
-          "roomPricePerNight": "1500",
-          "roomPricePerMonth": "",
-          "sharedBedPricePerNight": "",
-          "sharedBedPricePerMonth": "",
-          "cotPrice": "200",
-          "sharedBedPrice": "",
-          "commission": "5",
-          "hostDiscountWeekly": "2",
-          "hostDiscountMonthly": "",
-          "roomCategory": {
-            "roomCatId": "1",
-            "name": "Delux"
-          },
-              
-               "roomVsCancellations": [
-            {
-              "percentage": "50",
-              "cancellationSlab": {
-                "cancellationSlabId": "1"
-              }
-            },
-            {
-              "percentage": "40",
-              "cancellationSlab": {
-                "cancellationSlabId": "2"
-              }
-            }
-          ],
-          "roomVsAmenities": [
-            {
-              "amenities": {
-                "aminitiesId": "1",
-                "aminitiesName": "WIFI"
-              }
-            }
-          ],
-          "roomVsCancellation": [
-            {
-              "percentage": "50",
-              "cancellationSlab": {
-                "cancellationSlabId": "1"
-              }
-            },
-            {
-              "percentage": "40",
-              "cancellationSlab": {
-                "cancellationSlabId": "2"
-              }
-            }
-          ],
-          "roomVsImages": [
-            {
-              "imageURL": "https://s-ec.bstatic.com/images/hotel/max1024x768/141/141830278.jpg"
-            },
-            {
-              "imageURL": "https://s-ec.bstatic.com/images/hotel/max1024x768/141/141830278.jpg"
-            },
-            {
-              "imageURL": "https://s-ec.bstatic.com/images/hotel/max1024x768/141/141830278.jpg"
-            }
-          ],
-          "roomVsMeals": [
-            {
-              "mealPlan": {
-                "mealPlanId": "1",
-                "mealPlanName": "Break Fast"
-              },
-              "mealDaysSunday": "Y",
-              "mealDaysMonday": "Y",
-              "mealDaysTuesday": "Y",
-              "mealDaysWednesday": "Y",
-              "mealDaysThursday": "Y",
-              "mealDaysFriday": "Y",
-              "mealDaysSaturday": "Y",
-                      "mealTypeSunday": "BOTH",
-              "mealTypeMonday": "BOTH",
-              "mealTypeTuesday": "BOTH",
-              "mealTypeWednesday": "BOTH",
-              "mealTypeThursday": "BOTH",
-              "mealTypeFriday": "BOTH",
-              "mealTypeSaturday": "BOTH",
-              "mealPriceCategorySunday": "COMPLIMENTARY",
-              "mealPriceCategoryMonday": "COMPLIMENTARY",
-              "mealPriceCategoryTuesday": "COMPLIMENTARY",
-              "mealPriceCategoryWednesday": "COMPLIMENTARY",
-              "mealPriceCategoryThursday": "COMPLIMENTARY",
-              "mealPriceCategoryFriday": "COMPLIMENTARY",
-              "mealPriceCategorySaturday": "COMPLIMENTARY"
-              
-            }
-          ],
-          "roomVsSpecialities": [
-            {
-              "specialties": {
-                "specialitiesName": "Mountain Facing",
-                "specialtiesId": "1"
-              }
-            },
-            {
-              "specialties": {
-                "specialitiesName": "Sea Facing",
-                "specialtiesId": "2"
-              }
-            }
-          ]
-        }
-      ],
+      "rooms": this.roomArr(),
       "stayType": {
         "stayTypeId": "2",
-        "stayTypeName": "Short Term"
+        "stayTypeName": this.addPropertyForm.get('step9')['controls'].stayTypeName.value,
       },
       "hostVsAccount": {
-        "accountHolderName": "Sudeep Chhetri",
-        "accountNumber": "159883741610",
-        "accountType": "Saving",
-        "bankName": "IndusInd Bank",
-        "branchName": "Sector V",
-        "ifscCode": "IND0015478"
+        "accountHolderName": this.addPropertyForm.get('step21')['controls'].accountHolderName.value,
+        "accountNumber": this.addPropertyForm.get('step21')['controls'].accountNumber.value,
+        "accountType": this.addPropertyForm.get('step21')['controls'].accountType.value,
+        "bankName": this.addPropertyForm.get('step21')['controls'].bankName.value,
+        "branchName": this.addPropertyForm.get('step21')['controls'].branchName.value,
+        "ifscCode": this.addPropertyForm.get('step21')['controls'].ifscCode.value,
       }
     }
         
@@ -494,6 +479,7 @@ export class PropertyAddFormComponent implements OnInit {
     }, error => {
       console.log('error', error);
     });
+    this.isCompleted = true;
   }
 
   onCoverImgChange($event) {
