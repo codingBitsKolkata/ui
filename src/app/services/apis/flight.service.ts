@@ -21,4 +21,13 @@ export class FlightService {
       return res.responseBody;
   });
   }
+
+  getFlightList(requestParam: any): Observable<any> {
+    console.log(requestParam);
+    const request = {
+        'url':  'assets/static-data/searchOneWayResponseSwagger.json'
+       // 'url': AppConst.FLIGHT_API_BASE_URL + '/search-airport-details'
+     };
+     return this.httpClient.get<any>(request.url);
+  }
 }

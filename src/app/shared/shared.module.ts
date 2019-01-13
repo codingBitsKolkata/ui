@@ -100,7 +100,8 @@ import { OfferComponent } from './components/offer/offer.component';
     OrderModule,
     FlightQuickSearchComponent,
     FlightFilterComponent,
-    OfferComponent
+    OfferComponent,
+    FlightSearchFormComponent
   ],
   entryComponents: [
     TestModalComponent

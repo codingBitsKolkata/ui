@@ -10,9 +10,9 @@ const routerConfig: Routes = [
   { path: '', component: FlightComponent,
    children: [
     { path: '', component: OnewayComponent},
-    { path: 'oneway', component: OnewayComponent},
-    { path: 'roundtrip', component: RoundtripComponent},
-    { path: 'multicity', component: MulticityComponent},
+    // { path: 'oneway', component: OnewayComponent},
+    // { path: 'roundtrip', component: RoundtripComponent},
+    // { path: 'multicity', component: MulticityComponent},
     { path: 'flight-booking', component: FlightBookingComponent}
    ]
   }

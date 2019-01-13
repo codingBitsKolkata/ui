@@ -3,7 +3,7 @@
   <div class="row">
     <!-- Filter Section -->
     <div class="col-md-3">
-      <app-flight-quick-search></app-flight-quick-search>
+      <app-flight-search-form [flightSearchObj]="flightSearchObj" [pageName]="'FLIGHT'" (searchFormSubmitted)="searchFormSubmitted($event)"></app-flight-search-form>
     </div>
     
     <!-- flight List Section -->
@@ -12,7 +12,10 @@
       <div class="flight-listing-area mb-4">
         <app-flight-filter></app-flight-filter>
         
+      <!--
         <router-outlet></router-outlet>
+      -->  
+      <app-oneway></app-oneway>
       </div>
     </div>
   </div>

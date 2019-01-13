@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { SharedService} from '../../../services/shared.service';
 import { FlightService } from '../../../services/apis/flight.service';
@@ -21,9 +21,19 @@ import 'rxjs/add/operator/switchMap';
 })
 export class FlightSearchFormComponent implements OnInit {
 
+  @Input() flightSearchObj: any;
+  @Input() pageName: string;
+  @Output() searchFormSubmitted  = new EventEmitter<string>();
   flightSearchForm: FormGroup;
   searching = false;
   searchFailed = false;
+  noOfAdults: number;
+  noOfChild: number;
+  noOfInfants: number;
+  numberOfTraveller: number;
+  flightClassTypes:  Array<any>;
+  tripType: string;
+  classType: string;
   constructor(
     private fb: FormBuilder,
     private sharedSrv: SharedService,
@@ -34,6 +44,30 @@ export class FlightSearchFormComponent implements OnInit {
     private router: Router
   ) {
       this.buildSearchForm();
+      this.noOfAdults = 1;
+      this.noOfChild = 0;
+      this.noOfInfants = 0;
+      this.numberOfTraveller = 0;
+      this.tripType = 'R';
+      this.classType = 'Economy';
+      this.flightClassTypes = [
+        {
+          id: 'Economy',
+          name: 'Economy'
+        },
+        {
+          id: 'Premium Economy',
+          name: 'Premium Economy'
+        },
+        {
+          id: 'Business',
+          name: 'Business'
+        },
+        {
+          id: 'First Class',
+          name: 'First Class'
+        }
+      ];
   }
 
     // For auto complete
@@ -52,6 +86,27 @@ export class FlightSearchFormComponent implements OnInit {
     .do(() => this.searching = false)
 
   ngOnInit() {
+    console.log(this.flightSearchObj);
+    if (this.flightSearchObj) {
+      this.noOfAdults = this.flightSearchObj.noOfAdults ? this.flightSearchObj.noOfAdults : 1;
+      this.noOfChild = this.flightSearchObj.noOfChild ? this.flightSearchObj.noOfChild : 0;
+      this.noOfInfants = this.flightSearchObj.noOfInfants ? this.flightSearchObj.noOfInfants : 0;
+      this.tripType = this.flightSearchObj.tripType ? this.flightSearchObj.tripType : 'R';
+      this.classType = this.flightSearchObj.classType ? this.flightSearchObj.classType : 'Economy';
+      this.onNumberChanged(this.noOfAdults, 'noOfAdults');
+      this.onNumberChanged(this.noOfChild, 'noOfChild');
+      this.onNumberChanged(this.noOfInfants, 'noOfInfants');
+      this.flightSearchForm.patchValue({
+        classType : this.classType,
+        tripType: this.tripType
+      });
+    } else {
+      this.onNumberChanged(this.noOfAdults, 'noOfAdults');
+      this.onNumberChanged(this.noOfChild, 'noOfChild');
+      this.onNumberChanged(this.noOfInfants, 'noOfInfants');
+    }
+
+
 
   }
     /**
@@ -60,23 +115,34 @@ export class FlightSearchFormComponent implements OnInit {
   buildSearchForm() {
     this.flightSearchForm = this.fb.group({
       tripType : new FormControl('R', [Validators.required]),
-      arrival_date : new FormControl('', [Validators.required]),
-      noOfAdults : new FormControl('', [Validators.required]),
-      noOfChild : new FormControl('', [Validators.required]),
-      classType : new FormControl('', [Validators.required]),
-      origin: new FormControl('', [Validators.required]),
-      multiCities: this.fb.group({
-        destination : new FormControl('', [Validators.required]),
-        flightDepartDate : new FormControl('', [Validators.required]),
-      }),
+      noOfAdults : new FormControl('', []),
+      noOfChild : new FormControl('', []),
+      noOfInfants : new FormControl('', []),
+      classType : new FormControl('Economy', [Validators.required]),
+      multiCities: this.fb.array([this.buildMultiCityFrom()]),
     });
     console.log(this.flightSearchForm);
+  }
+  buildMultiCityFrom() {
+    return this.fb.group({
+      destination : new FormControl('', [Validators.required]),
+      flightDepartDate : new FormControl('', [Validators.required]),
+      origin: new FormControl('', [Validators.required]),
+      arrival_date : new FormControl('', [Validators.required]),
+    });
   }
   onSubmitSearch() {
     console.log(this.flightSearchForm);
     if (this.flightSearchForm.valid) {
        const searchParam  = Object.assign({}, this.flightSearchForm.value);
-       console.log(searchParam);
+       this.sharedSrv.flightSearchData = searchParam;
+       localStorage.setItem('flightSearchObj', JSON.stringify(searchParam));
+       if (this.pageName === 'HOME') {
+        this.router.navigate(['/flight'], { queryParams: searchParam });
+       } else {
+        this.router.navigate(['/flight'], { queryParams: searchParam });
+        this.searchFormSubmitted.emit(searchParam);
+       }
     } else {
       this.sharedSrv.validateAllFormFields(this.flightSearchForm);
     }
@@ -91,6 +157,16 @@ export class FlightSearchFormComponent implements OnInit {
     }, error => {
       console.log('error', error);
     });
+  }
+
+  onNumberChanged(val: number, filedName: string) {
+    const flightSearchForm = this.flightSearchForm;
+    flightSearchForm['controls'][filedName].patchValue(val);
+    this.setNumberOfTravellers();
+  }
+
+  setNumberOfTravellers() {
+      this.numberOfTraveller = this.noOfAdults + this.noOfChild + this.noOfInfants;
   }
 
 }
