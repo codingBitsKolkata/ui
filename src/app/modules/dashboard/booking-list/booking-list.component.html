@@ -60,89 +60,20 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>ORA29100626</td>
+            <tr *ngFor="let item of userBookingList">
+              <td>{{item.orabookingId}}</td>
               <td>Brickwood Express homestay</td>
               <td>Bidhannagar, Saltlake, Kolkata 700091</td>
-              <td>08/12/2018</td>
-              <td>12/12/2018</td>
-              <td>₹ 7062</td>
+              <td>{{item.checkinDate}}</td>
+              <td>{{item.checkoutDate}}</td>
+              <td>₹ {{item.grandTotal}}</td>
               <td>
                 <button class="btn btn-dark btn-sm mr-2" (click)="openModal(cancelBooking)">Cancel booking</button>
                 <button class="btn btn-primary btn-sm" routerLink="/dashboard/booking-details">View</button>
               </td>
             </tr>
             <tr>
-              <td>ORA29100626</td>
-              <td>Brickwood Express homestay</td>
-              <td>Bidhannagar, Saltlake, Kolkata 700091</td>
-              <td>08/12/2018</td>
-              <td>12/12/2018</td>
-              <td>₹ 7062</td>
-              <td>
-                <button class="btn btn-dark btn-sm mr-2" (click)="openModal(cancelBooking)">Cancel booking</button>
-                <button class="btn btn-primary btn-sm" routerLink="/dashboard/booking-details">View</button>
-              </td>
-            </tr>
-            <tr>
-              <td>ORA29100626</td>
-              <td>Brickwood Express homestay</td>
-              <td>Bidhannagar, Saltlake, Kolkata 700091</td>
-              <td>08/12/2018</td>
-              <td>12/12/2018</td>
-              <td>₹ 7062</td>
-              <td>
-                <button class="btn btn-dark btn-sm mr-2" (click)="openModal(cancelBooking)">Cancel booking</button>
-                <button class="btn btn-primary btn-sm" routerLink="/dashboard/booking-details">View</button>
-              </td>
-            </tr>
-            <tr>
-              <td>ORA29100626</td>
-              <td>Brickwood Express homestay</td>
-              <td>Bidhannagar, Saltlake, Kolkata 700091</td>
-              <td>08/12/2018</td>
-              <td>12/12/2018</td>
-              <td>₹ 7062</td>
-              <td>
-                <button class="btn btn-dark btn-sm mr-2" (click)="openModal(cancelBooking)">Cancel booking</button>
-                <button class="btn btn-primary btn-sm" routerLink="/dashboard/booking-details">View</button>
-              </td>
-            </tr>
-            <tr>
-              <td>ORA29100626</td>
-              <td>Brickwood Express homestay</td>
-              <td>Bidhannagar, Saltlake, Kolkata 700091</td>
-              <td>08/12/2018</td>
-              <td>12/12/2018</td>
-              <td>₹ 7062</td>
-              <td>
-                <button class="btn btn-dark btn-sm mr-2" (click)="openModal(cancelBooking)">Cancel booking</button>
-                <button class="btn btn-primary btn-sm" routerLink="/dashboard/booking-details">View</button>
-              </td>
-            </tr>
-            <tr>
-              <td>ORA29100626</td>
-              <td>Brickwood Express homestay</td>
-              <td>Bidhannagar, Saltlake, Kolkata 700091</td>
-              <td>08/12/2018</td>
-              <td>12/12/2018</td>
-              <td>₹ 7062</td>
-              <td>
-                <button class="btn btn-dark btn-sm mr-2" (click)="openModal(cancelBooking)">Cancel booking</button>
-                <button class="btn btn-primary btn-sm" routerLink="/dashboard/booking-details">View</button>
-              </td>
-            </tr>
-            <tr>
-              <td>ORA29100626</td>
-              <td>Brickwood Express homestay</td>
-              <td>Bidhannagar, Saltlake, Kolkata 700091</td>
-              <td>08/12/2018</td>
-              <td>12/12/2018</td>
-              <td>₹ 7062</td>
-              <td>
-                <button class="btn btn-dark btn-sm mr-2" (click)="openModal(cancelBooking)">Cancel booking</button>
-                <button class="btn btn-primary btn-sm" routerLink="/dashboard/booking-details">View</button>
-              </td>
+              <td *ngIf="userBookingList.length == 0" class="text-center pt-4 pb-4" colspan="7">No booking found!</td>
             </tr>
           </tbody>
         </table>

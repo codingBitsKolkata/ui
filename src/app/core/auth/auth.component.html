@@ -81,7 +81,7 @@
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="invalidCheck2" formControlName="cb">
               <label class="form-check-label" for="invalidCheck2" class="terms-conditions" [ngClass]="{ 'is-invalid': registerForm.controls['cb'].touched && registerForm.controls['cb'].errors }">
-                  I agree to the Orastays <a href="javascript:void(0)" (click)="openPrivacyPolicyModal(privacyPolicy)"> Privacy Policy</a> 
+                  I agree to the Orastays <a href="javascript:void(0)" (click)="openPrivacyPolicyModal(privacyPolicy)"> Terms & conditions</a> 
               </label>
             </div>
           </div>
@@ -95,7 +95,8 @@
     </ngb-tab>
   </ngb-tabset>
 </div>
-<!-- Privacy Policy modal-->
+
+<!-- Terms & conditions modal-->
 <ng-template #privacyPolicy let-modal>
   <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
