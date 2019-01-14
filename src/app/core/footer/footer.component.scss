@@ -74,7 +74,52 @@ footer {
     }
     .social-icons{
         text-align: right;
-        
+        .social-icon{
+            width: 40px;
+            height: 40px;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            display: inline-block;
+            border: 1px solid #979797;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+        .facebook{
+            background-image: url(../../../assets/images/social-icons/facebook.png);
+            &:hover{
+                background-image: url(../../../assets/images/social-icons/c_facebook.png);
+                border: 1px solid #4c6da3;
+            }
+        }
+        .tweeter{
+            background-image: url(../../../assets/images/social-icons/tweeter.png);
+            &:hover{
+                background-image: url(../../../assets/images/social-icons/c_tweeter.png);
+                border: 1px solid #1b99e8;
+            }
+        }
+        .instagram{
+            background-image: url(../../../assets/images/social-icons/instagram.png);
+            &:hover{
+                background-image: url(../../../assets/images/social-icons/c_instagram.png);
+                border: 1px solid #ec9042;
+            }
+        }
+        .linkdin{
+            background-image: url(../../../assets/images/social-icons/linkdin.png);
+            &:hover{
+                background-image: url(../../../assets/images/social-icons/c_linkdin.png);
+                border: 1px solid #1582aa;
+            }
+        }
+        .youtube{
+            background-image: url(../../../assets/images/social-icons/youtube.png);
+            &:hover{
+                background-image: url(../../../assets/images/social-icons/c_youtube.png);
+                border: 1px solid #d92e2e;
+            }
+        }
         img{
             height: 40px;
             margin-left: 10px; 

@@ -5,26 +5,26 @@
         <img class="user-img" src="assets/images/dashboard/prop_host.png" alt="">
         <button class="btn btn-edit" type="button" (click)="openModal(editProfileModal)"><i class="pencil-icon"></i></button>
       </div>
-      <label class="username">Saiyed Hussain</label>
+      <label class="username">{{userProfileDetails.userVsInfo.name}}</label>
     </div>
     <ul class="nav">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="userRole == 1">
           <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <i class="nav-icon"></i> Properties
             <span class="badge badge-info">04</span>
           </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="userRole == 1">
           <a class="nav-link" (click)="scrollToDiv('dashboard','revenueBlock')">
             <i class="nav-icon"></i> Revenue
           </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="userRole == 1">
           <a class="nav-link" (click)="scrollToDiv('dashboard','calenderBlock')">
             <i class="nav-icon"></i> Calendar
           </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="userRole == 1">
           <a class="nav-link" (click)="scrollToDiv('dashboard','inventoryBlock')">
             <i class="nav-icon"></i> Inventory
           </a>
@@ -34,7 +34,7 @@
             <i class="nav-icon"></i> Analytics
           </a>
       </li> -->
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="userRole == 1">
           <a class="nav-link" (click)="openModal(contactOraModal)" routerLinkActive="active">
             <i class="nav-icon"></i> Contact ORA
           </a>
@@ -86,7 +86,7 @@
         </div>
         <div class="col-md-9">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Enter your name" value="Saiyed Husain">
+            <input type="text" class="form-control" placeholder="Enter your name">
           </div>
         </div>
         <div class="col-md-6">
@@ -120,7 +120,7 @@
         <div class="col-md-8">
           <div class="form-group">
             <label for="">Language</label>
-            <ng-multiselect-dropdown class="form-control" [placeholder]="'Select Language'" [data]="languageList" [(ngModel)]="dropdownSettings" [settings]="dropdownSettings" name="language"></ng-multiselect-dropdown>
+            <ng-multiselect-dropdown class="form-control" [placeholder]="'Select Language'" [data]="languageList" [(ngModel)]="languageSelected" [settings]="languageDropdownSettings" name="language"></ng-multiselect-dropdown>
           </div>
         </div>
       </div>
@@ -129,20 +129,19 @@
         <div class="col-md-12">
           <div class="form-group">
             <label for="">Profession</label>
-            <input type="text" class="form-control" placeholder="Enter your profession">
+            <ng-multiselect-dropdown class="form-control" [placeholder]="'Select domain'" [data]="domainList" [(ngModel)]="domainSelected" [settings]="domainDropdownSettings" name="domain"></ng-multiselect-dropdown>
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
             <label for="">Interests</label>
-            <ng-multiselect-dropdown class="form-control" [placeholder]="'Select Interest'" [data]="interestList" [(ngModel)]="interestSelectedItems" [settings]="dropdownSettings" name="interest"></ng-multiselect-dropdown>
-            <!-- <input type="text" class="form-control" value="Travelling, Playing guiter, Listening musics, Gurdaning" placeholder="Select Interest"> -->
+            <ng-multiselect-dropdown class="form-control" [placeholder]="'Select Interest'" [data]="interestList" [(ngModel)]="interestSelected" [settings]="interestDropdownSettings" name="interest"></ng-multiselect-dropdown>
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
             <label for="">Biography</label>
-            <textarea name="" class="form-control h100">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </textarea>
+            <textarea name="" class="form-control h100"> </textarea>
           </div>
         </div>
       </div>

@@ -33,19 +33,19 @@
         </div>
         <div class="col-md-2 border-right text-center" data-aos="flip-up">
             <div><img src="assets/images/features_ID.png" /></div>
-            <div><span class="info-text">Verified ID</span><span class="text-dark exclamation-circle"><i class="fa fa-exclamation-circle"></i></span></div>
+            <div><span class="info-text">Verified ID</span><span class="text-dark exclamation-circle"><i class="fa fa-exclamation-circle c-pointer" triggers="mouseenter:mouseleave" placement="top" ngbPopover="Government sanctioned Identity Proofs required to register with us." popoverTitle="Verified ID"></i></span></div>
         </div>
         <div class="col-md-3 border-right text-center" data-aos="flip-down">
             <div><img src="assets/images/features_premium.png" /></div>
-            <div><span class="info-text">Express and Premium listings</span><span class="text-dark exclamation-circle"><i class="fa fa-exclamation-circle"></i></span></div>
+            <div><span class="info-text">Express and premium listings</span><span class="text-dark exclamation-circle"><i class="fa fa-exclamation-circle c-pointer" triggers="mouseenter:mouseleave" placement="top" ngbPopover="Budget properties to high-end star rooms." popoverTitle="Express and premium listings"></i></span></div>
         </div>
         <div class="col-md-2 border-right text-center" data-aos="flip-up">
             <div><img src="assets/images/features_hostmonitors.png" /></div>
-            <div><span class="info-text">Host Monitors</span><span class="text-dark exclamation-circle"><i class="fa fa-exclamation-circle"></i></span></div>
+            <div><span class="info-text">Host monitors</span><span class="text-dark exclamation-circle"><i class="fa fa-exclamation-circle c-pointer" triggers="mouseenter:mouseleave" placement="top" ngbPopover="Hosts with premium properties go through manned inspections." popoverTitle="Host monitors"></i></span></div>
         </div>
         <div class="col-md-3 text-center" data-aos="flip-down">
             <div><img src="assets/images/features_customerservice.png" /></div>
-            <div><span class="info-text">Customer Support (10 am to 6 pm)</span><span class="text-dark exclamation-circle"><i class="fa fa-exclamation-circle"></i></span></div>
+            <div><span class="info-text">Customer support (10 am to 6 pm)</span><span class="text-dark exclamation-circle"><i class="fa fa-exclamation-circle c-pointer" triggers="mouseenter:mouseleave" placement="top" ngbPopover="Our customer support team helps every individual with special attention." popoverTitle="Customer support"></i></span></div>
         </div>
       </div>
     </div>
@@ -62,8 +62,8 @@
             </ng-template> 
             <ng-template ngbTabContent>
               <div class="row" *ngIf="propertyList[propertyType.propertyTypeId] && propertyList[propertyType.propertyTypeId].length > 0">
-                <div class="col-md-3" *ngFor="let property of propertyList[propertyType.propertyTypeId]">
-                  <div class="card mb-0 border-0" (click)="showMoreProperty(property,propertyType.propertyTypeId)">
+                <div class="col-md-3" *ngFor="let property of propertyList[propertyType.propertyTypeId]; let i = index">
+                  <div class="card mb-0 border-0 c-pointer" (click)="showMoreProperty(property,propertyType.propertyTypeId)">
                     <div class="property-img">
                         <div class="room-tag {{property.roomStandard == 'PREMIUM' ? 'green' : 'orange'}}" *ngIf="property.roomStandard!='NORMAL'">{{property.roomStandard}}</div>
                         <img class="card-img-top rounded" [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" alt="Card image cap">
@@ -75,7 +75,7 @@
                       <p class="card-text price mb-1">₹ {{property.totalPrice | number:'.2'}} Per night</p>
                       <p class="card-text"><span class="badge badge-secondary bg-orange">{{property.rating}}</span><span class="cat-type"> {{sharedSrv.getRatingText(property.rating)}},</span><span class="review"> {{property.reviewCount}} reviews</span></p>
                       <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
+                      <div class="alert alert-secondary alert-{{i+1}}" role="alert">
                         <h6 class="title mb-0">In high demand!</h6>
                         <span class="info-text">Booked 21 times in the last 24 hours</span>
                       </div>
@@ -134,7 +134,7 @@
       <div class="col-md-6">
         <div *ngIf="testimonialList && testimonialList.length > 0" class="card" data-aos="fade-right">
           <div class="card-body">
-            <h4 class="title">What our customer says</h4>
+            <h4 class="title">What do Ora customers say...</h4>
             <div *ngFor="let testimonial of testimonialList" class="testimonial-item">
               <div class="thumb-img">
                 <img width="70px" height="70px" [src]="testimonial?.user?.userVsInfo?.imageUrl" alt="{{testimonial?.user?.userVsInfo?.name}}">
@@ -149,14 +149,15 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div class="card" data-aos="fade-left">
+        <div class="card h-100" data-aos="fade-left">
           <div class="card-body about-box">
             <h4 class="title">About</h4>
-            <h5 class="about-text mt-3">We believe that every traveller is unique. Hence we aim to provide 
-                unique accommodations to the users as per the requirements, preference and choice.</h5>
-            <p class="text">We are building the largest online marketplace of accommodation to help users find standardised accommodations through one touch technology, as per their requirements including short and long stays.</p>
-            <p class="text mb-30">Nam ornare lorem feugiat ligula aliquet lobortis ...</p>
-            <button class="btn btn-primary view-more-btn"  routerLink="/about">View More [+]</button>
+            <h5 class="about-text mt-3">Matching a home to your liking is our most valuable concern.</h5>
+            <p class="text fixed-height"> Where ever you go, choose a home that brings you close to a family. The warmth of its people, care and concern will keep your heart happy. Be a part of a larger community. There is a family everywhere, you just need to connect. We connect you to a new family everyday…</p>
+            <div class="h-100">
+              <button class="btn btn-primary view-more-btn"  routerLink="/about">View More [+]</button>
+            </div>
+            
           </div>
         </div>
       </div>
