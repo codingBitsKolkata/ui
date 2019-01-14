@@ -330,3 +330,27 @@ agm-map{
         }
     }
 }
+.property-img{
+    .room-tag{
+        position: absolute;
+        font-size: 12px;
+        padding: 5px 5px;
+        color: #fff;
+        font-family: latobold;
+        transform: /* Magic Numbers */ translate(-20px, 20px) /* 45 is really 360 - 48 */ rotate(314deg);
+        width: 92px;
+        font-size: 10px;
+        padding: 0px;
+        text-align: center;
+        &.green{
+            background: #2ecc71;
+        }
+        &.orange{
+            background: #f47921;
+        }
+    }
+}
+.overflowHidden{
+    position: relative;
+    overflow: hidden;
+}

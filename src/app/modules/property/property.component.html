@@ -89,8 +89,9 @@
       <!-- Property List -->
       <div class="property-listing-area mb-4">
           <ng-template ngFor let-i="index" let-c="count" let-property [ngForOf]="propertyList | orderBy: filterBy">
-        <div class="property-item d-flex">
-          <div class="mr-20">
+        <div class="property-item d-flex overflowHidden">
+          <div class="mr-20 property-img">
+            <div class="room-tag {{property.roomStandard == 'PREMIUM' ? 'green' : 'orange'}}" *ngIf="property.roomStandard!='NORMAL'">{{property.roomStandard}}</div>
             <img width="260px" height="150px" class="property-img"  [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" />
           </div>
           <div class="w-100">

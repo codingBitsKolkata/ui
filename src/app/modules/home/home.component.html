@@ -62,8 +62,8 @@
             </ng-template> 
             <ng-template ngbTabContent>
               <div class="row" *ngIf="propertyList[propertyType.propertyTypeId] && propertyList[propertyType.propertyTypeId].length > 0">
-                <div class="col-md-3" *ngFor="let property of propertyList[propertyType.propertyTypeId]">
-                  <div class="card mb-0 border-0" (click)="showMoreProperty(property,propertyType.propertyTypeId)">
+                <div class="col-md-3" *ngFor="let property of propertyList[propertyType.propertyTypeId]; let i = index">
+                  <div class="card mb-0 border-0 c-pointer" (click)="showMoreProperty(property,propertyType.propertyTypeId)">
                     <div class="property-img">
                         <div class="room-tag {{property.roomStandard == 'PREMIUM' ? 'green' : 'orange'}}" *ngIf="property.roomStandard!='NORMAL'">{{property.roomStandard}}</div>
                         <img class="card-img-top rounded" [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" alt="Card image cap">
@@ -75,7 +75,7 @@
                       <p class="card-text price mb-1">₹ {{property.totalPrice | number:'.2'}} Per night</p>
                       <p class="card-text"><span class="badge badge-secondary bg-orange">{{property.rating}}</span><span class="cat-type"> {{sharedSrv.getRatingText(property.rating)}},</span><span class="review"> {{property.reviewCount}} reviews</span></p>
                       <hr class="hr1">
-                      <div class="alert alert-secondary alert-green" role="alert">
+                      <div class="alert alert-secondary alert-{{i+1}}" role="alert">
                         <h6 class="title mb-0">In high demand!</h6>
                         <span class="info-text">Booked 21 times in the last 24 hours</span>
                       </div>

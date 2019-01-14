@@ -550,7 +550,10 @@ input:active,select:active,button:active,label:active{
         .nav-tabs .nav-link {
             font-weight: 500;
             color: #000;
-            padding: 10px 25px;
+            padding: 0;
+            div{
+                padding: 10px 25px;
+            }
         }
         .tab-content{
             padding: 20px 30px;
@@ -646,16 +649,16 @@ input:active,select:active,button:active,label:active{
                     font-size: 12px;
                 }
             }
-            .alert-green{
+            .alert-1{
                 background-color: #74ae51; 
             }
-            .alert-pink{
+            .alert-2{
                 background-color: #e981ab; 
             }
-            .alert-blue{
+            .alert-3{
                 background-color: #6eafc5; 
             }
-            .alert-brown{
+            .alert-4{
                 background-color: #b78769; 
             }
             .complimentary{
