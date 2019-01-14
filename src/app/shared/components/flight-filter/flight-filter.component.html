@@ -104,14 +104,9 @@
               <input type="checkbox" formControlName="airlines" ngbButton> All airlines
             </label>
           </div>
-          <div class="btn-group-toggle">
-            <label class="btn-checkbox-filter" ngbButtonLabel>
-              <input type="checkbox" formControlName="spicejet" ngbButton> Spicejet
-            </label>
-          </div>
-          <div class="btn-group-toggle">
-            <label class="btn-checkbox-filter" ngbButtonLabel>
-              <input type="checkbox" formControlName="air_india" ngbButton> Air india
+          <div class="btn-group-toggle" *ngFor="let airlineName of airlineNames | keyvalue; let i = index;">
+            <label *ngIf="airlineName.value" class="btn-checkbox-filter" ngbButtonLabel>
+              <input type="checkbox"  ngbButton> {{airlineName.value }}
             </label>
           </div>
         <!-- </div> -->
@@ -173,17 +168,18 @@
 <div class="row row-eq-height mr-0">
   <div class="col-md-4 left-panel-blue">
     <div class="h-bottom">
-      <h5>Kolkata (CCU)</h5>
-      <span>26th Dec 2018</span>
-      <div class="flight-icon" *ngIf="tripType !== 'roundtrip'"></div>
-      <div class="flight-icon-roundtrip" *ngIf="tripType == 'roundtrip'"></div>
+      <h5>{{flightSearchObj.multiCities[0].origin.cityName}} ({{flightSearchObj.multiCities[0].origin.cityCode}})</h5>
+      <span>{{parserFormatter.format(flightSearchObj.multiCities[0].flightDepartDate)}}</span>
+      <div class="flight-icon" *ngIf="flightSearchObj.tripType !== 'R'"></div>
+      <div class="flight-icon-roundtrip" *ngIf="flightSearchObj.tripType == 'R'"></div>
     </div>
   </div>
   <div class="col-md-4 right-panel-blue">
     <div class="d-inline-block text-left">
       <div class="h-bottom">
-        <h5>Bengaluru (BLR)</h5>
-        <span>26th Dec 2018</span>
+        <h5><h5>{{flightSearchObj.multiCities[0].destination.cityName}} ({{flightSearchObj.multiCities[0].destination.cityCode}})</h5></h5>
+        <span *ngIf="flightSearchObj.tripType == 'R'">{{parserFormatter.format(flightSearchObj.multiCities[0].arrival_date)}}</span>
+        <span *ngIf="flightSearchObj.tripType !== 'R'">{{parserFormatter.format(flightSearchObj.multiCities[0].flightDepartDate)}}</span>
       </div>
     </div>
   </div>

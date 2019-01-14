@@ -23,6 +23,7 @@ import 'rxjs/add/operator/switchMap';
 export class FlightQuickSearchComponent implements OnInit {
 
   @Input() flightSearchObj: any;
+  @Input() totalResultCount: number;
   @Output() searchFormSubmitted  = new EventEmitter<string>();
   flightSearchForm: FormGroup;
   searching = false;
@@ -35,6 +36,8 @@ export class FlightQuickSearchComponent implements OnInit {
   flightTypes:  Array<any>;
   tripType: string;
   classType: string;
+  arrivalMinDate: any;
+  departMinDate: any;
   constructor(
     private fb: FormBuilder,
     private sharedSrv: SharedService,
@@ -44,6 +47,10 @@ export class FlightQuickSearchComponent implements OnInit {
     private parserFormatter: NgbDateParserFormatter,
     private router: Router
   ) {
+    const currentDate = new Date();
+    this.arrivalMinDate = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
+    this.departMinDate = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
+
       this.buildSearchForm();
       this.noOfAdults = 1;
       this.noOfChild = 0;
@@ -172,6 +179,10 @@ export class FlightQuickSearchComponent implements OnInit {
   }
   setNumberOfTravellers() {
       this.numberOfTraveller = this.noOfAdults + this.noOfChild + this.noOfInfants;
+  }
+
+  setClassTypeValue(val) {
+    this.classType = val;
   }
 
 }

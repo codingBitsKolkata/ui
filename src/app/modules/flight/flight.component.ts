@@ -12,8 +12,10 @@ import { ActivatedRoute, Router  } from '@angular/router';
 export class FlightComponent implements OnInit {
   flightSearchObj: object;
   loading: boolean;
-  flightList: object;
+  flightList: any;
   tripType: string;
+  totalFlightFound: number;
+  airlineNames: Array<any>;
   constructor(
     private modalService: NgbModal,
     private sharedSrv: SharedService,
@@ -22,6 +24,7 @@ export class FlightComponent implements OnInit {
     private router: Router) {
 
       this.loading = false;
+      this.airlineNames = [];
 
   }
 
@@ -51,27 +54,59 @@ export class FlightComponent implements OnInit {
       this.getFlightList(searchObj);
     }
     this.route.queryParams.subscribe(params => { console.log(params); });
-    console.log('flightSearchObj', this.flightSearchObj);
+   // console.log('flightSearchObj', this.flightSearchObj);
 
   }
 
   getFlightList(params: any) {
+    const searchReq =  this.preparedSearchRequest(params);
+    console.log(searchReq);
     this.loading = true;
-    this.srvFlight.getFlightList(params).subscribe((res) => {
+    this.flightList = {};
+    this.totalFlightFound = 0;
+    this.airlineNames = [];
+    this.srvFlight.getFlightList(searchReq).subscribe((res) => {
       this.loading = false;
-      console.log('getFlightList data', res);
+     // console.log('getFlightList data', res);
       if (res.responseCode === '200') {
-         this.flightList = JSON.parse(res.responseBody);
-         console.log(this.flightList);
+         if (res.responseBody) {
+             this.flightList = JSON.parse(res.responseBody);
+            console.log(this.flightList);
+            this.totalFlightFound = this.flightList.resultData[0].isFlights;
+            this.airlineNames = this.flightList.resultData[0].fltSchedule['airlineNames'];
+         }
       }
     }, error => {
       this.loading = false;
       console.log('error', error);
     });
   }
+  preparedSearchRequest(params) {
+    const flightDepartDate = params.multiCities[0].flightDepartDate;
+    const arrivalDate = params.multiCities[0].arrival_date;
+    const searchObj = {
+      classType: params.classType,
+      noOfAdults: params.noOfAdults,
+      noOfChild: params.noOfChild,
+      noOfInfants: params.noOfInfants,
+      tripType: params.tripType,
+      multiCities: [{
+        destination: params.multiCities[0].destination.airportCode,
+        origin: params.multiCities[0].origin.airportCode,
+        flightDepartDate: flightDepartDate.day + '/' + flightDepartDate.month +  '/' + flightDepartDate.year
+      }]
+    };
+    if (params.tripType === 'R') {
+      searchObj['arrival_date'] = arrivalDate.day + '/' + arrivalDate.month +  '/' + arrivalDate.year;
+    }
+
+    return searchObj;
+  }
   searchFormSubmitted(searchData) {
     console.log(searchData);
+    this.flightSearchObj = searchData;
     this.tripType = searchData.tripType;
+    this.getFlightList(searchData);
    }
 
 }

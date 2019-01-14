@@ -1,17 +1,17 @@
-<div class="list-flight">
-  <div class="mb-4 position-relative">
+<div class="list-flight" *ngIf="flightList.length > 0">
+  <div class="mb-4 position-relative" *ngFor="let flightRow of flightList; let i = index;">
     <div class="row row-eq-height flight-card first">
-      <span class="sl-no">01</span>
+      <span class="sl-no">{{i +1 }}</span>
       <div class="col-sm-8 left-panel">
         <div class="c-header">
           <div class="row">
             <div class="col-4 f-logo text-left">
               <img src="assets/images/flight/fl-1.png" alt="">
-              <span class="f-name">Spicejet - SG-742</span>
+              <span class="f-name">{{getAirlineName(flightRow.OD[0].FS[0].vc)}} - {{flightRow.OD[0].FS[0].vc}} - {{flightRow.OD[0].FS[0].fl}}</span>
             </div>
             <div class="col-4 text-center">
                 <span class="badge badge-gray">Non stop</span>
-                <span class="badge badge-outline">02:30 hrs.</span>
+                <span class="badge badge-outline">{{flightRow.OD[0].tdu}} hrs.</span>
             </div>
             <div class="col-4 text-right">
               <button class="btn-details" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">Flight details</button>
@@ -20,18 +20,18 @@
         </div>
         <div class="c-body">
           <p class="f-timing">
-            <span class="dept-time">14:30 PM</span>
+            <span class="dept-time">{{flightRow.OD[0].FS[0].dd}}</span>
             <span class="flight-type direct-flight"></span>
-            <span class="arrvl-time">07:00 PM</span>
+            <span class="arrvl-time">{{flightRow.OD[0].FS[0].ad}}</span>
           </p>
         </div>
       </div>
       <div class="col-sm-4 right-panel">
         <input class="input-hidden" id="flight1" name="bookFlight" type="radio">
         <div class="book-panel" for="flight1">
-          <h4 class="class">Business class</h4>
+          <h4 class="class">{{flightRow.OD[0].classtype}}</h4>
           <span class="p-from">From</span>
-          <span class="price">₹34,581</span>
+          <span class="price">₹{{getFare(flightRow.ID) | number:'.2'}}</span>
           <span class="radio-btn"></span>
         </div>
       </div>
@@ -44,7 +44,7 @@
       </div>
     </div>
   </div>
-  <div class="mb-4 position-relative">
+  <!-- <div class="mb-4 position-relative">
     <div class="row row-eq-height flight-card">
       <span class="sl-no">02</span>
       <div class="col-sm-8 left-panel">
@@ -268,5 +268,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

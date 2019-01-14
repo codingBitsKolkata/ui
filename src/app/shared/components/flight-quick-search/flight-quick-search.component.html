@@ -1,6 +1,6 @@
-<div class="flight-found">
+<div class="flight-found" *ngIf="totalResultCount">
   <span class="icon"></span>
-  <p class="pl-1"><span>66 Flights  </span> are found</p>
+  <p class="pl-1"><span>{{totalResultCount}} Flights  </span> are found</p>
 </div>
 <!-- Quick Filter -->
 <div class="card flight-quick-search mb-3">
@@ -30,13 +30,13 @@
         
               <div class="form-group">
                   <div class="input-group">
-                      <input type="text" class="form-control border-right-0" placeholder="Depart" ngbDatepicker  #d1="ngbDatepicker" (click)="d1.toggle()" formControlName="flightDepartDate"
+                      <input type="text" class="form-control border-right-0" placeholder="Depart" ngbDatepicker  #d1="ngbDatepicker" (click)="d1.toggle()" [minDate]="departMinDate" formControlName="flightDepartDate"
                       [ngClass]="{ 'is-invalid': multiCity.get('flightDepartDate').touched && multiCity.get('flightDepartDate').errors }">
                       
                       <div class="input-group-append">
                         <button class="btn btn-outline-secondary calendar checkin-pick" (click)="d1.toggle()" type="button"><i class="fa fa-calendar"></i></button>
                       </div>
-                      <input type="text" class="form-control border-right-0" placeholder="Return" ngbDatepicker  #d2="ngbDatepicker" (click)="d2.toggle()" formControlName="arrival_date"
+                      <input type="text" class="form-control border-right-0" placeholder="Return" ngbDatepicker  #d2="ngbDatepicker" (click)="d2.toggle()" [minDate]="arrivalMinDate" formControlName="arrival_date"
                       [ngClass]="{ 'is-invalid': multiCity.get('arrival_date').touched && multiCity.get('arrival_date').errors }">
                       <div class="input-group-append">
                         <button class="btn btn-outline-secondary calendar checkout-pick" (click)="d2.toggle()" type="button"><i class="fa fa-calendar"></i></button>
@@ -48,7 +48,7 @@
       <div class="form-group">
         <div class="input-group">
           <div ngbDropdown class="d-inline-block travellersDropdown" [autoClose]="'outside'">
-            <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>{{numberOfTraveller}} Travellers</button>
+            <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>{{numberOfTraveller}} Travellers <span style="float:right;margin-right: 12px;"> {{classType}}</span></button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
               <div class="form-row align-items-center">
                 <div class="col-12">
@@ -75,7 +75,7 @@
               </div>
               <hr class="mt-0">
               <label class="c-pointer radio-btn" *ngFor="let class of flightClassTypes">
-                <input  class="option-input radio" type="radio" formControlName="classType" [value]="class.id" > {{class.name}}
+                <input  class="option-input radio" type="radio" formControlName="classType" [value]="class.id" (change)="setClassTypeValue(class.id)"> {{class.name}}
               </label>
             </div>
           </div>

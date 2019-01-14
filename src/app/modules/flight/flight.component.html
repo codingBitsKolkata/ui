@@ -6,21 +6,24 @@
       <!--
         <app-flight-search-form [flightSearchObj]="flightSearchObj" [pageName]="'FLIGHT'" (searchFormSubmitted)="searchFormSubmitted($event)"></app-flight-search-form>
       -->
-       <app-flight-quick-search [flightSearchObj]="flightSearchObj" (searchFormSubmitted)="searchFormSubmitted($event)"></app-flight-quick-search>
+       <app-flight-quick-search [totalResultCount]="totalFlightFound" [flightSearchObj]="flightSearchObj" (searchFormSubmitted)="searchFormSubmitted($event)"></app-flight-quick-search>
     </div>
     
     <!-- flight List Section -->
     <div class="col-md-9">
+        <div class="loader" *ngIf="loading">
+            <div class="loading"></div>
+        </div>
       <!-- flight List -->
-      <div class="flight-listing-area mb-4">
-        <app-flight-filter></app-flight-filter>
-      
-        <!-- <router-outlet></router-outlet> -->
-        <app-oneway *ngIf="tripType=='O'"></app-oneway>
-        <app-roundtrip *ngIf="tripType=='R'"></app-roundtrip>
-        <app-multicity *ngIf="tripType=='M'"></app-multicity>
-  
-      </div>
+      <div class="flight-listing-area mb-4" *ngIf="!loading">
+        <app-flight-filter *ngIf="totalFlightFound" [flightSearchObj]="flightSearchObj" [airlineNames]="airlineNames"></app-flight-filter>
+        
+          <!-- <router-outlet></router-outlet> -->
+          <app-oneway *ngIf="tripType=='O' && totalFlightFound"  [flightData]="flightList" [flightSearchObj]="flightSearchObj"></app-oneway>
+          <app-roundtrip *ngIf="tripType=='R' && totalFlightFound" [flightData]="flightList" [flightSearchObj]="flightSearchObj"></app-roundtrip>
+          <app-multicity *ngIf="tripType=='M'"></app-multicity>
+    
+        </div>
     </div>
   </div>
 

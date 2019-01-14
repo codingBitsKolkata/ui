@@ -23,11 +23,20 @@ export class FlightService {
   }
 
   getFlightList(requestParam: any): Observable<any> {
-    console.log(requestParam);
+    console.log();
+    let flightSearchUrl = '';
+    if (requestParam.tripType === 'O') {
+      flightSearchUrl = 'fetch-one-way-flights';
+    } else if (requestParam.tripType === 'R') {
+      flightSearchUrl = 'fetch-round-trip-flights';
+    } else if (requestParam.tripType === 'M') {
+      flightSearchUrl =  'fetch-multi-city-flights';
+    } else {}
     const request = {
-        'url':  'assets/static-data/searchOneWayResponseSwagger.json'
-       // 'url': AppConst.FLIGHT_API_BASE_URL + '/search-airport-details'
+        // 'url':  'assets/static-data/searchOneWayResponseSwagger.json'
+       // 'url':  'assets/static-data/searchRoundResponseSwagger.json'
+        'url': AppConst.FLIGHT_API_BASE_URL + '/' + flightSearchUrl
      };
-     return this.httpClient.get<any>(request.url);
+     return this.httpClient.post<any>(request.url, requestParam);
   }
 }
