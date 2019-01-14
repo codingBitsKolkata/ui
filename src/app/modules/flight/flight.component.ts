@@ -11,9 +11,9 @@ import { ActivatedRoute, Router  } from '@angular/router';
 })
 export class FlightComponent implements OnInit {
   flightSearchObj: object;
-  tripType;
   loading: boolean;
   flightList: object;
+  tripType: string;
   constructor(
     private modalService: NgbModal,
     private sharedSrv: SharedService,
@@ -38,19 +38,16 @@ export class FlightComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tripType = this.router.url;
-    const x = this.tripType.split('/');
-    this.tripType = x[x.length - 1];
-    console.log(this.tripType);
-
     const flightSearchData = this.sharedSrv.flightSearchData;
     const isSearchObjEmpty = !Object.keys(flightSearchData).length;
     if (!isSearchObjEmpty) {
       this.flightSearchObj = flightSearchData;
+      this.tripType = flightSearchData['tripType'];
       this.getFlightList(flightSearchData);
     } else {
       const searchObj = JSON.parse(localStorage.getItem('flightSearchObj'));
       this.flightSearchObj = searchObj;
+      this.tripType = searchObj.tripType;
       this.getFlightList(searchObj);
     }
     this.route.queryParams.subscribe(params => { console.log(params); });
@@ -74,6 +71,7 @@ export class FlightComponent implements OnInit {
   }
   searchFormSubmitted(searchData) {
     console.log(searchData);
+    this.tripType = searchData.tripType;
    }
 
 }

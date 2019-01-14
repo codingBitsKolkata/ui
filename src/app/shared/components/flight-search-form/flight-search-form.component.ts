@@ -98,7 +98,8 @@ export class FlightSearchFormComponent implements OnInit {
       this.onNumberChanged(this.noOfInfants, 'noOfInfants');
       this.flightSearchForm.patchValue({
         classType : this.classType,
-        tripType: this.tripType
+        tripType: this.tripType,
+        multiCities: this.flightSearchObj.multiCities
       });
     } else {
       this.onNumberChanged(this.noOfAdults, 'noOfAdults');
