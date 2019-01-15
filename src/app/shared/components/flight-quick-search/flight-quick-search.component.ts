@@ -128,6 +128,15 @@ export class FlightQuickSearchComponent implements OnInit {
       this.onNumberChanged(this.noOfChild, 'noOfChild');
       this.onNumberChanged(this.noOfInfants, 'noOfInfants');
     }
+    this.tripTypeChanage(this.tripType);
+    this.onChangeTripType();
+  }
+
+  onChangeTripType(): void {
+    this.flightSearchForm.controls['tripType'].valueChanges.subscribe((value) => {
+      console.log(value);
+      this.tripTypeChanage(value);
+    });
   }
     /**
    * This method is responsible for building, setup input filed and validator of flight search form
@@ -146,9 +155,9 @@ export class FlightQuickSearchComponent implements OnInit {
   buildMultiCityFrom() {
     return this.fb.group({
       destination : new FormControl('', [Validators.required]),
-      flightDepartDate : new FormControl('', [Validators.required]),
+      flightDepartDate : new FormControl(null, [Validators.required]),
       origin: new FormControl('', [Validators.required]),
-      arrival_date : new FormControl('', [Validators.required]),
+      arrival_date : new FormControl(null, []),
     });
   }
   onSubmitSearch() {
@@ -183,6 +192,16 @@ export class FlightQuickSearchComponent implements OnInit {
 
   setClassTypeValue(val) {
     this.classType = val;
+  }
+  tripTypeChanage(val) {
+    console.log(val);
+    if (val === 'R') {
+      this.flightSearchForm.controls.multiCities['controls'][0].get('arrival_date').setValidators([Validators.required]);
+    } else {
+      this.flightSearchForm.controls.multiCities['controls'][0].get('arrival_date').setValidators(null);
+    }
+    this.flightSearchForm.controls.multiCities['controls'][0].get('arrival_date').updateValueAndValidity();
+
   }
 
 }

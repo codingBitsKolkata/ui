@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="col-sm-4 right-panel">
-        <input class="input-hidden" id="flight1" name="bookFlight" type="radio">
+        <input class="input-hidden" [value]='flightRow' type="radio" name="departFlights" [(ngModel)]="departFlightSelected" (change)="handleDepartFlightChange($event)">
         <div class="book-panel" for="flight1">
           <h4 class="class">{{flightRow.OD[0].classtype}}</h4>
           <span class="p-from">From</span>

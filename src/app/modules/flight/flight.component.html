@@ -19,7 +19,7 @@
         <app-flight-filter *ngIf="totalFlightFound" [flightSearchObj]="flightSearchObj" [airlineNames]="airlineNames"></app-flight-filter>
         
           <!-- <router-outlet></router-outlet> -->
-          <app-oneway *ngIf="tripType=='O' && totalFlightFound"  [flightData]="flightList" [flightSearchObj]="flightSearchObj"></app-oneway>
+          <app-oneway *ngIf="tripType=='O' && totalFlightFound"  [flightData]="flightList" [flightSearchObj]="flightSearchObj" (flightSelectedEvent)="onFlightSelected($event)"></app-oneway>
           <app-roundtrip *ngIf="tripType=='R' && totalFlightFound" [flightData]="flightList" [flightSearchObj]="flightSearchObj"></app-roundtrip>
           <app-multicity *ngIf="tripType=='M'"></app-multicity>
     
@@ -28,18 +28,18 @@
   </div>
 
   <!-- Footer Sticky bar -->
-  <div class="footer-sticky-bar">
+  <div class="footer-sticky-bar" *ngIf="selectedFlightData">
     <div class="d-flex justify-content-center">
       <div class="col-auto flight-logo">
         <img src="assets/images/flight/fl-1.png" alt="">
-        <p>Spicejet <span> SG-742</span></p>
+        <p>{{getAirlineName(selectedFlightData.OD[0].FS[0].vc)}} <span> {{selectedFlightData.OD[0].FS[0].vc}} - {{selectedFlightData.OD[0].FS[0].fl}}</span></p>
       </div>
       <div class="col-auto dept-time">
-        <p>14:30 PM | <span class="s-name">CCU</span> <br> <span class="date">26th Dec 2018 </span></p>
+        <p>{{selectedFlightData.OD[0].FS[0].dd}} | <span class="s-name">CCU</span> <br> <span class="date">26th Dec 2018 </span></p>
       </div>
       <div class="col-auto arrvl-time">
         <i class="trip-icon"></i>
-        <p>16:30 PM |  <span class="s-name">BLR</span> <br> <span class="date">26th Dec 2018 </span></p>
+        <p>{{selectedFlightData.OD[0].FS[0].ad}} |  <span class="s-name">BLR</span> <br> <span class="date">26th Dec 2018 </span></p>
       </div>
       <div class="col-auto details">
         <p>
@@ -55,9 +55,6 @@
   </div>
 </div>
 
-<div class="container-fluid flight-list-section mt-76" *ngIf="tripType == 'flight-booking'">
-  <router-outlet></router-outlet>
-</div>
 
 <!-- Personal Information Popup -->
 <ng-template #personalInfoModal let-modal>

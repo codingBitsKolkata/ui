@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-oneway',
@@ -10,9 +10,11 @@ export class OnewayComponent implements OnInit {
 
   @Input() flightData: any;
   @Input() flightSearchObj: any;
+  @Output() flightSelectedEvent  = new EventEmitter<string>();
   airlineNames: Array<any>;
   flightList: Array<any>;
   fareDetails: Array<any>;
+  departFlightSelected: any;
   constructor() {
     this.flightList = [];
     this.airlineNames = [];
@@ -37,6 +39,11 @@ export class OnewayComponent implements OnInit {
   getFare (flightId) {
     const fareO = this.fareDetails[flightId]['O'];
     return fareO.revisedFareDetails.tf;
+  }
+
+  handleDepartFlightChange(event) {
+    // console.log(this.departFlightSelected);
+    this.flightSelectedEvent.emit(this.departFlightSelected);
   }
 
 }

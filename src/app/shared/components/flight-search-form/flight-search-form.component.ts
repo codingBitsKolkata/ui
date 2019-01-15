@@ -107,6 +107,7 @@ export class FlightSearchFormComponent implements OnInit {
       this.onNumberChanged(this.noOfInfants, 'noOfInfants');
     }
 
+    this.tripTypeChanage(this.tripType);
 
 
   }
@@ -127,9 +128,9 @@ export class FlightSearchFormComponent implements OnInit {
   buildMultiCityFrom() {
     return this.fb.group({
       destination : new FormControl('', [Validators.required]),
-      flightDepartDate : new FormControl('', [Validators.required]),
+      flightDepartDate : new FormControl(null, [Validators.required]),
       origin: new FormControl('', [Validators.required]),
-      arrival_date : new FormControl('', [Validators.required]),
+      arrival_date : new FormControl(null, []),
     });
   }
   onSubmitSearch() {
@@ -168,6 +169,17 @@ export class FlightSearchFormComponent implements OnInit {
 
   setNumberOfTravellers() {
       this.numberOfTraveller = this.noOfAdults + this.noOfChild + this.noOfInfants;
+  }
+
+  tripTypeChanage(val) {
+    console.log(val);
+    if (val === 'R') {
+      this.flightSearchForm.controls.multiCities['controls'][0].get('arrival_date').setValidators([Validators.required]);
+    } else {
+      this.flightSearchForm.controls.multiCities['controls'][0].get('arrival_date').setValidators(null);
+    }
+    this.flightSearchForm.controls.multiCities['controls'][0].get('arrival_date').updateValueAndValidity();
+
   }
 
 }

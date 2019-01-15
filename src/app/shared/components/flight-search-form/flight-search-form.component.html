@@ -1,7 +1,7 @@
 <form class="booking-form"  [formGroup]="flightSearchForm" (ngSubmit)="onSubmitSearch()" novalidate>
     <div class="d-flex text-center justify-content-between pl-2 pr-2">
       <div class="trip-type">
-        <input type="radio" formControlName="tripType" value="R"  id="roundTrip" class="input-hidden"/>
+        <input type="radio" formControlName="tripType" value="R" (change) ="tripTypeChanage('R')"  id="roundTrip" class="input-hidden"/>
         <label class="items" for="roundTrip">
           <img src="assets/images/flight_roundtrip.png" alt="">
           <span class="item-checked"></span>
@@ -9,7 +9,7 @@
         <p class="name">Round trip</p>
       </div>
       <div class="trip-type">
-        <input type="radio" formControlName="tripType" value="O"  id="oneWay" class="input-hidden" />
+        <input type="radio" formControlName="tripType" value="O" (change) ="tripTypeChanage('O')"  id="oneWay" class="input-hidden" />
         <label class="items" for="oneWay">
           <img src="assets/images/flight_oneway.png" alt="">
           <span class="item-checked"></span>
@@ -17,7 +17,7 @@
         <p class="name">One way</p>
       </div>
       <div class="trip-type">
-        <input type="radio" formControlName="tripType" value="M" id="multiCity" class="input-hidden" />
+        <input type="radio" formControlName="tripType" value="M" (change) ="tripTypeChanage('M')" id="multiCity" class="input-hidden" />
         <label class="items" for="multiCity">
           <img src="assets/images/flight_multicity.png" alt="">
           <span class="item-checked"></span>

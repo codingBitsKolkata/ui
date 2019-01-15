@@ -16,6 +16,7 @@ export class FlightComponent implements OnInit {
   tripType: string;
   totalFlightFound: number;
   airlineNames: Array<any>;
+  selectedFlightData: any;
   constructor(
     private modalService: NgbModal,
     private sharedSrv: SharedService,
@@ -49,9 +50,11 @@ export class FlightComponent implements OnInit {
       this.getFlightList(flightSearchData);
     } else {
       const searchObj = JSON.parse(localStorage.getItem('flightSearchObj'));
-      this.flightSearchObj = searchObj;
+      if (searchObj) {
+        this.flightSearchObj = searchObj;
       this.tripType = searchObj.tripType;
       this.getFlightList(searchObj);
+      }
     }
     this.route.queryParams.subscribe(params => { console.log(params); });
    // console.log('flightSearchObj', this.flightSearchObj);
@@ -107,6 +110,14 @@ export class FlightComponent implements OnInit {
     this.flightSearchObj = searchData;
     this.tripType = searchData.tripType;
     this.getFlightList(searchData);
+   }
+   getAirlineName( code) {
+    return this.airlineNames[code];
+  }
+   onFlightSelected(flightData) {
+     console.log(flightData);
+     this.selectedFlightData = flightData;
+
    }
 
 }
