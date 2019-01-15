@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { DragScrollComponent } from 'ngx-drag-scroll';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -17,13 +17,13 @@ export class PropertyDetailsComponent implements OnInit {
   searchObj: object;
   as_leftNavDisabled = false;
   as_rightNavDisabled = false;
-  ls_leftNavDisabled = false;
-  ls_rightNavDisabled = false;
+//   ls_leftNavDisabled = false;
+//   ls_rightNavDisabled = false;
 
   // Ameni Slider
   @ViewChild('ameniSlider', {read: DragScrollComponent}) as: DragScrollComponent;
   // Location Slider
-  @ViewChild('locationSlider', {read: DragScrollComponent}) ls: DragScrollComponent;
+//   @ViewChild('locationSlider', {read: DragScrollComponent}) ls: DragScrollComponent;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
   constructor(
@@ -108,20 +108,7 @@ export class PropertyDetailsComponent implements OnInit {
   rightBoundStat_as(reachesRightBound: boolean) {
       this.as_rightNavDisabled = reachesRightBound;
   }
-  moveLeft_ls() {
-    this.ls.moveLeft();
-}
 
-moveRight_ls() {
-    this.ls.moveRight();
-}
-leftBoundStat_ls(reachesLeftBound: boolean) {
-    this.ls_leftNavDisabled = reachesLeftBound;
-}
-
-rightBoundStat_ls(reachesRightBound: boolean) {
-    this.ls_rightNavDisabled = reachesRightBound;
-}
 openModal(content) {
     // , size: 'md'
     this.modalService.open(content, { windowClass: 'modal-popup host-details' });
@@ -129,19 +116,25 @@ openModal(content) {
 
 getPropertyDetails(params: any) {
     this.srvProperty.getPropertyDetails(params).subscribe((res) => {
-      console.log('getPropertyDetails data', res);
-      if (res.responseCode === '200') {
-         this.propertyDetails = res.responseBody;
-         console.log(this.propertyDetails);
-      }
+        console.log('getPropertyDetails data', res);
+        if (res.responseCode === '200') {
+            this.propertyDetails = res.responseBody;
+            console.log(this.propertyDetails);
+        }
     }, error => {
-      console.log('error', error);
+        console.log('error', error);
     });
-  }
+}
+
   searchFormSubmitted(evn) {
-    console.log(evn);
+    this.router.navigate(['/properties/property-details'], { queryParams: this.searchObj });
+  }
+
+  arrayNum(number){
+    return Array(parseInt(number));
+  }
+
+  bookYourStay() {
     this.router.navigate(['/properties/booking'], { queryParams: this.searchObj });
   }
-
-
 }

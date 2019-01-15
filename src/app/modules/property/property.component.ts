@@ -91,88 +91,99 @@ export class PropertyComponent implements OnInit, OnDestroy {
     console.log(filteredArray);
      this.selectedPropertyTypeName = filteredArray.length ? filteredArray[0].name : '';
   }
+
   getPropertyList(params: any) {
-      this.loading = true;
-      this.setPropertyTypeName(params.propertyTypeId);
-      this.srvProperty.searchProperties(params).subscribe((res) => {
-        this.loading = false;
-        console.log('searchProperties data', res);
-        if (res.responseCode === '200') {
-           this.propertyList = res.responseBody;
-           console.log(this.propertyList);
-        }
-      }, error => {
-        this.loading = false;
-        console.log('error', error);
-      });
-    }
-    getMasterRatingsList() {
-      this.srvProperty.getMasterRatingsList({}).subscribe((res) => {
-        console.log('getMasterRatingsList data', res);
-        if (res.responseCode === '200') {
-           this.ratingsFliterList = res.responseBody;
-        }
-      }, error => {
-        console.log('error', error);
-      });
-    }
-    getMasterAmenitiesList() {
-      this.srvProperty.getMasterAmenitiesList({}).subscribe((res) => {
-        console.log('getMasterAmenitiesList data', res);
-        if (res.responseCode === '200') {
-           this.amenitiesFliterList = res.responseBody;
-        }
-      }, error => {
-        console.log('error', error);
-      });
-    }
-    getMasterBudgetsList() {
-      this.srvProperty.getMasterBudgetsList({}).subscribe((res) => {
-        console.log('getMasterBudgetsList data', res);
-        if (res.responseCode === '200') {
-           this.budgetsFliterList = res.responseBody;
-        }
-      }, error => {
-        console.log('error', error);
-      });
-    }
-    getPropertyTypes() {
-      this.srvProperty.getPropertyTypes({}).subscribe((res) => {
-       console.log('getPropertyTypes data', res);
-       if (res.responseCode === '200') {
-          this.propertyTypes =  res.responseBody;
-          this.setPropertyTypeName(this.searchObj['propertyTypeId']);
-       }
-     }, error => {
-       console.log('error', error);
-     });
-   }
-   getPropertyTypeName(propertyTypeId: number) {
+    this.loading = true;
+    this.setPropertyTypeName(params.propertyTypeId);
+    this.srvProperty.searchProperties(params).subscribe((res) => {
+      this.loading = false;
+      console.log('searchProperties data', res);
+      if (res.responseCode === '200') {
+          this.propertyList = res.responseBody;
+          console.log(this.propertyList);
+      }
+    }, error => {
+      this.loading = false;
+      console.log('error', error);
+    });
+  }
+
+  getMasterRatingsList() {
+    this.srvProperty.getMasterRatingsList({}).subscribe((res) => {
+      console.log('getMasterRatingsList data', res);
+      if (res.responseCode === '200') {
+          this.ratingsFliterList = res.responseBody;
+      }
+    }, error => {
+      console.log('error', error);
+    });
+  }
+
+  getMasterAmenitiesList() {
+    this.srvProperty.getMasterAmenitiesList({}).subscribe((res) => {
+      console.log('getMasterAmenitiesList data', res);
+      if (res.responseCode === '200') {
+          this.amenitiesFliterList = res.responseBody;
+      }
+    }, error => {
+      console.log('error', error);
+    });
+  }
+
+  getMasterBudgetsList() {
+    this.srvProperty.getMasterBudgetsList({}).subscribe((res) => {
+      console.log('getMasterBudgetsList data', res);
+      if (res.responseCode === '200') {
+          this.budgetsFliterList = res.responseBody;
+      }
+    }, error => {
+      console.log('error', error);
+    });
+  }
+
+  getPropertyTypes() {
+    this.srvProperty.getPropertyTypes({}).subscribe((res) => {
+      console.log('getPropertyTypes data', res);
+      if (res.responseCode === '200') {
+        this.propertyTypes =  res.responseBody;
+        this.setPropertyTypeName(this.searchObj['propertyTypeId']);
+      }
+    }, error => {
+      console.log('error', error);
+    });
+  }
+
+  getPropertyTypeName(propertyTypeId: number) {
     const propertyTypes = this.propertyTypes;
     const propertyType =  propertyTypes.filter(x => x.propertyTypeId === propertyTypeId)[0];
     this.searchPropertyType = propertyType.name;
-   }
-   searchFormSubmitted(searchData) {
+  }
+
+  searchFormSubmitted(searchData) {
     const filterSelectedData = this.selectedFilter;
     const searchObj = searchData;
     this.searchObj = searchData;
     const merged = {...searchObj, ...filterSelectedData};
     this.getPropertyList(merged);
-   }
-   navigateToBookingPage(propertyId) {
+  }
+
+  navigateToBookingPage(propertyId) {
     const searchObj = JSON.parse(localStorage.getItem('searchObj'));
     searchObj['propertyId'] = propertyId;
     localStorage.setItem('searchObj', JSON.stringify(searchObj));
     this.sharedSrv.sharedHomeSearchData = searchObj;
     this.router.navigate(['/properties/property-details'], { queryParams: searchObj });
-   }
-   filterSelected(filterSelectedData) {
+  }
+
+  filterSelected(filterSelectedData) {
     this.selectedFilter = filterSelectedData;
     const searchObj = this.searchObj;
     const merged = {...searchObj, ...filterSelectedData};
     this.getPropertyList(merged);
-   }
-   ngOnDestroy() {
+  }
+
+  ngOnDestroy() {
     this.sub.unsubscribe();
   }
+  
   }

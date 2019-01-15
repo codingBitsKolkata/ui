@@ -1,0 +1,33 @@
+.details-page{
+    .dpicker, .roomGuest, .submitBtn{
+        display: inline-block;
+        margin-right: 20px;
+    }
+    .submitBtn .btn{
+        padding: 0.375rem 0.75rem !important;
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        border-radius: 0.25rem !important;
+    }
+    .checkin-pick{
+        color: #a2a0a0;
+        border-color: #dee1e4;
+        border-left: 0;
+        border-right: 0;
+    }
+    .checkout-pick{
+        color: #a2a0a0;
+        border-color: #dee1e4;
+        border-left: 0;
+    }
+    .hotelBookDropdown {
+        .dropdown-toggle{
+            height: 40px;
+        }
+        .dropdown-menu.show {
+            display: block;
+            width: max-content;
+            padding: 15px 20px;
+        }
+    }
+}

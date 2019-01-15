@@ -19,7 +19,7 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
 
   @Input() propertyTypes: Array<any>;
   @Input() searchObj: object;
-  @Input() pageName: object;
+  @Input() pageName: string;
   @Output() searchFormSubmitted  = new EventEmitter<string>();
   staySearchForm: FormGroup;
   noOfGuest: Array<number>;
@@ -32,6 +32,7 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
   checkInMinDate: any;
   latitude: any;
   longitude: any;
+  detailsPage: boolean;
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
@@ -68,6 +69,9 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
   }
 
   ngOnInit() {
+    if(this.pageName == 'property-details'){
+      this.detailsPage = true;
+    }
     console.log(this.searchObj);
     if (this.searchObj) {
       this.latitude = + this.searchObj['latitude'];

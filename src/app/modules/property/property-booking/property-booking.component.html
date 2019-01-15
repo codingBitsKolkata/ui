@@ -6,14 +6,14 @@
           <div class="col-md-8">
             <div class="row">
               <div class="col-md-4">
-                <img class="w-100 property-img" src="assets/images/property-book.png" alt="">
+                <img class="w-100 property-img" *ngIf="propertyDetails?.coverImageUrl" src="{{propertyDetails?.coverImageUrl}}" alt="">
               </div>
               <div class="col-md-8 property-desc">
-                <h4>ORA912255343 <span> Express Homestay</span></h4>
-                <p class="text"><i class="fa fa-map-marker" aria-hidden="true"></i> Palace road, Kolkata, India</p>
-                <p class="text">Check in: <span> 4th Jan, Friday 2019, 14:00 PM</span> <i></i> Check out: <span> 6th Jan, Sunday 2019, 12:00 PM</span></p>
+                <h4>{{propertyDetails?.oraname}} <span> {{propertyDetails?.rooms[0].roomStandard}} {{propertyDetails?.propertyType.name}}</span></h4>
+                <p class="text"><i class="fa fa-map-marker" aria-hidden="true"></i> {{propertyDetails?.address}}</p>
+                <p class="text">Check in: <span> {{searchObj.checkInDate}}, {{propertyDetails?.checkinTime}}</span> <i></i> Check out: <span> {{searchObj.checkInDate}}, {{propertyDetails?.checkoutTime}}</span></p>
                 <div class="card-room">
-                  <h5>Deluxe Room <span> 2 Adults + 1 Child</span></h5>
+                  <h5>{{propertyDetails?.rooms[0].roomCategory.name}} Room <span> {{totalNoOfGuest}} Adults + {{totalNoOfChild}} Child</span></h5>
                   <div class="row">
                     <div class="col-auto">
                       <label for="">Tariff Type</label>
@@ -34,7 +34,7 @@
               </div>
               <div class="col-md-12">
                 <!-- Traveller Information Form -->
-                <form action="" class="form">
+                <form action="" class="form" *ngIf="!bookingCompleted">
                   <h3>Traveller information</h3>
                   <div class="row">
                     <div class="col-md-2">
@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-md-5">
                       <div class="form-group">
-                        <input type="text" name="" class="form-control" placeholder="Firdt name">
+                        <input type="text" name="" class="form-control" placeholder="First name">
                       </div>
                     </div>
                     <div class="col-md-5">
@@ -56,11 +56,11 @@
                         <input type="text" name="" class="form-control" placeholder="Last name">
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                       <div class="form-group">
                         <input type="text" name="" class="form-control" placeholder="Company name">
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-6">
                       <div class="form-group">
                         <input type="email" name="" class="form-control" placeholder="Email address">
@@ -71,13 +71,13 @@
                         <input type="email" name="" class="form-control" placeholder="Contact number">
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                       <div class="form-group">
                         <select name="" class="form-control">
                           <option value="">Document Type</option>
                         </select>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-6">
                       <div class="form-group">
                         <input type="email" name="" class="form-control" placeholder="Check in preference time">
@@ -101,7 +101,7 @@
                       </label>
                     </div>
                     <div class="col-md-12 text-right">
-                      <button class="btn btn-primary" routerLink="/properties/booking/confirmation">Book your stay</button>
+                      <button class="btn btn-primary" (click)="bookingFormSubmit()">Book your stay</button>
                     </div>
                   </div>
                 </form>
@@ -191,7 +191,7 @@
                 </form> -->
   
                 <!-- Confirmation Form -->
-                <!-- <form action="">
+                <form action="" *ngIf="bookingCompleted" class="mt-30">
                   <div class="confirmation-form">
                     <img src="assets/images/cards/thumbsup.png" alt="">
                     <h4 class="title">Thank you for staying with us</h4>
@@ -200,30 +200,30 @@
                       <div class="col-auto">
                         <div class="c-card">
                           <h5>guests</h5>
-                          <span>3</span>
+                          <span>{{totalNoOfGuest + totalNoOfChild}}</span>
                         </div>
                       </div>
                       <div class="col-auto">
                         <div class="c-card">
                           <h5>room</h5>
-                          <span>1</span>
+                          <span>{{searchObj.rooms.length}}</span>
                         </div>
                       </div>
                       <div class="col-auto">
                         <div class="c-card">
                           <h5>price</h5>
-                          <span>36,000</span>
+                          <span *ngIf="propertyDetails?.priceDetails">{{propertyDetails?.priceDetails.totalAmount}}</span>
                         </div>
                       </div>
                     </div>
                     <p class="book-link">Booking details has been successfully mailed to your email id. Click here to view the <a href="">booking details</a> </p>
-                    <button class="btn btn-dark">Book another</button>
+                    <button class="btn btn-dark" routerLink="/properties">Book another</button>
                   </div>
-                </form> -->
+                </form>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 pos-sticky-right">
             <div class="d-flex justify-content-end">
               <div class="col-auto book-summary">
                 <ul class="progress-indicator">
@@ -235,28 +235,40 @@
                         REVIEW
                         <span class="bubble"></span>
                     </li>
-                    <li>
+                    <li class="{{bookingCompleted ? 'completed': ''}}">
                         PAYMENT
                         <span class="bubble"></span>
                     </li>
                 </ul>
                 <h5>Booking summary</h5>
-                <table class="table">
+                <table class="table" *ngIf="propertyDetails?.priceDetails">
+                  <!-- <tr *ngFor="let key of objectKeys(propertyDetails?.priceDetails) ">
+                    <td class="text-left">{{key}}</td>
+                    <td class="text-right t-gray">₹ {{propertyDetails?.priceDetails[key]}}</td>
+                  </tr> -->
                   <tr>
-                    <td class="text-left">Base price</td>
-                    <td class="text-right t-gray">₹21,500</td>
+                    <td class="text-left">Amount Payable <i></i></td>
+                    <td class="text-right t-gray">₹ {{propertyDetails?.priceDetails.amountPayable}}</td>
                   </tr>
                   <tr>
-                    <td class="text-left">Taxes & service charges <i></i></td>
-                    <td class="text-right t-gray">₹5,117</td>
+                    <td class="text-left">Convenience Fee <i></i></td>
+                    <td class="text-right t-gray">₹ {{propertyDetails?.priceDetails.convenienceFee}}</td>
                   </tr>
-                  <tr class="border-tb">
-                    <td class="text-left">Sub total</td>
-                    <td class="text-right t-gray">₹36,310.05</td>
+                  <tr>
+                    <td class="text-left">Convenience GST Amount <i></i></td>
+                    <td class="text-right t-gray">₹ {{propertyDetails?.priceDetails.convenienceGSTAmount}}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-left">Convenience GST Percentage <i></i></td>
+                    <td class="text-right t-gray">₹ {{propertyDetails?.priceDetails.convenienceGSTPercentage}}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-left">Property Offer <i></i></td>
+                    <td class="text-right t-gray">₹ {{propertyDetails?.priceDetails.propertyOffer}}</td>
                   </tr>
                   <tr>
                     <td class="text-left total">Total payable</td>
-                    <td class="text-right total">₹36,310.05</td>
+                    <td class="text-right total">₹ {{propertyDetails?.priceDetails.totalAmount}}</td>
                   </tr>
                 </table>
               </div>

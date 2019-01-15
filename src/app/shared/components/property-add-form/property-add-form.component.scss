@@ -56,9 +56,12 @@
     }
     ::ng-deep{
         .card-footer{
-            padding-left: 0;
-            padding-right: 0;
-            padding-bottom: 0;
+            padding: 0;
+            position: absolute;
+            width: calc(100% + 124px);
+            top: calc(50% - 25px);
+            background-color: transparent;
+            left: -62px;
             button.btn:nth-child(1){
                 background-image: url(../../../../assets/images/left-arrow-black.png);
                 background-position: center center;
@@ -66,8 +69,9 @@
                 background-repeat: no-repeat;
                 border:none;
                 color: transparent;
-                width: 40px !important;
-                padding: 0;
+                width: 50px !important;
+                padding: 10px;
+                background-color: #fff;
             }
             button.btn:nth-child(2){
                 background-image: url(../../../../assets/images/right-arrow-black.png);
@@ -76,8 +80,9 @@
                 background-repeat: no-repeat;
                 border:none;
                 color: transparent;
-                width: 40px !important;
-                padding: 0;
+                width: 50px !important;
+                padding: 10px;
+                background-color: #fff;
             }
             button.btn:nth-child(3){
                 background-image: url(../../../../assets/images/right-arrow-black.png);
@@ -102,6 +107,8 @@
             }
             .card-block{
                 overflow: visible;
+                position: relative;
+                z-index: 1000;
             }
             .property-type{
                 .input-hidden{
@@ -311,3 +318,26 @@
         margin-left: 5px;
     } 
 }   
+
+.alert-danger {
+    color: #f51e1e;
+    background-color: #fff;
+    border-color: #fff;
+    position: absolute;
+    right: 0;
+    top: -45px;
+    font-size: 14px;
+    font-family: latobolditalic;
+    padding-left: 34px;
+    display: flex;
+    align-items: center;
+    div{
+        display: inline-block;
+    }
+    &::before{
+        content: "*";
+        font-size: 18px;
+        line-height: 18px;
+        margin-right: 6px;
+    }
+}

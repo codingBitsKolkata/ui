@@ -325,4 +325,9 @@
         }
     }
 }
-    
+.pos-sticky-right{
+    height: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 120px;
+}
