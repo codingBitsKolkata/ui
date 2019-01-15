@@ -14,9 +14,11 @@ import { ActivatedRoute, Router  } from '@angular/router';
 export class PropertyDetailsComponent implements OnInit {
 
   propertyDetails: object;
+  propertyId: number;
   searchObj: object;
   as_leftNavDisabled = false;
   as_rightNavDisabled = false;
+  loading: boolean;
 //   ls_leftNavDisabled = false;
 //   ls_rightNavDisabled = false;
 
@@ -32,7 +34,7 @@ export class PropertyDetailsComponent implements OnInit {
       private srvProperty: PropertyService,
       private router: Router
       ) {
-
+        this.loading = false;
       }
 
 
@@ -42,10 +44,12 @@ export class PropertyDetailsComponent implements OnInit {
     if (!isSearchObjEmpty) {
       this.getPropertyDetails(sharedHomeSearchData);
       this.searchObj = sharedHomeSearchData;
+      this.propertyId = sharedHomeSearchData['propertyId'];
     } else {
       const searchObj = JSON.parse(localStorage.getItem('searchObj'));
       this.getPropertyDetails(searchObj);
       this.searchObj = searchObj;
+      this.propertyId = searchObj['propertyId'];
     }
 
       this.galleryOptions = [
@@ -115,22 +119,29 @@ openModal(content) {
 }
 
 getPropertyDetails(params: any) {
+    this.loading = true;
     this.srvProperty.getPropertyDetails(params).subscribe((res) => {
+        this.loading = false;
         console.log('getPropertyDetails data', res);
         if (res.responseCode === '200') {
             this.propertyDetails = res.responseBody;
             console.log(this.propertyDetails);
         }
     }, error => {
+        this.loading = false;
         console.log('error', error);
     });
 }
 
-  searchFormSubmitted(evn) {
-    this.router.navigate(['/properties/property-details'], { queryParams: this.searchObj });
+  searchFormSubmitted(searchObj) {
+    searchObj['propertyId'] = this.propertyId;
+    localStorage.setItem('searchObj', JSON.stringify(searchObj));
+    this.sharedSrv.sharedHomeSearchData = searchObj;
+    this.getPropertyDetails(searchObj);
+    // this.router.navigate(['/properties/property-details'], { queryParams: this.searchObj });
   }
 
-  arrayNum(number){
+  arrayNum(number) {
     return Array(parseInt(number));
   }
 

@@ -69,7 +69,7 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
   }
 
   ngOnInit() {
-    if(this.pageName == 'property-details'){
+    if (this.pageName === 'property-details') {
       this.detailsPage = true;
     }
     console.log(this.searchObj);
@@ -164,7 +164,11 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
        localStorage.setItem('searchObj', JSON.stringify(searchParam));
        this.sharedSrv.sharedHomeSearchData = searchParam;
        this.searchFormSubmitted.emit(searchParam);
-       this.router.navigate(['/properties'], { queryParams: searchParam });
+       if (this.detailsPage) {
+        this.router.navigate(['/properties/property-details'], { queryParams: searchParam });
+       } else {
+        this.router.navigate(['/properties'], { queryParams: searchParam });
+       }
        console.log('here');
     } else {
       this.sharedSrv.validateAllFormFields(this.staySearchForm);
