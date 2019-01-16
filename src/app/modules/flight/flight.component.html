@@ -20,7 +20,7 @@
         
           <!-- <router-outlet></router-outlet> -->
           <app-oneway *ngIf="tripType=='O' && totalFlightFound"  [flightData]="flightList" [flightSearchObj]="flightSearchObj" (flightSelectedEvent)="onFlightSelected($event)"></app-oneway>
-          <app-roundtrip *ngIf="tripType=='R' && totalFlightFound" [flightData]="flightList" [flightSearchObj]="flightSearchObj"></app-roundtrip>
+          <app-roundtrip *ngIf="tripType=='R' && totalFlightFound" [flightData]="flightList" [flightSearchObj]="flightSearchObj" (flightSelectedEvent)="onFlightSelected($event)"></app-roundtrip>
           <app-multicity *ngIf="tripType=='M'"></app-multicity>
     
         </div>
@@ -28,75 +28,75 @@
   </div>
 
   <!-- Footer Sticky bar Oneway Trip -->
-  <div class="footer-sticky-bar oneway-sticky" *ngIf="selectedFlightData">
+  <div class="footer-sticky-bar oneway-sticky" *ngIf="tripType=='O' && selectedFlightData">
     <div class="d-flex justify-content-center">
       <div class="col-auto flight-logo">
         <img src="assets/images/flight/fl-1.png" alt="">
         <p>{{getAirlineName(selectedFlightData.OD[0].FS[0].vc)}} <span> {{selectedFlightData.OD[0].FS[0].vc}} - {{selectedFlightData.OD[0].FS[0].fl}}</span></p>
       </div>
       <div class="col-auto dept-time">
-        <p>{{selectedFlightData.OD[0].FS[0].dd}} | <span class="s-name">CCU</span> <br> <span class="date">26th Dec 2018 </span></p>
+        <p>{{selectedFlightData.OD[0].FS[0].dd}} | <span class="s-name">{{selectedFlightData.OD[0].FS[0].dac}}</span> <br> <span class="date">{{parserFormatter.format(flightSearchObj.multiCities[0].flightDepartDate)}} </span></p>
       </div>
       <div class="col-auto arrvl-time">
         <i class="trip-icon"></i>
-        <p>{{selectedFlightData.OD[0].FS[0].ad}} |  <span class="s-name">BLR</span> <br> <span class="date">26th Dec 2018 </span></p>
+        <p>{{selectedFlightData.OD[0].FS[0].ad}} |  <span class="s-name">{{selectedFlightData.OD[0].FS[0].aac}}</span> <br> <span class="date">{{parserFormatter.format(flightSearchObj.multiCities[0].flightDepartDate)}} </span></p>
       </div>
       <div class="col-auto details">
         <p>
-          <span class="price">₹30,672</span><br>
+          <span class="price">₹ {{getFareDepart(selectedFlightData.ID) | number:'.2'}}</span><br>
           <span class="d-btn">Details</span>
         </p>
       </div>
       <div class="col-auto total-price">
-        <p class="price">All Total <br> <span>₹30,672</span></p>
-        <button class="btn btn-primary" routerLink="/flight-booking">Book your flight</button>
+        <p class="price">All Total <br> <span>₹{{getFareDepart(selectedFlightData.ID) | number:'.2'}}</span></p>
+        <button class="btn btn-primary" (click)="goTobookingPage()">Book your flight</button>
       </div>
     </div>
   </div>
 
   <!-- Footer Sticky bar Round Trip -->
-  <div class="footer-sticky-bar roundtrip-sticky" style="display:none">
+  <div class="footer-sticky-bar roundtrip-sticky" *ngIf="tripType=='R' && selectedFlightData">
     <div class="d-flex justify-content-center">
       <div class="col-auto flight-logo">
         <img src="assets/images/flight/fl-1.png" alt="">
-        <p>Spicejet <span> SG-742</span></p>
+        <p>{{getAirlineName(selectedFlightData[0].OD[0].FS[0].vc)}} <span> {{selectedFlightData[0].OD[0].FS[0].vc}} - {{selectedFlightData[0].OD[0].FS[0].fl}}</span></p>
       </div>
       <div class="col-auto dept-time">
-        <p>14:30 PM | <span class="s-name">CCU</span> <br> <span class="date">26th Dec 2018 </span></p>
+          <p>{{selectedFlightData[0].OD[0].FS[0].dd}} | <span class="s-name">{{selectedFlightData[0].OD[0].FS[0].dac}}</span> <br> <span class="date">{{parserFormatter.format(flightSearchObj.multiCities[0].flightDepartDate)}} </span></p>
       </div>
       <div class="col-auto arrvl-time">
         <i class="fa fa-long-arrow-right"></i>
         <!-- <i class="trip-icon"></i> -->
-        <p>16:30 PM |  <span class="s-name">BLR</span> <br> <span class="date">26th Dec 2018 </span></p>
+        <p>{{selectedFlightData[0].OD[0].FS[0].ad}} |  <span class="s-name">{{selectedFlightData[0].OD[0].FS[0].aac}}</span> <br> <span class="date">{{parserFormatter.format(flightSearchObj.multiCities[0].flightDepartDate)}} </span></p>
       </div>
       <div class="col-auto details border-right">
         <i class="trip-icon"></i>
         <p>
-          <span class="price">₹30,672</span><br>
+          <span class="price">₹ {{getFareDepart(selectedFlightData[0].ID) | number:'.2'}}</span><br>
           <span class="d-btn">Details</span>
         </p>
       </div>
       <div class="col-auto flight-logo p-l-30">
         <img src="assets/images/flight/fl-1.png" alt="">
-        <p>Spicejet <span> SG-742</span></p>
+        <p>{{getAirlineName(selectedFlightData[1].OD[0].FS[0].vc)}} <span> {{selectedFlightData[1].OD[0].FS[0].vc}} - {{selectedFlightData[1].OD[0].FS[0].fl}}</span></p>
       </div>
       <div class="col-auto dept-time">
-        <p>14:30 PM | <span class="s-name">CCU</span> <br> <span class="date">26th Dec 2018 </span></p>
+          <p>{{selectedFlightData[1].OD[0].FS[0].dd}} | <span class="s-name">{{selectedFlightData[1].OD[0].FS[0].dac}}</span> <br> <span class="date">{{parserFormatter.format(flightSearchObj.multiCities[0].arrival_date)}} </span></p>
       </div>
       <div class="col-auto arrvl-time">
         <!-- <i class="trip-icon"></i> -->
         <i class="fa fa-long-arrow-right"></i>
-        <p>16:30 PM |  <span class="s-name">BLR</span> <br> <span class="date">26th Dec 2018 </span></p>
+        <p>{{selectedFlightData[1].OD[0].FS[0].ad}} |  <span class="s-name">{{selectedFlightData[1].OD[0].FS[0].aac}}</span> <br> <span class="date">{{parserFormatter.format(flightSearchObj.multiCities[0].arrival_date)}} </span></p>
       </div>
       <div class="col-auto details">
         <p>
-          <span class="price">₹30,672</span><br>
+          <span class="price">₹{{getFareReturn(selectedFlightData[1].ID) | number:'.2'}}</span><br>
           <span class="d-btn">Details</span>
         </p>
       </div>
       <div class="col-auto total-price">
-        <p class="price">All Total <br> <span>₹30,672</span></p>
-        <button class="btn btn-primary" routerLink="/flight-booking">Book your flight</button>
+        <p class="price">All Total <br> <span>₹{{getFareDepart(selectedFlightData[0].ID)*1 + getFareReturn(selectedFlightData[1].ID)*1 | number:'.2' }}</span></p>
+        <button class="btn btn-primary" (click)="goTobookingPage()">Book your flight</button>
       </div>
     </div>
   </div>

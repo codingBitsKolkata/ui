@@ -21,6 +21,7 @@ export class OnewayComponent implements OnInit {
     this.fareDetails = [];
   }
   ngOnInit() {
+    if (this.flightSearchObj) {
     const originAirportCode = this.flightSearchObj.multiCities[0].origin.airportCode;
     const destinationAirportCode = this.flightSearchObj.multiCities[0].destination.airportCode;
     const flightDepartDate =  this.flightSearchObj.multiCities[0].flightDepartDate;
@@ -29,6 +30,7 @@ export class OnewayComponent implements OnInit {
     this.flightList = this.flightData.resultData[0].fltSchedule[dataSearchKey];
     this.airlineNames = this.flightData.resultData[0].fltSchedule['airlineNames'];
     this.fareDetails = this.flightData.resultData[0].fareDetails[dataSearchKey];
+    }
   }
    minTwoDigits(n) {
     return (n < 10 ? '0' : '') + n;

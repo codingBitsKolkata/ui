@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-roundtrip',
@@ -10,11 +10,14 @@ export class RoundtripComponent implements OnInit {
 
   @Input() flightData: any;
   @Input() flightSearchObj: any;
+  @Output() flightSelectedEvent  = new EventEmitter<any>();
   airlineNames: Array<any>;
   flightListDepart: Array<any>;
   flightListReturn: Array<any>;
   fareDetailsDepart: Array<any>;
   fareDetailsReturn: Array<any>;
+  departFlightSelected: any;
+  returnFlightSelected: any;
   constructor() {
     this.flightListDepart = [];
     this.flightListReturn = [];
@@ -52,6 +55,11 @@ export class RoundtripComponent implements OnInit {
     const fareO = this.fareDetailsReturn[flightId]['O'];
     return fareO.revisedFareDetails.tf;
   }
-
+  handleDepartFlightChange(event) {
+     if (this.departFlightSelected && this.returnFlightSelected) {
+        const arr = [this.departFlightSelected, this.returnFlightSelected];
+        this.flightSelectedEvent.emit(arr);
+     }
+  }
 
 }
