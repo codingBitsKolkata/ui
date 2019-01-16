@@ -32,7 +32,7 @@
             <div class="book-panel" for="flight1">
               <h4 class="class">{{flightRow.OD[0].classtype}}</h4>
               <span class="p-from">From</span>
-              <span class="price">₹{{getFareDepart(flightRow.ID) | number:'.2'}}</span>
+              <span class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{getFareDepart(flightRow.ID) | number:'.2'}}</span>
               <span class="radio-btn"></span>
             </div>
           </div>
@@ -79,7 +79,7 @@
             <div class="book-panel" for="flight1">
               <h4 class="class">{{flightRow.OD[0].classtype}}</h4>
               <span class="p-from">From</span>
-              <span class="price">₹{{getFareReturn(flightRow.ID) | number:'.2'}}</span>
+              <span class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{getFareReturn(flightRow.ID) | number:'.2'}}</span>
               <span class="radio-btn"></span>
             </div>
           </div>

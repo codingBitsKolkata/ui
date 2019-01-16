@@ -53,16 +53,25 @@ export class PropertyDetailsComponent implements OnInit {
     }
 
       this.galleryOptions = [
-          {
-              width: '100%',
-              height: '100%',
-              thumbnailsColumns: 4,
-              imageAnimation: NgxGalleryAnimation.Slide,
-              imageAutoPlay: true,
-              imageAutoPlayInterval: 5000,
-              imageInfinityMove: true,
-              thumbnails: false
-          },
+        {   
+            width: '100%',
+            height: '100%',
+            "imageArrows": true, 
+            "imageSwipe": true, 
+            "thumbnailsArrows": false, 
+            "thumbnailsSwipe": true, 
+            "previewSwipe": true 
+        },
+        //   {
+        //       width: '100%',
+        //       height: '100%',
+        //       thumbnailsColumns: 3,
+        //       imageAnimation: NgxGalleryAnimation.Slide,
+        //       imageAutoPlay: true,
+        //       imageAutoPlayInterval: 5000,
+        //       imageInfinityMove: true,
+        //       thumbnails: false
+        //   },
           // max-width 800
           {
               breakpoint: 800,
@@ -87,14 +96,19 @@ export class PropertyDetailsComponent implements OnInit {
               big: 'assets/images/property-details/gallery/big-slide-1.png'
           },
           {
-              small: 'assets/images/property-details/gallery/big-slide-1.png',
-              medium: 'assets/images/property-details/gallery/big-slide-1.png',
-              big: 'assets/images/property-details/gallery/big-slide-1.png'
+              small: 'assets/images/property-details/gallery/big-slide-2.jpg',
+              medium: 'assets/images/property-details/gallery/big-slide-2.jpg',
+              big: 'assets/images/property-details/gallery/big-slide-2.jpg'
           },
           {
-              small: 'assets/images/property-details/gallery/big-slide-1.png',
-              medium: 'assets/images/property-details/gallery/big-slide-1.png',
-              big: 'assets/images/property-details/gallery/big-slide-1.png'
+              small: 'assets/images/property-details/gallery/big-slide-3.jpg',
+              medium: 'assets/images/property-details/gallery/big-slide-3.jpg',
+              big: 'assets/images/property-details/gallery/big-slide-3.jpg'
+          },
+          {
+              small: 'assets/images/property-details/gallery/big-slide-4.jpg',
+              medium: 'assets/images/property-details/gallery/big-slide-4.jpg',
+              big: 'assets/images/property-details/gallery/big-slide-4.jpg'
           }
       ];
   }

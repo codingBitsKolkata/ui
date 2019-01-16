@@ -5,7 +5,7 @@
         <img class="user-img" src="assets/images/dashboard/prop_host.png" alt="">
         <button class="btn btn-edit" type="button" (click)="openModal(editProfileModal)"><i class="pencil-icon"></i></button>
       </div>
-      <label class="username">{{userProfileDetails.userVsInfo.name}}</label>
+      <label class="username" *ngIf="userProfileDetails?.userVsInfo?.name">{{userProfileDetails?.userVsInfo?.name}}</label>
     </div>
     <ul class="nav">
       <li class="nav-item" *ngIf="userRole == 1">
@@ -186,7 +186,7 @@
         </div>
         <div class="col-md-12">
           <div class="form-group">
-            <textarea name="" class="form-control h100">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </textarea>
+            <textarea name="" class="form-control h100" placeholder="Type your message here"></textarea>
           </div>
         </div>
       </div>

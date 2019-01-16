@@ -235,7 +235,7 @@ export class AuthComponent implements OnInit {
   openPrivacyPolicyModal(content) {
     this.authSrv.getPrivacyPolicy().subscribe((res) => {
       this.privacyPolicyData = res.responseBody;
-      this.modalService.open(content, { windowClass: 'modal-popup', centered: true });
+      this.modalService.open(content, { windowClass: 'modal-popup', size: 'lg', centered: true });
     }, errorData => {
       console.log('error', errorData);
     });

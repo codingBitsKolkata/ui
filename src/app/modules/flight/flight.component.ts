@@ -17,6 +17,7 @@ export class FlightComponent implements OnInit {
   totalFlightFound: number;
   airlineNames: Array<any>;
   selectedFlightData: any;
+  routeName: string;
   constructor(
     private modalService: NgbModal,
     private sharedSrv: SharedService,
@@ -26,6 +27,8 @@ export class FlightComponent implements OnInit {
 
       this.loading = false;
       this.airlineNames = [];
+      this.routeName = this.router.url;
+      console.log(this.routeName);
 
   }
 

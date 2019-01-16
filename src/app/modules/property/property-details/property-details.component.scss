@@ -23,10 +23,10 @@ agm-map{
         h1{
             color: #2c2c2c;
             font-family: abrialfatface;
-            font-size: 48px;
-            position: relative;
+            font-size: 30px;
+            // position: relative;
             z-index: 1111;
-            width: 450px;
+            // width: 450px;
             margin-top: 30px;
             display: block;
             .text-orange{
@@ -38,7 +38,7 @@ agm-map{
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
-                height: 170px;
+                height: 110px;
             }
         }
         p.top-text{
@@ -871,4 +871,13 @@ agm-map{
             }
         }
     }
+}
+
+::ng-deep{
+    .ngx-gallery-layout{
+        // flex-direction: inherit !important;
+    }
+}
+.h-104{
+    height: 104% !important;
 }

@@ -23,14 +23,14 @@
               <ul class="list-unstyled">
                 <li><a routerLink="/privacy-policy">Privacy policy</a></li>
                 <li><a routerLink="/cancellation-policy">Cancellation policy</a></li>
-                <li><a routerLink="/terms-conditions">Terms & conditions</a></li>
+                <li><a class="c-pointer" (click)="openTermsConditions(privacyPolicy)">Terms & conditions</a></li>
               </ul>
             </div>
           </div>
         </div>
         <div class="col-md-6" data-aos="zoom-in" data-aos-duration="500" data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false">
           <h4 class="title">Newsletter</h4>
-          <p class="news-intro">Make sure that you’re always the 1st who receive our latest news and promotions.</p>
+          <p class="news-intro">Make sure that you’re always the 1st who receives our latest news and promotions.</p>
           <p> <ngb-alert *ngIf="newsLetterMessage"  [type]="'success'" (close)="newsLetterMessage = null">{{ newsLetterMessage }}</ngb-alert> </p>
           <form class="newsletter" [formGroup]="newsletterForm" (ngSubmit)="onSubmitNewsLetterFrom()" novalidate>
             <div class="form-row">
@@ -91,3 +91,13 @@
     </div>
   </div>
 </footer>
+
+
+<!-- Terms & conditions modal-->
+<ng-template #privacyPolicy let-modal>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <app-terms-conditions></app-terms-conditions>
+  <!-- {{privacyPolicyData.privacyPolicy}}  -->
+</ng-template>

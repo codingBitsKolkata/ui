@@ -27,18 +27,20 @@
     </div>
     <div formArrayName="multiCities" *ngFor="let multiCity of flightSearchForm.controls['multiCities'].controls; let i = index">
       <div class="form-group flight-location" [formGroupName]="i">
-        <div class="input-group">
-          <input type="text" [ngbTypeahead]="search" [resultFormatter]="formatMatches" [inputFormatter]="formatMatches" formControlName="origin" typeahead-editable ="false" class="form-control fromBoxInput" placeholder="From"
-          [ngClass]="{ 'is-invalid': multiCity.get('origin').touched && multiCity.get('origin').errors }">
-          <span *ngIf="searching1">searching...</span>
-          <div class="form-control-feedback" *ngIf="searchFailed1">Sorry, suggestions could not be loaded.</div>
-          <div class="input-group-append fromBox">
-            <span class="input-group-text"><i class="fa fa-map-marker"></i></span>                          
-          </div>
-          <input type="text" class="form-control toBoxInput" [ngbTypeahead]="search" [resultFormatter]="formatMatches" [inputFormatter]="formatMatches" formControlName="destination" typeahead-editable ="false" placeholder="To"
-          [ngClass]="{ 'is-invalid': multiCity.get('destination').touched && multiCity.get('destination').errors }">
-          <div class="input-group-append toBox">
-            <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" [ngbTypeahead]="search" [resultFormatter]="formatMatches" [inputFormatter]="formatMatches" formControlName="origin" typeahead-editable ="false" class="form-control fromBoxInput" placeholder="From"
+            [ngClass]="{ 'is-invalid': multiCity.get('origin').touched && multiCity.get('origin').errors }">
+            <span *ngIf="searching1">searching...</span>
+            <div class="form-control-feedback" *ngIf="searchFailed1">Sorry, suggestions could not be loaded.</div>
+            <div class="input-group-append fromBox">
+              <span class="input-group-text"><i class="fa fa-map-marker"></i></span>                          
+            </div>
+            <input type="text" class="form-control toBoxInput" [ngbTypeahead]="search" [resultFormatter]="formatMatches" [inputFormatter]="formatMatches" formControlName="destination" typeahead-editable ="false" placeholder="To"
+            [ngClass]="{ 'is-invalid': multiCity.get('destination').touched && multiCity.get('destination').errors }">
+            <div class="input-group-append toBox">
+              <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+            </div>
           </div>
         </div>
         <div class="form-group">

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { WhiteSpaceValidator } from '../../directives/validators/white-space-validation';
 import { SharedService} from '../../services/shared.service';
 import { SubscriberService } from '../../services/apis/subscriber.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-footer',
@@ -18,6 +19,7 @@ export class FooterComponent implements OnInit {
     private fb: FormBuilder,
     private sharedSrv: SharedService,
     private subscriberSrv: SubscriberService,
+    private modalService: NgbModal
   ) {
      // tslint:disable-next-line:max-line-length
     this.emailRegx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -53,6 +55,10 @@ export class FooterComponent implements OnInit {
       this.sharedSrv.validateAllFormFields(this.newsletterForm);
     }
 
+  }
+
+  openTermsConditions(content){
+    this.modalService.open(content, { windowClass: 'modal-popup', size: 'lg', centered: true });
   }
 
 }

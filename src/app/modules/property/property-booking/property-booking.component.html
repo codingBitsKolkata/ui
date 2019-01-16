@@ -89,7 +89,7 @@
                       </div>
                     </div>
                     <div class="col-md-12">
-                      <label class="check-box ng-star-inserted"> I have a GST number 
+                      <label class="check-box ng-star-inserted"> I have a GST number / Corporate traveler / Business traveler
                         <input type="checkbox">
                         <span class="checkmark"></span>
                       </label>
@@ -194,7 +194,7 @@
                 <form action="" *ngIf="bookingCompleted" class="mt-30">
                   <div class="confirmation-form">
                     <img src="assets/images/cards/thumbsup.png" alt="">
-                    <h4 class="title">Thank you for staying with us</h4>
+                    <h4 class="title">Thank you for choosing ORA</h4>
                     <p class="book-id">Booking ID: <span>ORA912255343</span></p>
                     <div class="d-flex justify-content-center">
                       <div class="col-auto">
@@ -244,31 +244,31 @@
                 <table class="table" *ngIf="propertyDetails?.priceDetails">
                   <!-- <tr *ngFor="let key of objectKeys(propertyDetails?.priceDetails) ">
                     <td class="text-left">{{key}}</td>
-                    <td class="text-right t-gray">₹ {{propertyDetails?.priceDetails[key]}}</td>
+                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails[key]}}</td>
                   </tr> -->
                   <tr>
                     <td class="text-left">Amount Payable <i></i></td>
-                    <td class="text-right t-gray">₹ {{propertyDetails?.priceDetails.amountPayable}}</td>
+                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.amountPayable}}</td>
                   </tr>
                   <tr>
                     <td class="text-left">Convenience Fee <i></i></td>
-                    <td class="text-right t-gray">₹ {{propertyDetails?.priceDetails.convenienceFee}}</td>
+                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceFee}}</td>
                   </tr>
                   <tr>
                     <td class="text-left">Convenience GST Amount <i></i></td>
-                    <td class="text-right t-gray">₹ {{propertyDetails?.priceDetails.convenienceGSTAmount}}</td>
+                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceGSTAmount}}</td>
                   </tr>
                   <tr>
                     <td class="text-left">Convenience GST Percentage <i></i></td>
-                    <td class="text-right t-gray">₹ {{propertyDetails?.priceDetails.convenienceGSTPercentage}}</td>
+                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceGSTPercentage}}</td>
                   </tr>
                   <tr>
                     <td class="text-left">Property Offer <i></i></td>
-                    <td class="text-right t-gray">₹ {{propertyDetails?.priceDetails.propertyOffer}}</td>
+                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.propertyOffer}}</td>
                   </tr>
                   <tr>
                     <td class="text-left total">Total payable</td>
-                    <td class="text-right total">₹ {{propertyDetails?.priceDetails.totalAmount}}</td>
+                    <td class="text-right total"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.totalAmount}}</td>
                   </tr>
                 </table>
               </div>

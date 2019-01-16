@@ -10,7 +10,13 @@ import { BannerService } from '../../services/apis/banner.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+//   styles: [`
+//     .bannerImg {
+//         width: 100%;
+//         max-height: {{ windowHeight }};
+//     }
+// `]
 })
 export class HomeComponent implements OnInit {
   @ViewChild('dpHotel') dpHotel: NgbInputDatepicker;
@@ -30,6 +36,8 @@ export class HomeComponent implements OnInit {
   propertyTypes: Array<any>;
   propertyList: Array<any>;
 
+  windowHeight: number;
+
   constructor(
     private calendar: NgbCalendar,
     config: NgbDatepickerConfig,
@@ -41,6 +49,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private parserFormatter: NgbDateParserFormatter,
     ) {
+      this.windowHeight = window.innerHeight;
+      console.log("Height: " + this.windowHeight)
     this.h_fromDate = this.calendar.getToday();
     this.h_toDate = this.calendar.getNext(this.calendar.getToday(), 'd', 3);
 
@@ -61,6 +71,8 @@ export class HomeComponent implements OnInit {
   // constructor() { }
 
   ngOnInit() {
+    this.windowHeight = window.innerHeight;
+    console.log("Height: " + this.windowHeight)
   }
 
   onDateSelectionHotel(date: NgbDate) {
@@ -191,5 +203,14 @@ export class HomeComponent implements OnInit {
     localStorage.setItem('searchObj', JSON.stringify(searchParam));
     this.sharedSrv.sharedHomeSearchData = searchParam;
     this.router.navigate(['/properties'], { queryParams: searchParam });
+  }
+
+  getMyStyles(){
+    let myStyles = {
+      'width': '100%',
+      'max-height': this.windowHeight + 'px'
+      // 'height': (this.windowHeight - 76) + 'px'
+    };
+    return myStyles;
   }
 }

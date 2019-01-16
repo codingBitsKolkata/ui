@@ -4,7 +4,7 @@
     <ngb-carousel showNavigationArrows="false" *ngIf="bannerList.length > 0">
 
       <ng-template ngbSlide  *ngFor="let banner of bannerList">
-        <img src="{{banner.bannerImgUrl}}" class="mh-100" style="width: 100%; max-height: 400px">
+        <img src="{{banner.bannerImgUrl}}" [ngStyle]="getMyStyles()">
         <div class="carousel-caption">
           <h3>{{banner.title}}</h3>
           <p>{{banner.subTitle}}</p>
@@ -26,10 +26,10 @@
   <!-- Features Section -->
   <div class="container-fluid features-section">
     <div class="container">
-      <div class="row">
+      <div class="row d-flex align-items-center">
         <div class="col-md-2 border-right text-center" data-aos="flip-down">
           <div><img src="assets/images/ora-features.png" /></div>
-          <div class="mt-18"><span class="info-text">Features in all ORAs</span></div>
+          <div class="mt-10"><span class="info-text">Features in all ORAs</span></div>
         </div>
         <div class="col-md-2 border-right text-center" data-aos="flip-up">
             <div><img src="assets/images/features_ID.png" /></div>
@@ -41,11 +41,11 @@
         </div>
         <div class="col-md-2 border-right text-center" data-aos="flip-up">
             <div><img src="assets/images/features_hostmonitors.png" /></div>
-            <div><span class="info-text">Host monitors</span><span class="text-dark exclamation-circle"><i class="fa fa-exclamation-circle c-pointer" triggers="mouseenter:mouseleave" placement="top" ngbPopover="Hosts with premium properties go through manned inspections." popoverTitle="Host monitors"></i></span></div>
+            <div><span class="info-text">Host verification</span><span class="text-dark exclamation-circle"><i class="fa fa-exclamation-circle c-pointer" triggers="mouseenter:mouseleave" placement="top" ngbPopover="Hosts with premium properties go through manned inspections." popoverTitle="Host verification"></i></span></div>
         </div>
         <div class="col-md-3 text-center" data-aos="flip-down">
             <div><img src="assets/images/features_customerservice.png" /></div>
-            <div><span class="info-text">Customer support (10 am to 6 pm)</span><span class="text-dark exclamation-circle"><i class="fa fa-exclamation-circle c-pointer" triggers="mouseenter:mouseleave" placement="top" ngbPopover="Our customer support team helps every individual with special attention." popoverTitle="Customer support"></i></span></div>
+            <div><span class="info-text">Customer support</span><span class="text-dark exclamation-circle"><i class="fa fa-exclamation-circle c-pointer" triggers="mouseenter:mouseleave" placement="top" ngbPopover="Our customer support team helps every individual with special attention." popoverTitle="Customer support"></i></span></div>
         </div>
       </div>
     </div>
@@ -92,10 +92,10 @@
               </div>
               <div *ngIf="propertyList[propertyType.propertyTypeId] && propertyList[propertyType.propertyTypeId].length > 0">
                   <hr class="hr-1 mt-30 mb-30 no-mobile-d">
-                  <div class="row p-10-30">
+                  <div class="row">
                     <div class="col-md-8 filter-section">
                       <div class="alert alert-secondary" role="alert">
-                          Feel the Joy of Sharing Your Home with Orastays. 
+                          Feel the Joy of Sharing Your Home with Orastays. <a class="c-pointer" routerLink="/host">Start listing your property</a>
                       </div>
                     </div>
                     <div class="col-md-4 text-right">
@@ -119,9 +119,9 @@
     <div class="" data-aos="fade-right">
       <h4 class="title">List your property with us</h4>
       <h6 class="desc">A guest for today, friend for a lifetime</h6>
-      <p class="text">Make memories in <strong>Every Stay</strong></p>
+      <p class="text">Be a Host, Share Lifetime Memories</p>
       <button class="btn btn-dark mr-2" (click)="openModal(earningCalculator)">Earning Calculator <img class="icon-calculator" src="assets/images/icon-calculator.png"></button>
-      <button class="btn btn-primary" routerLink="/host">View More [+]</button>
+      <button class="btn btn-primary" routerLink="/host">List your property [+]</button>
     </div>
   </div>
 

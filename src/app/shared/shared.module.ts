@@ -30,6 +30,7 @@ import { OrderModule } from 'ngx-order-pipe';
 import { FlightQuickSearchComponent } from './components/flight-quick-search/flight-quick-search.component';
 import { FlightFilterComponent } from './components/flight-filter/flight-filter.component';
 import { OfferComponent } from './components/offer/offer.component';
+import { TermsConditionsComponent } from './components/terms-conditions/terms-conditions.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { OfferComponent } from './components/offer/offer.component';
     QuickStaySearchFormComponent,
     FlightQuickSearchComponent,
     FlightFilterComponent,
-    OfferComponent
+    OfferComponent,
+    TermsConditionsComponent
   ],
   imports: [
     CommonModule,
@@ -101,7 +103,8 @@ import { OfferComponent } from './components/offer/offer.component';
     FlightQuickSearchComponent,
     FlightFilterComponent,
     OfferComponent,
-    FlightSearchFormComponent
+    FlightSearchFormComponent,
+    TermsConditionsComponent
   ],
   entryComponents: [
     TestModalComponent

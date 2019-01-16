@@ -120,7 +120,7 @@
             </div>
             <div class="alert alert-secondary clearfix" role="alert">
               <div class="float-left">
-                <h6 class="price"><span>₹ {{property.totalPrice | number:'.2'}}</span> Per night</h6>
+                <h6 class="price"><span><i class="fa fa-inr" aria-hidden="true"></i> {{property.totalPrice | number:'.2'}}</span> Per night</h6>
                 <p class="total-times-book">Booked 21 times in the last 24 hours</p>
               </div>
               <button class="btn btn-dark btn-sm float-right" (click)="navigateToBookingPage(property.propertyId)">Book now</button>
