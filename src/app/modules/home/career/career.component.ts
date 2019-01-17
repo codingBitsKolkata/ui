@@ -21,10 +21,11 @@ export class CareerComponent implements OnInit {
               height: '100%',
               thumbnailsColumns: 4,
               imageAnimation: NgxGalleryAnimation.Slide,
-              imageAutoPlay: true,
+              imageAutoPlay: false,
               imageAutoPlayInterval: 5000,
               imageInfinityMove: true,
-              thumbnails: false
+              thumbnails: false,
+              imageArrows: false,
           },
           // max-width 800
           {
@@ -44,16 +45,6 @@ export class CareerComponent implements OnInit {
       ];
 
       this.galleryImages = [
-          {
-              small: 'assets/images/career/carrer_banner_1.png',
-              medium: 'assets/images/career/carrer_banner_1.png',
-              big: 'assets/images/career/carrer_banner_1.png'
-          },
-          {
-              small: 'assets/images/career/carrer_banner_1.png',
-              medium: 'assets/images/career/carrer_banner_1.png',
-              big: 'assets/images/career/carrer_banner_1.png'
-          },
           {
               small: 'assets/images/career/carrer_banner_1.png',
               medium: 'assets/images/career/carrer_banner_1.png',

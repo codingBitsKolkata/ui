@@ -38,6 +38,9 @@ export class FlightQuickSearchComponent implements OnInit {
   classType: string;
   arrivalMinDate: any;
   departMinDate: any;
+  
+  @ViewChild('d2') datePicker: NgbInputDatepicker;
+  
   constructor(
     private fb: FormBuilder,
     private sharedSrv: SharedService,
@@ -188,6 +191,9 @@ export class FlightQuickSearchComponent implements OnInit {
   }
   setNumberOfTravellers() {
       this.numberOfTraveller = this.noOfAdults + this.noOfChild + this.noOfInfants;
+  }
+  onCheckInDateSelect(event) {
+    this.datePicker.open();
   }
 
   setClassTypeValue(val) {

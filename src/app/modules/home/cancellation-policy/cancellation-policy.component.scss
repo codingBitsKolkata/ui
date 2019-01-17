@@ -86,7 +86,8 @@
                 color: #231f20;
                 font-family: latoitalic;
                 font-size: 14px;
-                display: inline-block;
+                display: block;
+                margin-bottom: 5px;
                 &::before{
                     content: " ";
                     font-family: FontAwesome;

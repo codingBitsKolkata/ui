@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { SharedService} from '../../../services/shared.service';
 import { FlightService } from '../../../services/apis/flight.service';
@@ -34,6 +34,9 @@ export class FlightSearchFormComponent implements OnInit {
   flightClassTypes:  Array<any>;
   tripType: string;
   classType: string;
+  
+  @ViewChild('d2') datePicker: NgbInputDatepicker;
+
   constructor(
     private fb: FormBuilder,
     private sharedSrv: SharedService,
@@ -48,7 +51,7 @@ export class FlightSearchFormComponent implements OnInit {
       this.noOfChild = 0;
       this.noOfInfants = 0;
       this.numberOfTraveller = 0;
-      this.tripType = 'R';
+      this.tripType = 'O';
       this.classType = 'Economy';
       this.flightClassTypes = [
         {
@@ -91,7 +94,7 @@ export class FlightSearchFormComponent implements OnInit {
       this.noOfAdults = this.flightSearchObj.noOfAdults ? this.flightSearchObj.noOfAdults : 1;
       this.noOfChild = this.flightSearchObj.noOfChild ? this.flightSearchObj.noOfChild : 0;
       this.noOfInfants = this.flightSearchObj.noOfInfants ? this.flightSearchObj.noOfInfants : 0;
-      this.tripType = this.flightSearchObj.tripType ? this.flightSearchObj.tripType : 'R';
+      this.tripType = this.flightSearchObj.tripType ? this.flightSearchObj.tripType : 'O';
       this.classType = this.flightSearchObj.classType ? this.flightSearchObj.classType : 'Economy';
       this.onNumberChanged(this.noOfAdults, 'noOfAdults');
       this.onNumberChanged(this.noOfChild, 'noOfChild');
@@ -116,14 +119,14 @@ export class FlightSearchFormComponent implements OnInit {
    */
   buildSearchForm() {
     this.flightSearchForm = this.fb.group({
-      tripType : new FormControl('R', [Validators.required]),
+      tripType : new FormControl('O', [Validators.required]),
       noOfAdults : new FormControl('', []),
       noOfChild : new FormControl('', []),
       noOfInfants : new FormControl('', []),
       classType : new FormControl('Economy', [Validators.required]),
       multiCities: this.fb.array([this.buildMultiCityFrom()]),
     });
-    console.log(this.flightSearchForm);
+    // console.log(this.flightSearchForm);
   }
   buildMultiCityFrom() {
     return this.fb.group({
@@ -133,8 +136,12 @@ export class FlightSearchFormComponent implements OnInit {
       arrival_date : new FormControl(null, []),
     });
   }
+
+  onCheckInDateSelect(event) {
+    this.datePicker.open();
+  }
+
   onSubmitSearch() {
-    console.log(this.flightSearchForm);
     if (this.flightSearchForm.valid) {
        const searchParam  = Object.assign({}, this.flightSearchForm.value);
        this.sharedSrv.flightSearchData = searchParam;
@@ -172,8 +179,7 @@ export class FlightSearchFormComponent implements OnInit {
   }
 
   tripTypeChanage(val) {
-    console.log(val);
-    if (val === 'R') {
+    if (val === 'O') {
       this.flightSearchForm.controls.multiCities['controls'][0].get('arrival_date').setValidators([Validators.required]);
     } else {
       this.flightSearchForm.controls.multiCities['controls'][0].get('arrival_date').setValidators(null);

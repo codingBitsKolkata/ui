@@ -191,7 +191,7 @@
             <h5>{{room.roomCategory.name}} {{room.oraRoomName}}</h5>
             <div class="d-flex">
               <div class="col-auto pl-0">
-                <img src="{{propertyDetails.coverImageUrl}}" class="room-image" alt="">
+                <img src="{{room.roomVsImages[0].imageUrl}}" class="room-image" alt="">
               </div>
               <div class="col-auto flex-grow-1">
                 <div class="d-flex justify-content-between">
@@ -258,60 +258,8 @@
                     <li *ngFor="let item of propertyDetails?.propertyVsNearbys">{{item.places}}</li>
                 </ul>
               </div>
-                <!-- <button class="slide-left-btn" (click)="moveLeft_ls()"></button> -->
-                <!-- <div class="location-slider">
-                  <drag-scroll (reachesLeftBound)="leftBoundStat_ls($event)" (reachesRightBound)="rightBoundStat_ls($event)" #locationSlider>
-                    <div class="location-block">
-                      <div class="card">
-                        <h4><span class="icon"></span> Victoria Memorial Hall</h4>
-                        <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
-                        <a href="">Read on [+]</a>
-                      </div>
-                    </div>
-                    <div class="location-block">
-                      <div class="card">
-                        <h4><span class="icon"></span> Victoria Memorial Hall</h4>
-                        <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
-                        <a href="">Read on [+]</a>
-                      </div>
-                    </div>
-                    <div class="location-block">
-                      <div class="card">
-                        <h4><span class="icon"></span> Victoria Memorial Hall</h4>
-                        <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
-                        <a href="">Read on [+]</a>
-                      </div>
-                    </div>
-                    <div class="location-block">
-                      <div class="card">
-                        <h4><span class="icon"></span> Victoria Memorial Hall</h4>
-                        <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
-                        <a href="">Read on [+]</a>
-                      </div>
-                    </div>
-                    <div class="location-block">
-                      <div class="card">
-                        <h4><span class="icon"></span> Victoria Memorial Hall</h4>
-                        <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
-                        <a href="">Read on [+]</a>
-                      </div>
-                    </div>
-                    <div class="location-block">
-                      <div class="card">
-                        <h4><span class="icon"></span> Victoria Memorial Hall</h4>
-                        <p>The Victoria Memorial Hall is India's largest and one of its oldest museum libraries. Dedicated to art history, it has been an unalienable part of the Memorial since its foundation. It is believed to have been created in 1562 ...</p>
-                        <a href="">Read on [+]</a>
-                      </div>
-                    </div>
-                  </drag-scroll>
-                </div>
-                <button class="slide-right-btn" (click)="moveRight_ls()"></button> -->
             </div>
           </div>
-          <!-- <div class="col-md-5">
-            <div class="backshadow"></div>
-            <img class="w-100" src="assets/images/property-details/near-location.png" alt="">
-          </div> -->
         </div>
       </div>
     </div>
@@ -331,7 +279,7 @@
                   Check-in is anytime after 3PM and check out by 12PM (noon)<br>
                   Self check-in with building staff
                 </p>
-                <a href="">Read on [+]</a>
+                <!-- <a href="">Read on [+]</a> -->
               </div>
             </div>
           </div>
@@ -345,7 +293,7 @@
                 <p>Flexible - Free cancellation for 48 hours <br>
                     After that, cancel up to 24 hours before check-in and get a full refund, minus the service fee.
                 </p>
-                <a href="">Read more about the policy [+]</a>
+                <!-- <a href="">Read more about the policy [+]</a> -->
               </div>
             </div>
           </div>
@@ -357,10 +305,10 @@
     <div class="container-fluid bg-w">
       <div class="review-sec">
         <div class="review-header d-flex justify-content-between">
-          <h5>987 Reviews</h5>
-          <select name="" class="form-control sortBy">
+          <h5>3 Reviews</h5>
+          <!-- <select name="" class="form-control sortBy">
             <option value="">Sort by - Latest</option>
-          </select>
+          </select> -->
         </div>
         <div class="review-body">
           <div class="review-item d-flex justify-content-start">
@@ -420,7 +368,7 @@
           </div>
           <hr>
         </div>
-        <div class="d-flex justify-content-end">
+        <!-- <div class="d-flex justify-content-end">
           <nav>
             <ul class="pagination pagination-sm">
               <li class="page-item"><a class="page-link" href="#"><i class="fa fa-caret-left"></i></a></li>
@@ -432,7 +380,7 @@
               <li class="page-item"><a class="page-link" href="#"><i class="fa fa-caret-right"></i></a></li>
             </ul>
           </nav>
-        </div>
+        </div> -->
       </div>
   
     </div>
@@ -445,8 +393,8 @@
             <div class="card">
               <img class="card-img-top" src="assets/images/property-details/prop-img-1.png" alt="Card image cap">
               <div class="card-body">
-                <h6 class="card-title">ENTIRE APARTMENT · 2 BEDS</h6>
-                <h5>2kms from airport, modern decor, quiet, free WiFi!</h5>
+                <h6 class="card-title">ENTIRE APARTMENT · 1 BEDS</h6>
+                <h5>1kms from airport, modern decor, quiet, free WiFi!</h5>
                 <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i> 1,599 per night</p>
                 <p class="card-rating"><span class="badge badge-primary">7.6</span> Good , <span class="text-gray">1765 reviews</span></p>
               </div>
@@ -457,8 +405,8 @@
               <img class="card-img-top" src="assets/images/property-details/prop-img-2.png" alt="Card image cap">
               <div class="card-body">
                 <h6 class="card-title">ENTIRE APARTMENT · 2 BEDS</h6>
-                <h5>2kms from airport, modern decor, quiet, free WiFi!</h5>
-                <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i> 1,599 per night</p>
+                <h5>1.5kms from City Center, quiet, free WiFi!</h5>
+                <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i> 2,000 per night</p>
                 <p class="card-rating"><span class="badge badge-primary">7.6</span> Good , <span class="text-gray">1765 reviews</span></p>
               </div>
             </div>
@@ -468,8 +416,8 @@
               <img class="card-img-top" src="assets/images/property-details/prop-img-3.png" alt="Card image cap">
               <div class="card-body">
                 <h6 class="card-title">ENTIRE APARTMENT · 2 BEDS</h6>
-                <h5>2kms from airport, modern decor, quiet, free WiFi!</h5>
-                <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i> 1,599 per night</p>
+                <h5>1kms from Ecospace, modern decor, free WiFi!</h5>
+                <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i> 1,899 per night</p>
                 <p class="card-rating"><span class="badge badge-primary">7.6</span> Good , <span class="text-gray">1765 reviews</span></p>
               </div>
             </div>
@@ -478,9 +426,9 @@
             <div class="card">
               <img class="card-img-top" src="assets/images/property-details/prop-img-4.png" alt="Card image cap">
               <div class="card-body">
-                <h6 class="card-title">ENTIRE APARTMENT · 2 BEDS</h6>
-                <h5>2kms from airport, modern decor, quiet, free WiFi!</h5>
-                <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i> 1,599 per night</p>
+                <h6 class="card-title">ENTIRE APARTMENT · 1 BEDS</h6>
+                <h5>1.3kms from airport, modern decor, quiet, free WiFi!</h5>
+                <p class="card-text"><i class="fa fa-inr" aria-hidden="true"></i> 2,599 per night</p>
                 <p class="card-rating"><span class="badge badge-primary">7.6</span> Good , <span class="text-gray">1765 reviews</span></p>
               </div>
             </div>

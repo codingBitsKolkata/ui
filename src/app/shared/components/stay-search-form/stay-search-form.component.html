@@ -10,25 +10,14 @@
     </div>
     <div class="form-group dpicker">
       <div class="input-group">
-        <input type="text"  class="form-control border-right-0" formControlName="checkInDate"  placeholder="Check in" ngbDatepicker #d1="ngbDatepicker" [minDate]="checkInMinDate" (dateSelect)="onCheckInDateSelect($event)" (click)="d1.toggle()" [ngClass]="{ 'is-invalid': staySearchForm.controls['checkInDate'].touched && staySearchForm.controls['checkInDate'].errors }">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary calendar checkin-pick"  type="button" (click)="d1.toggle()"><i class="fa fa-calendar"></i></button>
+        <div class="i-group">
+          <input type="text"  class="form-control fromBoxInput" formControlName="checkInDate"  placeholder="Check in" ngbDatepicker #d1="ngbDatepicker" [minDate]="checkInMinDate" [outsideDays]="'collapsed'" [navigation]="'arrows'" (dateSelect)="onCheckInDateSelect($event)" (click)="d1.toggle()" [ngClass]="{ 'is-invalid': staySearchForm.controls['checkInDate'].touched && staySearchForm.controls['checkInDate'].errors }">
+          <i class="fa fa-calendar" (click)="d1.toggle()"></i>
         </div>
-        <input type="text" class="form-control border-right-0" formControlName="checkOutDate" placeholder="Check out" ngbDatepicker #d2="ngbDatepicker" [minDate]="checkOutMinDate" (click)="d2.toggle()" [ngClass]="{ 'is-invalid': staySearchForm.controls['checkOutDate'].touched && staySearchForm.controls['checkOutDate'].errors }">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary calendar checkout-pick" type="button" (click)="d2.toggle()"><i class="fa fa-calendar"></i></button>
+        <div class="i-group">
+          <input type="text" class="form-control toBoxInput" formControlName="checkOutDate" placeholder="Check out" ngbDatepicker #d2="ngbDatepicker" [minDate]="checkOutMinDate" [outsideDays]="'collapsed'" [navigation]="'arrows'" (click)="d2.toggle()" [ngClass]="{ 'is-invalid': staySearchForm.controls['checkOutDate'].touched && staySearchForm.controls['checkOutDate'].errors }">
+          <i class="fa fa-calendar" (click)="d2.toggle()"></i>
         </div>
-        
-        <ng-template #tHotel let-date let-focused="focused">
-            <span class="custom-day"
-                  [class.focused]="focused"
-                  [class.range]="isRangeHotel(date)"
-                  [class.faded]="isHoveredHotel(date) || isInsideHotel(date)"
-                  (mouseenter)="hoveredDate = date"
-                  (mouseleave)="hoveredDate = null">
-              {{ date.day }}
-            </span>
-          </ng-template>
       </div>
     </div>
     <div class="form-group roomGuest">
@@ -55,10 +44,10 @@
                 </div>
               </div>
               <div class="col-auto ml-4" *ngIf="i!=0">
-                <button type="button" class="btn btn-outline-dark btn-sm" (click)="removeRoom(i)">[-] Remove ROOM</button>
+                <a class="btn btn-outline-dark btn-sm fs-12" (click)="removeRoom(i)">[-] REMOVE</a>
               </div>
               <div class="col-auto ml-4" *ngIf="i == 0">
-                <a class="btn btn-outline-dark btn-sm" (click)="addRoom()">[+] ADD ROOM</a>
+                <a class="btn btn-outline-dark btn-sm fs-12" (click)="addRoom()">[+] ADD ROOM</a>
               </div>
             </div>
           </div> 

@@ -46,11 +46,11 @@ export class FlightFilterComponent implements OnInit {
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
-          return '$' + value;
+          return '₹' + value;
         case LabelType.High:
-          return '$' + value;
+          return '₹' + value;
         default:
-          return '$' + value;
+          return '₹' + value;
       }
     }
   };

@@ -35,7 +35,7 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
   detailsPage: boolean;
   @ViewChild('search')
   public searchElementRef: ElementRef;
-
+  @ViewChild('d2') datePicker: NgbInputDatepicker;
 
   constructor(
     private fb: FormBuilder,
@@ -48,7 +48,6 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
     private router: Router
   ) {
     this.checkInDate = calendar.getToday();
-    console.log(this.checkInDate);
     this.checkOutDate = calendar.getNext(calendar.getToday(), 'd', 3);
     const currentDate = new Date();
     // config.minDate = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
@@ -72,7 +71,6 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
     if (this.pageName === 'property-details') {
       this.detailsPage = true;
     }
-    console.log(this.searchObj);
     if (this.searchObj) {
       this.latitude = + this.searchObj['latitude'];
       this.longitude = + this.searchObj['longitude'];
@@ -118,9 +116,6 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
               return;
             }
             console.log(place);
-            // console.log(place.geometry.location.lat());
-            // console.log(place.geometry.location.lng());
-            // console.log(place.formatted_address);
             this.latitude = place.geometry.location.lat().toFixed(6);
             this.longitude = place.geometry.location.lng().toFixed(6);
             this.staySearchForm.patchValue({location: place.formatted_address});
@@ -195,11 +190,11 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
   removeRoom(index: number) {
     // const arrayControl = <FormArray>this.staySearchForm.controls['rooms'];
       //  arrayControl.removeAt(index);
-      this.roomsArray.removeAt(index);
-        this.noOfGuest.splice(index, 1);
-        this.noOfChild.splice(index, 1);
-        this.numberOfRooms--;
-        this.setNumberOfGuest();
+    this.roomsArray.removeAt(index);
+    this.noOfGuest.splice(index, 1);
+    this.noOfChild.splice(index, 1);
+    this.numberOfRooms--;
+    this.setNumberOfGuest();
   }
   setNumberOfGuest() {
     this.numberOfGuest = this.noOfGuest.reduce((a, b) => a + b, 0) + this.noOfChild.reduce((a, b) => a + b, 0);
@@ -210,6 +205,7 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
     this.checkOutDate = null;
     this.staySearchForm.patchValue({checkOutDate: ''});
     this.checkOutMinDate = event;
+    this.datePicker.open();
   }
   ngOnChanges(changes: SimpleChanges) {
       console.log(changes);

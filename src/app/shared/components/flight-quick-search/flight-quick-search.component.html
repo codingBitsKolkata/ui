@@ -1,3 +1,4 @@
+<!-- <div class="pos-sticky-right"> -->
 <div class="flight-found" *ngIf="totalResultCount">
   <span class="icon"></span>
   <p class="pl-1"><span>{{totalResultCount}} Flights  </span> are found</p>
@@ -16,37 +17,48 @@
         <div class="form-group flight-location" [formGroupName]="i">
           <div class="form-group">
             <div class="input-group">
-              <input type="text" [ngbTypeahead]="search" [resultFormatter]="formatMatches" [inputFormatter]="formatMatches" formControlName="origin" typeahead-editable ="false" class="form-control fromBoxInput" placeholder="From"
-                [ngClass]="{ 'is-invalid': multiCity.get('origin').touched && multiCity.get('origin').errors }">
-              <div class="input-group-append fromBox">
-                <span class="input-group-text"><i class="fa fa-map-marker"></i></span>                          
+              <div class="i-group">
+                <input type="text" [ngbTypeahead]="search" [resultFormatter]="formatMatches" [inputFormatter]="formatMatches" formControlName="origin" typeahead-editable ="false" class="form-control fromBoxInput" placeholder="From"
+                  [ngClass]="{ 'is-invalid': multiCity.get('origin').touched && multiCity.get('origin').errors }">
+                <i class="fa fa-map-marker"></i>
+                <!-- <div class="input-group-append fromBox">
+                  <span class="input-group-text"><i class="fa fa-map-marker"></i></span>                          
+                </div> -->
               </div>
-              <i class="switch-location"></i>
-              <input type="text" class="form-control toBoxInput" [ngbTypeahead]="search" [resultFormatter]="formatMatches" [inputFormatter]="formatMatches" formControlName="destination" typeahead-editable ="false" placeholder="To"
-              [ngClass]="{ 'is-invalid': multiCity.get('destination').touched && multiCity.get('destination').errors }">
-              <div class="input-group-append toBox">
-                <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+              <div class="i-group">
+                <!-- <i class="switch-location"></i> -->
+                <input type="text" class="form-control toBoxInput" [ngbTypeahead]="search" [resultFormatter]="formatMatches" [inputFormatter]="formatMatches" formControlName="destination" typeahead-editable ="false" placeholder="To"
+                [ngClass]="{ 'is-invalid': multiCity.get('destination').touched && multiCity.get('destination').errors }">
+                <i class="fa fa-map-marker"></i>
+                <!-- <div class="input-group-append toBox">
+                  <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                </div> -->
               </div>
             </div>
           </div>
     
           <div class="form-group">
             <div class="input-group">
-              <input type="text" class="form-control border-right-0" placeholder="Depart" ngbDatepicker  #d1="ngbDatepicker" (click)="d1.toggle()" [minDate]="departMinDate" formControlName="flightDepartDate"
-              [ngClass]="{ 'is-invalid': multiCity.get('flightDepartDate').touched && multiCity.get('flightDepartDate').errors }">
-              
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary calendar checkin-pick" (click)="d1.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+              <div class="i-group">
+                <input type="text" class="form-control fromBoxInput" placeholder="Depart" ngbDatepicker  #d1="ngbDatepicker" [outsideDays]="'collapsed'" [navigation]="'arrows'" (click)="d1.toggle()" (dateSelect)="onCheckInDateSelect($event)" [minDate]="departMinDate" formControlName="flightDepartDate"
+                [ngClass]="{ 'is-invalid': multiCity.get('flightDepartDate').touched && multiCity.get('flightDepartDate').errors }">
+                <i class="fa fa-calendar" (click)="d1.toggle()"></i>
+                <!-- <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar checkin-pick" (click)="d1.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                </div> -->
               </div>
-              <input type="text" class="form-control border-right-0" placeholder="Return" ngbDatepicker  #d2="ngbDatepicker" (click)="d2.toggle()" [minDate]="arrivalMinDate" formControlName="arrival_date"
-              [ngClass]="{ 'is-invalid': multiCity.get('arrival_date').touched && multiCity.get('arrival_date').errors }">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary calendar checkout-pick" (click)="d2.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+              <div class="i-group">
+                <input type="text" class="form-control toBoxInput" placeholder="Return" ngbDatepicker  #d2="ngbDatepicker" [outsideDays]="'collapsed'" [navigation]="'arrows'" (click)="d2.toggle()" [minDate]="arrivalMinDate" formControlName="arrival_date"
+                [ngClass]="{ 'is-invalid': multiCity.get('arrival_date').touched && multiCity.get('arrival_date').errors }">
+                <i class="fa fa-calendar" (click)="d2.toggle()"></i>
+                <!-- <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar checkout-pick" (click)="d2.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                </div> -->
               </div>
             </div>
           </div>
         </div>
-     </div>
+      </div>
       <div class="form-group">
         <div class="input-group">
           <div ngbDropdown class="d-inline-block travellersDropdown" [autoClose]="'outside'">
@@ -89,3 +101,4 @@
     </form>
   </div>
 </div>
+<!-- </div> -->

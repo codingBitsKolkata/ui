@@ -1,7 +1,9 @@
 .home-carousel{
     .carousel-caption {
         right: 2%;
-        bottom: 40px;
+        // bottom: 40px;
+        top: 60%;
+        transform: translateY(-60%);
         left: inherit;
         text-align: left;
         width: 50%;

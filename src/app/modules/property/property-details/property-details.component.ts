@@ -62,31 +62,20 @@ export class PropertyDetailsComponent implements OnInit {
             "thumbnailsSwipe": true, 
             "previewSwipe": true 
         },
-        //   {
-        //       width: '100%',
-        //       height: '100%',
-        //       thumbnailsColumns: 3,
-        //       imageAnimation: NgxGalleryAnimation.Slide,
-        //       imageAutoPlay: true,
-        //       imageAutoPlayInterval: 5000,
-        //       imageInfinityMove: true,
-        //       thumbnails: false
-        //   },
-          // max-width 800
-          {
-              breakpoint: 800,
-              width: '100%',
-              height: '600px',
-              imagePercent: 80,
-              thumbnailsPercent: 20,
-              thumbnailsMargin: 20,
-              thumbnailMargin: 20
-          },
-          // max-width 400
-          {
-              breakpoint: 400,
-              preview: false
-          }
+        {
+            breakpoint: 800,
+            width: '100%',
+            height: '600px',
+            imagePercent: 80,
+            thumbnailsPercent: 20,
+            thumbnailsMargin: 20,
+            thumbnailMargin: 20
+        },
+        // max-width 400
+        {
+            breakpoint: 400,
+            preview: false
+        }
       ];
 
       this.galleryImages = [
@@ -112,54 +101,69 @@ export class PropertyDetailsComponent implements OnInit {
           }
       ];
   }
-  moveLeft_as() {
-    this.as.moveLeft();
-  }
+    moveLeft_as() {
+        this.as.moveLeft();
+    }
 
-  moveRight_as() {
-    this.as.moveRight();
-  }
-  leftBoundStat_as(reachesLeftBound: boolean) {
-      this.as_leftNavDisabled = reachesLeftBound;
-  }
+    moveRight_as() {
+        this.as.moveRight();
+    }
+    leftBoundStat_as(reachesLeftBound: boolean) {
+        this.as_leftNavDisabled = reachesLeftBound;
+    }
 
-  rightBoundStat_as(reachesRightBound: boolean) {
-      this.as_rightNavDisabled = reachesRightBound;
-  }
+    rightBoundStat_as(reachesRightBound: boolean) {
+        this.as_rightNavDisabled = reachesRightBound;
+    }
 
-openModal(content) {
-    // , size: 'md'
-    this.modalService.open(content, { windowClass: 'modal-popup host-details' });
-}
+    openModal(content) {
+        // , size: 'md'
+        this.modalService.open(content, { windowClass: 'modal-popup host-details' });
+    }
 
-getPropertyDetails(params: any) {
-    this.loading = true;
-    this.srvProperty.getPropertyDetails(params).subscribe((res) => {
-        this.loading = false;
-        console.log('getPropertyDetails data', res);
-        if (res.responseCode === '200') {
-            this.propertyDetails = res.responseBody;
-            console.log(this.propertyDetails);
-        }
-    }, error => {
-        this.loading = false;
-        console.log('error', error);
-    });
-}
+    getPropertyDetails(params: any) {
+        this.loading = true;
+        this.srvProperty.getPropertyDetails(params).subscribe((res) => {
+            this.loading = false;
+            if (res.responseCode === '200') {
+                this.propertyDetails = res.responseBody;
+                console.log(this.propertyDetails);
+                this.galleryImages = [];
+                let imgObj = {
+                    small: this.propertyDetails['coverImageUrl'],
+                    medium: this.propertyDetails['coverImageUrl'],
+                    big: this.propertyDetails['coverImageUrl'],
+                }
+                this.galleryImages.push(imgObj)
+                for(let i=0; i< this.propertyDetails['propertyVsImages'].length; i++){
+                    let imgObj = {
+                        small: this.propertyDetails['propertyVsImages'][i].imageURL,
+                        medium: this.propertyDetails['propertyVsImages'][i].imageURL,
+                        big: this.propertyDetails['propertyVsImages'][i].imageURL,
+                    }
+                    this.galleryImages.push(imgObj);
+                }
+                console.log(this.galleryImages)
+            }
+        }, error => {
+            this.loading = false;
+            console.log('error', error);
+        });
+    }
 
-  searchFormSubmitted(searchObj) {
-    searchObj['propertyId'] = this.propertyId;
-    localStorage.setItem('searchObj', JSON.stringify(searchObj));
-    this.sharedSrv.sharedHomeSearchData = searchObj;
-    this.getPropertyDetails(searchObj);
-    // this.router.navigate(['/properties/property-details'], { queryParams: this.searchObj });
-  }
+    searchFormSubmitted(searchObj) {
+        searchObj['propertyId'] = this.propertyId;
+        localStorage.setItem('searchObj', JSON.stringify(searchObj));
+        this.sharedSrv.sharedHomeSearchData = searchObj;
+        this.getPropertyDetails(searchObj);
+        // this.router.navigate(['/properties/property-details'], { queryParams: this.searchObj });
+    }
 
-  arrayNum(number) {
-    return Array(parseInt(number));
-  }
+    arrayNum(number) {
+        return Array(parseInt(number));
+    }
 
-  bookYourStay() {
-    this.router.navigate(['/properties/booking'], { queryParams: this.searchObj });
-  }
+    bookYourStay() {
+        this.router.navigate(['/properties/booking'], { queryParams: this.searchObj });
+    }
 }
