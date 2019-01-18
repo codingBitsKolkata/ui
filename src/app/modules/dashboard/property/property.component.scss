@@ -5,6 +5,12 @@ h3{
     font-size: 26px;
     text-transform: uppercase;
 }
+.pt-10{
+    padding-top: 10px;
+}
+.pb-40{
+    padding-bottom: 40px;
+}
 .property-list{
     padding-bottom: 40px;
     padding-top: 40px;
@@ -34,6 +40,9 @@ h3{
         ::ng-deep{
             .ngucarousel-items .item{
                 padding-bottom: 40px;
+                .card-img-top{
+                    height: 150px;
+                }
             }
         }
         .card-title{
@@ -44,7 +53,12 @@ h3{
         p.card-text{
             color: #939393;
             font-family: latoregular;
-            font-size: 14px;            
+            font-size: 14px;         
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;   
         }
         label.location{
             color: #130504;
@@ -272,4 +286,17 @@ h3{
 }
 .mr-40{
     margin-right: 40px;
+}
+::ng-deep{
+    .add-property-modal{
+        @media (min-width: 576px){
+            .modal-dialog {
+                max-width: 600px;
+                margin: 1.75rem auto;
+            }
+        }
+        .modal-content{
+            padding: 0;
+        }
+    }
 }

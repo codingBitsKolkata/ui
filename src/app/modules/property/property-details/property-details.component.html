@@ -5,10 +5,10 @@
     <div class="container-fluid mb-40 bg-w" style="height: calc(100vh - 90px);">
       <div class="row row-eq-height h-100">
         <div class="col-md-2 top-heading pr-0 "> <!-- m-w-20 -->
-          <h1><span class="text-orange">{{propertyDetails?.oraname}}</span> <span class="address">{{propertyType?.name}}
-            in {{propertyDetails?.address}}</span> </h1>
+          <h1><span class="text-orange">{{propertyDetails?.oraname}}</span> <span class="address" style="-webkit-box-orient: vertical;">{{propertyType?.name}}
+             {{propertyDetails?.address}}</span> </h1>
           <p class="top-text"><span class="bed-icon"></span><span class="text">1 bedroom </span><span class="text">1 bed </span><span class="text">1 bath</span></p>
-          <p class="desc">{{propertyDetails?.propertyVsDescriptions[0]?.description}}</p>
+          <p class="desc" style="-webkit-box-orient: vertical;">{{propertyDetails?.propertyVsDescriptions[0]?.description}}</p>
           <div class="d-flex bottom-box">
             <a href="" class="icon"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
             <a href="" class="icon"><i class="fa fa-bookmark-o" aria-hidden="true"></i></a>
@@ -149,7 +149,7 @@
               </div>
               <button class="slide-right-btn" [hidden]="as_rightNavDisabled" (click)="moveRight_as()"></button>
             </div>
-            <div *ngIf="propertyDetails?.propertyVsSpecialExperiences.length > 0">
+              <div *ngIf="propertyDetails?.propertyVsSpecialExperiences && propertyDetails?.propertyVsSpecialExperiences?.length > 0">
                 <h4>Special experiences</h4>
               <ul>
                 <li *ngFor="let experience of propertyDetails?.propertyVsSpecialExperiences">{{experience.specialExperience.experienceName}}</li>
@@ -158,17 +158,15 @@
             </div>
         </div>
         <div class="guest-space-btn-group">
-          <div class="guest-access-btn"  *ngIf="propertyDetails?.propertyVsGuestAccess.length > 0">
+          <div class="guest-access-btn" *ngIf="propertyDetails?.propertyVsGuestAccess && propertyDetails?.propertyVsGuestAccess.length > 0">
             <a class=""><i class="guest-access-icon"></i><span>Guest <br> Access</span></a>
             <div class="guest-access-list">
-              
-                  <ul>
-                      <li *ngFor="let access of propertyDetails?.propertyVsGuestAccess">{{access.guestAccess}}</li>
-                  </ul>
-              
+              <ul>
+                <li *ngFor="let access of propertyDetails?.propertyVsGuestAccess">{{access.guestAccess}}</li>
+              </ul>
             </div>
           </div>
-          <div class="space-rules-btn" *ngIf="propertyDetails?.propertyVsSpaceRules.length > 0">
+          <div class="space-rules-btn" *ngIf="propertyDetails?.propertyVsSpaceRules && propertyDetails?.propertyVsSpaceRules.length > 0">
             <a class=""><i class="space-rules-icon"></i><span>Space <br> Rules</span></a>
             <div class="space-rules-list">
                 <ul>
@@ -191,7 +189,8 @@
             <h5>{{room.roomCategory.name}} {{room.oraRoomName}}</h5>
             <div class="d-flex">
               <div class="col-auto pl-0">
-                <img src="{{room.roomVsImages[0].imageUrl}}" class="room-image" alt="">
+                <img *ngIf="room?.roomVsImages" src="{{room.roomVsImages[0].imageUrl}}" class="room-image" alt="">
+                <img *ngIf="!room?.roomVsImages" src="assets/images/property-details/no_image_available.jpg" class="room-image" alt="">
               </div>
               <div class="col-auto flex-grow-1">
                 <div class="d-flex justify-content-between">
@@ -220,7 +219,7 @@
                       <!-- <li>Free WiFi</li> -->
                     </ul>
                   </div>
-                  <div class="col-auto">
+                  <div class="col-auto" *ngIf="room.roomVsSpecialities">
                     <h6>Specialities</h6>
                     <ul>
                       <li *ngFor="let item of room.roomVsSpecialities">{{item.specialties.specialitiesName}}</li>
@@ -230,9 +229,9 @@
               </div>
               <div class="col-md-3 pr-0">
                 <div class="price-block">
-                  <h6>Price for 2 nights</h6>
+                  <h6>Price for {{searchObj.rooms.length}} nights</h6>
                   <div class="d-flex justify-content-between">
-                    <span class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{room.roomPricePerNight}}</span>
+                    <span class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{room.roomPricePerNight | number: '1.0-0'}}</span>
                     <button class="btn btn-dark btn-sm" (click)="bookYourStay($event)">Book now</button>
                   </div>
                   <div class="thumb-block d-flex align-items-center">
@@ -247,7 +246,7 @@
       </div>
     </div>
   
-    <div class="container-fluid bg-w">
+    <div class="container-fluid bg-w" *ngIf="propertyDetails?.propertyVsNearbys && propertyDetails?.propertyVsNearbys.length > 0">
       <div class="near-location-section">
         <div class="row">
           <div class="col-md-12 p-l-40">

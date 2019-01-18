@@ -85,51 +85,54 @@
         <div class="loading"></div>
     </div>
     <!-- Property List Section -->
-    <div class="pt-24"  [ngClass]="mapShowHide ? 'col-md-6':'col-md-9'">
+    <div class="pt-24" *ngIf="propertyList.length > 0"  [ngClass]="mapShowHide ? 'col-md-6':'col-md-9'">
       <!-- Property List -->
       <div class="property-listing-area mb-4">
-          <ng-template ngFor let-i="index" let-c="count" let-property [ngForOf]="propertyList | orderBy: filterBy">
-        <div class="property-item d-flex overflowHidden">
-          <div class="mr-20 property-img">
-            <div class="room-tag {{property.roomStandard == 'PREMIUM' ? 'green' : 'orange'}}" *ngIf="property.roomStandard!='NORMAL'">{{property.roomStandard}}</div>
-            <img width="260px" height="150px" class="property-img"  [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" />
-          </div>
-          <div class="w-100">
-            <div class="clearfix">
-              <p class="float-left ora-id">{{property.oraName}}</p>
-              <p class="float-right">
-                <a href=""><span class="fa fa-bookmark-o icon"></span></a>
-                <a href=""><span class="fa fa-share-alt icon ml-2"></span></a>
-              </p>
+        <ng-template ngFor let-i="index" let-c="count" let-property [ngForOf]="propertyList | orderBy: filterBy">
+          <div class="property-item d-flex overflowHidden">
+            <div class="mr-20 property-img">
+              <div class="room-tag {{property.roomStandard == 'PREMIUM' ? 'green' : 'orange'}}" *ngIf="property.roomStandard!='NORMAL'">{{property.roomStandard}}</div>
+              <img width="260px" height="150px" class="property-img"  [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" />
             </div>
-            <div class="clearfix">
-              <p class="float-left address"><span class="address-icon fa fa-map-marker"></span> {{property.address}}</p>
-              <p class="float-right pet-friendly"><span class="pet-icon"></span> Pet friendly </p>
-            </div>
-            <div class="clearfix">
-              <p class="float-left rating"><span class="badge badge-primary">{{property.rating}}</span> {{sharedSrv.getRatingText(property.rating)}} <span class="text-gray">{{property.reviewCount}} reviews</span></p>
-              <p class="float-right couples-frindly"><span class="couples-icon"></span> Couple friendly </p>
-            </div>
-            <div class="clearfix">
-              <p class="float-left complementary">Complimentary 
-                <span *ngIf="property.mealFlag" class="complimentary-tea"></span>
-                <span *ngFor="let amenitie of property.amenities">
-                  <img class="card-img-top rounded" [src]="amenitie.imgUrl1" [alt]="amenitie.aminitiesName">
-                </span>
-              </p>
-            </div>
-            <div class="alert alert-secondary clearfix" role="alert">
-              <div class="float-left">
-                <h6 class="price"><span><i class="fa fa-inr" aria-hidden="true"></i> {{property.totalPrice | number:'.2'}}</span> Per night</h6>
-                <p class="total-times-book">Booked 21 times in the last 24 hours</p>
+            <div class="w-100">
+              <div class="clearfix">
+                <p class="float-left ora-id">{{property.oraName}}</p>
+                <p class="float-right">
+                  <a href=""><span class="fa fa-bookmark-o icon"></span></a>
+                  <a href=""><span class="fa fa-share-alt icon ml-2"></span></a>
+                </p>
               </div>
-              <button class="btn btn-dark btn-sm float-right" (click)="navigateToBookingPage(property.propertyId)">Book now</button>
+              <div class="clearfix">
+                <p class="float-left address"><span class="address-icon fa fa-map-marker"></span> {{property.address}}</p>
+                <p class="float-right pet-friendly"><span class="pet-icon"></span> Pet friendly </p>
+              </div>
+              <div class="clearfix">
+                <p class="float-left rating"><span class="badge badge-primary">{{property.rating}}</span> {{sharedSrv.getRatingText(property.rating)}} <span class="text-gray">{{property.reviewCount}} reviews</span></p>
+                <p class="float-right couples-frindly"><span class="couples-icon"></span> Couple friendly </p>
+              </div>
+              <div class="clearfix">
+                <p class="float-left complementary">Complimentary 
+                  <span *ngIf="property.mealFlag" class="complimentary-tea"></span>
+                  <span *ngFor="let amenitie of property.amenities">
+                    <img class="card-img-top rounded" [src]="amenitie.imgUrl1" [alt]="amenitie.aminitiesName">
+                  </span>
+                </p>
+              </div>
+              <div class="alert alert-secondary clearfix" role="alert">
+                <div class="float-left">
+                  <h6 class="price"><span><i class="fa fa-inr" aria-hidden="true"></i> {{property.totalPrice | number: '1.0-0'}}</span> Per night</h6>
+                  <p class="total-times-book">Booked 21 times in the last 24 hours</p>
+                </div>
+                <button class="btn btn-dark btn-sm float-right" (click)="navigateToBookingPage(property.propertyId)">Book now</button>
+              </div>
             </div>
           </div>
-        </div>
-        <hr class="mb-4 mt-4">
+          <hr class="mb-4 mt-4">
         </ng-template>
       </div>
+    </div>
+    <div *ngIf="propertyList.length == 0" class="col-md-9 no-data-found">
+      <p>Sorry! No property match for you.</p>
     </div>
 
     <!-- Map Section -->

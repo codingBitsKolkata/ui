@@ -101,6 +101,9 @@ export class PropertyComponent implements OnInit, OnDestroy {
       if (res.responseCode === '200') {
           this.propertyList = res.responseBody;
           console.log(this.propertyList);
+          let sortedList = []; 
+          sortedList = this.propertyList.filter(task => Math.round(Number(task.longitude))  == Math.round(Number(this.searchObj['longitude'])));
+          this.propertyList = sortedList;
       }
     }, error => {
       this.loading = false;

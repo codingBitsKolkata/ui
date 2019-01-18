@@ -159,4 +159,8 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
     });
   }
 
+  getShortName(fullName) { 
+    return fullName.split(' ').map(n => n[0]).join('');
+  }
+
 }

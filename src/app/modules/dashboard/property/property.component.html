@@ -22,7 +22,7 @@
                   <img class="card-img-top" src="{{item?.coverImageUrl}}" alt="{{item?.oraname}}">
                   <div class="card-body">
                     <h5 class="card-title">{{item?.oraname}}</h5>
-                    <p class="card-text" *ngIf="item?.propertyVsDescriptions">{{item?.propertyVsDescriptions[0]?.description}}</p>
+                    <p class="card-text" style="-webkit-box-orient: vertical;" *ngIf="item?.propertyVsDescriptions">{{item?.propertyVsDescriptions[0]?.description}}</p>
                     <label class="location" for=""><i class="fa fa-map-marker"></i> Location: {{item?.address}}</label>
                     <button type="button" [routerLink]="['/dashboard/property-details/',item.propertyId]" class="btn btn-dark">Details / Edit</button>
                   </div>
@@ -40,13 +40,11 @@
             <div class="card-img-overlay text-center">
               <h5 class="card-title">ADD another property</h5>
               <hr>
-              <button type="button" [routerLink]="['/dashboard/property-details']" class="btn btn-primary">Add now</button>
+              <button type="button" (click)="openAddPropertyModal(addNewPropertyModal)" class="btn btn-primary">Add now</button>
             </div>
           </div>
         </div>
       </div>
-
-
     </div>
 
     <!-- Dashboard Chart -->
@@ -158,7 +156,7 @@
               </tr>
             </tbody>
           </table>
-          <button class="btn btn-primary float-right">Request for more</button>
+          <!-- <button class="btn btn-primary float-right">Request for more</button> -->
           <div class="clearfix"></div>
         </div>
       </div>
@@ -177,25 +175,25 @@
       <div class="col-md-3 p-0">
         <div class="form-group">
           <span class="label">Booking ID</span>
-          <label class="label-box">ORA9122522</label>
+          <label class="label-box">ORA000022</label>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <span class="label">Property name</span>
-          <label class="label-box">Fusce facilisis maximus</label>
+          <label class="label-box">Loharuka Green Heights, Raigachi</label>
         </div>
       </div>
       <div class="col-md-3 p-0">
         <div class="form-group">
           <span class="label">Number of rooms</span>
-          <label class="label-box">Two rooms</label>
+          <label class="label-box">2 rooms</label>
         </div>
       </div>
       <div class="col-md-12 p-0">
         <div class="form-group">
           <span class="label">Property Address</span>
-          <label class="label-box">Fusce facilisis maximus <br>
+          <label class="label-box">Loharuka Green Heights, Raigachi <br>
               16 B Saltlake city, Boishakhi Bazaar, Bidhannagar, Kolkata 700091, West bengal, 
               India.</label>
         </div>
@@ -213,12 +211,12 @@
           </div>
           <div class="col-md-4 p-0">
             <div class="form-group">
-              <label class="label-box">Adults 02</label>
+              <label class="label-box">Adults 03</label>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group">
-              <label class="label-box">Childrens 02</label>
+              <label class="label-box">Childrens 01</label>
             </div>
           </div>
         </div>
@@ -226,7 +224,7 @@
       <div class="col-md-4 p-0">
         <div class="form-group">
           <span class="label">Check in /  Check out</span>
-          <label class="label-box">30 Dec 2018 to 02 Jan 2019</label>
+          <label class="label-box">20 Jan 2019 to 22 Jan 2019</label>
         </div>
       </div>
       <div class="col-md-12 p-0">
@@ -244,29 +242,29 @@
         <img src="assets/images/property-book.png" alt="" class="rounded mx-auto d-block">
       </div>
       <div class="p-desc">
-        <span>ORA9122522</span>
+        <span>ORA000022</span>
         <ul>
-          <li class="mr-40">Fusce facilisis maximus</li>
-          <li>Two rooms</li>
+          <li class="mr-40">Loharuka Green Heights, Raigachi</li>
+          <li>2 rooms</li>
         </ul>
-        <p><i class="fa fa-arrow-circle-o-left mr-2"></i> 30th December 2018 <span>Check in Time: 12:00 PM</span></p>
-        <p class="mb-2"><i class="fa fa-arrow-circle-o-right mr-2"></i> 02nd January 2019 <span>Check out Time: 11:00 AM</span></p>
-        <p><i class="fa fa-users"></i> 2 rooms, 04 guests, 3 nights</p>
+        <p><i class="fa fa-arrow-circle-o-left mr-2"></i> 20 January 2019 <span>Check in Time: 12:00 PM</span></p>
+        <p class="mb-2"><i class="fa fa-arrow-circle-o-right mr-2"></i> 22 January 2019 <span>Check out Time: 11:00 AM</span></p>
+        <p><i class="fa fa-users"></i> 2 rooms, 04 guests, 2 nights</p>
       </div>
     </div>
     <table class="w-100 payment-table">
       <tr>
         <td class="text-left">Booking amount</td>
         <td class="text-right"><i class="fa fa-inr" aria-hidden="true"></i> 2,900 Per night x 2 rooms</td>
-        <td class="text-right"><strong><i class="fa fa-inr" aria-hidden="true"></i>  8,700</strong></td>
+        <td class="text-right"><strong><i class="fa fa-inr" aria-hidden="true"></i>  5,800</strong></td>
       </tr>
       <tr>
-        <td colspan="2" class="text-left">Price Dropped (26% off)</td>
-        <td class="text-right"><strong><i class="fa fa-inr" aria-hidden="true"></i>  6,438</strong></td>
+        <td colspan="2" class="text-left">Price Dropped (20% off)</td>
+        <td class="text-right"><strong><i class="fa fa-inr" aria-hidden="true"></i>  1,160</strong></td>
       </tr>
       <tr class="last-col">
         <td colspan="2" class="text-left">Payable amount</td>
-        <td class="text-right"><i class="fa fa-inr" aria-hidden="true"></i>  6,438 <br/><span>Including all taxes</span></td>
+        <td class="text-right"><i class="fa fa-inr" aria-hidden="true"></i>  4,640 <br/><span>Including all taxes</span></td>
       </tr>
     </table>
 
@@ -281,4 +279,11 @@
     <div class="clearfix"></div>
 
   </div>
+</ng-template>
+
+<ng-template #addNewPropertyModal let-modal>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <app-property-add-form></app-property-add-form>
 </ng-template>

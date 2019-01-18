@@ -16,14 +16,18 @@
         </div>
       <!-- flight List -->
       <div class="flight-listing-area mb-4" *ngIf="!loading">
-        <app-flight-filter *ngIf="totalFlightFound" [flightSearchObj]="flightSearchObj" [airlineNames]="airlineNames"></app-flight-filter>
-        
-          <!-- <router-outlet></router-outlet> -->
-          <app-oneway *ngIf="tripType=='O' && totalFlightFound"  [flightData]="flightList" [flightSearchObj]="flightSearchObj" (flightSelectedEvent)="onFlightSelected($event)"></app-oneway>
-          <app-roundtrip *ngIf="tripType=='R' && totalFlightFound" [flightData]="flightList" [flightSearchObj]="flightSearchObj" (flightSelectedEvent)="onFlightSelected($event)"></app-roundtrip>
-          <app-multicity *ngIf="tripType=='M'"></app-multicity>
-    
+        <div class="row">
+          <div class="col-md-12 pos-sticky-right">
+            <app-flight-filter *ngIf="totalFlightFound" [flightSearchObj]="flightSearchObj" [airlineNames]="airlineNames"></app-flight-filter>
+          </div>
         </div>
+        
+        <!-- <router-outlet></router-outlet> -->
+        <app-oneway *ngIf="tripType=='O' && totalFlightFound"  [flightData]="flightList" [flightSearchObj]="flightSearchObj" (flightSelectedEvent)="onFlightSelected($event)"></app-oneway>
+        <app-roundtrip *ngIf="tripType=='R' && totalFlightFound" [flightData]="flightList" [flightSearchObj]="flightSearchObj" (flightSelectedEvent)="onFlightSelected($event)"></app-roundtrip>
+        <app-multicity *ngIf="tripType=='M'"></app-multicity>
+  
+      </div>
     </div>
   </div>
 
@@ -31,7 +35,7 @@
   <div class="footer-sticky-bar oneway-sticky" *ngIf="tripType=='O' && selectedFlightData">
     <div class="d-flex justify-content-center">
       <div class="col-auto flight-logo">
-        <img src="assets/images/flight/fl-1.png" alt="">
+        <img src="assets/images/flight/{{selectedFlightData.OD[0].FS[0].vc}}.png" alt="">
         <p>{{getAirlineName(selectedFlightData.OD[0].FS[0].vc)}} <span> {{selectedFlightData.OD[0].FS[0].vc}} - {{selectedFlightData.OD[0].FS[0].fl}}</span></p>
       </div>
       <div class="col-auto dept-time">
@@ -43,12 +47,12 @@
       </div>
       <div class="col-auto details">
         <p>
-          <span class="price">₹ {{getFareDepart(selectedFlightData.ID) | number:'.2'}}</span><br>
+          <span class="price">₹ {{getFareDepart(selectedFlightData.ID) | number:'.0'}}</span><br>
           <span class="d-btn">Details</span>
         </p>
       </div>
       <div class="col-auto total-price">
-        <p class="price">All Total <br> <span>₹{{getFareDepart(selectedFlightData.ID) | number:'.2'}}</span></p>
+        <p class="price">All Total <br> <span>₹{{getFareDepart(selectedFlightData.ID) | number:'.0'}}</span></p>
         <button class="btn btn-primary" (click)="goTobookingPage()">Book your flight</button>
       </div>
     </div>
@@ -58,7 +62,7 @@
   <div class="footer-sticky-bar roundtrip-sticky" *ngIf="tripType=='R' && selectedFlightData">
     <div class="d-flex justify-content-center">
       <div class="col-auto flight-logo">
-        <img src="assets/images/flight/fl-1.png" alt="">
+        <img src="assets/images/flight/{{selectedFlightData[0].OD[0].FS[0].vc}}.png" alt="">
         <p>{{getAirlineName(selectedFlightData[0].OD[0].FS[0].vc)}} <span> {{selectedFlightData[0].OD[0].FS[0].vc}} - {{selectedFlightData[0].OD[0].FS[0].fl}}</span></p>
       </div>
       <div class="col-auto dept-time">
@@ -72,12 +76,12 @@
       <div class="col-auto details border-right">
         <i class="trip-icon"></i>
         <p>
-          <span class="price">₹ {{getFareDepart(selectedFlightData[0].ID) | number:'.2'}}</span><br>
+          <span class="price">₹ {{getFareDepart(selectedFlightData[0].ID) | number:'.0'}}</span><br>
           <span class="d-btn">Details</span>
         </p>
       </div>
       <div class="col-auto flight-logo p-l-30">
-        <img src="assets/images/flight/fl-1.png" alt="">
+        <img src="assets/images/flight/{{selectedFlightData[1].OD[0].FS[0].vc}}.png" alt="">
         <p>{{getAirlineName(selectedFlightData[1].OD[0].FS[0].vc)}} <span> {{selectedFlightData[1].OD[0].FS[0].vc}} - {{selectedFlightData[1].OD[0].FS[0].fl}}</span></p>
       </div>
       <div class="col-auto dept-time">
@@ -90,12 +94,12 @@
       </div>
       <div class="col-auto details">
         <p>
-          <span class="price">₹{{getFareReturn(selectedFlightData[1].ID) | number:'.2'}}</span><br>
+          <span class="price">₹{{getFareReturn(selectedFlightData[1].ID) | number:'.0'}}</span><br>
           <span class="d-btn">Details</span>
         </p>
       </div>
       <div class="col-auto total-price">
-        <p class="price">All Total <br> <span>₹{{getFareDepart(selectedFlightData[0].ID)*1 + getFareReturn(selectedFlightData[1].ID)*1 | number:'.2' }}</span></p>
+        <p class="price">All Total <br> <span>₹{{getFareDepart(selectedFlightData[0].ID)*1 + getFareReturn(selectedFlightData[1].ID)*1 | number:'.0' }}</span></p>
         <button class="btn btn-primary" (click)="goTobookingPage()">Book your flight</button>
       </div>
     </div>

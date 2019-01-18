@@ -47,11 +47,17 @@ export class PropertyComponent implements OnInit, AfterViewInit {
       }
     },
     series: [{
-      name: 'Tokyo',
+      name: 'Property - ORA9122522',
       data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
     }, {
-      name: 'London',
+      name: 'Property - ORA9122966',
       data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+    }, {
+      name: 'Property - ORA9122865',
+      data: [4.9, 5.2, 6.7, 7.5, 10.9, 14.2, 15.0, 15.6, 13.2, 10.3, 5.6, 3.8]
+    }, {
+      name: 'Property - ORA9122108',
+      data: [6.9, 3.2, 6.7, 7.9, 8.6, 9.5, 13, 15, 16, 13, 10, 8]
     }],
 
     responsive: {
@@ -82,21 +88,10 @@ export class PropertyComponent implements OnInit, AfterViewInit {
       text: ''
     },
     xAxis: {
-      categories: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-      ],
-      crosshair: true
+      categories: ['ORA9122522', 'ORA9122865', 'ORA9122966', 'ORA9122108']
+    },
+    credits: {
+        enabled: false
     },
     yAxis: {
       min: 0,
@@ -104,36 +99,12 @@ export class PropertyComponent implements OnInit, AfterViewInit {
         text: ''
       }
     },
-    tooltip: {
-      headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-      footerFormat: '</table>',
-      shared: true,
-      useHTML: true
-    },
-    plotOptions: {
-      column: {
-        pointPadding: 0.2,
-        borderWidth: 0
-      }
-    },
     series: [{
-      name: 'Tokyo',
-      data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
+        name: 'Pending amount',
+        data: [28000, 15000, 30000, 68000]
     }, {
-      name: 'New York',
-      data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-    }, {
-      name: 'London',
-      data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-    }, {
-      name: 'Berlin',
-      data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-
+        name: 'Realized amount ',
+        data: [50000, 7000, 40000, 94000]
     }]
   };
 
@@ -149,37 +120,7 @@ export class PropertyComponent implements OnInit, AfterViewInit {
       hideOnSingleSlide: true
     }
   };
-  carouselItems = [{
-    img: 'prop_1.jpg',
-    name: 'ORA9122522, Amadpur',
-    desc: 'Lorem ipsum dolor sit amet, consectetur dipiscing elit. Curabitur eget pharetra ...',
-    location: 'Saltlake, Kolkata'
-  }, {
-    img: 'prop_2.jpg',
-    name: 'ORA9122522, Amadpur',
-    desc: 'Lorem ipsum dolor sit amet, consectetur dipiscing elit. Curabitur eget pharetra ...',
-    location: 'Saltlake, Kolkata'
-  }, {
-    img: 'prop_3.jpg',
-    name: 'ORA9122522, Amadpur',
-    desc: 'Lorem ipsum dolor sit amet, consectetur dipiscing elit. Curabitur eget pharetra ...',
-    location: 'Saltlake, Kolkata'
-  }, {
-    img: 'prop_1.jpg',
-    name: 'ORA9122522, Amadpur',
-    desc: 'Lorem ipsum dolor sit amet, consectetur dipiscing elit. Curabitur eget pharetra ...',
-    location: 'Saltlake, Kolkata'
-  }, {
-    img: 'prop_2.jpg',
-    name: 'ORA9122522, Amadpur',
-    desc: 'Lorem ipsum dolor sit amet, consectetur dipiscing elit. Curabitur eget pharetra ...',
-    location: 'Saltlake, Kolkata'
-  }, {
-    img: 'prop_3.jpg',
-    name: 'ORA9122522, Amadpur',
-    desc: 'Lorem ipsum dolor sit amet, consectetur dipiscing elit. Curabitur eget pharetra ...',
-    location: 'Saltlake, Kolkata'
-  }];
+  
 
   constructor(
     private modalService: NgbModal,
@@ -197,6 +138,9 @@ export class PropertyComponent implements OnInit, AfterViewInit {
   openBookingModal(content) {
     // , size: 'md'
     this.modalService.open(content, { windowClass: 'modal-popup booking-modal' });
+  }
+  openAddPropertyModal(content) {
+    this.modalService.open(content, { windowClass: 'modal-popup add-property-modal', centered: true});
   }
 
   ngOnInit() {

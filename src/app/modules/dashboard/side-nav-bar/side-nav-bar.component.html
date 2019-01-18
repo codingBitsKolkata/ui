@@ -1,8 +1,9 @@
 <div class="sidebar">
   <nav class="sidebar-nav ps ps--active-y">
     <div class="profile-info">
-      <div class="btn-group mr-3">
-        <img class="user-img" src="assets/images/dashboard/prop_host.png" alt="">
+      <div class="btn-group">
+        <div class="sec-user-img" *ngIf="!userProfileDetails?.userVsInfo?.imageUrl">{{userProfileDetails?.userVsInfo?.name ? getShortName(userProfileDetails?.userVsInfo?.name) : ''}}</div>
+        <img class="user-img" *ngIf="userProfileDetails?.userVsInfo?.imageUrl" src="{{userProfileDetails?.userVsInfo?.imageUrl}}" alt="">
         <button class="btn btn-edit" type="button" (click)="openModal(editProfileModal)"><i class="pencil-icon"></i></button>
       </div>
       <label class="username" *ngIf="userProfileDetails?.userVsInfo?.name">{{userProfileDetails?.userVsInfo?.name}}</label>
@@ -68,7 +69,8 @@
     </button>
     <h4 class="modal-title" id="modal-basic-title">Edit/Add profile</h4>
     <div class="profile-img">
-      <img src="assets/images/dashboard/prop_host.png" alt="">
+      <div class="sec-user-img" style="width:100px;height:100px" *ngIf="!userProfileDetails?.userVsInfo?.imageUrl">{{userProfileDetails?.userVsInfo?.name ? getShortName(userProfileDetails?.userVsInfo?.name) : ''}}</div>
+      <img *ngIf="userProfileDetails?.userVsInfo?.imageUrl" src="{{userProfileDetails?.userVsInfo?.imageUrl}}" alt="">
       <div class="file btn">
         <span class="cam-img"></span>
         <input type="file" name="file"/>
@@ -86,12 +88,12 @@
         </div>
         <div class="col-md-9">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Enter your name">
+            <input type="text" class="form-control" placeholder="Enter your name" value="{{userProfileDetails?.userVsInfo?.name}}">
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <input type="text" class="form-control" value="+91 80014578954" disabled>
+            <input type="text" class="form-control" placeholder="+91 9123654780" disabled value="+91 {{userProfileDetails?.mobileNumber}}">
           </div>
         </div>
         <div class="col-md-6">
@@ -101,7 +103,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <input type="email" class="form-control" value="host@gmail.com" disabled>
+            <input type="email" class="form-control" value="host@gmail.com" disabled value="{{userProfileDetails?.emailId}}">
           </div>
         </div>
         <div class="col-md-6">
@@ -141,7 +143,7 @@
         <div class="col-md-12">
           <div class="form-group">
             <label for="">Biography</label>
-            <textarea name="" class="form-control h100"> </textarea>
+            <textarea name="" class="form-control h100">{{userProfileDetails?.userVsInfo?.bioInfo}}</textarea>
           </div>
         </div>
       </div>
@@ -161,17 +163,17 @@
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Enter your name" value="Mr. Saiyed Husain">
+            <input type="text" class="form-control" placeholder="Enter your name" value="{{userProfileDetails?.userVsInfo?.name}}">
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <input type="text" class="form-control" value="+91 80014578954">
+            <input type="text" class="form-control" value="+91 {{userProfileDetails?.mobileNumber}}">
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <input type="email" class="form-control" value="host@gmail.com">
+            <input type="email" class="form-control" value="{{userProfileDetails?.emailId}}">
           </div>
         </div>
       </div>
@@ -180,7 +182,10 @@
         <div class="col-md-12">
           <div class="form-group">
             <select name="" class="form-control">
-              <option value="">Others</option>
+              <option value="">Select purpose</option>
+              <option value="">Account related problem</option>
+              <option value="">Property related problem</option>
+              <option value="">Guest related problem</option>
             </select>
           </div>
         </div>

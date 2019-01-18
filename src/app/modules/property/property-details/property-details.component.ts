@@ -124,9 +124,10 @@ export class PropertyDetailsComponent implements OnInit {
     getPropertyDetails(params: any) {
         this.loading = true;
         this.srvProperty.getPropertyDetails(params).subscribe((res) => {
-            this.loading = false;
+            
             if (res.responseCode === '200') {
                 this.propertyDetails = res.responseBody;
+                console.log("this.propertyDetails");
                 console.log(this.propertyDetails);
                 this.galleryImages = [];
                 let imgObj = {
@@ -134,16 +135,19 @@ export class PropertyDetailsComponent implements OnInit {
                     medium: this.propertyDetails['coverImageUrl'],
                     big: this.propertyDetails['coverImageUrl'],
                 }
-                this.galleryImages.push(imgObj)
-                for(let i=0; i< this.propertyDetails['propertyVsImages'].length; i++){
-                    let imgObj = {
-                        small: this.propertyDetails['propertyVsImages'][i].imageURL,
-                        medium: this.propertyDetails['propertyVsImages'][i].imageURL,
-                        big: this.propertyDetails['propertyVsImages'][i].imageURL,
+                this.galleryImages.push(imgObj);
+                if(this.propertyDetails['propertyVsImages']){
+                    for(let i=0; i< this.propertyDetails['propertyVsImages'].length; i++){
+                        let imgObj = {
+                            small: this.propertyDetails['propertyVsImages'][i].imageURL,
+                            medium: this.propertyDetails['propertyVsImages'][i].imageURL,
+                            big: this.propertyDetails['propertyVsImages'][i].imageURL,
+                        }
+                        this.galleryImages.push(imgObj);
                     }
-                    this.galleryImages.push(imgObj);
                 }
-                console.log(this.galleryImages)
+                console.log(this.galleryImages);
+                this.loading = false;
             }
         }, error => {
             this.loading = false;

@@ -66,13 +66,13 @@
                   <div class="card mb-0 border-0 c-pointer" (click)="showMoreProperty(property,propertyType.propertyTypeId)">
                     <div class="property-img">
                         <div class="room-tag {{property.roomStandard == 'PREMIUM' ? 'green' : 'orange'}}" *ngIf="property.roomStandard!='NORMAL'">{{property.roomStandard}}</div>
-                        <img class="card-img-top rounded" [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" alt="Card image cap">
+                        <img class="card-img-top rounded" [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property-details/no_image_available.jpg'" src="assets/images/property-details/no_image_available.jpg">
                         <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
                         <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
                     </div>
                     <div class="card-body pl-0 pr-0 pb-0">
                       <h5 class="card-title" placement="top" ngbTooltip="{{property.address}}">{{property.oraName}}, {{property.address}}</h5>
-                      <p class="card-text price mb-1">₹ {{property.totalPrice | number:'.2'}} Per night</p>
+                      <p class="card-text price mb-1">₹ {{property.totalPrice | number: '1.0-0'}} Per night</p>
                       <p class="card-text"><span class="badge badge-secondary bg-orange">{{property.rating}}</span><span class="cat-type"> {{sharedSrv.getRatingText(property.rating)}},</span><span class="review"> {{property.reviewCount}} reviews</span></p>
                       <hr class="hr1">
                       <div class="alert alert-secondary alert-{{i+1}}" role="alert">
@@ -89,6 +89,9 @@
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="no-data-found" *ngIf="propertyList[propertyType.propertyTypeId].length == 0">
+                Finding best properties for you...
               </div>
               <div *ngIf="propertyList[propertyType.propertyTypeId] && propertyList[propertyType.propertyTypeId].length > 0">
                   <hr class="hr-1 mt-30 mb-30 no-mobile-d">

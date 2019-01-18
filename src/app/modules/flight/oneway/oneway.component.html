@@ -6,7 +6,7 @@
         <div class="c-header">
           <div class="row">
             <div class="col-4 f-logo text-left">
-              <img src="assets/images/flight/fl-1.png" alt="">
+              <img src="assets/images/flight/{{flightRow.OD[0].FS[0].vc}}.png" alt="">
               <span class="f-name">{{getAirlineName(flightRow.OD[0].FS[0].vc)}} - {{flightRow.OD[0].FS[0].vc}} - {{flightRow.OD[0].FS[0].fl}}</span>
             </div>
             <div class="col-4 text-center">
@@ -31,7 +31,7 @@
         <div class="book-panel" for="flight1">
           <h4 class="class">{{flightRow.OD[0].classtype}}</h4>
           <span class="p-from">From</span>
-          <span class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{getFare(flightRow.ID) | number:'.2'}}</span>
+          <span class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{getFare(flightRow.ID) | number:'.0'}}</span>
           <span class="radio-btn"></span>
         </div>
       </div>

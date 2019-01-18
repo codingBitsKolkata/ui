@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SharedService} from '../../services/shared.service';
 import {Router} from '@angular/router';
 import { BannerService } from '../../services/apis/banner.service';
+import { Meta, Title  } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -48,7 +49,18 @@ export class HomeComponent implements OnInit {
     private sharedSrv: SharedService,
     private router: Router,
     private parserFormatter: NgbDateParserFormatter,
+    private meta: Meta,
+    private title: Title
     ) {
+      // ADD PAGE TITLE & METATAGS START
+      this.meta.addTags([
+        {name: 'description', content: 'You need to experience India’s first standardized homestay booking with Orastyas to believe how wonderful and affordable it is.'},
+        {name: 'author', content: ''},
+        {name: 'keywords', content: ''}
+      ]);
+      this.title.setTitle('Orastays | Standardized Homestay in India');
+      // END
+
       this.windowHeight = window.innerHeight;
       console.log("Height: " + this.windowHeight)
     this.h_fromDate = this.calendar.getToday();

@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
+import { Meta, Title  } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -29,11 +30,21 @@ export class AboutComponent implements AfterViewInit {
   }
 ];
   
-  constructor(private cdr: ChangeDetectorRef) {
-    // customize default values of dropdowns used by this component tree
-    // config.placement = 'top-left';
-    // config.autoClose = false;
-  }
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private meta: Meta,
+    private title: Title
+    ) {
+      // ADD PAGE TITLE & METATAGS START
+      this.meta.addTags([
+        {name: 'description', content: 'Orastays provide an affordable homestay options for you and your family travelling across India compared to the impersonal luxury offered by commercial properties.'},
+        {name: 'author', content: ''},
+        {name: 'keywords', content: ''}
+      ]);
+      this.title.setTitle('An unique blend of comfort and individualized touch');
+      // END
+   }
+
   ngAfterViewInit() {
     this.cdr.detectChanges();
   }

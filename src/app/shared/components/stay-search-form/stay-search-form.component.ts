@@ -115,7 +115,6 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
             if (place.geometry === undefined || place.geometry === null) {
               return;
             }
-            console.log(place);
             this.latitude = place.geometry.location.lat().toFixed(6);
             this.longitude = place.geometry.location.lng().toFixed(6);
             this.staySearchForm.patchValue({location: place.formatted_address});

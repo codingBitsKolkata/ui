@@ -248,27 +248,27 @@
                   </tr> -->
                   <tr>
                     <td class="text-left">Amount Payable <i></i></td>
-                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.amountPayable}}</td>
+                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.amountPayable | number: '1.0-0'}}</td>
                   </tr>
                   <tr>
                     <td class="text-left">Convenience Fee <i></i></td>
-                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceFee}}</td>
+                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceFee | number: '1.0-0'}}</td>
                   </tr>
                   <tr>
                     <td class="text-left">Convenience GST Amount <i></i></td>
-                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceGSTAmount}}</td>
+                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceGSTAmount | number: '1.0-0'}}</td>
                   </tr>
                   <tr>
                     <td class="text-left">Convenience GST Percentage <i></i></td>
-                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceGSTPercentage}}</td>
+                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceGSTPercentage | number: '1.0-0'}}</td>
                   </tr>
                   <tr>
                     <td class="text-left">Property Offer <i></i></td>
-                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.propertyOffer}}</td>
+                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.propertyOffer | number: '1.0-0'}}</td>
                   </tr>
                   <tr>
                     <td class="text-left total">Total payable</td>
-                    <td class="text-right total"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.totalAmount}}</td>
+                    <td class="text-right total"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.totalAmount | number: '1.0-0'}}</td>
                   </tr>
                 </table>
               </div>
