@@ -20,7 +20,18 @@
         </div>
       </div>
     </div>
-    <div class="form-group roomGuest">
+    <div class="form-group stayTypeCheckbox">
+      <strong>Stay type:</strong>
+      <label class="mb-0 c-pointer"><input class="option-input radio" name="stayType" type="radio" formControlName="stayType" value="PRIVATE" [(ngModel)]="stayType"> Private </label>
+      <label class="mb-0 c-pointer"><input class="option-input radio" name="stayType" type="radio" formControlName="stayType" value="SHARED" [(ngModel)]="stayType"> Shared </label>
+    </div>
+    <div class="form-group m-0 share-count" *ngIf="stayType == 'SHARED'">
+      <label for="" class="d-block text">No. of Guest: </label>
+      <input type="hidden" formControlName="noOfGuestShared">
+      <ng-number-picker class="ng-number-picker" [(value)]="noOfGuestShared" [min] ="1"  [max]="'6'"></ng-number-picker>
+    </div>
+    <!-- {{stayType}} -->
+    <div class="form-group roomGuest" *ngIf="stayType == 'PRIVATE'">
       <div ngbDropdown #myDrop="ngbDropdown" class="d-inline-block hotelBookDropdown" [autoClose]="'outside'">
         <button type="button" class="btn" ngbDropdownToggle>{{numberOfGuest}} Guest, {{numberOfRooms}} Room</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic2">

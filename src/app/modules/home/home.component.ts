@@ -11,13 +11,7 @@ import { Meta, Title  } from '@angular/platform-browser';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-//   styles: [`
-//     .bannerImg {
-//         width: 100%;
-//         max-height: {{ windowHeight }};
-//     }
-// `]
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   @ViewChild('dpHotel') dpHotel: NgbInputDatepicker;
@@ -178,19 +172,18 @@ export class HomeComponent implements OnInit {
    });
  }
 
- getPropertyList(propertyType: any) {
-  if (this.propertyList[propertyType.propertyTypeId].length === 0) {
-    this.srvProperty.getPropertyByType({propertyTypeId: propertyType.propertyTypeId}).subscribe((res) => {
-      console.log('getPropertyList data', res);
-      if (res.responseCode === '200') {
-         this.propertyList[propertyType.propertyTypeId] = res.responseBody;
-         console.log(this.propertyList);
-      }
-    }, error => {
-      console.log('error', error);
-    });
+  getPropertyList(propertyType: any) {
+    if (this.propertyList[propertyType.propertyTypeId].length === 0) {
+      this.srvProperty.getPropertyByType({propertyTypeId: propertyType.propertyTypeId}).subscribe((res) => {
+        if (res.responseCode === '200') {
+          this.propertyList[propertyType.propertyTypeId] = res.responseBody;
+          console.log(this.propertyList);
+        }
+      }, error => {
+        console.log('error', error);
+      });
+    }
   }
-}
   openModal(content) {
     // , size: 'md'
       this.modalService.open(content, { windowClass: 'modal-popup', centered: true });
@@ -210,11 +203,20 @@ export class HomeComponent implements OnInit {
     searchParam['location'] = propertyObj.address;
     searchParam['location'] = propertyObj.address;
     searchParam['propertyTypeId'] = propertyTypeId;
+    searchParam['stayType'] = 'PRIVATE';
     searchParam['rooms'] =  [{noOfGuest: 1, noOfChild: 0}];
     console.log(searchParam);
     localStorage.setItem('searchObj', JSON.stringify(searchParam));
     this.sharedSrv.sharedHomeSearchData = searchParam;
     this.router.navigate(['/properties'], { queryParams: searchParam });
+  }
+
+  navigatePropertyDetails(propertyId) {
+    const searchObj = JSON.parse(localStorage.getItem('searchObj'));
+    searchObj['propertyId'] = propertyId;
+    localStorage.setItem('searchObj', JSON.stringify(searchObj));
+    this.sharedSrv.sharedHomeSearchData = searchObj;
+    this.router.navigate(['/properties/property-details'], { queryParams: searchObj });
   }
 
   getMyStyles(){

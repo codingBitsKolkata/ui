@@ -74,18 +74,12 @@ export class PropertyService {
      return this.httpClient.post<any>(request.url, {params: requestParam});
   }
 
-  getPropertyByType(requestParam: any): Observable<any> {
-    // console.log('here');
-    // const request = {
-    //   'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-properties-by-type',
-    //   'params' : requestParam
-    // };
-    // return this.httpClient.post<any>(request.url, request.params);
+  getPropertyByType(params: any): Observable<any> {
     const request = {
-       // 'url':  'assets/static-data/home-page-property-list.json'
-        'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-properties-by-type'
-     };
-     return this.httpClient.get<any>(request.url, {params: requestParam});
+      'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-properties-by-type',
+      'params' : params
+    };
+    return this.httpClient.get<any>(request.url, {params: request.params});
   }
 
   getHostPropertyList(): Observable<any> {
@@ -118,5 +112,13 @@ export class PropertyService {
     return this.httpClient.post<any>(request.url, params);
   }
 
+  // Fetch all purpose list for contact form in dashboard
+  getContactPurposeList(): Observable<any>{
+    const request = {
+      'url': AppConst.PROPERTY_ADD_API_BASE_URL + '/fetch-contact-purpose',
+      'params' : {}
+    };
+    return this.httpClient.get<any>(request.url, request.params);
+  }
 
 }

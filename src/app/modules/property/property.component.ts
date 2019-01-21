@@ -170,7 +170,7 @@ export class PropertyComponent implements OnInit, OnDestroy {
     this.getPropertyList(merged);
   }
 
-  navigateToBookingPage(propertyId) {
+  navigatePropertyDetails(propertyId) {
     const searchObj = JSON.parse(localStorage.getItem('searchObj'));
     searchObj['propertyId'] = propertyId;
     localStorage.setItem('searchObj', JSON.stringify(searchObj));

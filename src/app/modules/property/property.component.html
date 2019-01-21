@@ -123,7 +123,7 @@
                   <h6 class="price"><span><i class="fa fa-inr" aria-hidden="true"></i> {{property.totalPrice | number: '1.0-0'}}</span> Per night</h6>
                   <p class="total-times-book">Booked 21 times in the last 24 hours</p>
                 </div>
-                <button class="btn btn-dark btn-sm float-right" (click)="navigateToBookingPage(property.propertyId)">Book now</button>
+                <button class="btn btn-dark btn-sm float-right" (click)="navigatePropertyDetails(property.propertyId)">Book now</button>
               </div>
             </div>
           </div>
@@ -136,11 +136,11 @@
     </div>
 
     <!-- Map Section -->
-    <div *ngIf="propertyList.length > 0" [hidden]="!mapShowHide" class="col-md-3">
+    <div *ngIf="propertyList.length > 0" [hidden]="!mapShowHide" class="col-md-3 map-sticky">
       <div class="map-container">
-          <agm-map [latitude]="+searchObj?.latitude" [longitude]="+searchObj?.longitude"  [zoom]='12'>
+          <agm-map [latitude]="+searchObj?.latitude" [longitude]="+searchObj?.longitude"  [zoom]='11'>
               <agm-marker *ngFor="let property of propertyList" [latitude]="+property.latitude" [longitude]="+property.longitude">
-                <agm-info-window>{{property.oraName}}</agm-info-window>
+                <agm-info-window>{{property.oraName}} <br> {{property.totalPrice | number: '1.0-0'}}</agm-info-window>
               </agm-marker>
           </agm-map>
       </div>

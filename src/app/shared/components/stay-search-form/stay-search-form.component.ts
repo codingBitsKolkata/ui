@@ -32,6 +32,8 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
   checkInMinDate: any;
   latitude: any;
   longitude: any;
+  stayType: string;
+  noOfGuestShared: any;
   detailsPage: boolean;
   @ViewChild('search')
   public searchElementRef: ElementRef;
@@ -57,6 +59,8 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
     this.noOfChild = [0];
     this.numberOfRooms = 1;
     this.numberOfGuest = 1;
+    this.stayType = 'PRIVATE';
+    this.noOfGuestShared = 1;
     this.buildSearchForm();
   }
   fromModel(date: Date): NgbDateStruct {
@@ -81,6 +85,8 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
       // tslint:disable-next-line:max-line-length
       this.checkOutDate = { year: selectedCheckOutDate.getFullYear(), month: selectedCheckOutDate.getMonth() + 1, day: selectedCheckOutDate.getDate() };
       this.checkOutMinDate = this.checkInDate;
+      this.stayType = this.searchObj['stayType'];
+      this.noOfGuestShared = this.searchObj['noOfGuest'];
       const rooms = this.searchObj['rooms'];
       if (rooms.length > 0) {
         this.removeRoom(0);
@@ -130,9 +136,11 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
     this.staySearchForm = this.fb.group({
       propertyTypeId: new FormControl('', [Validators.required]),
       location: new FormControl('', [Validators.required]),
+      stayType: new FormControl(this.stayType, [Validators.required]),
       checkInDate: new FormControl(this.checkInDate, [Validators.required]),
       checkOutDate: new FormControl(this.checkOutDate, [Validators.required]),
-      rooms: this.fb.array([this.buildRoomForm(1, 0)])
+      rooms: this.fb.array([this.buildRoomForm(1, 0)]),
+      noOfGuestShared: new FormControl(this.noOfGuestShared)
     });
     console.log(this.staySearchForm);
   }
@@ -154,6 +162,8 @@ export class StaySearchFormComponent implements OnInit, OnChanges  {
        searchParam.checkOutDate = checkOutDate;
        searchParam['latitude'] = + this.latitude;
        searchParam['longitude'] = + this.longitude;
+       searchParam.stayType = this.stayType;
+       searchParam.noOfGuest = this.noOfGuestShared;
        console.log(searchParam);
        localStorage.setItem('searchObj', JSON.stringify(searchParam));
        this.sharedSrv.sharedHomeSearchData = searchParam;

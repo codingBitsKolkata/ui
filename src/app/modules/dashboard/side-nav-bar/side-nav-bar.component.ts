@@ -1,7 +1,9 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router, NavigationEnd, ActivatedRoute  } from '@angular/router';
 import { ProfileService } from '../../../services/apis/profile.service';
+import { PropertyService } from '../../../services/apis/property.service';
 
 @Component({
   selector: 'app-side-nav-bar',
@@ -13,27 +15,34 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
   languageList: Array<any>;
   domainList: Array<any>;
   interestList: Array<any>;
+  purposeList: Array<any>;
   languageDropdownSettings = {};
   interestDropdownSettings = {};
   domainDropdownSettings = {};
   userRole;
   userDetails;
 
+  contactOraForm: FormGroup;
+  submitted = false;
+
   sectionScroll: string;
   constructor(private modalService: NgbModal,
     private cdr: ChangeDetectorRef,
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private srvProfile: ProfileService) { 
+    private srvProfile: ProfileService,
+    private propertyService: PropertyService,
+    private formBuilder: FormBuilder) { 
       this.userProfileDetails = {};
       this.languageList = [];
       this.domainList = [];
       this.interestList = [];
+      this.purposeList = [];
       this.getUserProfileDetails();
       this.getLanguageList();
       this.getDomainList();
       this.getInterestList();
-
+      this.getPurposeList();
   }
 
   openModal(content) {
@@ -79,7 +88,20 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
+
+    
   }
+
+  contactOraFormBuilder(){
+    this.contactOraForm = this.formBuilder.group({
+      userName: new FormControl(this.userProfileDetails['userVsInfo'].name, [Validators.required]),
+      mobileNumber: new FormControl(this.userProfileDetails['mobileNumber'], [Validators.required]),
+      emailId: new FormControl (this.userProfileDetails['emailId'], [Validators.required, Validators.email]),
+      contactPurposeId: new FormControl('', [Validators.required]),
+      message: new FormControl('', [Validators.required])
+    });
+  }
+  get f() { return this.contactOraForm.controls; }
 
   ngAfterViewInit() {
     this.cdr.detectChanges();
@@ -109,6 +131,10 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
     this.srvProfile.getUserDetails({}).subscribe((res) => {
       if (res.responseCode === '200') {
           this.userProfileDetails = res.responseBody;
+          this.contactOraFormBuilder();
+          // this.contactOraForm.value.userName = this.userProfileDetails['userVsInfo'].name;
+          // this.contactOraForm.value['mobileNumber'] = this.userProfileDetails['mobileNumber'];
+          // this.contactOraForm.value['emailId'] = this.userProfileDetails['emailId'];
           if(this.userProfileDetails['userVsTypes'].length > 0){
             if(this.userProfileDetails['userVsTypes'].length == 1){
               if(parseInt(this.userProfileDetails['userVsTypes'][0].userType.userTypeId) == 2){
@@ -162,5 +188,27 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
   getShortName(fullName) { 
     return fullName.split(' ').map(n => n[0]).join('');
   }
+
+  // GET Purpose List
+  getPurposeList() {
+    this.propertyService.getContactPurposeList().subscribe((res) => {
+      if (res.responseCode === '200') {
+          this.purposeList = res.responseBody;
+      }
+    }, error => {
+      console.log('error', error);
+    });
+  }
+
+  onSubmitContactOraForm() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.contactOraForm.invalid) {
+        return;
+    }
+
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.contactOraForm.value))
+}
 
 }

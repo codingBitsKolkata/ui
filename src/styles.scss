@@ -287,7 +287,7 @@ input:active,select:active,button:active,label:active{
    
 }
 .booking-form{
-    font-family: latoitalic;
+    font-family: latoregular;
     font-size: 14px;
     color: #484848;
     .dpicker{
@@ -555,6 +555,51 @@ input:active,select:active,button:active,label:active{
             margin-right: 10px;
         }
     }
+    .share-count{
+        display: flex;
+        align-items: center;
+        label{
+            display: inline;
+            margin: 0;
+            margin-right: 10px;
+            font-family: latobold;
+            padding-left: 5px;
+        }  
+    }
+    .stayTypeCheckbox{
+        strong{
+            margin-right: 10px;
+            padding-left: 5px;
+            font-family: latobold;
+        }
+        label{
+            margin-right: 15px !important;
+            .option-input{
+                margin-right: 5px;
+                top: 2px;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                height: 15px;
+                width: 15px;
+                &:checked::before{
+                    height: 9px;
+                    width: 9px;
+                    position: absolute;
+                    content: ' ';
+                    display: inline-block;
+                    font-size: 12px;
+                    text-align: center;
+                    line-height: 20px;
+                    background: #f47921;
+                    border-radius: 50%;
+                    top: 2px;
+                    left: 2px;
+                }
+            }
+        }
+    }
+    
 }
 .features-section{
     background: #ffffff;
@@ -672,7 +717,7 @@ input:active,select:active,button:active,label:active{
             }
         }
         .card-body{
-            padding-top: 30px;
+            padding-top: 20px;
             .card-title{
                 color: #231f20;
                 font-size: 16px;
@@ -1232,44 +1277,50 @@ input:active,select:active,button:active,label:active{
 
 // ng Number Picker
 .ng-number-picker{
-    display: inline-grid;
     .input-group{
-        height: 40px !important;
+        height: 31px !important;
         margin: 0 !important;
-        padding: 2px;
+        padding: 0px;
         border: 1px solid #c7c7c7;
         border-radius: 5px;
-        .input-group-text {
-            width: 40px;
-            height: 100%;
-            font-size: 30px !important;
-            line-height: 20px;
-            text-align: center;
-            border: 0;
-            background: #1a1a1a;
-            color: #fff;
-            display: inline-block;
-            border-radius: 3px !important;
-            &.decrease{
-                font-size: 40px !important;
-                background: #484848;
-            }
-            &.increase {
-                background: #f47921;
-            }
-            // &:hover, &:focus, &:active{
-            //     background: #1a1a1a;
-            // }
-
-        }
         .form-control{
             height: 100%;
-            width: 50px;
+            width: 40px;
             display: inline-block;
             border: none;
             text-align: center;
+            border-left: 1px solid #dee1e4;
+            border-right: 1px solid #dee1e4;
+            padding-left: 0;
+            padding-right: 0;
+            font-size: 16px !important;
         }
-    }   
+        .input-group-prepend {
+            margin-right: 0px;
+        }
+        .input-group-text{
+            width: 25px;
+            height: 100%;
+            font-size: 20px !important;
+            line-height: 14px;
+            text-align: center;
+            border: 0;
+            background: #ffffff;
+            display: inline-block;
+            border-radius: 3px !important;
+            padding-left: 0;
+            padding-right: 0;
+            &.decrease {
+                font-size: 29px !important;
+                background-color: transparent; 
+                color: #484848 !important;
+            }
+            &.increase{
+                color: #f47921 !important;
+                border-left: 0px;
+            }
+        }
+    }
 }
 
 .zoom-effect{
@@ -2617,4 +2668,18 @@ a{
     text-align: center;
     justify-content: center!important;
     background: #cccccc38;
+}
+.map-sticky{
+    padding: 0;
+    height: calc(100vh - 76px);
+    overflow: auto;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 76px;
+    .map-container{
+        height: 100%;
+        .agm-map-container-inner{
+            height: 100%;
+        }
+    }
 }
