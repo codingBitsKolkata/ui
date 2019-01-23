@@ -5,13 +5,17 @@
     <div class="container-fluid header-content">
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-5">
             <h2 class="title">Ora Property Listing Here...</h2>
             <p class="info">It only takes 15 minutes to register  <span> So let's get started..... </span> !! <img class="arrow" src="assets/images/host-arrow.png" alt=""> </p>
             <button class="btn btn-primary btn-md mt-2 pb-10" (click)="openModal(earningCalculator)">Calculate your earning <img class="icon-calculator" src="assets/images/icon-calculator.png" alt=""> </button>
           </div>
-          <div class="col-md-6">
-            <app-property-add-form></app-property-add-form>
+          <div class="col-md-7">
+           <!--
+    <app-property-add-form></app-property-add-form>
+
+           --> 
+           <app-add-property-form></app-add-property-form>
           </div>
         </div>
       </div>

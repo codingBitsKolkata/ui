@@ -111,9 +111,20 @@ export class PropertyService {
     };
     return this.httpClient.post<any>(request.url, params);
   }
-
+  getSpaceRuleList(params: any) {
+    const request = {
+      'url': AppConst.PROPERTY_ADD_API_BASE_URL + '/fetch-space-rule'
+    };
+    return this.httpClient.post<any>(request.url, params);
+  }
+   getSpecialExperienceList(params: any) {
+    const request = {
+      'url': AppConst.PROPERTY_ADD_API_BASE_URL + '/fetch-special-experience'
+    };
+    return this.httpClient.post<any>(request.url, params);
+  }
   // Fetch all purpose list for contact form in dashboard
-  getContactPurposeList(): Observable<any>{
+  getContactPurposeList(): Observable<any> {
     const request = {
       'url': AppConst.PROPERTY_ADD_API_BASE_URL + '/fetch-contact-purpose',
       'params' : {}

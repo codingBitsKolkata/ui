@@ -31,6 +31,7 @@ import { FlightQuickSearchComponent } from './components/flight-quick-search/fli
 import { FlightFilterComponent } from './components/flight-filter/flight-filter.component';
 import { OfferComponent } from './components/offer/offer.component';
 import { TermsConditionsComponent } from './components/terms-conditions/terms-conditions.component';
+import { AddPropertyFormComponent } from './components/add-property-form/add-property-form.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { TermsConditionsComponent } from './components/terms-conditions/terms-co
     FlightQuickSearchComponent,
     FlightFilterComponent,
     OfferComponent,
-    TermsConditionsComponent
+    TermsConditionsComponent,
+    AddPropertyFormComponent
   ],
   imports: [
     CommonModule,
@@ -104,7 +106,8 @@ import { TermsConditionsComponent } from './components/terms-conditions/terms-co
     FlightFilterComponent,
     OfferComponent,
     FlightSearchFormComponent,
-    TermsConditionsComponent
+    TermsConditionsComponent,
+    AddPropertyFormComponent
   ],
   entryComponents: [
     TestModalComponent
