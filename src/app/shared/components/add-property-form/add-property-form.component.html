@@ -1,0 +1,94 @@
+<div class="listing-form" [formGroup]="addPropertyForm">
+  <form-wizard>
+      <!-- Step 1 -->   
+      <wizard-step formGroupName="step1" [title]="'Step1'" [isValid]="addPropertyForm.get('step1').valid">
+          <h4 class="title">What type of property you are listing ?</h4>
+          <div class="d-flex text-center mt-30">
+            <div class="property-type" *ngFor="let propertyType of propertyTypes; let i = index">
+              <input type="radio"  id="{{propertyType.name}}_{{propertyType.propertyTypeId}}" [value]="propertyType" class="input-hidden" formControlName="propertyType"/>
+              <label class="items" for="{{propertyType.name}}_{{propertyType.propertyTypeId}}">
+                <img src="{{propertyType.imgUrl}}" alt="">
+                <span class="item-checked"></span>
+              </label>
+              <p class="name">{{propertyType.name}}</p>
+            </div>
+          </div>
+        </wizard-step>
+           <!-- / Step 1 --> 
+
+           <!-- Step 2 -->                                 
+    <wizard-step formGroupName="step2" [title]="'Step2'" [isValid]="addPropertyForm.get('step2').valid">
+        <div *ngIf="addPropertyForm.get('step2').valid === false && addPropertyForm.get('step2').touched" class="alert alert-danger"> 
+            <div>All fields are required</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 plr-5">
+              <div class="form-group bg-input">
+                <span class="icon i-property-name"></span>
+                <input type="text" class="form-control" placeholder="Property name" formControlName="name" [ngClass]="{'is-invalid': addPropertyForm.get('step2')['controls'].name.errors && addPropertyForm.get('step2')['controls'].name.touched}">
+              </div>
+            </div>
+            <div class="col-md-4 plr-5">
+              <div class="form-group bg-input">
+                <span class="icon i-property-address"></span>
+                <input type="text" class="form-control" placeholder="Property address" formControlName="address" [ngClass]="{'is-invalid': addPropertyForm.get('step2')['controls'].address.errors && addPropertyForm.get('step2')['controls'].address.touched}">
+              </div>
+            </div>
+            <div class="col-md-4 plr-5">
+              <div class="form-group bg-input">
+                <textarea class="form-control textarea" placeholder="Write propety description" formControlName="description" [ngClass]="{'is-invalid': addPropertyForm.get('step2')['controls'].description.errors && addPropertyForm.get('step2')['controls'].description.touched}"></textarea>
+              </div>
+            </div>
+           
+          </div>
+          <agm-map [latitude]="+latitude" [longitude]="+longitude"  [zoom]='10'>
+              <agm-marker  [markerDraggable]="true"
+              (dragEnd)="markerDragEnd($event)"
+              [latitude]="+latitude" [longitude]="+longitude">
+              </agm-marker>
+          </agm-map>
+      </wizard-step>
+      <!-- / Step 2 --> 
+        <!--  Step 3 --> 
+    <wizard-step formGroupName="step3" [title]="'Step3'" [isValid]="addPropertyForm.get('step3').valid">
+        <div *ngIf="addPropertyForm.get('step3').valid === false && addPropertyForm.get('step3').touched" class="alert alert-danger"> 
+            <div>All fields are required</div>
+        </div>
+        <div class="form-group bg-input d-flex align-items-center mb-3">
+          <span class="icon i-guest-access"></span>
+         <!-- <input type="text" class="form-control ml-20" placeholder="Mention guest access areas " formControlName="guestAccess" [ngClass]="{'is-invalid': addPropertyForm.get('step3')['controls'].guestAccess.errors && addPropertyForm.get('step3')['controls'].guestAccess.touched}"> -->
+          <tag-input class="tag-input" [ngModel]='guestAccess' formControlName="guestAccess" secondary-placeholder="+ access" placeholder="+ access"></tag-input>
+        </div>
+        <div class="form-group bg-input d-flex align-items-center mb-3">
+          <span class="icon i-nearby"></span>
+          <!--<input type="text" class="form-control ml-20" placeholder="Enter Nearby Places" formControlName="places" [ngClass]="{'is-invalid': addPropertyForm.get('step3')['controls'].places.errors && addPropertyForm.get('step3')['controls'].places.touched}"> -->
+          <tag-input class="tag-input" [ngModel]='nearbyPlaces' formControlName="places" secondary-placeholder="+ nearby place" placeholder="+ nearby place" [ngClass]="{'is-invalid': addPropertyForm.get('step3')['controls'].places.errors && addPropertyForm.get('step3')['controls'].places.touched}"></tag-input> 
+        </div>
+    </wizard-step>
+    <!-- / Step 3 --> 
+
+        <!-- Step 4 -->                 
+        <wizard-step formGroupName="step4" [title]="'Step4'" [isValid]="addPropertyForm.get('step4').valid">
+          <div *ngIf="addPropertyForm.get('step4').valid === false && addPropertyForm.get('step4').touched" class="alert alert-danger"> 
+              <div>All fields are required</div>
+          </div>
+        <h4 class="title">Select Space Rules:</h4>
+          <div class="d-flex text-center mt-15">
+            <div class="property-type"  *ngFor="let spaceRule of spaceRules; let i = index">
+              <input type="checkbox" name="{{spaceRule.ruleName}}_{{spaceRule.spruleId}}" [value]="spaceRule" class="input-hidden" formControlName="ruleName" />
+              <label class="items" for="{{spaceRule.ruleName}}_{{spaceRule.spruleId}}">
+                <img [src]="spaceRule.smImgUrl" alt="">
+                <span class="item-checked"></span>
+              </label>
+              <p class="name mt-0">{{spaceRule.ruleName}}</p>
+            </div>
+          </div>
+          <h4 class="title mt-4">Select special experiences:</h4>
+          <div class="form-group bg-input">
+            <ng-multiselect-dropdown class="form-control multiSelect" [placeholder]="'Special experience'" [data]="specialExperienceList" [settings]="dropdownSettings" name="specialExperience" formControlName="specialExperience"></ng-multiselect-dropdown>
+          </div>
+      </wizard-step>
+      <!-- / Step 4 --> 
+  </form-wizard>  
+  <input type="submit" name="submit" (click)="onSubmitPropertyForm()">
+  </div>

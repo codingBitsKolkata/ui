@@ -2,8 +2,8 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-// let serviceUrl = 'http://104.211.93.162';
-let serviceUrl = 'http://192.168.100.135';    // Sudeep local server
+const serviceUrl = 'http://104.211.93.162';
+// const serviceUrl = 'http://192.168.100.135';    // Sudeep local server
 export const environment = {
   production: false,
   // Server
