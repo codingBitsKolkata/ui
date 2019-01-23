@@ -163,17 +163,27 @@
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
-            <input type="text" class="form-control" formControlName="userName" placeholder="Enter your name" readonly>
+            <input type="text" class="form-control" formControlName="userName" placeholder="Enter your name" readonly [ngClass]="{ 'is-invalid': submitted && f.userName.errors }">
+            <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+              <div *ngIf="f.userName.errors.required">Name is required</div>
+            </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <input type="text" class="form-control" formControlName="mobileNumber" readonly>
+            <input type="text" class="form-control" formControlName="mobileNumber" readonly [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }">
+            <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
+              <div *ngIf="f.mobileNumber.errors.required">Name is required</div>
+            </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <input type="email" class="form-control" formControlName="emailId" readonly>
+            <input type="email" class="form-control" formControlName="emailId" readonly [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }">
+            <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
+              <div *ngIf="f.emailId.errors.required">Email is required</div>
+              <div *ngIf="f.emailId.errors.email">Email must be a valid email address</div>
+            </div>
           </div>
         </div>
       </div>
@@ -181,15 +191,21 @@
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
-            <select name="" class="form-control" formControlName="contactPurposeId">
+            <select name="" class="form-control" formControlName="contactPurposeId" [ngClass]="{ 'is-invalid': submitted && f.contactPurposeId.errors }">
               <option value="">Select purpose</option>
               <option *ngFor="let item of purposeList" [ngValue]="item.contactPurposeId">{{ item.contactPurposeName }}</option>
             </select>
+            <div *ngIf="submitted && f.contactPurposeId.errors" class="invalid-feedback">
+              <div *ngIf="f.contactPurposeId.errors.required">Purpose is required</div>
+            </div>
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group">
-            <textarea name="" class="form-control h100" formControlName="message" placeholder="Type your message here"></textarea>
+            <textarea name="" class="form-control h100" formControlName="message" placeholder="Type your message here" [ngClass]="{ 'is-invalid': submitted && f.message.errors }"></textarea>
+            <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+              <div *ngIf="f.message.errors.required">Message is required</div>
+            </div>
           </div>
         </div>
       </div>

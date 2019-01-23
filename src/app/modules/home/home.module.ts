@@ -10,6 +10,7 @@ import { MediaRoomComponent } from './media-room/media-room.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TeamComponent } from './team/team.component';
 import { StickyMenuComponent } from './sticky-menu/sticky-menu.component';
+import { ShareButtonsModule } from '@ngx-share/buttons';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { StickyMenuComponent } from './sticky-menu/sticky-menu.component';
   ],
   imports: [
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    ShareButtonsModule
   ]
 })
 export class HomeModule { }

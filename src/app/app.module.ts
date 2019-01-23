@@ -9,6 +9,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HttpConfigInterceptor } from './services/interceptors/http-config-interceptor';
+import { ShareButtonsModule } from '@ngx-share/buttons';
 
 
 
@@ -23,6 +24,7 @@ import { HttpConfigInterceptor } from './services/interceptors/http-config-inter
     CoreModule,
        // configure the imports
        HttpClientModule,
+       ShareButtonsModule,
        TranslateModule.forRoot({
            loader: {
                provide: TranslateLoader,

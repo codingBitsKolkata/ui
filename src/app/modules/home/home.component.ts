@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 import { BannerService } from '../../services/apis/banner.service';
 import { Meta, Title  } from '@angular/platform-browser';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

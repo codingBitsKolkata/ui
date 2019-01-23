@@ -121,4 +121,12 @@ export class PropertyService {
     return this.httpClient.get<any>(request.url, request.params);
   }
 
+  // Contact Ora email
+  contactOraDetails(params: any): Observable<any> {
+    const request = {
+      'url': AppConst.PROPERTY_ADD_API_BASE_URL + '/contact-ora'
+    };
+    return this.httpClient.post<any>(request.url, params);
+  }
+
 }

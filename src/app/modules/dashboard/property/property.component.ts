@@ -48,18 +48,18 @@ export class PropertyComponent implements OnInit, AfterViewInit {
     },
     series: [{
       name: 'Property - ORA9122522',
-      data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+      data: [7000, 6000, 9000, 14000, 18000, null, null, null, null, null, null, null]
     }, {
       name: 'Property - ORA9122966',
-      data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+      data: [3000, 4000, 5000, 8000, 11000, 15000, 17000, 16000, 14000, 10000, 6000, 4000]
     }, {
       name: 'Property - ORA9122865',
-      data: [4.9, 5.2, 6.7, 7.5, 10.9, 14.2, 15.0, 15.6, 13.2, 10.3, 5.6, 3.8]
+      data: [null, 5000, 6000, 7000, 10000, 14000, 15000, 15000, 13000, 10000, 5000, 3000]
     }, {
       name: 'Property - ORA9122108',
-      data: [6.9, 3.2, 6.7, 7.9, 8.6, 9.5, 13, 15, 16, 13, 10, 8]
+      data: [null, null, null, null, 50000, 7000, 10000, 12000, 13000, 10000, 5000, 3000]
     }],
-
+     
     responsive: {
       rules: [{
         condition: {
@@ -126,9 +126,9 @@ export class PropertyComponent implements OnInit, AfterViewInit {
     private modalService: NgbModal,
     private srvProperty: PropertyService,
     private cdr: ChangeDetectorRef
-  ) {
+    ){
     this.populatePropertyList();
-   }
+  }
 
   openModal(content) {
     // , size: 'md'

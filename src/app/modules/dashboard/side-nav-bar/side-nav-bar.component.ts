@@ -24,6 +24,7 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
 
   contactOraForm: FormGroup;
   submitted = false;
+  loading: boolean;
 
   sectionScroll: string;
   constructor(private modalService: NgbModal,
@@ -132,9 +133,6 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
       if (res.responseCode === '200') {
           this.userProfileDetails = res.responseBody;
           this.contactOraFormBuilder();
-          // this.contactOraForm.value.userName = this.userProfileDetails['userVsInfo'].name;
-          // this.contactOraForm.value['mobileNumber'] = this.userProfileDetails['mobileNumber'];
-          // this.contactOraForm.value['emailId'] = this.userProfileDetails['emailId'];
           if(this.userProfileDetails['userVsTypes'].length > 0){
             if(this.userProfileDetails['userVsTypes'].length == 1){
               if(parseInt(this.userProfileDetails['userVsTypes'][0].userType.userTypeId) == 2){
@@ -207,8 +205,21 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
     if (this.contactOraForm.invalid) {
         return;
     }
+    
+    this.loading = true;
+    const contactFormData =  this.contactOraForm.value;
+    this.propertyService.contactOraDetails(contactFormData).subscribe((responseData) => {
+      console.log('responseData', responseData);
+      this.loading = false;
+    }, errorData => {
+      console.log('error', errorData);
+      this.loading = false;
+      if (errorData && errorData.status === 400) {
+        // this.errorMessage = errorData.error.responseMessage;
+      }
+    });
 
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.contactOraForm.value))
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.contactOraForm.value))
 }
 
 }

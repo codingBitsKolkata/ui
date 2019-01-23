@@ -63,12 +63,13 @@
             <ng-template ngbTabContent>
               <div class="row" *ngIf="propertyList[propertyType.propertyTypeId] && propertyList[propertyType.propertyTypeId].length > 0">
                 <div class="col-md-3" *ngFor="let property of propertyList[propertyType.propertyTypeId]; let i = index">
+                  <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
+                  <i class="fa fa-share-alt pro-icon share" aria-hidden="true" (click)="openModal(socialShareModal)"></i>
                   <div class="card mb-0 border-0 c-pointer" (click)="navigatePropertyDetails(property.propertyId)">
                     <div class="property-img">
                         <div class="room-tag {{property.roomStandard == 'PREMIUM' ? 'green' : 'orange'}}" *ngIf="property.roomStandard!='NORMAL'">{{property.roomStandard}}</div>
                         <img class="card-img-top rounded" [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property-details/no_image_available.jpg'" src="assets/images/property-details/no_image_available.jpg">
-                        <i class="fa fa-bookmark-o pro-icon bookmark" aria-hidden="true"></i>
-                        <i class="fa fa-share-alt pro-icon share" aria-hidden="true"></i>
+                        
                     </div>
                     <div class="card-body pl-0 pr-0 pb-0">
                       <h5 class="card-title" placement="top" ngbTooltip="{{property.address}}">{{property.oraName}}</h5>
@@ -183,3 +184,20 @@
   <div class="card-header">Quick filter</div>
   <app-quick-filter></app-quick-filter>
 </ng-template> -->
+
+<ng-template #socialShareModal let-modal>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h6 class="social-share-heading">Share properties with your friends</h6>
+  <share-buttons [theme]="'material-dark'"
+  [include]="['facebook','twitter','linkedin','google','pinterest','reddit','tumblr','messenger','whatsapp']"
+  [show]="9"
+  [size]="2"
+  [url]="'https://twitter.com/'"
+  [title]="'Post Title'"
+  [description]="'Post description'"
+  [image]="'http://orastays.com/image/home-slider/banner-1.jpg'"
+  [tags]="'#orastays #homestay'"
+  ></share-buttons>
+</ng-template>

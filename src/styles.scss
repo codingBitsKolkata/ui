@@ -31,6 +31,8 @@ $orastays-theme: mat-light-theme($orastays-primary, $orastays-accent, $orastays-
 @import '~ngx-ui-switch/ui-switch.component.scss';
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~font-awesome/scss/font-awesome.scss";
+// @import '~@ngx-share/button/themes/default/default-theme';
+@import '~@ngx-share/button/themes/material/material-dark-theme';
 
 @font-face {
     font-family: lato;
@@ -247,7 +249,7 @@ input:active,select:active,button:active,label:active{
     height: auto;
     display: table;
     width: 100%;
-    z-index: 3;
+    z-index: 30;
     .tab-content{
         background-color: #ffffff !important;
         padding: 30px 40px;
@@ -671,6 +673,25 @@ input:active,select:active,button:active,label:active{
             .card{
                 overflow: hidden;
             }
+            .pro-icon{
+                font-size: 20px;
+                color: #ffffff;
+                position: absolute;
+                cursor: pointer;
+                z-index: 111;
+                margin-right: 10px;
+                &:hover{
+                    color: #f47921;
+                }
+                &.pro-icon.bookmark{
+                    right: 40px;
+                    top: 10px;
+                }
+                &.pro-icon.share{
+                    right: 15px;
+                    top: 10px;
+                }
+            }
         }
         .property-img{
             max-height: 165px;
@@ -695,24 +716,6 @@ input:active,select:active,button:active,label:active{
                 }
                 &.orange{
                     background: #f47921;
-                }
-            }
-            .pro-icon{
-                font-size: 20px;
-                color: #ffffff;
-                position: absolute;
-                cursor: pointer;
-
-                &:hover{
-                    color: #f47921;
-                }
-                &.pro-icon.bookmark{
-                    right: 40px;
-                    top: 10px;
-                }
-                &.pro-icon.share{
-                    right: 15px;
-                    top: 10px;
                 }
             }
         }
@@ -2682,4 +2685,14 @@ a{
             height: 100%;
         }
     }
+}
+.social-share-heading{
+    font-size: 20px;
+    font-family: latobolditalic;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.sb-group.sb-material-dark{
+    text-align: center;
+    display: block;
 }
