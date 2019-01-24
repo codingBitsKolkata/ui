@@ -123,6 +123,12 @@ export class PropertyService {
     };
     return this.httpClient.post<any>(request.url, params);
   }
+  getStayTypeList(params: any) {
+    const request = {
+      'url': AppConst.PROPERTY_ADD_API_BASE_URL + '/fetch-stay-types'
+    };
+    return this.httpClient.post<any>(request.url, params);
+  }
   // Fetch all purpose list for contact form in dashboard
   getContactPurposeList(): Observable<any> {
     const request = {
