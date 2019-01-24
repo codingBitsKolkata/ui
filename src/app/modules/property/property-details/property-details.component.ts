@@ -13,94 +13,94 @@ import { ActivatedRoute, Router  } from '@angular/router';
 })
 export class PropertyDetailsComponent implements OnInit {
 
-  propertyDetails: object;
-  propertyId: number;
-  searchObj: object;
-  as_leftNavDisabled = false;
-  as_rightNavDisabled = false;
-  loading: boolean;
-//   ls_leftNavDisabled = false;
-//   ls_rightNavDisabled = false;
+    propertyDetails: object;
+    propertyId: number;
+    searchObj: object;
+    as_leftNavDisabled = false;
+    as_rightNavDisabled = false;
+    loading: boolean;
+    //   ls_leftNavDisabled = false;
+    //   ls_rightNavDisabled = false;
 
-  // Ameni Slider
-  @ViewChild('ameniSlider', {read: DragScrollComponent}) as: DragScrollComponent;
-  // Location Slider
-//   @ViewChild('locationSlider', {read: DragScrollComponent}) ls: DragScrollComponent;
-  galleryOptions: NgxGalleryOptions[];
-  galleryImages: NgxGalleryImage[];
-  constructor(
-      private modalService: NgbModal,
-      private sharedSrv: SharedService,
-      private srvProperty: PropertyService,
-      private router: Router
-      ) {
-        this.loading = false;
-      }
-
-
-  ngOnInit(): void {
-    const sharedHomeSearchData = this.sharedSrv.sharedHomeSearchData;
-    const isSearchObjEmpty = !Object.keys(sharedHomeSearchData).length;
-    if (!isSearchObjEmpty) {
-      this.getPropertyDetails(sharedHomeSearchData);
-      this.searchObj = sharedHomeSearchData;
-      this.propertyId = sharedHomeSearchData['propertyId'];
-    } else {
-      const searchObj = JSON.parse(localStorage.getItem('searchObj'));
-      this.getPropertyDetails(searchObj);
-      this.searchObj = searchObj;
-      this.propertyId = searchObj['propertyId'];
-    }
-
-      this.galleryOptions = [
-        {   
-            width: '100%',
-            height: '100%',
-            "imageArrows": true, 
-            "imageSwipe": true, 
-            "thumbnailsArrows": false, 
-            "thumbnailsSwipe": true, 
-            "previewSwipe": true 
-        },
-        {
-            breakpoint: 800,
-            width: '100%',
-            height: '600px',
-            imagePercent: 80,
-            thumbnailsPercent: 20,
-            thumbnailsMargin: 20,
-            thumbnailMargin: 20
-        },
-        // max-width 400
-        {
-            breakpoint: 400,
-            preview: false
+    // Ameni Slider
+    @ViewChild('ameniSlider', {read: DragScrollComponent}) as: DragScrollComponent;
+    // Location Slider
+    //   @ViewChild('locationSlider', {read: DragScrollComponent}) ls: DragScrollComponent;
+    galleryOptions: NgxGalleryOptions[];
+    galleryImages: NgxGalleryImage[];
+    constructor(
+        private modalService: NgbModal,
+        private sharedSrv: SharedService,
+        private srvProperty: PropertyService,
+        private router: Router
+        ) {
+            this.loading = false;
         }
-      ];
 
-      this.galleryImages = [
-          {
-              small: 'assets/images/property-details/gallery/big-slide-1.png',
-              medium: 'assets/images/property-details/gallery/big-slide-1.png',
-              big: 'assets/images/property-details/gallery/big-slide-1.png'
-          },
-          {
-              small: 'assets/images/property-details/gallery/big-slide-2.jpg',
-              medium: 'assets/images/property-details/gallery/big-slide-2.jpg',
-              big: 'assets/images/property-details/gallery/big-slide-2.jpg'
-          },
-          {
-              small: 'assets/images/property-details/gallery/big-slide-3.jpg',
-              medium: 'assets/images/property-details/gallery/big-slide-3.jpg',
-              big: 'assets/images/property-details/gallery/big-slide-3.jpg'
-          },
-          {
-              small: 'assets/images/property-details/gallery/big-slide-4.jpg',
-              medium: 'assets/images/property-details/gallery/big-slide-4.jpg',
-              big: 'assets/images/property-details/gallery/big-slide-4.jpg'
-          }
-      ];
-  }
+
+    ngOnInit(): void {
+        const sharedHomeSearchData = this.sharedSrv.sharedHomeSearchData;
+        const isSearchObjEmpty = !Object.keys(sharedHomeSearchData).length;
+        if (!isSearchObjEmpty) {
+        this.getPropertyDetails(sharedHomeSearchData);
+        this.searchObj = sharedHomeSearchData;
+        this.propertyId = sharedHomeSearchData['propertyId'];
+        } else {
+        const searchObj = JSON.parse(localStorage.getItem('searchObj'));
+        this.getPropertyDetails(searchObj);
+        this.searchObj = searchObj;
+        this.propertyId = searchObj['propertyId'];
+        }
+
+        this.galleryOptions = [
+            {   
+                width: '100%',
+                height: '100%',
+                "imageArrows": true, 
+                "imageSwipe": true, 
+                "thumbnailsArrows": false, 
+                "thumbnailsSwipe": true, 
+                "previewSwipe": true 
+            },
+            {
+                breakpoint: 800,
+                width: '100%',
+                height: '600px',
+                imagePercent: 80,
+                thumbnailsPercent: 20,
+                thumbnailsMargin: 20,
+                thumbnailMargin: 20
+            },
+            // max-width 400
+            {
+                breakpoint: 400,
+                preview: false
+            }
+        ];
+
+        this.galleryImages = [
+            {
+                small: 'assets/images/property-details/gallery/big-slide-1.png',
+                medium: 'assets/images/property-details/gallery/big-slide-1.png',
+                big: 'assets/images/property-details/gallery/big-slide-1.png'
+            },
+            {
+                small: 'assets/images/property-details/gallery/big-slide-2.jpg',
+                medium: 'assets/images/property-details/gallery/big-slide-2.jpg',
+                big: 'assets/images/property-details/gallery/big-slide-2.jpg'
+            },
+            {
+                small: 'assets/images/property-details/gallery/big-slide-3.jpg',
+                medium: 'assets/images/property-details/gallery/big-slide-3.jpg',
+                big: 'assets/images/property-details/gallery/big-slide-3.jpg'
+            },
+            {
+                small: 'assets/images/property-details/gallery/big-slide-4.jpg',
+                medium: 'assets/images/property-details/gallery/big-slide-4.jpg',
+                big: 'assets/images/property-details/gallery/big-slide-4.jpg'
+            }
+        ];
+    }
     moveLeft_as() {
         this.as.moveLeft();
     }

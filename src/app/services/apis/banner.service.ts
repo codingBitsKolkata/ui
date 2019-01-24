@@ -18,10 +18,10 @@ export class BannerService {
 	 * @returns {Observable<any>}
 	 * @memberof BannerService
 	 */
-  getBanner(): Observable<any> {
+  getBanner(requestParam: any): Observable<any> {
     const request = {
      // 'url':  'assets/static-data/fetch-Banners.json'
-      'url': AppConst.BANNER_API_BASE_URL + '/fetch-banners'
+      'url': AppConst.BANNER_API_BASE_URL + '/fetch-banners-by-page?pageName=' + requestParam
     };
     return this.httpClient.get<any>(request.url);
   }

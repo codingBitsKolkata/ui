@@ -8,7 +8,6 @@ import {Router} from '@angular/router';
 import { BannerService } from '../../services/apis/banner.service';
 import { Meta, Title  } from '@angular/platform-browser';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -31,6 +30,8 @@ export class HomeComponent implements OnInit {
   bannerList: Array<any>;
   propertyTypes: Array<any>;
   propertyList: Array<any>;
+  shareObj: object;
+  bookmarkObj: object;
 
   windowHeight: number;
 
@@ -58,21 +59,22 @@ export class HomeComponent implements OnInit {
 
       this.windowHeight = window.innerHeight;
       console.log("Height: " + this.windowHeight)
-    this.h_fromDate = this.calendar.getToday();
-    this.h_toDate = this.calendar.getNext(this.calendar.getToday(), 'd', 3);
+      this.h_fromDate = this.calendar.getToday();
+      this.h_toDate = this.calendar.getNext(this.calendar.getToday(), 'd', 3);
 
-    this.f_fromDate = this.calendar.getToday();
-    this.f_toDate = this.calendar.getNext(this.calendar.getToday(), 'd', 3);
+      this.f_fromDate = this.calendar.getToday();
+      this.f_toDate = this.calendar.getNext(this.calendar.getToday(), 'd', 3);
 
-    const currentDate = new Date();
-    config.minDate = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
-    config.maxDate = { year: 2020, month: 12, day: 31 };
+      const currentDate = new Date();
+      config.minDate = { year: currentDate.getFullYear(), month: currentDate.getMonth() + 1, day: currentDate.getDate() };
+      config.maxDate = { year: 2020, month: 12, day: 31 };
 
-    this.propertyList = [];
-    this.bannerList = [];
-    this.getTestimonailList();
-    this.getPropertyTypes();
-    this.getBannerList();
+      this.propertyList = [];
+      this.bannerList = [];
+      this.getTestimonailList();
+      this.getPropertyTypes();
+      this.getBannerList();
+      this.bookmarkObj = {};
   }
   currentJustify = 'justified';
   // constructor() { }
@@ -105,34 +107,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  isHoveredHotel(date: NgbDate) {
-    return this.h_fromDate && !this.h_toDate && this.hoveredDate && date.after(this.h_fromDate) && date.before(this.hoveredDate);
-  }
-
-  isInsideHotel(date: NgbDate) {
-    return date.after(this.h_fromDate) && date.before(this.h_toDate);
-  }
-
-  isRangeHotel(date: NgbDate) {
-    return date.equals(this.h_fromDate) || date.equals(this.h_toDate) || this.isInsideHotel(date) || this.isHoveredHotel(date);
-  }
-
-  isHoveredFlight(date: NgbDate) {
-    return this.f_fromDate && !this.f_toDate && this.hoveredDate && date.after(this.f_fromDate) && date.before(this.hoveredDate);
-  }
-
-  isInsideFlight(date: NgbDate) {
-    return date.after(this.f_fromDate) && date.before(this.f_toDate);
-  }
-
-  isRangeFlight(date: NgbDate) {
-    return date.equals(this.f_fromDate) || date.equals(this.f_toDate) || this.isInsideFlight(date) || this.isHoveredFlight(date);
-  }
-
   // BANNER LIST
   getBannerList() {
-    this.srvBanner.getBanner().subscribe((res) => {
-     console.log('getBanner data', res);
+    this.srvBanner.getBanner('HOME').subscribe((res) => {
      if (res.responseCode === '200') {
        this.bannerList = res.responseBody;
      }
@@ -185,15 +162,8 @@ export class HomeComponent implements OnInit {
       });
     }
   }
-  openModal(content) {
-    // , size: 'md'
-      this.modalService.open(content, { windowClass: 'modal-popup', centered: true });
-  }
-  openFilterModal(content) {
-    // , size: 'md'
-    this.modalService.open(content, { windowClass: 'modal-popup quick-filter-modal', centered: true });
-  }
-  showMoreProperty(propertyObj, propertyTypeId) {
+
+  showMoreProperty(propertyObj, propertyTypeId, propertyId) {
     const searchParam = {};
     const checkInDate = this.calendar.getToday();
     const checkOutDate = this.calendar.getNext(this.calendar.getToday(), 'd', 3);
@@ -206,18 +176,17 @@ export class HomeComponent implements OnInit {
     searchParam['propertyTypeId'] = propertyTypeId;
     searchParam['stayType'] = 'PRIVATE';
     searchParam['rooms'] =  [{noOfGuest: 1, noOfChild: 0}];
-    console.log(searchParam);
-    localStorage.setItem('searchObj', JSON.stringify(searchParam));
-    this.sharedSrv.sharedHomeSearchData = searchParam;
-    this.router.navigate(['/properties'], { queryParams: searchParam });
-  }
-
-  navigatePropertyDetails(propertyId) {
-    const searchObj = JSON.parse(localStorage.getItem('searchObj'));
-    searchObj['propertyId'] = propertyId;
-    localStorage.setItem('searchObj', JSON.stringify(searchObj));
-    this.sharedSrv.sharedHomeSearchData = searchObj;
-    this.router.navigate(['/properties/property-details'], { queryParams: searchObj });
+    if(propertyId){
+      searchParam['propertyId'] = propertyId;
+      localStorage.setItem('searchObj', JSON.stringify(searchParam));
+      this.sharedSrv.sharedHomeSearchData = searchParam;
+      this.router.navigate(['/properties/property-details'], { queryParams: searchParam });
+    }
+    else{
+      localStorage.setItem('searchObj', JSON.stringify(searchParam));
+      this.sharedSrv.sharedHomeSearchData = searchParam;
+      this.router.navigate(['/properties'], { queryParams: searchParam });
+    }
   }
 
   getMyStyles(){
@@ -227,5 +196,26 @@ export class HomeComponent implements OnInit {
       // 'height': (this.windowHeight - 76) + 'px'
     };
     return myStyles;
+  }
+
+  openModal(content) {
+    // , size: 'md'
+      this.modalService.open(content, { windowClass: 'modal-popup', centered: true });
+  }
+  openFilterModal(content) {
+    // , size: 'md'
+    this.modalService.open(content, { windowClass: 'modal-popup quick-filter-modal', centered: true });
+  }
+  openShareModal(content, property){
+    this.shareObj = {
+      property: property
+    }
+    this.modalService.open(content, { windowClass: 'modal-popup', centered: true });
+  }
+
+  getBookmark(property){
+    this.bookmarkObj = {
+      property: property
+    }
   }
 }

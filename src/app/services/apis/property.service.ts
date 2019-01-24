@@ -140,4 +140,11 @@ export class PropertyService {
     return this.httpClient.post<any>(request.url, params);
   }
 
+  addBookmark(params: any): Observable<any> {
+    const request = {
+      'url': AppConst.PROPERTY_ADD_API_BASE_URL + '/add-bookmark'
+    };
+    return this.httpClient.post<any>(request.url, params);
+  }
+
 }

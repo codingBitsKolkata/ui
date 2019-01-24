@@ -16,6 +16,7 @@ import { TagInputModule } from 'ngx-chips';
 import { NguCarouselModule } from '@ngu/carousel';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ShareButtonsModule } from '@ngx-share/buttons';
 import { StaySearchFormComponent } from './components/stay-search-form/stay-search-form.component';
 import { FlightSearchFormComponent } from './components/flight-search-form/flight-search-form.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
@@ -32,6 +33,8 @@ import { FlightFilterComponent } from './components/flight-filter/flight-filter.
 import { OfferComponent } from './components/offer/offer.component';
 import { TermsConditionsComponent } from './components/terms-conditions/terms-conditions.component';
 import { AddPropertyFormComponent } from './components/add-property-form/add-property-form.component';
+import { SocialShareComponent } from './components/social-share/social-share.component';
+import { BookmarkPopupComponent } from './components/bookmark-popup/bookmark-popup.component';
 
 
 @NgModule({
@@ -51,7 +54,9 @@ import { AddPropertyFormComponent } from './components/add-property-form/add-pro
     FlightFilterComponent,
     OfferComponent,
     TermsConditionsComponent,
-    AddPropertyFormComponent
+    AddPropertyFormComponent,
+    SocialShareComponent,
+    BookmarkPopupComponent
   ],
   imports: [
     CommonModule,
@@ -73,7 +78,8 @@ import { AddPropertyFormComponent } from './components/add-property-form/add-pro
     }),
     NgxGalleryModule,
     DragScrollModule,
-    OrderModule
+    OrderModule,
+    ShareButtonsModule
   ],
   exports: [
     CommonModule,
@@ -107,7 +113,9 @@ import { AddPropertyFormComponent } from './components/add-property-form/add-pro
     OfferComponent,
     FlightSearchFormComponent,
     TermsConditionsComponent,
-    AddPropertyFormComponent
+    AddPropertyFormComponent,
+    SocialShareComponent,
+    BookmarkPopupComponent
   ],
   entryComponents: [
     TestModalComponent
