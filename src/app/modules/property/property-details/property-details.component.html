@@ -309,22 +309,22 @@
             <option value="">Sort by - Latest</option>
           </select> -->
         </div>
-        <div class="review-body">
-          <div class="review-item d-flex justify-content-start">
+        <div class="review-body" *ngIf="propertyDetails?.reviews && propertyDetails?.reviews.length > 0">
+          <div class="review-item d-flex justify-content-start" *ngFor="let item of propertyDetails?.reviews">
             <div class="c-img">
-              <img src="assets/images/thumbs/user1.png" alt="">
+              <img src="{{item.user.userVsInfo.imageUrl}}" alt="">
             </div>
             <div class="">
-              <p class="name">Sirat Pradhan</p>
+              <p class="name">{{item.user.userVsInfo.name}}</p>
               <p class="date-rating">
-                <span class="date">22 October 2018</span>
+                <span class="date">{{item.user.createdDate}}</span>
                 <span class="text">Rating</span>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
+                <i class="fa fa-star-o start-icon" aria-hidden="true" *ngFor="let rating of arrayNum(item.userRating)"></i>
+                <!-- <i class="fa fa-star-o start-icon" aria-hidden="true"></i> -->  
+                <!-- <i class="fa fa-star-o start-icon" aria-hidden="true"></i> -->
+                <!-- <i class="fa fa-star-o start-icon" aria-hidden="true"></i> -->
               </p>
-              <p class="comment"><span>At first look the house from outside seemed ordinary. Even the interiors were nothing amazing and could not compete with a five-star hotel. However, I was glad about the way the host had kept it. It was very neat and all the facilities that can make a stray comfortable were looked after. I give all my recommendation to the host. A must visit property.</span> <!-- <a class="read-more"> read more</a> --> </p>
+              <p class="comment"><span>{{item.user.comment}}</span> <!-- <a class="read-more"> read more</a> --> </p>
             </div>
           </div>
           <hr>
@@ -439,7 +439,5 @@
     <!-- <div *ngIf="propertyDetails" class="container-fluid static-floating-bar bg-w">
         <app-quick-stay-search-form [propertyDetails]="propertyDetails" [searchObj]="searchObj" (searchFormSubmitted)="searchFormSubmitted($event)"></app-quick-stay-search-form> 
     </div> -->
-    
-  
   </div>
   
