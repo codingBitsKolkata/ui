@@ -52,6 +52,13 @@ export class PropertyService {
     };
     return this.httpClient.post<any>(request.url, request.params);
   }
+  getPropertyPriceDetails(requestParam: any) {
+    const request = {
+      'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-price-details',
+      'params' : requestParam
+    };
+    return this.httpClient.post<any>(request.url, request.params);
+  }
 
   getMasterRatingsList(requestParam: any): Observable<any> {
     const request = {
@@ -148,7 +155,7 @@ export class PropertyService {
 
   addBookmark(params: any): Observable<any> {
     const request = {
-      'url': AppConst.PROPERTY_ADD_API_BASE_URL + '/add-bookmark'
+      'url': AppConst.PROPERTY_API_BASE_URL + '/add-bookmark'
     };
     return this.httpClient.post<any>(request.url, params);
   }

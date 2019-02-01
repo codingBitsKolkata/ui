@@ -6,54 +6,63 @@
           <div class="col-md-8">
             <div class="row">
               <div class="col-md-4">
-                <img class="w-100 property-img" *ngIf="propertyDetails?.coverImageUrl" src="{{propertyDetails?.coverImageUrl}}" alt="">
+                <img class="w-100 property-img" *ngIf="propertyDetails?.coverImageUrl" src="{{propertyDetails?.coverImageUrl}}" onerror="this.src='assets/images/property-details/no_image_available.jpg'" alt="">
               </div>
               <div class="col-md-8 property-desc">
                 <h4>{{propertyDetails?.oraname}} <span> {{propertyDetails?.rooms[0].roomStandard}} {{propertyDetails?.propertyType.name}}</span></h4>
-                <p class="text"><i class="fa fa-map-marker" aria-hidden="true"></i> {{propertyDetails?.address}}</p>
-                <p class="text">Check in: <span> {{searchObj.checkInDate}}, {{propertyDetails?.checkinTime}}</span> <i></i> Check out: <span> {{searchObj.checkInDate}}, {{propertyDetails?.checkoutTime}}</span></p>
-                <div class="card-room">
-                  <h5>{{propertyDetails?.rooms[0].roomCategory.name}} Room <span> {{totalNoOfGuest}} Adults + {{totalNoOfChild}} Child</span></h5>
-                  <div class="row">
-                    <div class="col-auto">
-                      <label for="">Tariff Type</label>
-                      <ul>
-                        <li class="green"><i class="fa fa-check"></i> Refundable</li>
-                        <li><i class="fa fa-check"></i> Breakfast</li>
-                      </ul>
-                    </div>
-                    <div class="col-auto border-left">
-                      <label for="">Tariff Inclusions</label>
-                      <ul>
-                        <li><i class="fa fa-circle"></i> FREE Breakfast</li>
-                        <li><i class="fa fa-circle"></i> Accommodation</li>
-                      </ul>
+                <p class="text"><i class="fa fa-map-marker" aria-hidden="true"></i> {{bookStayObj?.location}}</p>
+                <p class="text">Check in: <span> {{bookStayObj.checkInDate}}, {{propertyDetails?.checkinTime}}</span> <i></i> Check out: <span> {{bookStayObj.checkInDate}}, {{propertyDetails?.checkoutTime}}</span></p>
+                <div class="" *ngFor="let room of propertyDetails?.rooms">
+                  <div class="card-room" *ngIf="room?.isSelected && room?.isSelected == 'true'">
+                    <h5>{{room.oraRoomName}}</h5>
+                    <h5>{{room.roomCategory.name}} Room <span> {{room?.noOfGuest ? (room?.noOfGuest == 1 ? room?.noOfGuest + ' Adult' : room?.noOfGuest + ' Adults') : ''}}  {{room?.noOfChild ? '+' + (room?.noOfChild == 1 ? room?.noOfChild + ' Child' : room?.noOfChild + ' Childs') : ''}} </span></h5>
+                    <div class="row">
+                      <div class="col-auto">
+                        <label for="">Tariff Type</label>
+                        <ul>
+                          <li class="green"><i class="fa fa-check"></i> Refundable</li>
+                          <li><i class="fa fa-check"></i> Breakfast</li>
+                        </ul>
+                      </div>
+                      <div class="col-auto border-left">
+                        <label for="">Tariff Inclusions</label>
+                        <ul>
+                          <li><i class="fa fa-circle"></i> FREE Breakfast</li>
+                          <li><i class="fa fa-circle"></i> Accommodation</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-md-12">
                 <!-- Traveller Information Form -->
-                <form action="" class="form" *ngIf="!bookingCompleted">
+                <form action="" class="form" *ngIf="!bookingCompleted" [formGroup]="travellerForm" (ngSubmit)="onSubmitTravellerForm()">
                   <h3>Traveller information</h3>
                   <div class="row">
                     <div class="col-md-2">
                       <div class="form-group">
-                        <select name="" class="form-control">
-                          <option value="">Mr.</option>
-                          <option value="">Mrs.</option>
-                          <option value="">Ms.</option>
+                        <select name="" class="form-control" formControlName="prefix">
+                          <option value="Mr.">Mr.</option>
+                          <option value="Mrs.">Mrs.</option>
+                          <option value="Ms.">Ms.</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-md-5">
                       <div class="form-group">
-                        <input type="text" name="" class="form-control" placeholder="First name">
+                        <input type="text" class="form-control" placeholder="First name" formControlName="firstName">
+                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                          <div *ngIf="f.firstName.errors.required">First name is required</div>
+                        </div>
                       </div>
                     </div>
                     <div class="col-md-5">
                       <div class="form-group">
-                        <input type="text" name="" class="form-control" placeholder="Last name">
+                        <input type="text" class="form-control" placeholder="Last name" formControlName="lastName">
+                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                          <div *ngIf="f.lastName.errors.required">Last name is required</div>
+                        </div>
                       </div>
                     </div>
                     <!-- <div class="col-md-6">
@@ -63,12 +72,28 @@
                     </div> -->
                     <div class="col-md-6">
                       <div class="form-group">
-                        <input type="email" name="" class="form-control" placeholder="Email address">
+                        <input type="email" class="form-control" placeholder="Email address" formControlName="email">
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                          <div *ngIf="f.email.errors.required">Email address is required</div>
+                          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        </div>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <input type="email" name="" class="form-control" placeholder="Contact number">
+                        <input type="email" name="" class="form-control" placeholder="Mobile number" formControlName="mobile">
+                        <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                          <div *ngIf="f.mobile.errors.required">Mobile number is required</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <textarea class="form-control" placeholder="Address" style="height:100px" formControlName="address"></textarea>
+                        <!-- <input type="email" name="" class="form-control" placeholder="Mobile number" formControlName="mobile"> -->
+                        <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                          <div *ngIf="f.mobile.errors.required">Address is required</div>
+                        </div>
                       </div>
                     </div>
                     <!-- <div class="col-md-6">
@@ -78,7 +103,7 @@
                         </select>
                       </div>
                     </div> -->
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                       <div class="form-group">
                         <input type="email" name="" class="form-control" placeholder="Check in preference time">
                       </div>
@@ -87,23 +112,39 @@
                       <div class="form-group">
                         <input type="email" name="" class="form-control" placeholder="Check out preference time">
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-12">
                       <label class="check-box ng-star-inserted"> I have a GST number / Corporate traveler / Business traveler
-                        <input type="checkbox">
+                        <input type="checkbox" formControlName="gstNumberExist">
                         <span class="checkmark"></span>
                       </label>
+                    </div>
+                    <div class="col-md-6" [hidden]="!travellerForm.controls.gstNumberExist.value">
+                      <div class="form-group">
+                        <input type="email" formControlName="gstNumber" [required]="travellerForm.controls.gstNumberExist.value" class="form-control" placeholder="Enter GST number">
+                        <div *ngIf="submitted && f.gstNumber.errors" class="invalid-feedback">
+                          <div *ngIf="f.gstNumber.errors.required">GST number is required</div>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-12">
                       <label class="check-box ng-star-inserted"> I agree to the hotel booking policies. Homestay cancellation policy / Terms & conditions of ORA.
-                        <input type="checkbox">
+                        <input type="checkbox" formControlName="termsConditions">
                         <span class="checkmark"></span>
                       </label>
+                      <div *ngIf="submitted && f.termsConditions.errors" class="invalid-feedback">
+                        <div *ngIf="f.termsConditions.errors.required">Please axcept terms & conditions.</div>
+                      </div>
                     </div>
                     <div class="col-md-12 text-right">
-                      <button class="btn btn-primary" (click)="bookingFormSubmit()">Book your stay</button>
+                      <button class="btn btn-primary" type="submit">Book your stay</button>
                     </div>
                   </div>
+                </form>
+
+                <form hidden target="_blank" #form action="{{bookingFormActionUrl}}" method="POST" enctype="application/x-www-form-urlencoded">
+                  <input type="hidden" name="travellerFormData" [(ngModel)]="travellerFormData">
+                  <button type="submit" (click)="form.submit()" id="bookingFormBtn">Search</button>
                 </form>
   
                 <!-- Payment Information -->
@@ -206,7 +247,7 @@
                       <div class="col-auto">
                         <div class="c-card">
                           <h5>room</h5>
-                          <span>{{searchObj.rooms.length}}</span>
+                          <span>{{bookStayObj.rooms.length}}</span>
                         </div>
                       </div>
                       <div class="col-auto">
@@ -247,28 +288,32 @@
                     <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails[key]}}</td>
                   </tr> -->
                   <tr>
-                    <td class="text-left">Amount Payable <i></i></td>
-                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.amountPayable | number: '1.0-0'}}</td>
+                    <td class="text-left">Total Amount <i></i></td>
+                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.totalAmount | number: '1.0-0'}}</td>
+                  </tr>
+                  <tr *ngIf="propertyDetails?.priceDetails?.propertyOffer && propertyDetails?.priceDetails?.propertyOffer > 0">
+                    <td class="text-left">Property Offer <i></i></td>
+                    <td class="text-right t-gray">  - <i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.propertyOffer | number: '1.0-0'}}</td>
+                  </tr>
+                  <tr *ngIf="propertyDetails?.priceDetails?.discount && propertyDetails?.priceDetails?.discount > 0">
+                    <td class="text-left">Discount <i></i></td>
+                    <td class="text-right t-gray"> - <i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.discount | number: '1.0-0'}}</td>
+                  </tr>
+                  <tr>
+                    <td class="text-left border-top">Amount Payable <i></i></td>
+                    <td class="text-right t-gray border-top"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.amountPayable | number: '1.0-0'}}</td>
                   </tr>
                   <tr>
                     <td class="text-left">Convenience Fee <i></i></td>
-                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceFee | number: '1.0-0'}}</td>
+                    <td class="text-right t-gray"> + <i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceFee | number: '1.0-0'}}</td>
                   </tr>
                   <tr>
                     <td class="text-left">Convenience GST Amount <i></i></td>
-                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceGSTAmount | number: '1.0-0'}}</td>
+                    <td class="text-right t-gray"> + <i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceGSTAmount | number: '1.0-0'}}</td>
                   </tr>
                   <tr>
-                    <td class="text-left">Convenience GST Percentage <i></i></td>
-                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.convenienceGSTPercentage | number: '1.0-0'}}</td>
-                  </tr>
-                  <tr>
-                    <td class="text-left">Property Offer <i></i></td>
-                    <td class="text-right t-gray"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.propertyOffer | number: '1.0-0'}}</td>
-                  </tr>
-                  <tr>
-                    <td class="text-left total">Total payable</td>
-                    <td class="text-right total"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.totalAmount | number: '1.0-0'}}</td>
+                    <td class="text-left total border-top">Final Price</td>
+                    <td class="text-right total border-top"><i class="fa fa-inr" aria-hidden="true"></i> {{propertyDetails?.priceDetails.finalPrice | number: '1.0-0'}}</td>
                   </tr>
                 </table>
               </div>

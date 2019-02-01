@@ -185,12 +185,12 @@
             <h4>Choose room</h4>
             <app-stay-search-form [propertyTypes] = "propertyTypes" [searchObj]="searchObj" [pageName]="'property-details'" (searchFormSubmitted)="searchFormSubmitted($event)"></app-stay-search-form>
           </div>
-          <div class="card-body" *ngFor="let room of propertyDetails?.rooms">
+          <div class="card-body" *ngFor="let room of propertyDetails?.rooms; let r = index">
             <h5>{{room.roomCategory.name}} {{room.oraRoomName}}</h5>
             <div class="d-flex">
               <div class="col-auto pl-0">
-                <img *ngIf="room?.roomVsImages" src="{{room.roomVsImages[0].imageUrl}}" class="room-image" alt="">
-                <img *ngIf="!room?.roomVsImages" src="assets/images/property-details/no_image_available.jpg" class="room-image" alt="">
+                <img *ngIf="room?.roomVsImages" src="{{room?.roomVsImages ? room.roomVsImages[0].imageUrl : assets/images/property-details/no_image_available.jpg}}" class="room-image" alt="" onerror="this.src='assets/images/property-details/no_image_available.jpg'">
+                <!-- <img *ngIf="!room?.roomVsImages" src="assets/images/property-details/no_image_available.jpg" class="room-image" alt=""> -->
               </div>
               <div class="col-auto flex-grow-1">
                 <div class="d-flex justify-content-between">
@@ -229,10 +229,19 @@
               </div>
               <div class="col-md-3 pr-0">
                 <div class="price-block">
-                  <h6>Price for {{searchObj.rooms.length}} nights</h6>
-                  <div class="d-flex justify-content-between">
-                    <span class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{room.roomPricePerNight | number: '1.0-0'}}</span>
-                    <button class="btn btn-dark btn-sm" (click)="bookYourStay($event)">Book now</button>
+                  <h6>Price for {{calculateDate(searchObj.checkInDate, searchObj.checkOutDate)}} nights</h6>
+                  <div class="">
+                    <span class="cross-price pr-2"><i class="fa fa-inr" aria-hidden="true"></i> {{room.oraPrice | number: '1.0-0'}}</span>
+                    <span class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{room.oraFinalPrice | number: '1.0-0'}}</span>
+                    <input type="text" type="checkbox" name="room-checked" [checked]="room.isSelected == 'true' ? true : false" (change)="roomSelectedRoom(room, $event.target.checked)">
+                    <!-- <button class="btn btn-dark btn-sm" (click)="bookYourStay($event)">Book now</button> -->
+                  </div>
+                  <div class="form-group" *ngIf="room?.cotAvailable == 'Y' && room.isSelected == 'true'">
+                    <label for="d-inline">Extra bed</label>
+                    <select name="" id="" class="form-control" (change)="addExtraBed(room, $event.target.value, calculateDate(searchObj.checkInDate, searchObj.checkOutDate))">
+                      <option value="0">Select no. of bed</option>
+                      <option *ngFor="let bed of arrayNum(room.numOfCot); let i = index" value="{{i+1}}">{{i+1}}</option>
+                    </select>
                   </div>
                   <div class="thumb-block d-flex align-items-center">
                     <i class="fa fa-thumbs-o-up thumb-icon" aria-hidden="true"></i>
@@ -301,15 +310,15 @@
     </div>
   
     <!-- Reviews -->
-    <div class="container-fluid bg-w">
+    <div class="container-fluid bg-w" *ngIf="propertyDetails?.reviews && propertyDetails?.reviews.length > 0">
       <div class="review-sec">
         <div class="review-header d-flex justify-content-between">
-          <h5>3 Reviews</h5>
+          <h5>{{propertyDetails?.reviews.length}} Reviews</h5>
           <!-- <select name="" class="form-control sortBy">
             <option value="">Sort by - Latest</option>
           </select> -->
         </div>
-        <div class="review-body" *ngIf="propertyDetails?.reviews && propertyDetails?.reviews.length > 0">
+        <div class="review-body" >
           <div class="review-item d-flex justify-content-start" *ngFor="let item of propertyDetails?.reviews">
             <div class="c-img">
               <img src="{{item.user.userVsInfo.imageUrl}}" alt="">
@@ -436,8 +445,8 @@
       </div>
     </div>
   
-    <!-- <div *ngIf="propertyDetails" class="container-fluid static-floating-bar bg-w">
-        <app-quick-stay-search-form [propertyDetails]="propertyDetails" [searchObj]="searchObj" (searchFormSubmitted)="searchFormSubmitted($event)"></app-quick-stay-search-form> 
-    </div> -->
+    <div *ngIf="propertyDetails" class="container-fluid static-floating-bar bg-w">
+        <app-quick-stay-search-form [propertyDetails]="propertyDetails" [searchObj]="searchObj" [bookStayObj]="bookStayObj" (bookYourStay)="bookYourStay($event)"></app-quick-stay-search-form> 
+    </div>
   </div>
   

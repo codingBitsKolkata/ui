@@ -8,9 +8,9 @@
         <h4 class="modal-title">Are you sure!</h4>
         <p class="text">you want to bookmark this property?</p>
 
-        <button type="button" class="btn btn-primary btn-sm mr-4" (click)="modal.close('Save click')">Yes</button>
+        <button type="button" class="btn btn-primary btn-sm mr-4" (click)="confirmBookmarkFunc();modal.close('Save click')">Yes</button>
         <button type="button" class="btn btn-dark btn-sm" (click)="modal.close('Save click')">No</button>
     </div>
   </div>
 </ng-template>
-<button type="button" (click)="openBookmarkModal(bookmarkModal)"></button>
+<button type="button" (click)="openBookmarkModal(bookmarkModal)" hidden id="openConfirmationBtn"></button>

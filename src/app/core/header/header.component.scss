@@ -32,9 +32,13 @@
     }
     .user-dropdown{
         .dropdown-btn{
-            background: url(../../../assets/images/account_icon.png) center center no-repeat;
-            width: 26px;
-            height: 26px;
+            background-color: transparent;
+            background-position: center center;
+            background-repeat:  no-repeat;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-size: 100%;
             &:after{
                 display: none;
             }

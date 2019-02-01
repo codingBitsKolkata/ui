@@ -10,6 +10,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HttpConfigInterceptor } from './services/interceptors/http-config-interceptor';
 import { ShareButtonsModule } from '@ngx-share/buttons';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -21,6 +22,7 @@ import { ShareButtonsModule } from '@ngx-share/buttons';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    MatSnackBarModule,
     CoreModule,
        // configure the imports
        HttpClientModule,
@@ -32,6 +34,9 @@ import { ShareButtonsModule } from '@ngx-share/buttons';
                deps: [HttpClient]
            }
        })
+  ],
+  exports:[
+    MatSnackBarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }

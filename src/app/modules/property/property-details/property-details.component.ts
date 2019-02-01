@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { DragScrollComponent } from 'ngx-drag-scroll';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -16,9 +17,11 @@ export class PropertyDetailsComponent implements OnInit {
     propertyDetails: object;
     propertyId: number;
     searchObj: object;
+    bookStayObj: object;
     as_leftNavDisabled = false;
     as_rightNavDisabled = false;
     loading: boolean;
+    roomCheckBox: any;
     //   ls_leftNavDisabled = false;
     //   ls_rightNavDisabled = false;
 
@@ -35,6 +38,7 @@ export class PropertyDetailsComponent implements OnInit {
         private router: Router
         ) {
             this.loading = false;
+            this.roomCheckBox = [];
         }
 
 
@@ -127,8 +131,11 @@ export class PropertyDetailsComponent implements OnInit {
             
             if (res.responseCode === '200') {
                 this.propertyDetails = res.responseBody;
-                console.log("this.propertyDetails");
-                console.log(this.propertyDetails);
+                // this.bookStayObj = this.searchObj;
+                this.bookStayObj = Object.assign({}, this.searchObj);
+                this.bookStayObj['totalAmount'] = this.propertyDetails['totalAmount'];
+                this.bookStayObj['amountPayable'] = this.propertyDetails['amountPayable'];
+                
                 this.galleryImages = [];
                 let imgObj = {
                     small: this.propertyDetails['coverImageUrl'],
@@ -146,7 +153,23 @@ export class PropertyDetailsComponent implements OnInit {
                         this.galleryImages.push(imgObj);
                     }
                 }
-                console.log(this.galleryImages);
+                let rooms = [];
+                for(let i=0; i< this.propertyDetails['rooms'].length; i++){
+                    if(this.propertyDetails['rooms'][i].isSelected == 'true'){
+                        let roomObj = {
+                            oraRoomName: this.propertyDetails['rooms'][i]['oraRoomName'],
+                            noOfGuest: this.propertyDetails['rooms'][i]['noOfGuest'],
+                            commission: this.propertyDetails['rooms'][i]['noOfGuest'],
+                            oraPercentage: this.propertyDetails['rooms'][i]['oraPercentage'],
+                            cotPrice: this.propertyDetails['rooms'][i]['cotPrice'],
+                            oraFinalPrice: this.propertyDetails['rooms'][i]['oraFinalPrice'],
+                            oraPrice: this.propertyDetails['rooms'][i]['oraPrice'],
+                        }
+                        rooms.push(roomObj);
+                    }
+                }
+                this.bookStayObj['rooms'] = rooms;
+                console.log(this.bookStayObj);
                 this.loading = false;
             }
         }, error => {
@@ -168,6 +191,67 @@ export class PropertyDetailsComponent implements OnInit {
     }
 
     bookYourStay() {
-        this.router.navigate(['/properties/booking'], { queryParams: this.searchObj });
+        localStorage.setItem('bookingSearchObj', JSON.stringify(this.bookStayObj));
+        this.sharedSrv.sharedBookingSearchdata = this.bookStayObj;
+        this.router.navigate(['/properties/booking'], { queryParams: this.bookStayObj });
+    }
+
+    // calculate number of days
+    calculateDate(date1, date2){
+        date1 = new Date(date1);
+        date2 = new Date(date2);
+        let diffc = date1.getTime() - date2.getTime();
+        let days = Math.round(Math.abs(diffc/(1000*60*60*24)));
+        return days;
+    }
+
+    // Add or remove romms
+    roomSelectedRoom(roomObj, isChecked){
+        if(isChecked) {
+            let Obj = {
+                oraRoomName: roomObj['oraRoomName'],
+                noOfGuest: roomObj['noOfGuest'],
+                commission: roomObj['noOfGuest'],
+                oraPercentage: roomObj['oraPercentage'],
+                cotPrice: roomObj['cotPrice'],
+                oraFinalPrice: roomObj['oraFinalPrice'],
+                oraPrice: roomObj['oraPrice'],
+            }
+            roomObj.isSelected = 'true';
+            this.bookStayObj['rooms'].push(Obj);
+        } else {
+            let index = this.bookStayObj['rooms'].findIndex(x => x.oraRoomName == roomObj.oraRoomName);
+            this.bookStayObj['rooms'].splice(index, 1);
+            roomObj.isSelected = 'false';
+        }
+        let noOfDays = this.calculateDate(this.bookStayObj['checkInDate'], this.bookStayObj['checkOutDate']);
+        this.calculateBookStayPrice(noOfDays);
+    }
+
+    // Add extra bed
+    addExtraBed(roomObj, value, noOfDays){
+        let index = this.bookStayObj['rooms'].findIndex(x => x.oraRoomName == roomObj.oraRoomName);
+        this.bookStayObj['rooms'][index]['numOfCot'] = value;
+        this.calculateBookStayPrice(noOfDays);
+    }
+
+    // Calculate Final Book your stay object
+    calculateBookStayPrice(noOfDays){
+        let oraPrice = 0, oraFinalPrice = 0;
+        for(let i=0; i<this.bookStayObj['rooms'].length;i++){
+            let room_oraPrice = parseInt(this.bookStayObj['rooms'][i]['oraPrice']);
+            let room_oraFinalPrice = parseInt(this.bookStayObj['rooms'][i]['oraFinalPrice']);
+            let a = parseInt(this.bookStayObj['rooms'][i]['cotPrice']) * (this.bookStayObj['rooms'][i]['numOfCot'] ? parseInt(this.bookStayObj['rooms'][i]['numOfCot']) : 0) * noOfDays;
+            let b = a * parseInt(this.bookStayObj['rooms'][i]['oraPercentage']) / 100;
+            let c = b + a;
+            room_oraPrice = room_oraPrice + c;
+            oraPrice = oraPrice + room_oraPrice;
+            let d = a * parseInt(this.bookStayObj['rooms'][i]['commission']) / 100;
+            let e = c - d;
+            room_oraFinalPrice = room_oraFinalPrice + e;
+            oraFinalPrice = oraFinalPrice + room_oraFinalPrice;
+        }
+        this.bookStayObj['totalAmount'] = oraPrice;
+        this.bookStayObj['amountPayable'] = oraFinalPrice;
     }
 }

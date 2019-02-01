@@ -18,9 +18,9 @@
           <button type="button" class="btn btn-light btn-sm mr-3 fs-12 host-btn" routerLink="/host"><i class="fa fa-address-book-o host-icon" aria-hidden="true"></i> <span class="d-none d-sm-block">List your property</span></button>
           <!-- <button type="button" class="btn btn-light btn-sm mr-2 fs-12 help-btn"><i class="help-icon" aria-hidden="true"></i> <span class="d-none d-sm-block">HELP</span></button> -->
           <div ngbDropdown placement="bottom-right" class="d-inline-block user-dropdown">
-            <button class="btn dropdown-btn" id="dropdownBasic2" ngbDropdownToggle></button>
+            <button class="btn dropdown-btn" id="dropdownBasic2" ngbDropdownToggle [style.backgroundImage]="isLogined && userInfo.userVsInfo?.imageUrl ? 'url(assets/images/'+ userInfo.userVsInfo.imageUrl +')'  : 'url(assets/images/account_icon.png)'"></button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
-              <button type="button" *ngIf="!isLogined" class="btn dropdown-item" (click)="openLoginSignUpModal('loginTab')"><i class="fa fa-lock pr-1"></i> LOGIN</button>
+              <button type="button" *ngIf="!isLogined" class="btn dropdown-item" (click)="openLoginSignUpModal('loginTab')" id="loginBtn"><i class="fa fa-lock pr-1"></i> LOGIN</button>
               <button type="button" *ngIf="!isLogined" class="btn dropdown-item" (click)="openLoginSignUpModal('signupTab')"><i class="fa fa-lock pr-1"></i> SIGNUP</button>
               <button type="button" *ngIf="isLogined" class="btn dropdown-item" routerLink="/dashboard"><i class="fa fa-user pr-1"></i> PROFILE</button>
               <button type="button" *ngIf="isLogined" class="btn dropdown-item" (click)="logOut()"><i class="fa fa-power-off pr-1"></i> LOGOUT</button>

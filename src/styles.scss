@@ -736,6 +736,10 @@ input:active,select:active,button:active,label:active{
                 font-family: lato;
                 font-weight: bold;
                 margin-bottom: 10px !important;
+                small{
+                    text-decoration: line-through;
+                    font-size: 14px;
+                }
             }
             .badge.bg-orange{
                 background: #f47921;
@@ -2695,4 +2699,27 @@ a{
 .sb-group.sb-material-dark{
     text-align: center;
     display: block;
+}
+.invalid-feedback{
+    display: block;
+}
+.text-orange{
+    color: #f47921 !important;
+}
+.mat-snack-bar-container {
+    &.alert-success{
+        color: rgba(255,255,255,.7);
+        background: #44af48;
+        box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    }
+    &.alert-error{
+        color: rgba(255,255,255,.7);
+        background: #44af48;
+        box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    }
+    
+}
+.cdk-overlay-container {
+    position: fixed;
+    z-index: 999999;
 }

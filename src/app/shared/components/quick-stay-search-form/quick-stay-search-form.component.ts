@@ -10,8 +10,9 @@ import { SharedService} from '../../../services/shared.service';
 export class QuickStaySearchFormComponent implements OnInit {
 
   @Input() searchObj: object;
+  @Input() bookStayObj: object;  
   @Input() propertyDetails: object;
-  @Output() searchFormSubmitted  = new EventEmitter<any>();
+  @Output() bookYourStay  = new EventEmitter<any>();
   checkInDate: any;
   checkOutDate: any;
   totalNoOfGuest: number;
@@ -23,14 +24,14 @@ export class QuickStaySearchFormComponent implements OnInit {
 
   }
   ngOnInit() {
-   console.log('QuickStaySearchFormComponent', this.searchObj);
-   if (Object.keys(this.searchObj).length) {
-      this.checkInDate = this.searchObj['checkInDate'];
-      this.checkOutDate = this.searchObj['checkOutDate'];
-      const rooms = this.searchObj['rooms'];
+   console.log('QuickStaySearchFormComponent', this.bookStayObj);
+   if (Object.keys(this.bookStayObj).length) {
+      this.checkInDate = this.bookStayObj['checkInDate'];
+      this.checkOutDate = this.bookStayObj['checkOutDate'];
+      const rooms = this.bookStayObj['rooms'];
       let totalNoOfGuest = 0;
       for (let i = 0; i < rooms.length; i++) {
-        totalNoOfGuest +=  rooms[i].noOfGuest + rooms[i].noOfChild;
+        totalNoOfGuest +=  parseInt(rooms[i].noOfGuest) + parseInt(rooms[i].noOfChild ? rooms[i].noOfChild : 0);
       }
       this.totalNoOfGuest = totalNoOfGuest;
    }
@@ -39,8 +40,8 @@ export class QuickStaySearchFormComponent implements OnInit {
     // , size: 'md'
     this.modalService.open(content, { windowClass: 'modal-popup host-details' });
 }
-bookYourStay() {
-  this.searchFormSubmitted.emit(this.searchObj);
+bookYourStayForm() {
+  this.bookYourStay.emit(this.bookStayObj);
 }
 
 }

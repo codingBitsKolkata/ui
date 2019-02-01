@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {FormGroup, FormControl, FormArray } from '@angular/forms';
+import {MatSnackBar} from '@angular/material';
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +9,9 @@ import {FormGroup, FormControl, FormArray } from '@angular/forms';
 export class SharedService {
 
   public sharedHomeSearchData = {};
+  public sharedBookingSearchdata = {};
   public flightSearchData = {};
-  constructor() { }
+  constructor(private snackBar: MatSnackBar) { }
 
   validateAllFormFields(formGroup: FormGroup | FormArray) {
     Object.keys(formGroup.controls).forEach(field => {
@@ -37,6 +40,15 @@ export class SharedService {
     } else {
       return '';
     }
+  }
 
+  // Alert Message
+  showToastMessage(message, title, type){
+    this.snackBar.open(message, title,{
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'right',
+      panelClass: 'alert-' + type,
+    });
   }
 }

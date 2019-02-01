@@ -220,6 +220,6 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
     });
 
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.contactOraForm.value))
-}
+  }
 
 }

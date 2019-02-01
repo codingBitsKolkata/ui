@@ -92,14 +92,14 @@
           <div class="property-item d-flex overflowHidden">
             <div class="mr-20 property-img">
               <div class="room-tag {{property.roomStandard == 'PREMIUM' ? 'green' : 'orange'}}" *ngIf="property.roomStandard!='NORMAL'">{{property.roomStandard}}</div>
-              <img width="260px" height="150px" class="property-img"  [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" src="assets/images/property/property-1.png" />
+              <img width="260px" height="150px" class="property-img"  [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property/property-1.png'" onerror="this.src='assets/images/property-details/no_image_available.jpg'" />
             </div>
             <div class="w-100">
               <div class="clearfix">
                 <p class="float-left ora-id">{{property.oraName}}</p>
                 <p class="float-right">
-                  <a href=""><span class="fa fa-bookmark-o icon"></span></a>
-                  <a href=""><span class="fa fa-share-alt icon ml-2"></span></a>
+                  <a class="c-pointer" (click)="getBookmark(property)"><span class="fa fa-bookmark-o icon bookmark {{property?.isBookmark && property?.isBookmark == true ? 'text-orange':''}}"></span></a>
+                  <a class="c-pointer" (click)="openShareModal(socialShareModal, property)"><span class="fa fa-share-alt icon ml-2"></span></a>
                 </p>
               </div>
               <div class="clearfix">
@@ -114,13 +114,14 @@
                 <p class="float-left complementary">Complimentary 
                   <span *ngIf="property.mealFlag" class="complimentary-tea"></span>
                   <span *ngFor="let amenitie of property.amenities">
-                    <img class="card-img-top rounded" [src]="amenitie.imgUrl1" [alt]="amenitie.aminitiesName">
+                    <img class="card-img-top rounded" [src]="amenitie.imgUrl1" [alt]="amenitie.aminitiesName" onerror="this.src='assets/images/complimentary_swimming.png'">
                   </span>
                 </p>
               </div>
               <div class="alert alert-secondary clearfix" role="alert">
                 <div class="float-left">
-                  <h6 class="price"><span><i class="fa fa-inr" aria-hidden="true"></i> {{property.totalPrice | number: '1.0-0'}}</span> Per night</h6>
+                  
+                  <h6 class="price"><small class="pr-2" *ngIf="property?.discountedPrice && property?.discountedPrice > 0">₹ {{property.totalPrice | number: '1.0-0'}}</small> <span><i class="fa fa-inr" aria-hidden="true"></i> {{property?.discountedPrice && property?.discountedPrice > 0 ? property?.discountedPrice : property.totalPrice | number: '1.0-0'}}</span> Per night</h6>
                   <p class="total-times-book">Booked 21 times in the last 24 hours</p>
                 </div>
                 <button class="btn btn-dark btn-sm float-right" (click)="navigatePropertyDetails(property.propertyId)">Book now</button>
@@ -148,5 +149,17 @@
   </div>
 </div>
 <!-- <hr> -->
+
 <!-- Deals for you -->
 <app-offer></app-offer>
+
+<!-- Social Share -->
+<ng-template #socialShareModal let-modal>
+  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <app-social-share [shareObj]="shareObj"></app-social-share>
+</ng-template>
+
+<!-- Bookmark View -->
+<app-bookmark-popup></app-bookmark-popup>

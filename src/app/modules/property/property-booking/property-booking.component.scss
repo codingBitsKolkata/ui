@@ -213,9 +213,13 @@
         border-radius: 5px;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
+        padding-bottom: 0;
         h5{
             font-family: latoblack;
             font-size: 18px;
+        }
+        .table{
+            width: 95%;
         }
         table td{
             font-family: latoregular;

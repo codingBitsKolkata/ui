@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedService} from '../../services/shared.service';
 import { PropertyService } from '../../services/apis/property.service';
 import { ActivatedRoute, Router  } from '@angular/router';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BookmarkPopupComponent }  from '../../shared/components/bookmark-popup/bookmark-popup.component';
 
 
 @Component({
@@ -12,6 +13,8 @@ import { ActivatedRoute, Router  } from '@angular/router';
   styleUrls: ['./property.component.scss']
 })
 export class PropertyComponent implements OnInit, OnDestroy {
+  
+  @ViewChild(BookmarkPopupComponent ) bookmarkComp: BookmarkPopupComponent ; 
 
   public checkboxGroupForm: FormGroup;
   propertyList: Array<any>;
@@ -28,13 +31,15 @@ export class PropertyComponent implements OnInit, OnDestroy {
   filterBy: string;
   selectedFilter: object;
   loading: boolean;
+  shareObj: object;
 
   constructor(
     private formBuilder: FormBuilder,
     private sharedSrv: SharedService,
     private srvProperty: PropertyService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal,
     ) {
       this.loading = false;
       this.propertyList = [];
@@ -188,5 +193,15 @@ export class PropertyComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-  
+
+  openShareModal(content, property){
+    this.shareObj = {
+      property: property
+    }
+    this.modalService.open(content, { windowClass: 'modal-popup', centered: true });
   }
+  getBookmark(property){
+    this.bookmarkComp.callBookmarkFunction(property);
+  }
+  
+}

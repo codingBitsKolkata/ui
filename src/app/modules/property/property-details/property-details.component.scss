@@ -821,6 +821,12 @@ agm-map{
                 background: #e1e1e1;
                 padding: 15px 20px;
                 border-radius: 5px;
+                span.cross-price{
+                    font-size: 16px;
+                    font-family: latobold;
+                    color: #130504;
+                    text-decoration: line-through;
+                }
                 span.price{
                     font-size: 26px;
                     font-family: latobold;

@@ -7,15 +7,20 @@ import { SharedService} from '../../services/shared.service';
 import {Router} from '@angular/router';
 import { BannerService } from '../../services/apis/banner.service';
 import { Meta, Title  } from '@angular/platform-browser';
+import { BookmarkPopupComponent }  from '../../shared/components/bookmark-popup/bookmark-popup.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   @ViewChild('dpHotel') dpHotel: NgbInputDatepicker;
   @ViewChild('dpFlight') dpFlight: NgbInputDatepicker;
+
+  @ViewChild(BookmarkPopupComponent ) bookmarkComp: BookmarkPopupComponent ; 
+
+  // private bookmarkComponent: BookmarkPopupComponent;
 
   hNoOfAdult = 0;
   hNoOfChild = 0;
@@ -214,8 +219,6 @@ export class HomeComponent implements OnInit {
   }
 
   getBookmark(property){
-    this.bookmarkObj = {
-      property: property
-    }
+    this.bookmarkComp.callBookmarkFunction(property);
   }
 }
