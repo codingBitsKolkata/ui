@@ -88,6 +88,7 @@ export class PropertyComponent implements OnInit, OnDestroy {
     }
     this.sub =  this.route.queryParams.subscribe(params => { console.log(params); });
   }
+  
   setPropertyTypeName(propertyTypeId) {
     const propertyTypes = this.propertyTypes;
     const filteredArray = propertyTypes.filter(function(itm) {

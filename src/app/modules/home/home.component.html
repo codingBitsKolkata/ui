@@ -71,7 +71,7 @@
                         <img class="card-img-top rounded" [src]="property.coverImageURL!= null ? property.coverImageURL : 'assets/images/property-details/no_image_available.jpg'" onerror="this.src='assets/images/property-details/no_image_available.jpg'" >
                     </div>
                     <div class="card-body pl-0 pr-0 pb-0">
-                      <h5 class="card-title" placement="top" ngbTooltip="{{property.address}}">{{property.oraName}}</h5>
+                      <h5 class="card-title" placement="top">{{property.oraName}}</h5>
                       <p class="card-text price mb-1"><small class="pr-2" *ngIf="property?.discountedPrice && property?.discountedPrice > 0">₹ {{property.totalPrice | number: '1.0-0'}}</small> ₹ {{property?.discountedPrice && property?.discountedPrice > 0 ? property?.discountedPrice : property.totalPrice | number: '1.0-0'}} Per night</p>
                       <p class="card-text"><span class="badge badge-secondary bg-orange">{{property.rating}}</span><span class="cat-type"> {{sharedSrv.getRatingText(property.rating)}},</span><span class="review"> {{property.reviewCount}} reviews</span></p>
                       <hr class="hr1">

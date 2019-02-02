@@ -24,7 +24,6 @@
               <button type="button" *ngIf="!isLogined" class="btn dropdown-item" (click)="openLoginSignUpModal('signupTab')"><i class="fa fa-lock pr-1"></i> SIGNUP</button>
               <button type="button" *ngIf="isLogined" class="btn dropdown-item" routerLink="/dashboard"><i class="fa fa-user pr-1"></i> PROFILE</button>
               <button type="button" *ngIf="isLogined" class="btn dropdown-item" (click)="logOut()"><i class="fa fa-power-off pr-1"></i> LOGOUT</button>
-              
             </div>
           </div>
           <!--

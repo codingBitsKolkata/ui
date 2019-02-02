@@ -23,9 +23,9 @@ export class BookmarkPopupComponent implements OnInit, AfterViewInit {
     ) {
       this.userInfo = this.userStorage.get();
       this.bookmarkObj = JSON.parse(localStorage.getItem('bookmarkObj'));
-      if(this.bookmarkObj){
-        this.callBookmarkFunction(this.bookmarkObj);
-      }
+      // if(this.bookmarkObj){
+      //   this.callBookmarkFunction(this.bookmarkObj);
+      // }
   }
 
   ngOnInit() {}
