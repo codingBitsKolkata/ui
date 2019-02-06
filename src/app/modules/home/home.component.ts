@@ -4,7 +4,7 @@ import { TestimonialService } from '../../services/apis/testimonial.service';
 import { PropertyService } from '../../services/apis/property.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SharedService} from '../../services/shared.service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { BannerService } from '../../services/apis/banner.service';
 import { Meta, Title  } from '@angular/platform-browser';
 import { BookmarkPopupComponent }  from '../../shared/components/bookmark-popup/bookmark-popup.component';

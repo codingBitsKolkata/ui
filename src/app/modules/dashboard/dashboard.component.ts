@@ -10,11 +10,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DashboardComponent implements OnInit {
 
-  languageList = [];
-  LanguageSelectedItems = [];
-  interestList = [];
-  interestSelectedItems = [];
-  dropdownSettings = {};
+  // languageList = [];
+  // LanguageSelectedItems = [];
+  // interestList = [];
+  // interestSelectedItems = [];
+  // dropdownSettings = {};
 
   constructor(private modalService: NgbModal) { }
   openModal(content) {
@@ -23,36 +23,36 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.languageList = [
-      { item_id: 1, item_text: 'English' },
-      { item_id: 2, item_text: 'Hindi' },
-      { item_id: 3, item_text: 'Bengali' },
-      { item_id: 4, item_text: 'Panjabi' },
-      { item_id: 5, item_text: 'Telegu' },
-      { item_id: 6, item_text: 'Tamil' },
-      { item_id: 7, item_text: 'Urdhu' },
-      { item_id: 8, item_text: 'Malayalam' }
-    ];
-    this.LanguageSelectedItems = [
-      { item_id: 1, item_text: 'English' },
-      { item_id: 2, item_text: 'Hindi' }
-    ];
+    // this.languageList = [
+    //   { item_id: 1, item_text: 'English' },
+    //   { item_id: 2, item_text: 'Hindi' },
+    //   { item_id: 3, item_text: 'Bengali' },
+    //   { item_id: 4, item_text: 'Panjabi' },
+    //   { item_id: 5, item_text: 'Telegu' },
+    //   { item_id: 6, item_text: 'Tamil' },
+    //   { item_id: 7, item_text: 'Urdhu' },
+    //   { item_id: 8, item_text: 'Malayalam' }
+    // ];
+    // this.LanguageSelectedItems = [
+    //   { item_id: 1, item_text: 'English' },
+    //   { item_id: 2, item_text: 'Hindi' }
+    // ];
 
-    this.interestList = [
-      { item_id: 1, item_text: 'Travelling' },
-      { item_id: 2, item_text: 'Playing guiter' },
-      { item_id: 3, item_text: 'Listening musics' },
-      { item_id: 4, item_text: 'Gurdaning' }
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true
-    };
+    // this.interestList = [
+    //   { item_id: 1, item_text: 'Travelling' },
+    //   { item_id: 2, item_text: 'Playing guiter' },
+    //   { item_id: 3, item_text: 'Listening musics' },
+    //   { item_id: 4, item_text: 'Gurdaning' }
+    // ];
+    // this.dropdownSettings = {
+    //   singleSelection: false,
+    //   idField: 'item_id',
+    //   textField: 'item_text',
+    //   selectAllText: 'Select All',
+    //   unSelectAllText: 'UnSelect All',
+    //   itemsShowLimit: 3,
+    //   allowSearchFilter: true
+    // };
   }
 
 }

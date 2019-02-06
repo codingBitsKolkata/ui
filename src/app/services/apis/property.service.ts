@@ -124,7 +124,7 @@ export class PropertyService {
     };
     return this.httpClient.post<any>(request.url, params);
   }
-   getSpecialExperienceList(params: any) {
+  getSpecialExperienceList(params: any) {
     const request = {
       'url': AppConst.PROPERTY_ADD_API_BASE_URL + '/fetch-special-experience'
     };
@@ -156,6 +156,13 @@ export class PropertyService {
   addBookmark(params: any): Observable<any> {
     const request = {
       'url': AppConst.PROPERTY_API_BASE_URL + '/add-bookmark'
+    };
+    return this.httpClient.post<any>(request.url, params);
+  }
+
+  fetchToiletry(params: any): Observable<any> {
+    const request = {
+      'url': AppConst.PROPERTY_API_BASE_URL + '/fetch-toiletry'
     };
     return this.httpClient.post<any>(request.url, params);
   }

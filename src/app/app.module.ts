@@ -5,13 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 // import ngx-translate and the http loader
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import { TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HttpConfigInterceptor } from './services/interceptors/http-config-interceptor';
 import { ShareButtonsModule } from '@ngx-share/buttons';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
                useFactory: HttpLoaderFactory,
                deps: [HttpClient]
            }
-       })
+       }),
+       ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   exports:[
     MatSnackBarModule

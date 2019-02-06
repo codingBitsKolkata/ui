@@ -45,6 +45,8 @@
     } 
     .booking-section{
         position: initial;
+        transition: none;
+        -webkit-transform: none;
         .container{
             padding: 0px;
             .row{
@@ -54,13 +56,15 @@
                 }
             }
             ::ng-deep .nav.nav-tabs{
-                background: #fff;
+                background-color: #fff !important;
                 border-radius: 0;
-                border-bottom: 2px solid #dee2e6;
+                border-bottom: 2px solid #dee2e6 !important;
                 .nav-link{
-                    color: #130504;
+                    color: #130504 !important;
                     padding-top: 12px;
                     padding-bottom: 12px;
+                    font-family: latobold;
+                    font-size: 16px;
                     &.active{
                         border-bottom: 2px solid #f47921;
                     }
@@ -109,14 +113,22 @@
                         }
                     }
                 }
-                ::ng-deep .tab-content{
-                    .tab-pane{
+                ::ng-deep .mat-tab-body{
+                    .mat-tab-body-content{
                         position: relative;
                         margin-top: 25px;
+                        padding: 0;
+                        height: auto;
+                        overflow: auto;
                         .row{
                             overflow-x: auto;
                             flex-wrap: nowrap !important;
                             flex-direction: row !important;
+                            padding-bottom: 15px;
+                            .property-img .card-img-top {
+                                height: 165px;
+                                width: auto;
+                            }
                         }
                         .filter-section{
                             .alert{
@@ -162,41 +174,49 @@
         }
     }
     .property-desc-section{
-        background: #d4d4d4;
+        background: url(../../../assets/images/listyourproperty_bg_mob.png) no-repeat;
         border-radius: 0;
         margin: 0 !important;
         padding: 40px 15px !important;
+        background-position: center center;
+        background-size: cover;
+        text-align: center;
         h4.title{
             font-size: 24px;
-            margin-bottom: 5px;
+            margin-bottom: 30px;
+            color: #fff;
         }
         h6.desc {
             font-size: 18px;
+            display: none;
         }
         .text{
             display: none;
         }
-    }
-    .deals-section {
-        background: #ffffff00;
-        .container{
-            h4.title{
+        .btn{
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            width: 100%;
+            margin-bottom: 15px;
+            height: 40px;
+            border-radius: 50px;
+            &.btn-dark{
+                background-color: #ffffff !important;
+                border-color: #ffffff !important;
                 color: #130504;
-                font-size: 30px;
-                margin-bottom: 0px;
+                .icon-calculator{
+                    display: none;
+                }
             }
-            p.text {
-                font-size: 18px;
-                color: #231f20;
-                margin-bottom: 20px;
-            }
-            .row{
-                overflow-x: auto;
-                flex-wrap: nowrap !important;
-                flex-direction: row !important;
+            &.btn-primary {
+                color: #fff !important;
+                background-color: #74ae51 !important;
+                border-color: #74ae51 !important;
             }
         }
     }
+    
     .about-testimonial-section{
         margin-bottom: 0px;
         .card{
@@ -215,10 +235,16 @@
                 }
                 &.about-box{
                     .text{
-                        display: none;
+                        // display: none;
                     }
                 }
+                .fixed-height{
+                    height: auto;
+                }
             }
+        }
+        div.h-100{
+            height: auto !important;
         }
     }
 } 

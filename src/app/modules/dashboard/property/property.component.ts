@@ -17,6 +17,7 @@ export class PropertyComponent implements OnInit, AfterViewInit {
   interestSelectedItems = [];
   dropdownSettings = {};
   propertyList = [];
+  toiletryList = [];
   // Chart Config
   Highcharts = Highcharts;
 
@@ -181,13 +182,22 @@ export class PropertyComponent implements OnInit, AfterViewInit {
   }
   populatePropertyList() {
     this.srvProperty.getHostPropertyList().subscribe((res) => {
-     console.log('Property List =>', res);
      if (res.responseCode === '200') {
         this.propertyList = res.responseBody;
      }
    }, error => {
      console.log('error', error);
    });
+  }
+
+  fetchToiletry(){
+    this.srvProperty.fetchToiletry({}).subscribe((res) => {
+      if (res.responseCode === '200') {
+         this.toiletryList = res.responseBody;
+      }
+    }, error => {
+      console.log('error', error);
+    });
   }
 
   // 

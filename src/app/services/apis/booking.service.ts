@@ -22,9 +22,9 @@ export class BookingService {
   getBookingList(requestParam: any): Observable<any> {
     const request = {
       'url': AppConst.PROPERTY_ADD_API_BASE_URL + '/get-user-bookings',
-      'params' : "requestParam"
+      'params' : requestParam
     };
-    return this.httpClient.post<any>(request.url, request.params);
+    return this.httpClient.post<any>(request.url, {});
   }
 
 }

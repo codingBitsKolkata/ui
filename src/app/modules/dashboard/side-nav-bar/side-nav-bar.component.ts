@@ -4,6 +4,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router, NavigationEnd, ActivatedRoute  } from '@angular/router';
 import { ProfileService } from '../../../services/apis/profile.service';
 import { PropertyService } from '../../../services/apis/property.service';
+import { UserStorageProvider } from '../../../services/storage/user-storage.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-side-nav-bar',
@@ -33,7 +35,8 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
     private activeRoute: ActivatedRoute,
     private srvProfile: ProfileService,
     private propertyService: PropertyService,
-    private formBuilder: FormBuilder) { 
+    private formBuilder: FormBuilder,
+    private userService: UserStorageProvider) { 
       this.userProfileDetails = {};
       this.languageList = [];
       this.domainList = [];
@@ -129,25 +132,18 @@ export class SideNavBarComponent implements OnInit, AfterViewInit {
 
   // GET User Profile Detais
   getUserProfileDetails() {
-    this.srvProfile.getUserDetails({}).subscribe((res) => {
-      if (res.responseCode === '200') {
-          this.userProfileDetails = res.responseBody;
-          this.contactOraFormBuilder();
-          if(this.userProfileDetails['userVsTypes'].length > 0){
-            if(this.userProfileDetails['userVsTypes'].length == 1){
-              if(parseInt(this.userProfileDetails['userVsTypes'][0].userType.userTypeId) == 2){
-                this.userRole = 2;
-                this.router.navigateByUrl('/dashboard/bookings');
-              }
-            }else{
-              this.userRole = 1;
-            }
-            console.log("User Role: " + this.userRole);
-          }
+    this.userProfileDetails = this.userService.get();
+    this.contactOraFormBuilder();
+    if(this.userProfileDetails['userVsTypes'].length > 0){
+      if(this.userProfileDetails['userVsTypes'].length == 1){
+        if(parseInt(this.userProfileDetails['userVsTypes'][0].userType.userTypeId) == 2){
+          this.userRole = 2;
+          this.router.navigateByUrl('/dashboard/bookings');
+        }
+      }else{
+        this.userRole = 1;
       }
-    }, error => {
-      console.log('error', error);
-    });
+    }
   }
 
   // GET Language List

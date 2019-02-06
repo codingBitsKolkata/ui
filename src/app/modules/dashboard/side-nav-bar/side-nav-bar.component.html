@@ -3,7 +3,7 @@
     <div class="profile-info">
       <div class="btn-group">
         <div class="sec-user-img" *ngIf="!userProfileDetails?.userVsInfo?.imageUrl">{{userProfileDetails?.userVsInfo?.name ? getShortName(userProfileDetails?.userVsInfo?.name) : ''}}</div>
-        <img class="user-img" *ngIf="userProfileDetails?.userVsInfo?.imageUrl" src="{{userProfileDetails?.userVsInfo?.imageUrl}}" alt="">
+        <img class="user-img" *ngIf="userProfileDetails?.userVsInfo?.imageUrl" src="assets/images/{{userProfileDetails?.userVsInfo?.imageUrl}}" alt="">
         <button class="btn btn-edit" type="button" (click)="openModal(editProfileModal)"><i class="pencil-icon"></i></button>
       </div>
       <label class="username" *ngIf="userProfileDetails?.userVsInfo?.name">{{userProfileDetails?.userVsInfo?.name}}</label>

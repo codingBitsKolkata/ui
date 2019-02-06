@@ -11,6 +11,8 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { TeamComponent } from './team/team.component';
 import { StickyMenuComponent } from './sticky-menu/sticky-menu.component';
 import { ShareButtonsModule } from '@ngx-share/buttons';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ShareButtonsModule } from '@ngx-share/buttons';
   imports: [
     HomeRoutingModule,
     SharedModule,
-    ShareButtonsModule
+    ShareButtonsModule,
+    MatTabsModule,
+    MatStepperModule
   ]
 })
 export class HomeModule { }
