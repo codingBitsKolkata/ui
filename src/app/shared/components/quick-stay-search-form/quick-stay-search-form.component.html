@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row form-area d-flex align-items-center justify-content-center">
     <div class="col-auto">
-      <div>
-       <span class="price-new pr-2">Total Price: </span> <span class="price-drop pr-2"><i class="fa fa-inr" aria-hidden="true"></i> {{bookStayObj.totalAmount | number: '1.0-0'}}</span> <span class="price-new"> <i class="fa fa-inr" aria-hidden="true"></i> {{bookStayObj.amountPayable | number: '1.0-0'}}</span> <!--<span class="per-night"> per night</span>-->
+      <div *ngIf="bookStayObj != {}">
+       <span class="price-new pr-2">Total Price: </span> <span class="price-drop pr-2" *ngIf="bookStayObj?.totalAmount"><i class="fa fa-inr" aria-hidden="true"></i> {{bookStayObj?.totalAmount | number: '1.0-0'}}</span> <span class="price-new" *ngIf="bookStayObj?.amountPayable"> <i class="fa fa-inr" aria-hidden="true"></i> {{bookStayObj?.amountPayable | number: '1.0-0'}}</span> <!--<span class="per-night"> per night</span>-->
       </div>
     </div>
     <div class="col-auto d-inherit">

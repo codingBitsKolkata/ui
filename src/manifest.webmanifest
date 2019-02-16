@@ -1,8 +1,8 @@
 {
   "name": "orastays",
-  "short_name": "orastays",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "short_name": "Orastays",
+  "theme_color": "#f47921",
+  "background_color": "#FFFFFF",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

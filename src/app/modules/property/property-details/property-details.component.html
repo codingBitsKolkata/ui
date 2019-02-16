@@ -4,7 +4,7 @@
 <div  class="property-details-container mt-76">
     <div class="container-fluid mb-40 bg-w" style="height: calc(100vh - 90px);">
       <div class="row row-eq-height h-100">
-        <div class="col-md-2 top-heading pr-0 "> <!-- m-w-20 -->
+        <div class="col-md-2 top-heading pr-0" *ngIf="propertyDetails != {}"> <!-- m-w-20 -->
           <h1><span class="text-orange">{{propertyDetails?.oraname}}</span> <span class="address" style="-webkit-box-orient: vertical;">{{propertyType?.name}}
              {{propertyDetails?.address}}</span> </h1>
           <p class="top-text"><span class="bed-icon"></span><span class="text">1 bedroom </span><span class="text">1 bed </span><span class="text">1 bath</span></p>
@@ -27,12 +27,12 @@
                   <div class="p-t-b-10"><img class="w-100" src="assets/images/property-details/gallery/small-img-2.png" alt=""></div>
                   <div><img class="w-100" src="assets/images/property-details/gallery/small-img-3.png" alt=""></div>
                 </div> -->
-                <div class="col-md-12 p-l-r-5 img-last-block">
+                <div class="col-md-12 p-l-r-5 img-last-block" *ngIf="propertyDetails != {}">
                   <div class="p-b-5"><iframe style="width:100%;height: 100%;" src="https://www.youtube-nocookie.com/embed/QhJZIkekAoA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
                   <agm-map [latitude]="+propertyDetails?.latitude" [longitude]="+propertyDetails?.longitude"  [zoom]='15'>
-                      <agm-marker  [latitude]="+propertyDetails?.latitude" [longitude]="+propertyDetails?.longitude">
-                        <agm-info-window>{{propertyDetails?.oraname}}</agm-info-window>
-                      </agm-marker>
+                    <agm-marker  [latitude]="+propertyDetails?.latitude" [longitude]="+propertyDetails?.longitude">
+                      <agm-info-window>{{propertyDetails?.oraname}}</agm-info-window>
+                    </agm-marker>
                   </agm-map>
                 </div>
               </div>
@@ -149,15 +149,17 @@
               </div>
               <button class="slide-right-btn" [hidden]="as_rightNavDisabled" (click)="moveRight_as()"></button>
             </div>
+            <div *ngIf="propertyDetails != {}">
               <div *ngIf="propertyDetails?.propertyVsSpecialExperiences && propertyDetails?.propertyVsSpecialExperiences?.length > 0">
                 <h4>Special experiences</h4>
-              <ul>
-                <li *ngFor="let experience of propertyDetails?.propertyVsSpecialExperiences">{{experience.specialExperience.experienceName}}</li>
-              </ul>
+                <ul>
+                  <li *ngFor="let experience of propertyDetails?.propertyVsSpecialExperiences">{{experience.specialExperience.experienceName}}</li>
+                </ul>
               </div>
             </div>
+          </div>
         </div>
-        <div class="guest-space-btn-group">
+        <div class="guest-space-btn-group" *ngIf="propertyDetails != {}">
           <div class="guest-access-btn" *ngIf="propertyDetails?.propertyVsGuestAccess && propertyDetails?.propertyVsGuestAccess.length > 0">
             <a class=""><i class="guest-access-icon"></i><span>Guest <br> Access</span></a>
             <div class="guest-access-list">
@@ -183,69 +185,71 @@
         <div class="card">
           <div class="card-header">
             <h4>Choose room</h4>
-            <app-stay-search-form [propertyTypes] = "propertyTypes" [searchObj]="searchObj" [pageName]="'property-details'" (searchFormSubmitted)="searchFormSubmitted($event)"></app-stay-search-form>
+            <app-stay-search-form [searchObj]="searchObj" [pageName]="'property-details'" (searchFormSubmitted)="searchFormSubmitted($event)"></app-stay-search-form>
           </div>
-          <div class="card-body" *ngFor="let room of propertyDetails?.rooms; let r = index">
-            <h5>{{room.roomCategory.name}} {{room.oraRoomName}}</h5>
-            <div class="d-flex">
-              <div class="col-auto pl-0">
-                <img *ngIf="room?.roomVsImages" src="{{room?.roomVsImages ? room.roomVsImages[0].imageUrl : assets/images/property-details/no_image_available.jpg}}" class="room-image" alt="" onerror="this.src='assets/images/property-details/no_image_available.jpg'">
-                <!-- <img *ngIf="!room?.roomVsImages" src="assets/images/property-details/no_image_available.jpg" class="room-image" alt=""> -->
-              </div>
-              <div class="col-auto flex-grow-1">
-                <div class="d-flex justify-content-between">
-                  <div class="col-auto">
-                    <h6>Maximum guests</h6>
-                    <div>
-                      <span class="person-icon" *ngFor="let i of arrayNum(room.noOfGuest)"></span>
-    
-                      <span class="child-icon" *ngFor="let i of arrayNum(room.noOfChild)"></span>
+          <div *ngIf="propertyDetails != {}">
+            <div class="card-body" *ngFor="let room of propertyDetails?.rooms; let r = index">
+              <h5>{{room.roomCategory.name}} {{room.oraRoomName}}</h5>
+              <div class="d-flex">
+                <div class="col-auto pl-0">
+                  <img *ngIf="room?.roomVsImages" src="{{room?.roomVsImages ? room.roomVsImages[0].imageUrl : assets/images/property-details/no_image_available.jpg}}" class="room-image" alt="" onerror="this.src='assets/images/property-details/no_image_available.jpg'">
+                  <!-- <img *ngIf="!room?.roomVsImages" src="assets/images/property-details/no_image_available.jpg" class="room-image" alt=""> -->
+                </div>
+                <div class="col-auto flex-grow-1">
+                  <div class="d-flex justify-content-between">
+                    <div class="col-auto">
+                      <h6>Maximum guests</h6>
+                      <div>
+                        <span class="person-icon" *ngFor="let i of arrayNum(room.noOfGuest)"></span>
+      
+                        <span class="child-icon" *ngFor="let i of arrayNum(room.noOfChild)"></span>
+                      </div>
+                      <h6 class="mt-3">Bed availability</h6>
+                      <div class="bed-availabel">
+                        <span class="bed-icon"></span> - Double bed
+                      </div>
                     </div>
-                    <h6 class="mt-3">Bed availability</h6>
-                    <div class="bed-availabel">
-                      <span class="bed-icon"></span> - Double bed
+                    <div class="col-auto">
+                      <h6>Amenities</h6>
+                      <ul>
+                        <li *ngFor="let item of room.roomVsAmenities">{{item.amenities.aminitiesName}}</li>
+                      </ul>
                     </div>
-                  </div>
-                  <div class="col-auto">
-                    <h6>Amenities</h6>
-                    <ul>
-                      <li *ngFor="let item of room.roomVsAmenities">{{item.amenities.aminitiesName}}</li>
-                    </ul>
-                  </div>
-                  <div class="col-auto">
-                    <h6>Highlights</h6>
-                    <ul>
-                      <li>Free Cancellation </li>
-                      <!-- <li>Free WiFi</li> -->
-                    </ul>
-                  </div>
-                  <div class="col-auto" *ngIf="room.roomVsSpecialities">
-                    <h6>Specialities</h6>
-                    <ul>
-                      <li *ngFor="let item of room.roomVsSpecialities">{{item.specialties.specialitiesName}}</li>
-                    </ul>
+                    <div class="col-auto">
+                      <h6>Highlights</h6>
+                      <ul>
+                        <li>Free Cancellation </li>
+                        <!-- <li>Free WiFi</li> -->
+                      </ul>
+                    </div>
+                    <div class="col-auto" *ngIf="room.roomVsSpecialities">
+                      <h6>Specialities</h6>
+                      <ul>
+                        <li *ngFor="let item of room.roomVsSpecialities">{{item.specialties.specialitiesName}}</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3 pr-0">
-                <div class="price-block">
-                  <h6>Price for {{calculateDate(searchObj.checkInDate, searchObj.checkOutDate)}} nights</h6>
-                  <div class="">
-                    <span class="cross-price pr-2"><i class="fa fa-inr" aria-hidden="true"></i> {{room.oraPrice | number: '1.0-0'}}</span>
-                    <span class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{room.oraFinalPrice | number: '1.0-0'}}</span>
-                    <input type="text" type="checkbox" name="room-checked" [checked]="room.isSelected == 'true' ? true : false" (change)="roomSelectedRoom(room, $event.target.checked)">
-                    <!-- <button class="btn btn-dark btn-sm" (click)="bookYourStay($event)">Book now</button> -->
-                  </div>
-                  <div class="form-group" *ngIf="room?.cotAvailable == 'Y' && room.isSelected == 'true'">
-                    <label for="d-inline">Extra bed</label>
-                    <select name="" id="" class="form-control" (change)="addExtraBed(room, $event.target.value, calculateDate(searchObj.checkInDate, searchObj.checkOutDate))">
-                      <option value="0">Select no. of bed</option>
-                      <option *ngFor="let bed of arrayNum(room.numOfCot); let i = index" value="{{i+1}}">{{i+1}}</option>
-                    </select>
-                  </div>
-                  <div class="thumb-block d-flex align-items-center">
-                    <i class="fa fa-thumbs-o-up thumb-icon" aria-hidden="true"></i>
-                    <p> Lowest price guarantee <span> or Get 5X Refund</span></p>
+                <div class="col-md-3 pr-0">
+                  <div class="price-block">
+                    <h6>Price for {{calculateDate(searchObj.checkInDate, searchObj.checkOutDate)}} nights</h6>
+                    <div class="">
+                      <span class="cross-price pr-2"><i class="fa fa-inr" aria-hidden="true"></i> {{room.oraPrice | number: '1.0-0'}}</span>
+                      <span class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{room.oraFinalPrice | number: '1.0-0'}}</span>
+                      <input type="text" type="checkbox" name="room-checked" [checked]="room.isSelected == 'true' ? true : false" (change)="roomSelectedRoom(room, $event.target.checked)">
+                      <!-- <button class="btn btn-dark btn-sm" (click)="bookYourStay($event)">Book now</button> -->
+                    </div>
+                    <div class="form-group" *ngIf="room?.cotAvailable == 'Y' && room.isSelected == 'true'">
+                      <label for="d-inline">Extra bed</label>
+                      <select name="" id="" class="form-control" (change)="addExtraBed(room, $event.target.value, calculateDate(searchObj.checkInDate, searchObj.checkOutDate))">
+                        <option value="0">Select no. of bed</option>
+                        <option *ngFor="let bed of arrayNum(room.numOfCot); let i = index" value="{{i+1}}">{{i+1}}</option>
+                      </select>
+                    </div>
+                    <div class="thumb-block d-flex align-items-center">
+                      <i class="fa fa-thumbs-o-up thumb-icon" aria-hidden="true"></i>
+                      <p> Lowest price guarantee <span> or Get 5X Refund</span></p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -255,16 +259,18 @@
       </div>
     </div>
   
-    <div class="container-fluid bg-w" *ngIf="propertyDetails?.propertyVsNearbys && propertyDetails?.propertyVsNearbys.length > 0">
-      <div class="near-location-section">
-        <div class="row">
-          <div class="col-md-12 p-l-40">
-            <h3>Nearby <span> locations </span></h3>
-            <div class="d-flex">
-              <div class="bullet-list">
-                <ul>
-                    <li *ngFor="let item of propertyDetails?.propertyVsNearbys">{{item.places}}</li>
-                </ul>
+    <div *ngIf="propertyDetails != {}">
+      <div class="container-fluid bg-w" *ngIf="propertyDetails?.propertyVsNearbys && propertyDetails?.propertyVsNearbys.length > 0">
+        <div class="near-location-section">
+          <div class="row">
+            <div class="col-md-12 p-l-40">
+              <h3>Nearby <span> locations </span></h3>
+              <div class="d-flex">
+                <div class="bullet-list">
+                  <ul>
+                      <li *ngFor="let item of propertyDetails?.propertyVsNearbys">{{item.places}}</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -310,87 +316,89 @@
     </div>
   
     <!-- Reviews -->
-    <div class="container-fluid bg-w" *ngIf="propertyDetails?.reviews && propertyDetails?.reviews.length > 0">
-      <div class="review-sec">
-        <div class="review-header d-flex justify-content-between">
-          <h5>{{propertyDetails?.reviews.length}} Reviews</h5>
-          <!-- <select name="" class="form-control sortBy">
-            <option value="">Sort by - Latest</option>
-          </select> -->
+    <div *ngIf="propertyDetails != {}">
+      <div class="container-fluid bg-w" *ngIf="propertyDetails?.reviews && propertyDetails?.reviews.length > 0">
+        <div class="review-sec">
+          <div class="review-header d-flex justify-content-between">
+            <h5>{{propertyDetails?.reviews.length}} Reviews</h5>
+            <!-- <select name="" class="form-control sortBy">
+              <option value="">Sort by - Latest</option>
+            </select> -->
+          </div>
+          <div class="review-body" >
+            <div class="review-item d-flex justify-content-start" *ngFor="let item of propertyDetails?.reviews">
+              <div class="c-img">
+                <img src="{{item.user.userVsInfo.imageUrl}}" alt="">
+              </div>
+              <div class="">
+                <p class="name">{{item.user.userVsInfo.name}}</p>
+                <p class="date-rating">
+                  <span class="date">{{item.user.createdDate}}</span>
+                  <span class="text">Rating</span>
+                  <i class="fa fa-star-o start-icon" aria-hidden="true" *ngFor="let rating of arrayNum(item.userRating)"></i>
+                  <!-- <i class="fa fa-star-o start-icon" aria-hidden="true"></i> -->  
+                  <!-- <i class="fa fa-star-o start-icon" aria-hidden="true"></i> -->
+                  <!-- <i class="fa fa-star-o start-icon" aria-hidden="true"></i> -->
+                </p>
+                <p class="comment"><span>{{item.user.comment}}</span> <!-- <a class="read-more"> read more</a> --> </p>
+              </div>
+            </div>
+            <hr>
+            <div class="review-item d-flex justify-content-start">
+              <div class="c-img">
+                <img src="assets/images/thumbs/user2.png" alt="">
+              </div>
+              <div class="">
+                <p class="name">Arti Shaw</p>
+                <p class="date-rating">
+                  <span class="date">1 January 2019 </span>
+                  <span class="text">Rating</span>
+                  <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
+                  <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
+                  <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
+                  <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
+                  <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
+                </p>
+                <p class="comment"><span>I went to spend my New Year’s Eve in this place with my family. It was a beautiful villa and the host had handed the keys to us. This Ganges side property exceeded my expectations. I am so happy I chose it. It has the perfect setting for such events and all the amenities were excellent. Loved the place. </span> <!-- <a class="read-more"> read more</a> --> </p>
+              </div>
+            </div>
+            <hr>
+            <div class="review-item d-flex justify-content-start">
+              <div class="c-img">
+                <img src="assets/images/thumbs/user3.png" alt="">
+              </div>
+              <div class="">
+                <p class="name">Bhumi Majumdar</p>
+                <p class="date-rating">
+                  <span class="date">14 November 2018</span>
+                  <span class="text">Rating</span>
+                  <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
+                  <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
+                  <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
+                  <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
+                  <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
+                </p>
+                <p class="comment"><span>I wish I had not Chosen this property. The host was very unfriendly and didn’t even have the washrooms clean.  I was a bit disappointed with this place. If they want guests to come, they should be more communicative with their guests. </span> <!-- <a class="read-more"> read more</a> --> </p>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <!-- <div class="d-flex justify-content-end">
+            <nav>
+              <ul class="pagination pagination-sm">
+                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-caret-left"></i></a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#"><i class="fa fa-caret-right"></i></a></li>
+              </ul>
+            </nav>
+          </div> -->
         </div>
-        <div class="review-body" >
-          <div class="review-item d-flex justify-content-start" *ngFor="let item of propertyDetails?.reviews">
-            <div class="c-img">
-              <img src="{{item.user.userVsInfo.imageUrl}}" alt="">
-            </div>
-            <div class="">
-              <p class="name">{{item.user.userVsInfo.name}}</p>
-              <p class="date-rating">
-                <span class="date">{{item.user.createdDate}}</span>
-                <span class="text">Rating</span>
-                <i class="fa fa-star-o start-icon" aria-hidden="true" *ngFor="let rating of arrayNum(item.userRating)"></i>
-                <!-- <i class="fa fa-star-o start-icon" aria-hidden="true"></i> -->  
-                <!-- <i class="fa fa-star-o start-icon" aria-hidden="true"></i> -->
-                <!-- <i class="fa fa-star-o start-icon" aria-hidden="true"></i> -->
-              </p>
-              <p class="comment"><span>{{item.user.comment}}</span> <!-- <a class="read-more"> read more</a> --> </p>
-            </div>
-          </div>
-          <hr>
-          <div class="review-item d-flex justify-content-start">
-            <div class="c-img">
-              <img src="assets/images/thumbs/user2.png" alt="">
-            </div>
-            <div class="">
-              <p class="name">Arti Shaw</p>
-              <p class="date-rating">
-                <span class="date">1 January 2019 </span>
-                <span class="text">Rating</span>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-              </p>
-              <p class="comment"><span>I went to spend my New Year’s Eve in this place with my family. It was a beautiful villa and the host had handed the keys to us. This Ganges side property exceeded my expectations. I am so happy I chose it. It has the perfect setting for such events and all the amenities were excellent. Loved the place. </span> <!-- <a class="read-more"> read more</a> --> </p>
-            </div>
-          </div>
-          <hr>
-          <div class="review-item d-flex justify-content-start">
-            <div class="c-img">
-              <img src="assets/images/thumbs/user3.png" alt="">
-            </div>
-            <div class="">
-              <p class="name">Bhumi Majumdar</p>
-              <p class="date-rating">
-                <span class="date">14 November 2018</span>
-                <span class="text">Rating</span>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-                <i class="fa fa-star-o start-icon" aria-hidden="true"></i>
-              </p>
-              <p class="comment"><span>I wish I had not Chosen this property. The host was very unfriendly and didn’t even have the washrooms clean.  I was a bit disappointed with this place. If they want guests to come, they should be more communicative with their guests. </span> <!-- <a class="read-more"> read more</a> --> </p>
-            </div>
-          </div>
-          <hr>
-        </div>
-        <!-- <div class="d-flex justify-content-end">
-          <nav>
-            <ul class="pagination pagination-sm">
-              <li class="page-item"><a class="page-link" href="#"><i class="fa fa-caret-left"></i></a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item active"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">5</a></li>
-              <li class="page-item"><a class="page-link" href="#"><i class="fa fa-caret-right"></i></a></li>
-            </ul>
-          </nav>
-        </div> -->
+    
       </div>
-  
     </div>
   
     <div class="container-fluid bg-w">

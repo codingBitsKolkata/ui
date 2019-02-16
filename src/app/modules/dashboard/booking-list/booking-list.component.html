@@ -13,17 +13,16 @@
           <div class="form-group m-0 daterangepicker">
             <div class="input-group">
               <input class="form-control border-right-0" placeholder="Check in"
-                      name="dpChIn" [(ngModel)]="h_fromDate" ngbDatepicker (click)="dpHotel.toggle()">
+                      name="dpChIn" ngbDatepicker (click)="dpHotel.toggle()">
               <input class="form-control dtpickerHide" placeholder="Depart"
                   name="dp" ngbDatepicker #dpHotel="ngbDatepicker" 
-                  ngModel (ngModelChange)="onDateSelectionHotel($event)" 
-                  [displayMonths]="1" [dayTemplate]="tHotel" outsideDays="hidden" 
+                  ngModel [displayMonths]="1" [dayTemplate]="tHotel" outsideDays="hidden" 
                   [navigation]="'false'" [autoClose]="'outside'" [placement]="'bottom-left'" type="text">
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary calendar checkin-pick" (click)="dpHotel.toggle()" type="button"><i class="fa fa-calendar"></i></button>
               </div>
               <input class="form-control border-right-0" placeholder="Check out"
-                      name="dpChOut" [(ngModel)]="h_toDate" ngbDatepicker (click)="dpHotel.toggle()">
+                      name="dpChOut" ngbDatepicker (click)="dpHotel.toggle()">
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary calendar checkout-pick" (click)="dpHotel.toggle()" type="button"><i class="fa fa-calendar"></i></button>
               </div>

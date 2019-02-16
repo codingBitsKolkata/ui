@@ -1,7 +1,7 @@
 <form>
   <div class="card-body" [formGroup]="ratingsfilterForm">
     <h5 class="card-title">Guest ratings</h5>
-    <div>
+    <div *ngIf="ratingsfilterForm.controls?.ratings">
       <div class="btn-group-toggle" formArrayName="ratings" *ngFor="let rating of ratingsfilterForm.controls.ratings.controls; let i = index">
         <label class="btn-checkbox-filter" ngbButtonLabel>
           <input type="checkbox" (change)="filterChecked()" [formControlName]="i" ngbButton> {{ratingsFliterList[i].value}}
@@ -12,7 +12,7 @@
   <hr class="m-0">
   <div class="card-body" [formGroup]="amenitiesFilterForm">
     <h5 class="card-title">{{selectedPropertyTypeName}} facilities</h5>
-    <div>
+    <div *ngIf="amenitiesFilterForm.controls?.amenities">
       <div class="btn-group-toggle" formArrayName="amenities" *ngFor="let amenitie of amenitiesFilterForm.controls.amenities.controls; let i = index">
         <label class="btn-checkbox-filter" ngbButtonLabel>
           <input type="checkbox" (change)="filterChecked()" ngbButton [formControlName]="i"> {{amenitiesFliterList[i].aminitiesName}}
@@ -26,7 +26,7 @@
   <hr class="m-0">
   <div class="card-body" [formGroup]="budgetFilterForm">
     <h5 class="card-title">Budget</h5>
-    <div>
+    <div *ngIf="budgetFilterForm.controls?.budgets">
       <div class="btn-group-toggle"  formArrayName="budgets" *ngFor="let budget of budgetFilterForm.controls.budgets.controls; let i = index">
         <label class="btn-checkbox-filter" ngbButtonLabel> 
           <input type="checkbox"   (change)="filterChecked()" ngbButton [formControlName]="i"> <span [innerHTML]="budgetsFliterList[i].value"></span>

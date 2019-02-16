@@ -16,7 +16,7 @@ export class FlightFilterComponent implements OnInit {
   tripType;
   expanded;
 
-  constructor(private router: Router, private formBuilder: FormBuilder,   private parserFormatter: NgbDateParserFormatter,) { }
+  constructor(private router: Router, private formBuilder: FormBuilder,   public parserFormatter: NgbDateParserFormatter,) { }
   public checkboxGroupForm: FormGroup;
 
   ngOnInit() {

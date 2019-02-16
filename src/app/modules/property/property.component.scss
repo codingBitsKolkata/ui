@@ -366,3 +366,50 @@ agm-map{
     color: #827e7e;
     margin-top: 50px;
 }
+
+// Media Query
+@media only screen and (max-width: 767px) {
+    .head-img-container{
+        margin-top: 56px;
+        .text-container{
+            width: auto;
+            left: 20px;
+            h4{
+                font-size: 18px;
+            }
+            p {
+                font-size: 14px;
+                margin-top: 0px;
+            }
+        }
+    } 
+    .filter-container{
+        display: none;
+    }
+    .property-listing-area{
+        .property-item{
+            display: block !important;
+            .property-img{
+                margin-right: 0 !important;
+                margin-bottom: 5px;
+                width: 100%;
+                height: 100%;
+            }
+            .pet-friendly, .couples-frindly{
+                font-size: 10px !important;
+            }
+            .alert.alert-secondary{
+                margin-top: 5px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .float-left{
+                    flex-grow: 1!important;
+                }
+                .total-times-book{
+                    display: none;
+                }
+            }
+        }
+    }
+}
